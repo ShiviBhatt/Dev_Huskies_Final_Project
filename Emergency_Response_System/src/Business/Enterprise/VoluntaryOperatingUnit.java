@@ -10,16 +10,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author MyPC1
+ * @author Mayank
  */
-public class HospitalEnterprise extends Enterprise {
-    
-    public HospitalEnterprise(String name){
-        super(name,EnterpriseType.Hospital);
+public class VoluntaryOperatingUnit extends Enterprise{
+
+    public VoluntaryOperatingUnit(String name) {
+        super(name, Enterprise.EnterpriseType.VoluntaryOperatingUnit);
     }
+
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet");
     }
     
 }
