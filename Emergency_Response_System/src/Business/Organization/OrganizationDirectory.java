@@ -24,7 +24,7 @@ public class OrganizationDirectory {
     }
     
     public Organization createOrganization(Type type){
-        Organization organization = null;
+        /*Organization organization = null;
         if (type.getValue().equals(Type.Doctor.getValue())){
             organization = new DoctorOrganization();
             organizationList.add(organization);
@@ -32,7 +32,7 @@ public class OrganizationDirectory {
         else if (type.getValue().equals(Type.Lab.getValue())){
             organization = new LabOrganization();
             organizationList.add(organization);
-        }
-        return organization;
+        }*/
+        return null;
     }
 }

@@ -5,10 +5,12 @@
  */
 package Business;
 
+import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -51,12 +53,23 @@ public class EcoSystem extends Organization{
     }
     
     public boolean checkIfUserIsUnique(String userName){
-        if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
-            return false;
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    if (ua.getUsername().equals(userName)) {
+                        return false;
+                    }
+                }
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (ua.getUsername().equals(userName)) {
+                            return false;
+                        }
+                    }
+                }
+            }
         }
-        for(Network network:networkList){
-            
-        }
+
         return true;
     }
 }

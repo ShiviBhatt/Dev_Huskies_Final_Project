@@ -5,7 +5,6 @@
 package userinterface.LabAssistantRole;
 
 import Business.EcoSystem;
-import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
@@ -23,7 +22,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
-    private LabOrganization labOrganization;
+    //private LabOrganization labOrganization;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
@@ -34,7 +33,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.labOrganization = (LabOrganization)organization;
+        //this.labOrganization = (LabOrganization)organization;
         
         populateTable();
     }
@@ -44,7 +43,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
+        /*for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
@@ -52,7 +51,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
             row[3] = request.getStatus();
             
             model.addRow(row);
-        }
+        }*/
     }
 
     /**
