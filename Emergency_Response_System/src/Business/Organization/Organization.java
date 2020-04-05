@@ -9,6 +9,7 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -22,6 +23,7 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private static int counter=0;
+    public ArrayList<Role> roles;
     
     public enum Type{
         Admin("admin Organization"), 
@@ -30,7 +32,7 @@ public abstract class Organization {
         NGO("NGO Organization"), 
         Personal("Individual Organization"), 
         Hospital("Hospital Organization"), 
-        Police("Police Organization"), 
+        PoliceHead("Police Organization"), 
         FireSafety("FireSafety Organization"), 
         Medicines("medicines Organization"), 
         Clinic("clinic Organization"), 
@@ -52,6 +54,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
+        roles = new ArrayList<Role>();
         ++counter;
     }
 

@@ -24,6 +24,7 @@ public class PoliceHead extends Role{
     
     @Override
     public String toString(){
+        System.out.println(RoleType.PoliceHead.getValue());
         return (RoleType.PoliceHead.getValue());
     }
 }

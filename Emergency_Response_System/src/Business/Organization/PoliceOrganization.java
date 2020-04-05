@@ -7,6 +7,7 @@ package Business.Organization;
 
 import Business.Role.Role;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -31,7 +32,9 @@ public class PoliceOrganization extends Organization{
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roles;
     }
+
+
     
 }
