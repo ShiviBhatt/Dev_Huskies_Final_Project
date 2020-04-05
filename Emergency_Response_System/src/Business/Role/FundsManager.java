@@ -10,21 +10,16 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.IncidentUnitWorkArea.IncidentManagerWorkAreaJPanel;
 
 /**
  *
  * @author Mayank
  */
-public class IncidentUnitManager extends Role{
+public class FundsManager extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new IncidentManagerWorkAreaJPanel(userProcessContainer, enterprise, business, organization);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public String toString(){
-        return (RoleType.IncidentUnitManager.getValue());
-    }
 }

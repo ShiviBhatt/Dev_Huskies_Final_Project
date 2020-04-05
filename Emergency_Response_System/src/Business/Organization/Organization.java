@@ -34,9 +34,9 @@ public abstract class Organization {
         FireSafety("FireSafety Organization"), 
         Medicines("medicines Organization"), 
         Clinic("clinic Organization"), 
-        ReportingAgency("report Organization"), 
-        DisasterManagementTeam("DisasterManagementTeam Organization");
-        
+        IncidentReportingAgency("Report Organization"), 
+        DisasterManagementTeam("DisasterManagementTeam Organization"),
+        FundsOrganization("FundsOrganization");
         private String value;
         private Type(String value) {
             this.value = value;
