@@ -11,21 +11,22 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import usertinterface.VoluntaryUnitHospital.HospitalWorkAreaJPanel;
 
 /**
  *
- * @author Mayank
+ * @author shivibhatt
  */
-public class SceneManager extends Role{
+public class HospitalAdmin extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+        return new HospitalWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
     }
     
-    @Override
+     @Override
     public String toString(){
-        return (RoleType.SceneManager.getValue());
+        return (RoleType.HospitalAdmin.getValue());
     }
     
 }
