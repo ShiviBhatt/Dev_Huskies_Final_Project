@@ -250,8 +250,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
-        
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        if(username.isEmpty() || password.isEmpty() || name.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else{
+            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
         if (system.checkIfUserIsUnique(username)) {
             UserAccount account = null;
@@ -266,7 +268,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         }else {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

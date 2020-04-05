@@ -72,4 +72,13 @@ public class EcoSystem extends Organization{
 
         return true;
     }
+    
+    public boolean isUnique(String name){
+        for(Network network : networkList){
+            if(network.getName().equalsIgnoreCase(name)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

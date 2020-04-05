@@ -29,7 +29,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         initComponents();
         this.enterprise = enterprise;
         this.container = container;
-
         popOrganizationComboBox();
        // employeeJComboBox.removeAllItems();
         popData();

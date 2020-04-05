@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Organization.Organization.Type;
+import Business.Position;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +29,13 @@ public class OrganizationDirectory {
         if (type.getValue().equals(Type.IncidentReportingAgency.getValue())){
             organization = new IncidentManagementOrganization(name);
             organizationList.add(organization);
-        }
-        return null;
+        } else if (type.getValue().equals(Type.PoliceHead.getValue())) {
+            organization = new PoliceOrganization(name);
+            PoliceOrganization police = (PoliceOrganization) organization;
+            police.setPolice(name);
+            //organization.setPosition(position);
+            organizationList.add(organization);
+        } 
+        return organization;
     }
 }

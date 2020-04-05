@@ -5,8 +5,11 @@
  */
 package Business.Enterprise;
 
+import Business.Role.FireSafetyHead;
+import Business.Role.PoliceHead;
 import Business.Role.Role;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -19,8 +22,12 @@ public class EmergencyOperatingUnit extends Enterprise{
     }
 
     @Override
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+         public ArrayList<Role> getSupportedRole() {
+        roles = new ArrayList<Role>();
+        roles.add(new FireSafetyHead());
+        roles.add(new PoliceHead());
+        return roles;
     }
     
 }
