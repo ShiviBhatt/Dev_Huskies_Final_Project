@@ -14,17 +14,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Mayank
+ * @author dhankuwarsisodiya
  */
-public class PoliceHead extends Role{
-
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+public class DisasterHead extends Role{
     @Override
     public String toString(){
-        return (RoleType.PoliceHead.getValue());
+        return (RoleType.DisasterHead.getValue());
+    }
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+        return null;
     }
 }

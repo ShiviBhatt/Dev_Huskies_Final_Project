@@ -6,6 +6,7 @@ package Business.Organization;
 
 import Business.Organization.Organization.Type;
 import Business.Location.LocationPoint;
+import static Business.Role.Role.RoleType.FireSafetyHead;
 import java.util.ArrayList;
 
 /**
@@ -63,7 +64,25 @@ public class OrganizationDirectory {
             company.setVolunteerCompany(name);
             organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
-        }
+        } else if (type.getValue().equals(Type.FireSafety.getValue())) {
+            organization = new FireSafetyOrganization(name);
+           FireSafetyOrganization fireSafety = (FireSafetyOrganization) organization;
+           fireSafety.setFireSafety(name);
+            //organization.setPosition(position);
+            organizationList.add(organization);
+        } else if (type.getValue().equals(Type.DisasterManagementTeam.getValue())) {
+            organization = new DisasterOrganization(name);
+            DisasterOrganization disaster = (DisasterOrganization) organization;
+            disaster.setDisasterName(name);
+            //organization.setPosition(position);
+            organizationList.add(organization);
+        } else if (type.getValue().equals(Type.Medicines.getValue())) {
+            organization = new MedicalOrganization(name);
+            MedicalOrganization medical = (MedicalOrganization) organization;
+            medical.setMedicenes(name);
+            //organization.setPosition(position);
+            organizationList.add(organization);
+        } 
 
         return organization;
     }

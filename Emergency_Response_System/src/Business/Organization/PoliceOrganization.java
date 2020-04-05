@@ -5,7 +5,9 @@
  */
 package Business.Organization;
 
+import Business.Role.PoliceHead;
 import Business.Role.Role;
+import static Business.Role.Role.RoleType.PoliceHead;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -32,6 +34,7 @@ public class PoliceOrganization extends Organization{
 
     @Override
     public ArrayList<Role> getSupportedRole() {
+        roles.add(new PoliceHead());
         return roles;
     }
 

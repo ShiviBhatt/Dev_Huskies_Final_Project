@@ -150,11 +150,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             if(system.isUnique(name)){
                 Network network = system.createAndAddNetwork();
                 network.setName(name);
+                JOptionPane.showMessageDialog(null, "Network Successfully Created");
+                nameJTextField.setText("");
             } else{
                 JOptionPane.showMessageDialog(null, "Network Already Exits");
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Network Successfully Created");
+            JOptionPane.showMessageDialog(null, "Enter city name");
         }
         
 
