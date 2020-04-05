@@ -10,21 +10,17 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.IncidentUnitWorkArea.IncidentManagerWorkAreaJPanel;
+import userinterface.FundsUnitWorkArea.FundsAdminWorkAreaJPanel;
 
 /**
  *
  * @author Mayank
  */
-public class IncidentUnitManager extends Role{
+public class FundsUnitAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new IncidentManagerWorkAreaJPanel(userProcessContainer, enterprise, business, organization);
+        return new FundsAdminWorkAreaJPanel(userProcessContainer, enterprise, business, organization); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public String toString(){
-        return (RoleType.IncidentUnitManager.getValue());
-    }
 }
