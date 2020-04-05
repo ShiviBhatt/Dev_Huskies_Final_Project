@@ -264,6 +264,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
             }
+            usernameJTextField.setText("");
+            passwordJPasswordField.setText("");
+            nameJTextField.setText("");
+            JOptionPane.showMessageDialog(null, "Account created sucessfully");
             populateTable();
         }else {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);

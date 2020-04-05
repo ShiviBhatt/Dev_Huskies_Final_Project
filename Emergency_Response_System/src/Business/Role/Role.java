@@ -23,15 +23,17 @@ public abstract class Role {
         EmergencyUnitAdmin("ERUAdmin"),
         VoluntaryUnitAdmin("VoluntaryTeamAdmin"),
         SceneManager("SceneManager"),
-        PoliceHead("Police"),
+        PoliceHead("Police Head"),
         FireSafetyHead("FireSafetyHead"),
         MedicalAgencyHead("MedicalAgencySupervisor"),
         NGOAdmin("NGOAdmin"),
         PersonalAdmin("PersonalAdmin"),
         ReportingAdmin("ReportingAdmin"),
         HospitalAdmin("HospitalAdmin"),
-        CompanySupervisor("CompanySupervisor");
-    
+        CompanySupervisor("CompanySupervisor"),
+        DisasterHead("DisasterHead");
+        
+        
         private String value;
         private RoleType(String value){
             this.value = value;
