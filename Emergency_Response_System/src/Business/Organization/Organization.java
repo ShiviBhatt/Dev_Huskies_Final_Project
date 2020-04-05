@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Location.LocationPoint;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -24,6 +25,8 @@ public abstract class Organization {
     private int organizationID;
     private static int counter=0;
     public ArrayList<Role> roles;
+    private LocationPoint locationPoint;
+
     
     public enum Type{
         Admin("admin Organization"), 
@@ -57,6 +60,17 @@ public abstract class Organization {
         roles = new ArrayList<Role>();
         ++counter;
     }
+
+    public LocationPoint getLocationPoint() {
+        return locationPoint;
+    }
+
+    public void setLocationPoint(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+    }
+
+    
+     
 
     public abstract ArrayList<Role> getSupportedRole();
     

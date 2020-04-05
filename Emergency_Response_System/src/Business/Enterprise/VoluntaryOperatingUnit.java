@@ -5,12 +5,17 @@
  */
 package Business.Enterprise;
 
+import Business.Role.CompanySupervisor;
+import Business.Role.HospitalAdmin;
+import Business.Role.NGOAdmin;
+import Business.Role.PersonalAdmin;
 import Business.Role.Role;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
- * @author Mayank
+ * @author Shivi Bhatt
  */
 public class VoluntaryOperatingUnit extends Enterprise{
 
@@ -20,7 +25,12 @@ public class VoluntaryOperatingUnit extends Enterprise{
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet");
+        roles = new ArrayList<Role>();
+        roles.add(new PersonalAdmin());
+        roles.add(new HospitalAdmin());
+        roles.add(new NGOAdmin());
+        roles.add(new CompanySupervisor());
+       return roles;
     }
     
 }

@@ -11,21 +11,20 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.IncidentUnitWorkArea.IncidentManagerWorkAreaJPanel;
+import userinterface.VoluntaryUnitCompanySupervisor.CompanyWorkAreaJPanel;
 
 /**
  *
- * @author Mayank
+ * @author shivibhatt
  */
-public class IncidentUnitManager extends Role{
+public class CompanySupervisor extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new IncidentManagerWorkAreaJPanel(userProcessContainer, enterprise, business, organization);
+        return new CompanyWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
     }
-    
-    @Override
+     @Override
     public String toString(){
-        return (RoleType.IncidentUnitManager.getValue());
+        return (RoleType.CompanySupervisor.getValue());
     }
 }
