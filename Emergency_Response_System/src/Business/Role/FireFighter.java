@@ -11,22 +11,21 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.MedicalUnitWorkArea.MedicalAdminWorkAreaJPanel;
+import userinterface.FireSafetyWorkArea.FireFighterJPanel;
+import userinterface.FireSafetyWorkArea.FireSafetyAdminWorkAreaJPanel;
 
 /**
  *
- * @author Mayank
+ * @author dhankuwarsisodiya
  */
-public class MedicalAgencyHead extends Role{
-
-    @Override
+public class FireFighter extends Role{
+        @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        return new MedicalAdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
+        return new FireFighterJPanel(userProcessContainer, account, organization, enterprise, network, business);
     }
     
     @Override
     public String toString(){
-        return (RoleType.MedicalAgencyHead.getValue());
+        return (RoleType.FireFighter.getValue());
     }
-    
 }

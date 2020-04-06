@@ -24,6 +24,9 @@ public abstract class Role {
         VoluntaryUnitAdmin("VoluntaryTeamAdmin"),
         SceneManager("SceneManager"),
         PoliceHead("Police Head"),
+        PoliceLieutenant("Police Lieutenant"),
+        PoliceOfficer("Police Officer"),
+        PoliceSeargent("Police Seargent"),
         FireSafetyHead("FireSafetyHead"),
         MedicalAgencyHead("MedicalAgencySupervisor"),
         NGOAdmin("NGOAdmin"),
@@ -31,7 +34,10 @@ public abstract class Role {
         ReportingAdmin("ReportingAdmin"),
         HospitalAdmin("HospitalAdmin"),
         CompanySupervisor("CompanySupervisor"),
-        DisasterHead("DisasterHead");
+        FireFighter("Fire Fighter"),
+        DisasterHead("DisasterHead"),
+        PharmaHead("Pharma Head"),
+        VaccineUnitAdmin("VaccineUnitAdmin");
         
         
         private String value;

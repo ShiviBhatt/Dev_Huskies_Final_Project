@@ -36,6 +36,7 @@ public class DisasterOrganization extends Organization {
 
     @Override
     public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
         roles.add(new DisasterHead());
         return roles; //To change body of generated methods, choose Tools | Templates.
     }

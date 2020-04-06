@@ -11,19 +11,24 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.DisasterManagementWorkArea.DisasterAdminWorkAreaJPanel;
+import userinterface.PoliceWorkArea.PoliceAdminWorkAreaJPanel;
 
 /**
  *
  * @author dhankuwarsisodiya
  */
 public class DisasterHead extends Role{
+//    public DisasterHead(){
+//        System.out.println("in disaster head");
+//    }
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+        return new DisasterAdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
+    }
+    
     @Override
     public String toString(){
         return (RoleType.DisasterHead.getValue());
-    }
-
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return null;
     }
 }
