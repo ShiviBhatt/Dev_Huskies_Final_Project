@@ -37,6 +37,10 @@ public class VolunteerHospitalOrganization extends Organization{
         return null;
     }
      
+       @Override
+    public String toString() {
+        return hospital;
+    }
     
     
 }

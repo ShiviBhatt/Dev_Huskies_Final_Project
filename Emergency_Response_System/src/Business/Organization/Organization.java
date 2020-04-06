@@ -26,6 +26,7 @@ public abstract class Organization {
     private static int counter=0;
     public ArrayList<Role> roles;
     private LocationPoint locationPoint;
+    private Type type;
 
     
     public enum Type{
@@ -49,6 +50,10 @@ public abstract class Organization {
         public String getValue() {
             return value;
         }
+        @Override
+        public String toString(){
+        return value;
+    }
     }
 
     public Organization(String name) {
@@ -61,6 +66,14 @@ public abstract class Organization {
         ++counter;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public LocationPoint getLocationPoint() {
         return locationPoint;
     }
@@ -69,8 +82,6 @@ public abstract class Organization {
         this.locationPoint = locationPoint;
     }
 
-    
-     
 
     public abstract ArrayList<Role> getSupportedRole();
     

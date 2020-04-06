@@ -229,6 +229,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
     }// </editor-fold>//GEN-END:initComponents
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
+       
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null) {
             populateTable(organization);
@@ -249,8 +250,8 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         if (!employeeName.getText().equals("")) {
             Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
             String name = employeeName.getText();
-
             organization.getEmployeeDirectory().createEmployee(name);
+            JOptionPane.showMessageDialog(null,"Employee Added Successfully");
             populateTable(organization);
         } else {
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);

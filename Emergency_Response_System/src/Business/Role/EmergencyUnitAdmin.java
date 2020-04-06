@@ -21,7 +21,7 @@ public class EmergencyUnitAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new EmergencyUnitAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        return new EmergencyUnitAdminWorkAreaJPanel(userProcessContainer, enterprise,business);
     }
     
     @Override

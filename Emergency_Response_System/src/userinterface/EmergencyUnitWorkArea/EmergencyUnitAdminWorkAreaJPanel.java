@@ -2,6 +2,7 @@
 
 package userinterface.EmergencyUnitWorkArea;
 
+import Business.EcoSystem;
 import userinterface.IncidentUnitWorkArea.*;
 import userinterface.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
@@ -16,11 +17,13 @@ public class EmergencyUnitAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
+    EcoSystem ecosystem;
     /** Creates new form AdminWorkAreaJPanel */
-    public EmergencyUnitAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public EmergencyUnitAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.ecosystem = ecosystem;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -80,7 +83,7 @@ public class EmergencyUnitAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
         
-        EmergencyManageUserAccountJPanel muajp = new EmergencyManageUserAccountJPanel(userProcessContainer, enterprise);
+        EmergencyManageUserAccountJPanel muajp = new EmergencyManageUserAccountJPanel(userProcessContainer, enterprise, ecosystem);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

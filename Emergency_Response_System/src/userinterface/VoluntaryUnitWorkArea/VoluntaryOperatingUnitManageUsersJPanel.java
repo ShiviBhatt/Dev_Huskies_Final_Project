@@ -7,11 +7,14 @@ package userinterface.VoluntaryUnitWorkArea;
 
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Role.Role;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,10 +25,17 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
     /**
      * Creates new form VoluntaryOperatingUnitManageUserJPanel
      */
-      private JPanel userProcessContainer;
-    public VoluntaryOperatingUnitManageUsersJPanel(JPanel userProcessContainer) {
-        this.userProcessContainer = userProcessContainer;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private EcoSystem ecosystem;
+    public VoluntaryOperatingUnitManageUsersJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system) {
+       
         initComponents();
+         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.ecosystem = system;
+         populateVoluntaryOrganizationComboBox();
+         populateData();
     }
 
     /**
@@ -39,17 +49,17 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
 
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        userJTable = new javax.swing.JTable();
+        tblUserDetails = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        passwordJTextField = new javax.swing.JTextField();
-        nameJTextField = new javax.swing.JTextField();
-        roleJComboBox = new javax.swing.JComboBox();
-        employeeJComboBox = new javax.swing.JComboBox();
-        organizationJComboBox = new javax.swing.JComboBox();
+        createPassword = new javax.swing.JTextField();
+        createUsername = new javax.swing.JTextField();
+        selectRole = new javax.swing.JComboBox();
+        selectEmployee = new javax.swing.JComboBox();
+        selectOrganization = new javax.swing.JComboBox();
         backjButton1 = new javax.swing.JButton();
         createUserJButton = new javax.swing.JButton();
 
@@ -59,7 +69,7 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
 
         jScrollPane1.setForeground(new java.awt.Color(0, 102, 255));
 
-        userJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblUserDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -82,7 +92,7 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(userJTable);
+        jScrollPane1.setViewportView(tblUserDetails);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel6.setText("Organization");
@@ -99,28 +109,28 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
-        passwordJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        createPassword.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
 
-        nameJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        createUsername.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
 
-        roleJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        roleJComboBox.addActionListener(new java.awt.event.ActionListener() {
+        selectRole.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        selectRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roleJComboBoxActionPerformed(evt);
+                selectRoleActionPerformed(evt);
             }
         });
 
-        employeeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        employeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
+        selectEmployee.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        selectEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeJComboBoxActionPerformed(evt);
+                selectEmployeeActionPerformed(evt);
             }
         });
 
-        organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
+        selectOrganization.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        selectOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                organizationJComboBoxActionPerformed(evt);
+                selectOrganizationActionPerformed(evt);
             }
         });
 
@@ -157,23 +167,23 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addGap(179, 179, 179)
-                                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(selectOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(200, 200, 200)
-                                    .addComponent(employeeJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(selectEmployee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addGap(233, 233, 233)
-                                    .addComponent(roleJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(selectRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(193, 193, 193)
-                                    .addComponent(nameJTextField))
+                                    .addComponent(createUsername))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(201, 201, 201)
-                                    .addComponent(passwordJTextField))))
+                                    .addComponent(createPassword))))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1170, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -195,44 +205,44 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(employeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(passwordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(createUserJButton)
                 .addContainerGap(224, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void roleJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleJComboBoxActionPerformed
+    private void selectRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRoleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roleJComboBoxActionPerformed
+    }//GEN-LAST:event_selectRoleActionPerformed
 
-    private void employeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeJComboBoxActionPerformed
+    private void selectEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEmployeeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_employeeJComboBoxActionPerformed
+    }//GEN-LAST:event_selectEmployeeActionPerformed
 
-    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-//        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-//        if (organization != null) {
-//            populateEmployeeComboBox(organization);
-//            populateRoleComboBox(enterprise);
-//        }
-    }//GEN-LAST:event_organizationJComboBoxActionPerformed
+    private void selectOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrganizationActionPerformed
+        Organization organization = (Organization) selectOrganization.getSelectedItem();
+        if (organization != null) {
+            populateVolunteerEmployeeComboBox(organization);
+            popRoleComboBox(enterprise);
+        }
+    }//GEN-LAST:event_selectOrganizationActionPerformed
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         userProcessContainer.remove(this);
@@ -241,30 +251,68 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
     }//GEN-LAST:event_backjButton1ActionPerformed
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-//        String userName = nameJTextField.getText();
-//        String password = passwordJTextField.getText();
-//        if (!((userName.equals("") || (password.equals(""))))) {
-//            if (EcoSyst)) {
-//                Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-//                Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-//                Role role = (Role) roleJComboBox.getSelectedItem();
-//
-//                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-//
-//                //popData();
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
-    }//GEN-LAST:event_createUserJButtonActionPerformed
+       String userName = createUsername.getText();
+        String password = createPassword.getText();
+        if (!((userName.equals("") || (password.equals(""))))) {
+            if (ecosystem.checkIfUserIsUnique(userName)) {
+                Organization organization = (Organization) selectOrganization.getSelectedItem();
+                Employee employee = (Employee) selectEmployee.getSelectedItem();
+                Role role = (Role) selectRole.getSelectedItem();
 
+                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+
+                populateData();
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_createUserJButtonActionPerformed
+        public void populateVoluntaryOrganizationComboBox() {
+        selectOrganization.removeAllItems();
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            selectOrganization.addItem(organization);
+        }
+    }
+
+        public void populateData() {
+
+        DefaultTableModel model = (DefaultTableModel) tblUserDetails.getModel();
+
+        model.setRowCount(0);
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                Object row[] = new Object[2];
+                row[0] = ua;
+                row[1] = ua.getRole();
+                ((DefaultTableModel) tblUserDetails.getModel()).addRow(row);
+            }
+        }
+    }
+        
+        
+    public void populateVolunteerEmployeeComboBox(Organization organization) {
+        selectEmployee.removeAllItems();
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+            selectEmployee.addItem(employee);
+        }
+    }
+
+    private void popRoleComboBox(Enterprise enterprise) {
+        selectRole.removeAllItems();
+        for (Role role : enterprise.getSupportedRole()) {
+            selectRole.addItem(role);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;
+    private javax.swing.JTextField createPassword;
     private javax.swing.JButton createUserJButton;
-    private javax.swing.JComboBox employeeJComboBox;
+    private javax.swing.JTextField createUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,10 +320,9 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameJTextField;
-    private javax.swing.JComboBox organizationJComboBox;
-    private javax.swing.JTextField passwordJTextField;
-    private javax.swing.JComboBox roleJComboBox;
-    private javax.swing.JTable userJTable;
+    private javax.swing.JComboBox selectEmployee;
+    private javax.swing.JComboBox selectOrganization;
+    private javax.swing.JComboBox selectRole;
+    private javax.swing.JTable tblUserDetails;
     // End of variables declaration//GEN-END:variables
 }

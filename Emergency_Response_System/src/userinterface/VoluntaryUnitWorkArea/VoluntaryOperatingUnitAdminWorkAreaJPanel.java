@@ -101,7 +101,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(userProcessContainer);
+        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(userProcessContainer, enterprise, system);
         userProcessContainer.add("VoluntaryOperatingUnitManageUsersJPanel", vOUMUJP);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

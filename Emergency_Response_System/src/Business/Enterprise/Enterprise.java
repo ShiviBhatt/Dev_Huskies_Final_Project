@@ -16,11 +16,13 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    private Organization organization;
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-    
+
+
     public enum EnterpriseType{
         VoluntaryOperatingUnit("Voluntary Operating Unit"), EmergencyOperatingUnit("Emergency Response Unit"), IncidentOperatingUnit("Incident Operating Unit"), FundsOperatingUnit("Funds Operating Unit"); 
         
