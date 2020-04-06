@@ -4,6 +4,7 @@
  */
 package userinterface.EmergencyUnitWorkArea;
 
+import Business.EcoSystem;
 import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -26,11 +27,13 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
      */
     private JPanel container;
     private Enterprise enterprise;
+    private EcoSystem ecosystem;
 
-    public EmergencyManageUserAccountJPanel(JPanel container, Enterprise enterprise) {
+    public EmergencyManageUserAccountJPanel(JPanel container, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.enterprise = enterprise;
         this.container = container;
+        this.ecosystem = ecosystem;
         popOrganizationComboBox();
        // employeeJComboBox.removeAllItems();
         popData();
@@ -52,9 +55,9 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }
     
-    private void populateRoleComboBox(Organization organization){
+    private void populateRoleComboBox(Enterprise enterprise){
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()){
+        for (Role role : enterprise.getSupportedRole()){
             roleJComboBox.addItem(role);
         }
     }
@@ -238,7 +241,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         String password = passwordJTextField.getText();
         if(!userName.isEmpty() && !password.isEmpty()){
             Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-            if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
+            if(ecosystem.checkIfUserIsUnique(userName)){
                 Employee employee = (Employee) employeeJComboBox.getSelectedItem();
                 Role role = (Role) roleJComboBox.getSelectedItem();
                 organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);    
@@ -267,7 +270,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null){
             populateEmployeeComboBox(organization);
-            populateRoleComboBox(organization);
+            populateRoleComboBox(enterprise);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

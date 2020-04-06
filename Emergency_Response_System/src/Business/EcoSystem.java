@@ -43,6 +43,10 @@ public class EcoSystem extends Organization{
         super(null);
         networkList=new ArrayList<Network>();
     }
+    
+      public static void setInstance(EcoSystem system) {
+        business = system;
+    }
 
     public ArrayList<Network> getNetworkList() {
         return networkList;
@@ -53,7 +57,15 @@ public class EcoSystem extends Organization{
     }
     
     public boolean checkIfUserIsUnique(String userName){
-        for (Network network : business.getNetworkList()) {
+        return checkIfUserIsUnique(userName, business);
+    }
+    
+    //business null in above method, so changing it
+    public boolean checkIfUserIsUnique(String userName, EcoSystem ecoSys){
+        if(ecoSys==null){
+            System.out.println("BUSINESS IS NULL");
+        }
+        for (Network network : ecoSys.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
                     if (ua.getUsername().equals(userName)) {
@@ -71,6 +83,7 @@ public class EcoSystem extends Organization{
         }
 
         return true;
+        
     }
     
     public boolean isUnique(String name){

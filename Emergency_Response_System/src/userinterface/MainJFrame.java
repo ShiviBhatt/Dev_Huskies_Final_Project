@@ -29,6 +29,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        EcoSystem.setInstance(system);
         this.setSize(1680, 1050);
     }
 

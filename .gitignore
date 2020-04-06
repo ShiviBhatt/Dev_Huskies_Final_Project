@@ -1,9 +1,7 @@
 /Emergency_Response_System/build
 /Emergency_Response_System/nbproject/private/private.properties
-<<<<<<< Updated upstream
 /Emergency_Response_System/dist/
 /Emergency_Response_System/.DS_Store
 /.DS_Store
-=======
 /Emergency_Response_System/dist/
->>>>>>> Stashed changes
+/Emergency_Response_System/Databank.db4o
