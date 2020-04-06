@@ -7,8 +7,8 @@ package userinterface.GoogleMAP;
 
 import Business.Location.LocationPoint;
 import javax.swing.JPanel;
-import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+//import com.teamdev.jxbrowser.chromium.Browser;
+//import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -25,17 +25,17 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessContainer;
-    Browser browser;
-    BrowserView view;
+//    Browser browser;
+//    BrowserView view;
     LocationPoint locationPoint;
     public OrganizationLocationJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         locationPoint = new LocationPoint();
-        browser = new Browser();
-        view = new BrowserView(browser);
-        browser.loadURL("https://www.google.com/maps");
-           this.mapCanvas.add(view, "a");
+//        browser = new Browser();
+//        view = new BrowserView(browser);
+//        browser.loadURL("https://www.google.com/maps");
+//           this.mapCanvas.add(view, "a");
            this.mapCanvas.setVisible(true);
 
     }
@@ -94,17 +94,17 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
     private void setLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setLocationBtnActionPerformed
         // TODO add your handling code here:
         try {
-            if (browser.getURL() != null) {
-
-                System.out.println(browser.getURL());
-                String[] a = browser.getURL().split("!3d", 0);
-                String[] b = a[1].split("!4d");
-                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
-                double lat = Double.parseDouble(b[0]);
-                double lon = Double.parseDouble(b[1]);
-                locationPoint.setLatitude(lat);
-                locationPoint.setLongitude(lon);
-            }
+//            if (browser.getURL() != null) {
+//
+//                System.out.println(browser.getURL());
+//                String[] a = browser.getURL().split("!3d", 0);
+//                String[] b = a[1].split("!4d");
+//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
+//                double lat = Double.parseDouble(b[0]);
+//                double lon = Double.parseDouble(b[1]);
+//                locationPoint.setLatitude(lat);
+//                locationPoint.setLongitude(lon);
+//            }
             System.out.println("Lat" + locationPoint.getLatitude() + locationPoint.getLongitude());
 
             userProcessContainer.remove(this);

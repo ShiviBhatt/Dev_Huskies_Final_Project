@@ -5,6 +5,7 @@
  */
 package Business.Organization;
 
+import Business.Role.FireFighter;
 import Business.Role.FireSafetyHead;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ public class FireSafetyOrganization extends Organization{
 
     @Override
     public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
         roles.add(new FireSafetyHead());
+        roles.add(new FireFighter());
         return roles;
     }
     
