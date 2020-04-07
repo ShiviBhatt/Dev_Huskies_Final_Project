@@ -6,6 +6,7 @@ import userinterface.IncidentUnitWorkArea.*;
 import Business.EcoSystem;
 import userinterface.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -20,14 +21,15 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     EcoSystem system;
     Organization organization;
-    
+    Network network;
     /** Creates new form AdminWorkAreaJPanel */
-    public ReportingAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization) {
+    public ReportingAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = system;
         this.organization = organization;
+        this.network = network;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -98,12 +100,15 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageReqBtn)
                 .addGap(18, 18, 18)
                 .addComponent(manageSceneBtn)
-                .addContainerGap())
+                .addContainerGap(141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneBtnActionPerformed
-        
+        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network);
+        userProcessContainer.add("ReportingAdminManageSceneJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageSceneBtnActionPerformed
     
     

@@ -5,6 +5,16 @@
  */
 package userinterface.ReportingAdminWorkArea;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Location.LocationPoint;
+import Business.Network.Network;
+import Business.Organization.DisasterOrganization;
+import Business.Organization.Organization;
+import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.IncidentUnitWorkArea.*;
 
 /**
@@ -12,14 +22,60 @@ import userinterface.IncidentUnitWorkArea.*;
  * @author Mayank
  */
 public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
-
+    
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    EcoSystem system;
+    Organization organization;
+    Network network;
+    private LocationPoint locationPoint;
     /**
      * Creates new form IncidentUnitManageScene
      */
-    public ReportingAdminManageSceneJPanel() {
+    public ReportingAdminManageSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.system = system;
+        this.organization = organization;
+        this.network = network;
+        populateSceneTable();
     }
-
+    
+    private void populateSceneTable(){
+        DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
+            
+           /* if (wr instanceof ReportingAdminSceneRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = wr;
+                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
+                row[2] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
+                row[3] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
+                row[4] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
+                row[5] = ((ReportingAdminSceneRequest) wr).getEstimatedLoss();
+                row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
+                //row[2] = org.getPosition();
+                model.addRow(row);
+            } */
+            
+            
+            /*Object[] row = new Object[2];
+            row[0] = organization.getOrganizationID();
+            row[1] = organization.getName();
+            
+            model.addRow(row);*/
+        }
+    }
+    
+    public void populateLongituteLatitude(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+        sceneLocation.setText(locationPoint.getLatitude() + ", " + locationPoint.getLongitude());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +86,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        sceneTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         sceneName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -39,12 +95,12 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         estimatedLoss = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        createSceneBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        sceneLocation = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -63,7 +119,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(sceneTable);
 
         jLabel1.setText("Scene Name");
 
@@ -79,7 +135,12 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Estimated Loss");
 
-        jButton1.setText("Create Scene");
+        createSceneBtn.setText("Create Scene");
+        createSceneBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createSceneBtnActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Location Point");
 
@@ -98,7 +159,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(314, 314, 314)
-                                .addComponent(jButton1))
+                                .addComponent(createSceneBtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(219, 219, 219)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +180,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(noOfVictims, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                                             .addComponent(estimatedLoss, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(jTextField1))
+                                            .addComponent(sceneLocation))
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton2)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -149,10 +210,10 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(39, 39, 39)
-                .addComponent(jButton1)
+                .addComponent(createSceneBtn)
                 .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -161,10 +222,31 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sceneNameActionPerformed
 
+    private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
+        /*ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+        sceneReq.setSceneName(sceneName.getText());
+        sceneReq.setSceneZipcode(sceneZipCode.getText());
+        sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
+        sceneReq.setEstimatedLoss(estimatedLoss.getText());
+        sceneReq.setSceneLocationPoint(locationPoint);
+        sceneReq.setStatus("Requested");        
+        organization.getWorkQueue().getWorkRequestList().add(sceneReq);
+        
+        //for (Network net : business.getNetworkList()) {
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (o instanceof DisasterOrganization) {
+                        o.getWorkQueue().getWorkRequestList().add(sceneReq);
+                    }
+                }
+            }*/
+        //}
+    }//GEN-LAST:event_createSceneBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -172,10 +254,10 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField noOfVictims;
+    private javax.swing.JTextField sceneLocation;
     private javax.swing.JTextField sceneName;
+    private javax.swing.JTable sceneTable;
     private javax.swing.JTextField sceneZipCode;
     // End of variables declaration//GEN-END:variables
 }
