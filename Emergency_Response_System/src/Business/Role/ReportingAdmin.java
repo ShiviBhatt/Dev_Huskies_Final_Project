@@ -21,7 +21,7 @@ public class ReportingAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new ReportingAdminWorkAreaJPanel(userProcessContainer, enterprise, business, organization); //To change body of generated methods, choose Tools | Templates.
+        return new ReportingAdminWorkAreaJPanel(userProcessContainer, enterprise, business, organization, network); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
