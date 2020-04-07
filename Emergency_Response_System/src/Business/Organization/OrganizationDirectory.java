@@ -33,12 +33,13 @@ public class OrganizationDirectory {
         Organization organization = null;
         if (type.getValue().equals(Type.IncidentReportingAgency.getValue())) {
             organization = new IncidentManagementOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.PoliceHead.getValue())) {
             organization = new PoliceOrganization(name);
             PoliceOrganization police = (PoliceOrganization) organization;
             police.setPolice(name);
-            //organization.setPosition(position);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.Hospital.getValue())) {
             organization = new VolunteerHospitalOrganization(name);
@@ -66,21 +67,21 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.FireSafety.getValue())) {
             organization = new FireSafetyOrganization(name);
-           FireSafetyOrganization fireSafety = (FireSafetyOrganization) organization;
-           fireSafety.setFireSafety(name);
-            //organization.setPosition(position);
+            FireSafetyOrganization fireSafety = (FireSafetyOrganization) organization;
+            fireSafety.setFireSafety(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.DisasterManagementTeam.getValue())) {
             organization = new DisasterOrganization(name);
             DisasterOrganization disaster = (DisasterOrganization) organization;
             disaster.setDisasterName(name);
-            //organization.setPosition(position);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.Medicines.getValue())) {
             organization = new MedicalOrganization(name);
             MedicalOrganization medical = (MedicalOrganization) organization;
             medical.setMedicenes(name);
-            //organization.setPosition(position);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } 
 

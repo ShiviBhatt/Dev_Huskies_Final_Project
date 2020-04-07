@@ -10,8 +10,11 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.UserRegistrationRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,6 +39,31 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
         this.network = network;
         this.business = business;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
+        populateTable();
+    }
+    
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+
+        model.setRowCount(0);
+
+        for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkRequestList()) {
+
+            if (workRequest instanceof UserRegistrationRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = workRequest;
+                row[1] = ((UserRegistrationRequest) workRequest).getStatus();
+                row[2] = ((UserRegistrationRequest) workRequest).getUserName();
+                row[3] = ((UserRegistrationRequest) workRequest).getName();
+                row[4] = ((UserRegistrationRequest) workRequest).getUserEmailId();
+                row[5] = ((UserRegistrationRequest) workRequest).getUserCity();
+                row[6] = ((UserRegistrationRequest) workRequest).getOrgType();
+                row[7] = ((UserRegistrationRequest) workRequest).getNetwork();
+
+                model.addRow(row);
+            }
+        }
+
     }
 
     /**
@@ -56,20 +84,20 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Status", "UserName", "Name", "Email ID", "City", "Organization Type", "Network"
+                "Request #", "Status", "UserName", "Name", "Email ID", "City", "Organization Type", "Network"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -137,8 +165,8 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(244, 244, 244)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(assignJButton)
                     .addComponent(processJButton))

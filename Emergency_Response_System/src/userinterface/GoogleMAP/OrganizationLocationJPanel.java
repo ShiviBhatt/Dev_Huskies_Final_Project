@@ -6,12 +6,19 @@
 package userinterface.GoogleMAP;
 
 import Business.Location.LocationPoint;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
 import javax.swing.JPanel;
-//import com.teamdev.jxbrowser.chromium.Browser;
-//import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
+import userinterface.EmergencyUnitWorkArea.EmergencyManageOrganizationJPanel;
+import userinterface.IncidentUnitWorkArea.IncidentManagerManageOrganizationJPanel;
+import userinterface.UserRegistration.UserRegistrationJPanel;
 import userinterface.VoluntaryUnitWorkArea.VoluntaryOperatingUnitManageOrganizationsJPanel;
 
 /**
@@ -25,18 +32,22 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessContainer;
-//    Browser browser;
-//    BrowserView view;
     LocationPoint locationPoint;
+    Browser browser;
+    
     public OrganizationLocationJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         locationPoint = new LocationPoint();
-//        browser = new Browser();
-//        view = new BrowserView(browser);
-//        browser.loadURL("https://www.google.com/maps");
-//           this.mapCanvas.add(view, "a");
-           this.mapCanvas.setVisible(true);
+        
+        EngineOptions options =
+                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1FV3AVC573VVDZLJMH4GM0F2LEEC89Z3D9HIMNGKQZEH4PIJYFW22I0A9NMRRK").build();
+        Engine engine = Engine.newInstance(options);
+        browser = engine.newBrowser();
+        BrowserView view = BrowserView.newInstance(browser);
+        browser.navigation().loadUrl("https://www.google.com/maps");
+        
+        mapCanvas.add(view, "a");
 
     }
 
@@ -73,7 +84,7 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(358, 358, 358)
                 .addComponent(setLocationBtn)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,26 +105,35 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
     private void setLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setLocationBtnActionPerformed
         // TODO add your handling code here:
         try {
-//            if (browser.getURL() != null) {
-//
-//                System.out.println(browser.getURL());
-//                String[] a = browser.getURL().split("!3d", 0);
-//                String[] b = a[1].split("!4d");
-//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
-//                double lat = Double.parseDouble(b[0]);
-//                double lon = Double.parseDouble(b[1]);
-//                locationPoint.setLatitude(lat);
-//                locationPoint.setLongitude(lon);
-//            }
+
+            if (browser.url()!= null) {
+
+                System.out.println(browser.url());
+                String[] a = browser.url().split("!3d", 0);
+                String[] b = a[1].split("!4d");
+                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
+                double lat = Double.parseDouble(b[0]);
+                double lon = Double.parseDouble(b[1]);
+                locationPoint.setLatitude(lat);
+                locationPoint.setLongitude(lon);
+            }
             System.out.println("Lat" + locationPoint.getLatitude() + locationPoint.getLongitude());
 
             userProcessContainer.remove(this);
             Component[] componentArray = userProcessContainer.getComponents();
-            if (userProcessContainer.getComponent(componentArray.length - 1) instanceof VoluntaryOperatingUnitManageOrganizationsJPanel) {
+            if (userProcessContainer.getComponent(componentArray.length - 1) instanceof EmergencyManageOrganizationJPanel) {
+                EmergencyManageOrganizationJPanel orgManagement = (EmergencyManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                orgManagement.populateLongituteLatitude(locationPoint);
+            }else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof IncidentManagerManageOrganizationJPanel) {
+                IncidentManagerManageOrganizationJPanel orgManagement = (IncidentManagerManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                orgManagement.populateLongituteLatitude(locationPoint);
+            }else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof VoluntaryOperatingUnitManageOrganizationsJPanel) {
                 VoluntaryOperatingUnitManageOrganizationsJPanel orgManagement = (VoluntaryOperatingUnitManageOrganizationsJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 orgManagement.populateLongituteLatitude(locationPoint);
-                
-            } 
+            }else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof UserRegistrationJPanel) {
+                UserRegistrationJPanel orgManagement = (UserRegistrationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                orgManagement.populateLongituteLatitude(locationPoint);
+            }
           
 
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
