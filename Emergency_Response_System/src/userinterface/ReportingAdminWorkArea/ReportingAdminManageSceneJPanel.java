@@ -49,7 +49,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
             
-           /* if (wr instanceof ReportingAdminSceneRequest) {
+            if (wr instanceof ReportingAdminSceneRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = wr;
                 row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
@@ -60,7 +60,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
                 //row[2] = org.getPosition();
                 model.addRow(row);
-            } */
+            }
             
             
             /*Object[] row = new Object[2];
@@ -223,7 +223,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        /*ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
         sceneReq.setSceneZipcode(sceneZipCode.getText());
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
@@ -239,7 +239,8 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                         o.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
                 }
-            }*/
+            }
+            populateSceneTable();
         //}
     }//GEN-LAST:event_createSceneBtnActionPerformed
 
