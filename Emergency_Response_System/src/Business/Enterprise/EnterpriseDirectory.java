@@ -26,14 +26,14 @@ public class EnterpriseDirectory {
     
     public EnterpriseDirectory(){
         enterpriseList=new ArrayList<Enterprise>();
-        Enterprise IOU = new IncidentOperatingUnit("IOU");
+        /*Enterprise IOU = new IncidentOperatingUnit("IOU");
         enterpriseList.add(IOU);
         Enterprise FOU = new FundsOperatingUnit("FOU");
         enterpriseList.add(FOU);
         Enterprise VOU = new EmergencyOperatingUnit("VOU");
         enterpriseList.add(VOU);
         Enterprise EOU = new EmergencyOperatingUnit("EOU");
-        enterpriseList.add(EOU);
+        enterpriseList.add(EOU);*/
     }
     
     public Enterprise createAndAddEnterprise(String name, Enterprise.EnterpriseType type){
