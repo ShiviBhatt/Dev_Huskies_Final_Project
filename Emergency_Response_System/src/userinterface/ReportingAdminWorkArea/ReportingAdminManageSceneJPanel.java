@@ -13,8 +13,10 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.GoogleMAP.OrganizationLocationJPanel;
 import userinterface.IncidentUnitWorkArea.*;
 
 /**
@@ -145,6 +147,11 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel6.setText("Location Point");
 
         jButton2.setText("Set Location");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -229,20 +236,29 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
         sceneReq.setEstimatedLoss(estimatedLoss.getText());
         sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");        
+        sceneReq.setStatus("Requested");     
+        sceneReq.setSceneId("S"+organization.getWorkQueue().getWorkRequestList().size()+1);
         organization.getWorkQueue().getWorkRequestList().add(sceneReq);
         
         //for (Network net : business.getNetworkList()) {
             for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if (o instanceof DisasterOrganization) {
-                        o.getWorkQueue().getWorkRequestList().add(sceneReq);
+                         o.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
                 }
             }
             populateSceneTable();
         //}
     }//GEN-LAST:event_createSceneBtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

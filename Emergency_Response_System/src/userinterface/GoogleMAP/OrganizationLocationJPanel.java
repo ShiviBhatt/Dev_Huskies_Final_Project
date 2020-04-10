@@ -18,6 +18,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import userinterface.EmergencyUnitWorkArea.EmergencyManageOrganizationJPanel;
 import userinterface.IncidentUnitWorkArea.IncidentManagerManageOrganizationJPanel;
+import userinterface.ReportingAdminWorkArea.ReportingAdminManageSceneJPanel;
 import userinterface.UserRegistration.UserRegistrationJPanel;
 import userinterface.VoluntaryUnitWorkArea.VoluntaryOperatingUnitManageOrganizationsJPanel;
 
@@ -133,6 +134,9 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             }else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof UserRegistrationJPanel) {
                 UserRegistrationJPanel orgManagement = (UserRegistrationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 orgManagement.populateLongituteLatitude(locationPoint);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ReportingAdminManageSceneJPanel){
+                ReportingAdminManageSceneJPanel reportingComponent = (ReportingAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                reportingComponent.populateLongituteLatitude(locationPoint);
             }
           
 

@@ -10,17 +10,27 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import javafx.scene.Scene;
 import javax.swing.JPanel;
+import userinterface.DisasterManagementWorkArea.SceneManagerWorkAreaJPanel;
 
 /**
  *
  * @author Mayank
  */
 public class SceneManager extends Role{
+      Scene scene;
 
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new SceneManagerWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
     }
     
     @Override

@@ -41,6 +41,9 @@ public class EcoSystem extends Organization{
     private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
+        Network network=new Network();
+        network.setName("Boston");
+        networkList.add(network);
     }
     
     public static void setInstance(EcoSystem system) {
