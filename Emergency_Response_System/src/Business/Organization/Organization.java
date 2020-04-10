@@ -26,6 +26,7 @@ public abstract class Organization {
     private static int counter=0;
     public ArrayList<Role> roles;
     private LocationPoint locationPoint;
+    private double nearestLocationPoint;
     private Type type;
 
     
@@ -133,4 +134,13 @@ public abstract class Organization {
         
         return dist;
     }    
+
+    public double getNearestLocationPoint() {
+        return nearestLocationPoint;
+    }
+
+    public void setNearestLocationPoint(double nearestLocationPoint) {
+        this.nearestLocationPoint = nearestLocationPoint;
+    }
+    
 }

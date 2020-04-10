@@ -158,7 +158,9 @@ public class MainJFrame extends javax.swing.JFrame {
             //Step 2: Go inside each network and check each enterprise
             for(Network network:system.getNetworkList()){
                 //Step 2.a: check against each enterprise
+                System.out.println("Network name --->> " + network.getName());
                 for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    System.out.println("Enterprise name --->> " + enterprise.getName());
                     userAccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
                     networkEmergency = network;
                     if(userAccount==null){
@@ -185,9 +187,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 if(inEnterprise!=null){
                     break;
                 }
-                if (networkEmergency != null) {//changed
+                /*if (networkEmergency != null) {//changed
                     break;
-                }
+                }*/
             }
         }
         

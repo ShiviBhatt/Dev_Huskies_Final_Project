@@ -25,10 +25,13 @@ public class UserAccountDirectory {
     }
     
     public UserAccount authenticateUser(String username, String password){
-        for (UserAccount ua : userAccountList)
+        for (UserAccount ua : userAccountList) {
+            System.out.println("---->>>> " + username + " == " + ua.getUsername());
+            System.out.println("---->>>> " + password + " == " + ua.getPassword());
             if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
                 return ua;
             }
+        }
         return null;
     }
     

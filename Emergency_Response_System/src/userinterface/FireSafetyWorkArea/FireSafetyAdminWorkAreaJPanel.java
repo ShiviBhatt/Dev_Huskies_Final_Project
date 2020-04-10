@@ -10,21 +10,58 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.EmergencyUnitRequest;
+import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dhankuwarsisodiya
  */
 public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
-
+    
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    EcoSystem system;
+    Organization organization;
+    Network network;
     /**
      * Creates new form FireSafetyAdminWorkAreaJPanel
      */
     public FireSafetyAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.system = system;
+        this.organization = organization;
+        this.network = network;
+        populateTable();
     }
-
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        model.setRowCount(0);
+        
+        for(WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
+            
+            if (wr instanceof EmergencyUnitRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                //row[0] = wr;
+                row[1] = ((EmergencyUnitRequest) wr).getStatus();
+                row[0] = ((EmergencyUnitRequest) wr).getSenderOrganization().getName();
+                row[2] = ((EmergencyUnitRequest) wr).getSenderNetwork().getName();
+                //row[3] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
+                //row[4] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
+                //row[5] = ((ReportingAdminSceneRequest) wr).getEstimatedLoss();
+                //row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
+                //row[2] = org.getPosition();
+                model.addRow(row);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,17 +82,17 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Requested Manager", "Requested Organization", "Request Type", "Status", "Count"
+                "Requested Organization", "Status", "Requested Network"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -80,12 +117,12 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
