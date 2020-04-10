@@ -8,6 +8,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -24,7 +25,7 @@ public class DisasterHead extends Role{
 //    }
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new DisasterAdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
+        return new DisasterAdminWorkAreaJPanel(userProcessContainer, account, (DisasterOrganization)organization, enterprise, network, business);
     }
     
     @Override

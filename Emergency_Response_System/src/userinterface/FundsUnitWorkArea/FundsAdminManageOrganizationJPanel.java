@@ -48,7 +48,7 @@ public class FundsAdminManageOrganizationJPanel extends javax.swing.JPanel {
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             
             if (organization instanceof FundsOrganization) {
-                System.out.println("police" + organization);
+                //System.out.println("police" + organization);
                 FundsOrganization org = (FundsOrganization) organization;
                 Object[] row = new Object[3];
                 row[0] = enterprise.getName();

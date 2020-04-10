@@ -55,9 +55,9 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }
     
-    private void populateRoleComboBox(Enterprise enterprise){
+    private void populateRoleComboBox(Organization organization){
         roleJComboBox.removeAllItems();
-        for (Role role : enterprise.getSupportedRole()){
+        for (Role role : organization.getSupportedRole()){
             roleJComboBox.addItem(role);
         }
     }
@@ -270,7 +270,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null){
             populateEmployeeComboBox(organization);
-            populateRoleComboBox(enterprise);
+            populateRoleComboBox(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

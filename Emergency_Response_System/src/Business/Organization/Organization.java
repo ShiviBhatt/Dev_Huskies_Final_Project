@@ -118,5 +118,19 @@ public abstract class Organization {
         return name;
     }
     
-    
+    public double getOrganizationDistanceFromScene(LocationPoint point) {
+        double sceneLatitude = point.getLatitude();
+        double sceneLongitude = point.getLongitude();
+        double organizationLatitude = locationPoint.getLatitude();
+        double organizationLongitude = locationPoint.getLongitude();
+        
+        double theta = sceneLongitude - organizationLongitude;
+			double dist = Math.sin(Math.toRadians(sceneLatitude)) * Math.sin(Math.toRadians(organizationLatitude)) + Math.cos(Math.toRadians(sceneLatitude)) * Math.cos(Math.toRadians(organizationLatitude)) * Math.cos(Math.toRadians(theta));
+			dist = Math.acos(dist);
+			dist = Math.toDegrees(dist);
+			dist = dist * 60 * 1.1515;
+        
+        
+        return dist;
+    }    
 }

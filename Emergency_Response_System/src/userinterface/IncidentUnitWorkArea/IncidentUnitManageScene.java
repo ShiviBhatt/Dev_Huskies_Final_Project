@@ -79,6 +79,11 @@ public class IncidentUnitManageScene extends javax.swing.JPanel {
         jLabel5.setText("Estimated Loss");
 
         jButton1.setText("Create Scene");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,6 +154,10 @@ public class IncidentUnitManageScene extends javax.swing.JPanel {
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sceneNameActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

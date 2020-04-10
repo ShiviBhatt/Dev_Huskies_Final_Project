@@ -223,7 +223,6 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
         if(!orgNameTextField.getText().isEmpty()){
 
             Organization organization = directory.createOrganization(type,orgNameTextField.getText(), locationPoint);
-            System.out.println(organization.getOrganizationID());
             
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             orgNameTextField.setText("");

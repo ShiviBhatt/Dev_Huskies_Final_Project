@@ -5,6 +5,7 @@
  */
 package Business.WorkQueue;
 
+import Business.Employee.Employee;
 import Business.Location.LocationPoint;       
 /**
  *
@@ -18,6 +19,7 @@ public class ReportingAdminSceneRequest extends WorkRequest{
     private String estimatedLoss;
     private String sceneZipcode;
     private LocationPoint sceneLocationPoint;
+    private Employee sceneManager;
 
     public String getSceneName() {
         return sceneName;
@@ -65,6 +67,19 @@ public class ReportingAdminSceneRequest extends WorkRequest{
 
     public void setSceneLocationPoint(LocationPoint sceneLocationPoint) {
         this.sceneLocationPoint = sceneLocationPoint;
+    }
+
+    public Employee getSceneManager() {
+        return sceneManager;
+    }
+
+    public void setSceneManager(Employee sceneManager) {
+        this.sceneManager = sceneManager;
+    }
+
+    @Override
+    public String toString() {
+        return sceneName ;
     }
     
 }
