@@ -38,11 +38,11 @@ public abstract class Organization {
         Personal("Individual Organization"), 
         Hospital("Hospital Organization"), 
         PoliceHead("Police Organization"), 
-        FireSafety("FireSafety Organization"), 
-        Medicines("medicines Organization"), 
+        FireSafety("Fire Safety Organization"), 
+        Medicines("Medicines Organization"), 
         Clinic("clinic Organization"), 
         IncidentReportingAgency("Report Organization"), 
-        DisasterManagementTeam("DisasterManagementTeam Organization"),
+        DisasterManagementTeam("Disaster Management Organization"),
         FundsOrganization("FundsOrganization");
         private String value;
         private Type(String value) {

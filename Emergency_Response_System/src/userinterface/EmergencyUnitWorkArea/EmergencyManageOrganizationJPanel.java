@@ -221,7 +221,6 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         if(!orgNameTextField.getText().isEmpty()){
-
             Organization organization = directory.createOrganization(type,orgNameTextField.getText(), locationPoint);
             
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
