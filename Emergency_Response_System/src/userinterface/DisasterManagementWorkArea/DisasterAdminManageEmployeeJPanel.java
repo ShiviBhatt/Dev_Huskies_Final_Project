@@ -6,6 +6,7 @@
 package userinterface.DisasterManagementWorkArea;
 
 import Business.Employee.Employee;
+import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
@@ -30,7 +31,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
         populateOrganizationComboBox();
-        populateEmployeeComboBox();
+        //populateEmployeeComboBox();
     }
 
     /**
@@ -187,7 +188,9 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         organizationEmployeeJComboBox.removeAllItems();
 
         for (Organization organization : organizationDirectory.getOrganizationList()) {
-            organizationEmployeeJComboBox.addItem(organization);
+            if(organization instanceof DisasterOrganization) {
+                organizationEmployeeJComboBox.addItem(organization);
+            }
         }
     }
 

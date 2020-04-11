@@ -25,16 +25,16 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     UserAccount account;
-    DisasterOrganization disasterOrganization;
+    Organization organization;
     Enterprise enterprise;
     Network network;
     EcoSystem business;
 
-    public DisasterAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DisasterOrganization disasterOrganization, Enterprise enterprise, Network network, EcoSystem business) {
+    public DisasterAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.disasterOrganization = disasterOrganization;
+        this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
         this.business = business;
@@ -117,7 +117,7 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        DisasterAdminSceneManageJPanel disasterAdminSceneManageJPanel = new DisasterAdminSceneManageJPanel(userProcessContainer, account, enterprise, network, business, disasterOrganization);
+        DisasterAdminSceneManageJPanel disasterAdminSceneManageJPanel = new DisasterAdminSceneManageJPanel(userProcessContainer, account, enterprise, network, business, organization);
         userProcessContainer.add("Disaster_SceneManager_Panel", disasterAdminSceneManageJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
