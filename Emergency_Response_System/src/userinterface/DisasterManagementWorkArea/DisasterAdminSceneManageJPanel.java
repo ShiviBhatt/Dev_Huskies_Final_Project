@@ -35,17 +35,16 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     Network network;
     EcoSystem business;
-    DisasterOrganization disasterOrganization;
 
-    public DisasterAdminSceneManageJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, Network network, EcoSystem business, DisasterOrganization disasterOrganization) {
+    public DisasterAdminSceneManageJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, Network network, EcoSystem business, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.enterprise = enterprise;
         this.network = network;
         this.business = business;
-        this.disasterOrganization = disasterOrganization;
-        populateTable();
+        this.organization = organization;
+        //populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
     }
@@ -186,7 +185,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblManageAssigned.getModel();
         model.setRowCount(0);
 
-        for (WorkRequest wr : disasterOrganization.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() != null) {
                 Object[] row = new Object[4];
                 row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
@@ -201,14 +200,17 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
     private void populateSiteNameCombo() {
         siteNameComboBox.removeAllItems();
-        for (WorkRequest wr : disasterOrganization.getWorkQueue().getWorkRequestList()) {
-            siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr));
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            if(wr instanceof ReportingAdminSceneRequest) {
+                siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr));
+            }
+            
         }
     }
 
     private void populateSiteManagerCombo() {
         sceneManagerCombo.removeAllItems();
-        for (UserAccount u : disasterOrganization.getUserAccountDirectory().getUserAccountList()) {
+        for (UserAccount u : organization.getUserAccountDirectory().getUserAccountList()) {
             if (u.getRole().toString().equals(Role.RoleType.SceneManager.getValue())) {
                 sceneManagerCombo.addItem(u.getEmployee());
             }

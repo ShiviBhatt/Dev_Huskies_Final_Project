@@ -8,6 +8,7 @@ package userinterface.DisasterManagementWorkArea;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SceneManager;
@@ -246,7 +247,9 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         organizationComboBox1.removeAllItems();
 
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationComboBox1.addItem(organization);
+            if(organization instanceof DisasterOrganization) {
+                organizationComboBox1.addItem(organization);
+            }
         }
     }
 
