@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usertinterface.VoluntaryUnitHospital;
+package userinterface.VoluntaryUnitNGO;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -17,10 +17,10 @@ import javax.swing.JPanel;
  *
  * @author shivibhatt
  */
-public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
+public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form HospitalWorkAreaJPanel
+     * Creates new form NGOAdminWorkAreaJPanel
      */
     
     JPanel userProcessContainer;
@@ -29,7 +29,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     Organization organization;
     EcoSystem system;
     UserAccount account;
-    public HospitalWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+    public NGOAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
@@ -37,6 +37,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.system = system;
+        mainLabel.setText(enterprise.getType().getValue());
     }
 
     /**
@@ -49,14 +50,21 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
+        mainLabel = new javax.swing.JLabel();
         manageRequest = new javax.swing.JButton();
         manageScene = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Hospital Work Area -Adminstrative Role");
+        jLabel1.setText("NGO Work Area -Adminstrative Role");
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setText("ORGANIZATION :");
+
+        mainLabel.setText("<value>");
 
         manageRequest.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        manageRequest.setText("Manage Requests ");
+        manageRequest.setText("Manage Request");
         manageRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageRequestActionPerformed(evt);
@@ -76,48 +84,60 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(248, 248, 248)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel1))
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(manageRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(manageScene, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addGap(82, 82, 82)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
                 .addComponent(manageRequest)
-                .addGap(41, 41, 41)
+                .addGap(31, 31, 31)
                 .addComponent(manageScene)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageRequestActionPerformed
-       ManageHospitalWorkRequestJPanel manageHospitalWorkRequest = new ManageHospitalWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
-        userProcessContainer.add("ManageHospitalWorkRequestJPanel", manageHospitalWorkRequest);
+        
+        NGOWorkRequestJPanel workRequestJPanel = new NGOWorkRequestJPanel(userProcessContainer, account, organization, enterprise, network, system);
+        userProcessContainer.add("NGOWorkRequestJPanel", workRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageRequestActionPerformed
 
     private void manageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneActionPerformed
-        // TODO add your handling code here
-        ManageHospitalSceneJPanel manageScene = new ManageHospitalSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
-        userProcessContainer.add("ManageHospitalSceneJPanel", manageScene);
+        ManageSceneJPanel manageSceneJPanel = new ManageSceneJPanel( userProcessContainer,account,  enterprise,  system,  organization,  network);
+        userProcessContainer.add("ManageSceneJPanel", manageSceneJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+  
     }//GEN-LAST:event_manageSceneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel mainLabel;
     private javax.swing.JButton manageRequest;
     private javax.swing.JButton manageScene;
     // End of variables declaration//GEN-END:variables
