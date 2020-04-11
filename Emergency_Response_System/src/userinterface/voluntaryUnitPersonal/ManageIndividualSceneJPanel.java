@@ -9,7 +9,9 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
 import Business.Network.Network;
+import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
+import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -47,7 +49,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
             
-           /* if (wr instanceof ReportingAdminSceneRequest) {
+            if (wr instanceof ReportingAdminSceneRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = wr;
                 row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
@@ -58,7 +60,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
                 row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
                 //row[2] = org.getPosition();
                 model.addRow(row);
-            } */
+            }
             
             
             /*Object[] row = new Object[2];
@@ -185,24 +187,25 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        /*ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+         ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
         sceneReq.setSceneZipcode(sceneZipCode.getText());
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
         sceneReq.setEstimatedLoss(estimatedLoss.getText());
         sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");
+        sceneReq.setStatus("Requested");     
+        sceneReq.setSceneId("S"+organization.getWorkQueue().getWorkRequestList().size()+1);
         organization.getWorkQueue().getWorkRequestList().add(sceneReq);
-
+        
         //for (Network net : business.getNetworkList()) {
             for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if (o instanceof DisasterOrganization) {
-                        o.getWorkQueue().getWorkRequestList().add(sceneReq);
+                         o.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
                 }
-            }*/
-            //}
+            }
+            populateSceneTable();
     }//GEN-LAST:event_createSceneBtnActionPerformed
 
 
