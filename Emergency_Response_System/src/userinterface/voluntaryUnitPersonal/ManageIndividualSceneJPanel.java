@@ -10,11 +10,18 @@ import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
+import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +40,8 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     Organization organization;
     Network network;
     private LocationPoint locationPoint;
+    private String imagePath;
+
     public ManageIndividualSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -42,13 +51,14 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         this.network = network;
         populateSceneTable();
     }
-    private void populateSceneTable(){
+
+    private void populateSceneTable() {
         DefaultTableModel model = (DefaultTableModel) tblScene.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
-            
+
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+
             if (wr instanceof ReportingAdminSceneRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = wr;
@@ -61,8 +71,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
                 //row[2] = org.getPosition();
                 model.addRow(row);
             }
-            
-            
+
             /*Object[] row = new Object[2];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getName();
@@ -70,6 +79,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
             model.addRow(row);*/
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +105,10 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         createSceneBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        createAddPic = new javax.swing.JButton();
+        fileNameLabel = new javax.swing.JLabel();
+        imageJPanel = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -119,7 +133,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblScene);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 35, 1043, 146));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1043, 146));
 
         btnBack.setText("<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -166,10 +180,29 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
                 createSceneBtnActionPerformed(evt);
             }
         });
-        add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 422, -1, -1));
+        add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
 
         jLabel6.setText("Location Point");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 380, -1, -1));
+
+        jLabel7.setText("Add Picture");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
+
+        createAddPic.setIcon(new javax.swing.ImageIcon("/Users/shivibhatt/Documents/AED/GIT/Bhatt_Shivi_001027605/JavaApplication_Assignment1/Icons/icons8-add-image-16.png")); // NOI18N
+        createAddPic.setText("Upload Picture");
+        createAddPic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAddPicActionPerformed(evt);
+            }
+        });
+        add(createAddPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, 40));
+
+        fileNameLabel.setText("<Value>");
+        add(fileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 430, -1));
+
+        imageJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        imageJPanel.setLayout(new java.awt.BorderLayout());
+        add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 460, 280));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -187,32 +220,73 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-         ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
         sceneReq.setSceneZipcode(sceneZipCode.getText());
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
         sceneReq.setEstimatedLoss(estimatedLoss.getText());
         sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");     
-        sceneReq.setSceneId("S"+organization.getWorkQueue().getWorkRequestList().size()+1);
+        sceneReq.setStatus("Requested");
+        sceneReq.setImagePath(imagePath);
+        System.out.println(imagePath + " IMAGE PATH ");
+        sceneReq.setSceneId("S" + organization.getWorkQueue().getWorkRequestList().size() + 1);
+        //displayImage(sceneReq);
         organization.getWorkQueue().getWorkRequestList().add(sceneReq);
-        
+
         //for (Network net : business.getNetworkList()) {
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
-                    if (o instanceof DisasterOrganization) {
-                         o.getWorkQueue().getWorkRequestList().add(sceneReq);
-                    }
+        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                if (o instanceof IncidentManagementOrganization) {
+                    o.getWorkQueue().getWorkRequestList().add(sceneReq);
                 }
             }
-            populateSceneTable();
+        }
+        populateSceneTable();
+        //  displayImage(sceneReq);
     }//GEN-LAST:event_createSceneBtnActionPerformed
 
+    private void createAddPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAddPicActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showSaveDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            imagePath = selectedFile.getAbsolutePath();
+            fileNameLabel.setText(imagePath);
+            displayImage(imagePath);
+            JOptionPane.showMessageDialog(null, "Scene Picture Uploaded Successfully");
+
+        }
+    }//GEN-LAST:event_createAddPicActionPerformed
+
+    public ImageIcon ResizeImage(String ImagePath) {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(460, 280, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
+
+    public void displayImage(String imgPath) {
+        System.out.println("FILE PATH = " + imgPath);
+        imageJPanel.removeAll();
+        JLabel label = new JLabel(ResizeImage(imgPath));
+        imageJPanel.add(label);
+        imageJPanel.invalidate();
+    }
+
+    public void displayImage(ReportingAdminSceneRequest sceneReq) {
+        System.out.println("FILE PATH = " + sceneReq.getImagePath());
+        displayImage(sceneReq.getImagePath());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton createAddPic;
     private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;
+    private javax.swing.JLabel fileNameLabel;
+    private javax.swing.JPanel imageJPanel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -220,6 +294,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;

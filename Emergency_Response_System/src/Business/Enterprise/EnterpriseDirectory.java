@@ -47,7 +47,7 @@ public class EnterpriseDirectory {
         }else if (type == Enterprise.EnterpriseType.IncidentOperatingUnit) {
             enterprise = new IncidentOperatingUnit(name);
             enterpriseList.add(enterprise);
-        }else if (type == Enterprise.EnterpriseType.EmergencyOperatingUnit) {
+        }else if (type == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
             enterprise = new VoluntaryOperatingUnit(name);
             enterpriseList.add(enterprise);
         }

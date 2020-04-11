@@ -20,6 +20,7 @@ public class ReportingAdminSceneRequest extends WorkRequest{
     private String sceneZipcode;
     private LocationPoint sceneLocationPoint;
     private Employee sceneManager;
+    private String imagePath;
 
     public String getSceneName() {
         return sceneName;
@@ -77,6 +78,15 @@ public class ReportingAdminSceneRequest extends WorkRequest{
         this.sceneManager = sceneManager;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    
     @Override
     public String toString() {
         return sceneName ;
