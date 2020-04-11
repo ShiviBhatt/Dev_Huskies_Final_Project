@@ -6,7 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Employee.Employee;
-import Business.Location.LocationPoint;       
+import Business.Location.LocationPoint;
 /**
  *
  * @author Mayank

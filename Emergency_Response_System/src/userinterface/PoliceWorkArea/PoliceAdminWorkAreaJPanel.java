@@ -10,7 +10,12 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,8 +32,8 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Network network;
     private EcoSystem business;
-    
-    public PoliceAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
+
+    public PoliceAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -36,6 +41,26 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.business = business;
         this.account = account;
+        populateTable();
+    }
+
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
+        model.setRowCount(0);
+        System.out.println("2. " + organization.getName());
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[9];
+            row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
+            row[1] = wr.getSender();
+            row[2] = ((ReportingAdminSceneRequest) wr).getSceneName();
+            row[3] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
+            row[4] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
+            row[5] = wr.getMessage();
+            row[6] = wr.getStatus();
+            row[7] = "";
+            row[8] = wr.getRequestDate();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -48,38 +73,52 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        workRequestTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        messageTextField = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Requested Manager", "Requested Organization", "Request Type", "Status", "Count"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Reciever", "Requested Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(workRequestTable);
 
-        jButton1.setText("View");
-
-        jButton2.setText("Assign");
+        jButton2.setText("End Scene Work Request");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Police Admin Work Area");
+
+        jLabel2.setText("Set Message");
+
+        jButton3.setText("Process Scene");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,39 +127,90 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addComponent(jLabel1)))
-                .addContainerGap(178, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(21, 21, 21)
+                .addGap(9, 9, 9)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        int count = workRequestTable.getSelectedRowCount();
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+
+            String text = messageTextField.getText();
+            if (!text.isEmpty()) {
+                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                    if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                        wr.setStatus("Completed");
+                        wr.setMessage(text);
+                    }
+                }
+                populateTable();
+            } else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int count = workRequestTable.getSelectedRowCount();
+        int selectedRow = workRequestTable.getSelectedRow();
+        String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                    wr.setStatus("Processed");
+                    wr.setMessage(organization.getName() + " on their way to handle the situation");
+                }
+            }
+            populateTable();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField messageTextField;
+    private javax.swing.JTable workRequestTable;
     // End of variables declaration//GEN-END:variables
 }
