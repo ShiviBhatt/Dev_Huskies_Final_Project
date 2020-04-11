@@ -11,6 +11,7 @@ import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -31,16 +32,18 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     Organization organization;
     Network network;
     private LocationPoint locationPoint;
+    private UserAccount account;
     /**
      * Creates new form IncidentUnitManageScene
      */
-    public ReportingAdminManageSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
+    public ReportingAdminManageSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network,UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = system;
         this.organization = organization;
         this.network = network;
+        this.account = account;
         populateSceneTable();
     }
     
@@ -236,8 +239,11 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
         sceneReq.setEstimatedLoss(estimatedLoss.getText());
         sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");     
-        sceneReq.setSceneId("S"+organization.getWorkQueue().getWorkRequestList().size()+1);
+        sceneReq.setStatus("Requested");  
+        sceneReq.setSender(account);
+        sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
+        sceneReq.setMessage("Waiting for disaster head to approve request");
+       
         organization.getWorkQueue().getWorkRequestList().add(sceneReq);
         
         //for (Network net : business.getNetworkList()) {

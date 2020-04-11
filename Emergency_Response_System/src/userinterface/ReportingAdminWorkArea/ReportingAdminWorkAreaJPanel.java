@@ -8,6 +8,7 @@ import userinterface.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,14 +23,16 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     Organization organization;
     Network network;
+    UserAccount account;
     /** Creates new form AdminWorkAreaJPanel */
-    public ReportingAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
+    public ReportingAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network,UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = system;
         this.organization = organization;
         this.network = network;
+        this.account = account;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -105,7 +108,7 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneBtnActionPerformed
-        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network);
+        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network,account);
         userProcessContainer.add("ReportingAdminManageSceneJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

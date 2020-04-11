@@ -45,7 +45,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         this.network = network;
         this.business = business;
         this.disasterOrganization = disasterOrganization;
-        //populateTable();
+        populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
     }
@@ -75,11 +75,11 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Site Name ", "Manager Assigned"
+                "Scene Id", "Scene Name ", "Scene Manager", "Sender (Reporting Manger)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -188,9 +188,11 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
         for (WorkRequest wr : disasterOrganization.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() != null) {
-                Object[] row = new Object[2];
-                row[0] = ((ReportingAdminSceneRequest) wr).getSceneName();
-                row[1] = ((ReportingAdminSceneRequest) wr).getSceneManager();
+                Object[] row = new Object[4];
+                row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
+                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
+                row[2] = ((ReportingAdminSceneRequest) wr).getSceneManager();
+                row[3] = ((ReportingAdminSceneRequest) wr).getSender();
                 model.addRow(row);
             }
         }
