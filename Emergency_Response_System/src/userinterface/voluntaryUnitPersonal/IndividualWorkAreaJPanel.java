@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.VoluntaryUnitCompanySupervisor;
+package userinterface.voluntaryUnitPersonal;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -17,19 +17,18 @@ import javax.swing.JPanel;
  *
  * @author shivibhatt
  */
-public class CompanyWorkAreaJPanel extends javax.swing.JPanel {
+public class IndividualWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CompanyWorkAreaJPanel
+     * Creates new form IndividualWorkAreaJPanel
      */
-    
     JPanel userProcessContainer;
     Enterprise enterprise;
     Network network;
     Organization organization;
     EcoSystem system;
     UserAccount account;
-    public CompanyWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+    public IndividualWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
@@ -49,25 +48,25 @@ public class CompanyWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnManageScene = new javax.swing.JButton();
-        btnManageRequest = new javax.swing.JButton();
+        manageRequest = new javax.swing.JButton();
+        manageScene = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setText("Company Work Area -Adminstrative Role");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Indvidual Work Area -Adminstrative Role");
 
-        btnManageScene.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnManageScene.setText("Manage Scene");
-        btnManageScene.addActionListener(new java.awt.event.ActionListener() {
+        manageRequest.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        manageRequest.setText("Manage Requests ");
+        manageRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageSceneActionPerformed(evt);
+                manageRequestActionPerformed(evt);
             }
         });
 
-        btnManageRequest.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnManageRequest.setText("Manage Request");
-        btnManageRequest.addActionListener(new java.awt.event.ActionListener() {
+        manageScene.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        manageScene.setText("Manage Scene");
+        manageScene.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageRequestActionPerformed(evt);
+                manageSceneActionPerformed(evt);
             }
         });
 
@@ -78,46 +77,47 @@ public class CompanyWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
+                        .addGap(227, 227, 227)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(307, 307, 307)
+                        .addGap(315, 315, 315)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnManageScene, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(248, Short.MAX_VALUE))
+                            .addComponent(manageRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(manageScene, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(84, 84, 84)
-                .addComponent(btnManageRequest)
-                .addGap(29, 29, 29)
-                .addComponent(btnManageScene)
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(manageRequest)
+                .addGap(41, 41, 41)
+                .addComponent(manageScene)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSceneActionPerformed
-       ManageSceneJPanel manageScene = new ManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
-        userProcessContainer.add("ManageSceneJPanel", manageScene);
+    private void manageRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageRequestActionPerformed
+        IndividualWorkRequestJPanel manageIndividualWorkRequest = new IndividualWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
+        userProcessContainer.add("IndividualWorkRequestJPanel", manageIndividualWorkRequest);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageSceneActionPerformed
+    }//GEN-LAST:event_manageRequestActionPerformed
 
-    private void btnManageRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRequestActionPerformed
-        ManageCompanyWorkRequestJPanel manageWorkRequest = new ManageCompanyWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
-        userProcessContainer.add("ManageCompanyWorkRequestJPanel", manageWorkRequest);
+    private void manageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneActionPerformed
+        // TODO add your handling code here
+        ManageIndividualSceneJPanel manageScene = new ManageIndividualSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
+        userProcessContainer.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageRequestActionPerformed
+    }//GEN-LAST:event_manageSceneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnManageRequest;
-    private javax.swing.JButton btnManageScene;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageRequest;
+    private javax.swing.JButton manageScene;
     // End of variables declaration//GEN-END:variables
 }

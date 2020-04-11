@@ -6,13 +6,21 @@
 package userinterface.VoluntaryUnitWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Role.CompanySupervisor;
+import Business.Role.HospitalAdmin;
+import Business.Role.NGOAdmin;
+import Business.Role.PersonalAdmin;
+import static Business.Role.Role.RoleType.NGOAdmin;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.UserRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -176,61 +184,61 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
-//        int selectedRow = workRequestJTable.getSelectedRow();
-//
-//        if (selectedRow >= 0) {
-//            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-//            if (request.getStatus().equalsIgnoreCase("Completed")) {
-//                JOptionPane.showMessageDialog(null, "Request already processed.");
-//                return;
-//            } else {
-//                request.setReceiver(userAccount);
-//                request.setStatus("Pending");
-//                populateTable();
-//
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Choose a reuest to process.");
-//            return;
-//        }
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else {
+                request.setReceiver(userAccount);
+                request.setStatus("Pending");
+                populateTable();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Choose a reuest to process.");
+            return;
+        }
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
-//        int selectedRow = workRequestJTable.getSelectedRow();
-//
-//        if (selectedRow >= 0) {
-//            RegistrationRequest request = (RegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
-//            Employee emp = new Employee();
-//            emp.setName(request.getName());
-//            if (request.getOrgType() == Organization.Type.NGO) {
-//                System.out.println("UserInterfacengo");
-//                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getPosition());
-//                UserAccount ua1 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getPassword(), emp, new NGOAdmin());
-//
-//            } else if (request.getOrgType() == Organization.Type.Personal) {
-//                System.out.println("UserInterface");
-//                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getPosition());
-//                UserAccount ua2 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getPassword(), emp, new PersonalAdmin());
-//
-//            } else if (request.getOrgType() == Organization.Type.Hospital) {
-//                System.out.println("UserInterface");
-//                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getPosition());
-//                UserAccount ua3 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getPassword(), emp, new HospitalAdmin());
-//
-//            } else if (request.getOrgType() == Organization.Type.Company) {
-//                System.out.println("UserInterface");
-//                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getPosition());
-//                UserAccount ua4 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getPassword(), emp, new CompanyManager());
-//
-//            }
-//
-//            request.setStatus("Completed");
-//            populateTable();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-//            return;
-//        }
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            UserRegistrationRequest request = (UserRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            Employee emp = new Employee();
+            emp.setName(request.getName());
+            if (request.getOrgType() == Organization.Type.NGO) {
+                System.out.println("UserInterfacengo");
+                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                UserAccount ua1 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new NGOAdmin());
+
+            } else if (request.getOrgType() == Organization.Type.Personal) {
+                System.out.println("UserInterface");
+                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                UserAccount ua2 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new PersonalAdmin());
+
+            } else if (request.getOrgType() == Organization.Type.Hospital) {
+                System.out.println("UserInterface");
+                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                UserAccount ua3 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new HospitalAdmin());
+
+            } else if (request.getOrgType() == Organization.Type.Company) {
+                System.out.println("UserInterface");
+                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                UserAccount ua4 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new CompanySupervisor());
+
+            }
+
+            request.setStatus("Completed");
+            populateTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
+            return;
+        }
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

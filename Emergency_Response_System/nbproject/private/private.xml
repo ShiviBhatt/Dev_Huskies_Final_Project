@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitCompanySupervisor/ManageCompanyEmployeeJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitNGO/NGOManageEmployeeJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/usertinterface/VoluntaryUnitHospital/ManageHospitalSceneJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitCompanySupervisor/CompanyWorkAreaJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/usertinterface/VoluntaryUnitHospital/HosptalViewDetailsJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitCompanySupervisor/ManageCompanyWorkRequestJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/EmergencyUnitWorkArea/EmergencyManageOrganizationJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/DisasterManagementWorkArea/DisasterAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/usertinterface/VoluntaryUnitHospital/ManageHospitalWorkRequestJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/voluntaryUnitPersonal/IndividualViewJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitNGO/NGOWorkRequestJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/ReportingAdminWorkArea/ReportingAdminManageSceneJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/usertinterface/VoluntaryUnitHospital/HospitalWorkAreaJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitNGO/NGOAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitNGO/NGOAdminDetailJPanel.java</file>
+            <file>file:/Users/shivibhatt/Documents/AED/GIT/Final%20Project/Dev_Huskies_Final_Project/Emergency_Response_System/src/userinterface/VoluntaryUnitCompanySupervisor/ManageCompanyAdminDetailJPanel.java</file>
+        </group>
     </open-files>
 </project-private>
