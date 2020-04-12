@@ -24,6 +24,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
     EcoSystem system;
     Network network;
     UserAccount account;
+    Organization organization;
     /** Creates new form AdminWorkAreaJPanel */
     public VoluntaryOperatingUnitAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
@@ -32,7 +33,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         this.system = business;
         this.network = network;
         this.enterprise = enterprise;
-
+        this.organization = organization;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -101,7 +102,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(userProcessContainer, enterprise, system);
+        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(userProcessContainer, enterprise, system, organization);
         userProcessContainer.add("VoluntaryOperatingUnitManageUsersJPanel", vOUMUJP);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

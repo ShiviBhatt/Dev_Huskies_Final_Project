@@ -209,27 +209,31 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
 
         if (selectedRow >= 0) {
             UserRegistrationRequest request = (UserRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            Employee emp = new Employee();
-            emp.setName(request.getName());
+            /*Employee emp = new Employee();
+            emp.setName(request.getName());*/
             if (request.getOrgType() == Organization.Type.NGO) {
                 System.out.println("UserInterfacengo");
-                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
-                UserAccount ua1 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new NGOAdmin());
+                Organization org = organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new NGOAdmin());
 
             } else if (request.getOrgType() == Organization.Type.Personal) {
                 System.out.println("UserInterface");
-                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
-                UserAccount ua2 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new PersonalAdmin());
+                Organization org = organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount ua2 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new PersonalAdmin());
 
             } else if (request.getOrgType() == Organization.Type.Hospital) {
                 System.out.println("UserInterface");
-                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
-                UserAccount ua3 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new HospitalAdmin());
+                Organization org = organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount ua3 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new HospitalAdmin());
 
             } else if (request.getOrgType() == Organization.Type.Company) {
                 System.out.println("UserInterface");
-                organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
-                UserAccount ua4 = enterprise.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new CompanySupervisor());
+                Organization org = organizationDirectory.createOrganization(request.getOrgType(), request.getName(), request.getUserLocationPoint());
+                Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount ua4 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new CompanySupervisor());
 
             }
 

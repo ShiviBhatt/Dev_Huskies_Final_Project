@@ -52,20 +52,33 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void populateStatusTable() {
         DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
         model.setRowCount(0);
+        /*for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[7];
+            row[0] = organization.getName();
+            row[1] = ((ReportingAdminSceneRequest) wr).getStatus();
+            row[2] = organization.getName();
+            row[3] = wr.getRequestDate();
+            row[4] = ((ReportingAdminSceneRequest) wr).getSender();
+            row[5] = ((ReportingAdminSceneRequest) wr).getMessage();
+            row[6] = ((ReportingAdminSceneRequest) wr).getSceneId();
+            model.addRow(row);
+        }*/
         for (Network network : business.getNetworkList()) {
             for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if ((!(o instanceof DisasterOrganization)) && (!(o instanceof IncidentManagementOrganization))) {
                         for (WorkRequest wr : o.getWorkQueue().getWorkRequestList()) {
-                            Object[] row = new Object[7];
-                            row[0] = o.getName();
-                            row[1] = ((ReportingAdminSceneRequest) wr).getStatus();
-                            row[2] = o.getName();
-                            row[3] = wr.getRequestDate();
-                            row[4] = ((ReportingAdminSceneRequest) wr).getSender();
-                            row[5] = ((ReportingAdminSceneRequest) wr).getMessage();
-                            row[6] = ((ReportingAdminSceneRequest) wr).getSceneId();
-                            model.addRow(row);
+                            if(wr instanceof ReportingAdminSceneRequest) {
+                                Object[] row = new Object[7];
+                                row[0] = o.getName();
+                                row[1] = ((ReportingAdminSceneRequest) wr).getStatus();
+                                row[2] = o.getName();
+                                row[3] = wr.getRequestDate();
+                                row[4] = ((ReportingAdminSceneRequest) wr).getSender();
+                                row[5] = ((ReportingAdminSceneRequest) wr).getMessage();
+                                row[6] = ((ReportingAdminSceneRequest) wr).getSceneId();
+                                model.addRow(row);
+                            }
                         }
                     }
                 }
@@ -76,12 +89,25 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void populateSceneTable() {
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         model.setRowCount(0);
+        
+        for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {
+            if(wr instanceof ReportingAdminSceneRequest) {
+                Object[] row = new Object[5];
+                row[0] = ((ReportingAdminSceneRequest) wr);
+                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
+                row[2] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
+                row[3] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
+                row[4] = ((ReportingAdminSceneRequest) wr).getSender();
 
-        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                model.addRow(row);
+            }
+        }
+        
+        /* commented by mayank for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                 if (o instanceof DisasterOrganization) {
                     for (WorkRequest wr : o.getWorkQueue().getWorkRequestList()) {
-                        if (wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager().equals(account.getEmployee())) {
+                        if (wr instanceof ReportingAdminSceneRequest ){//&& ((ReportingAdminSceneRequest) wr).getSceneManager().equals(account.getEmployee())) {
                             Object[] row = new Object[5];
                             row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
                             row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
@@ -95,7 +121,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }
 
-        }
+        }*/
     }
 
     /**
@@ -215,13 +241,13 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void nearestOrgSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nearestOrgSearchActionPerformed
         // TODO add your handling code here:
-        int selectedRow = sceneTable.getSelectedRow();
-        String id = (String) sceneTable.getValueAt(selectedRow, 0);
-        WorkRequest selectedScene = null;
+        int selectedRow = sceneTable.getSelectedRow();        
+        ReportingAdminSceneRequest selectedScene = null;
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to view nearest organizations", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+            selectedScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
+            /*for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if (o instanceof DisasterOrganization) {
                         for (WorkRequest wr : o.getWorkQueue().getWorkRequestList()) {
@@ -231,7 +257,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                         }
                     }
                 }
-            }
+            }*/
             NearestOrganizationJPanel ramop = new NearestOrganizationJPanel(userProcessContainer, account, organization, selectedScene, enterprise, network, business);
             userProcessContainer.add("Nearest_Distance_Panel", ramop);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();

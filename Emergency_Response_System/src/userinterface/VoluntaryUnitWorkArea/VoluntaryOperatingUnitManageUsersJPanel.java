@@ -28,12 +28,15 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private EcoSystem ecosystem;
-    public VoluntaryOperatingUnitManageUsersJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system) {
+    Organization organization;
+    
+    public VoluntaryOperatingUnitManageUsersJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization) {
        
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.ecosystem = system;
+        this.organization = organization;
          populateVoluntaryOrganizationComboBox();
          populateData();
     }
@@ -240,7 +243,7 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         Organization organization = (Organization) selectOrganization.getSelectedItem();
         if (organization != null) {
             populateVolunteerEmployeeComboBox(organization);
-            popRoleComboBox(enterprise);
+            popRoleComboBox(organization);
         }
     }//GEN-LAST:event_selectOrganizationActionPerformed
 
@@ -301,9 +304,9 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         }
     }
 
-    private void popRoleComboBox(Enterprise enterprise) {
+    private void popRoleComboBox(Organization organization) {
         selectRole.removeAllItems();
-        for (Role role : enterprise.getSupportedRole()) {
+        for (Role role : organization.getSupportedRole()) {
             selectRole.addItem(role);
         }
     }

@@ -108,7 +108,7 @@ public class IndividualWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneActionPerformed
         // TODO add your handling code here
-        ManageIndividualSceneJPanel manageScene = new ManageIndividualSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
+        ManageIndividualSceneJPanel manageScene = new ManageIndividualSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
         userProcessContainer.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

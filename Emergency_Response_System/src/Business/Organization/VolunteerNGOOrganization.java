@@ -5,6 +5,7 @@
  */
 package Business.Organization;
 
+import Business.Role.NGOAdmin;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -34,7 +35,9 @@ public class VolunteerNGOOrganization extends Organization {
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-       return null;
+       ArrayList<Role> roles = new ArrayList();
+        roles.add(new NGOAdmin());
+        return roles;
     }
     
 }

@@ -13,8 +13,13 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
@@ -24,7 +29,7 @@ import userinterface.IncidentUnitWorkArea.*;
  *
  * @author Mayank
  */
-public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
+public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
@@ -36,7 +41,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     /**
      * Creates new form IncidentUnitManageScene
      */
-    public ReportingAdminManageSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network,UserAccount account) {
+    public ReportingAdminManageRequestsJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network,UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -54,15 +59,15 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         
         for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()){
             
-            if (wr instanceof ReportingAdminSceneRequest) {
+            if (wr instanceof VolunteerSceneRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = wr;
-                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
-                row[2] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
-                row[3] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
-                row[4] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
-                row[5] = ((ReportingAdminSceneRequest) wr).getEstimatedLoss();
-                row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
+                row[1] = ((VolunteerSceneRequest) wr).getSceneName();
+                row[2] = ((VolunteerSceneRequest) wr).getSceneZipcode();
+                row[3] = ((VolunteerSceneRequest) wr).getSceneLocationPoint();
+                row[4] = ((VolunteerSceneRequest) wr).getNoOfVictims();
+                row[5] = ((VolunteerSceneRequest) wr).getEstimatedLoss();
+                row[6] = ((VolunteerSceneRequest) wr).getStatus();
                 //row[2] = org.getPosition();
                 model.addRow(row);
             }
@@ -104,6 +109,9 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         sceneLocation = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,6 +132,11 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        sceneTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sceneTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(sceneTable);
 
         jLabel1.setText("Scene Name");
@@ -140,7 +153,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Estimated Loss");
 
-        createSceneBtn.setText("Create Scene");
+        createSceneBtn.setText("Approve");
         createSceneBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createSceneBtnActionPerformed(evt);
@@ -156,6 +169,18 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Scene Image");
+
+        jButton1.setText("Reject");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("jLabel7");
+        jLabel7.setPreferredSize(new java.awt.Dimension(460, 280));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,37 +189,45 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(314, 314, 314)
-                                .addComponent(createSceneBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(219, 219, 219)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(66, 66, 66)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(sceneZipCode, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                    .addComponent(sceneName, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3))
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(estimatedLoss, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(noOfVictims))
+                                        .addGap(393, 393, 393))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addGap(66, 66, 66)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(sceneZipCode, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(sceneName, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6))
-                                        .addGap(53, 53, 53)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(noOfVictims, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(estimatedLoss, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(sceneLocation))
-                                        .addGap(18, 18, 18)
+                                            .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(117, 117, 117)
                                         .addComponent(jButton2)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(369, 369, 369)
+                .addComponent(createSceneBtn)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +255,15 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGap(39, 39, 39)
-                .addComponent(createSceneBtn)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createSceneBtn)
+                    .addComponent(jButton1))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,12 +272,15 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
+        
+        selectedWorkReq.setStatus("Forwarded to Disaster Team");
+        
         ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
         sceneReq.setSceneZipcode(sceneZipCode.getText());
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
         sceneReq.setEstimatedLoss(estimatedLoss.getText());
-        sceneReq.setSceneLocationPoint(locationPoint);
+        sceneReq.setSceneLocationPoint(selectedWorkReq.getSceneLocationPoint());
         sceneReq.setStatus("Requested");  
         sceneReq.setSender(account);
         sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
@@ -265,17 +307,72 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
+    VolunteerSceneRequest selectedWorkReq;
+    private void sceneTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sceneTableMouseClicked
+        //int selectedReq = sceneTable.rowAtPoint(evt.getPoint());
+        
+        int selectedReq = sceneTable.getSelectedRow();
+        selectedWorkReq = (VolunteerSceneRequest)sceneTable.getValueAt(selectedReq, 0);
+        sceneName.setText(selectedWorkReq.getSceneName());
+        sceneZipCode.setText(selectedWorkReq.getSceneZipcode());
+        noOfVictims.setText(selectedWorkReq.getNoOfVictims()+"");
+        estimatedLoss.setText(selectedWorkReq.getEstimatedLoss());
+        sceneLocation.setText(selectedWorkReq.getSceneLocationPoint()+"");
+        sceneName.setText(selectedWorkReq.getSceneName());
+        //displayImage(selectedWorkReq.getImagePath());
+        System.out.println("/********/////");
+        displayDImage(selectedWorkReq.getImagePath());
+        /*String imgPath = selectedWorkReq.getImagePath();
+        ImageIcon imgIcon = new ImageIcon(imgPath);  
+        Image imgFit = imgIcon.getImage().getScaledInstance(460, 280, Image.SCALE_SMOOTH);
+        jLabel7.setText("");
+        jLabel7.setIcon(new ImageIcon(imgFit));*/
+        //licenceInfo.setImagePath(imgPath); 
+        
+        
+    }//GEN-LAST:event_sceneTableMouseClicked
+    
+    public void displayDImage(String bb) {
+        String imgPath = bb;
+        ImageIcon imgIcon = new ImageIcon(imgPath);  
+        Image imgFit = imgIcon.getImage().getScaledInstance(460, 280, Image.SCALE_SMOOTH);
+        jLabel7.setText("");
+        jLabel7.setIcon(new ImageIcon(imgFit));
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        selectedWorkReq.setStatus("Rejected");
+        populateSceneTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    /*public ImageIcon ResizeImage(String ImagePath) {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(460, 280, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 
+    public void displayImage(String imgPath) {
+        System.out.println("FILE PATH = " + imgPath);
+        imageJPanel.removeAll();
+        JLabel label = new JLabel(ResizeImage(imgPath));
+        imageJPanel.add(label);
+        imageJPanel.invalidate();
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;

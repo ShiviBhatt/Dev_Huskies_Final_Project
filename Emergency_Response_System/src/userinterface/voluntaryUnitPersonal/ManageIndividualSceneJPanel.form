@@ -98,6 +98,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Set Location"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="776" y="375" width="-1" height="-1"/>
@@ -200,9 +203,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="createAddPic">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/shivibhatt/Documents/AED/GIT/Bhatt_Shivi_001027605/JavaApplication_Assignment1/Icons/icons8-add-image-16.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Upload Picture"/>
       </Properties>
       <Events>

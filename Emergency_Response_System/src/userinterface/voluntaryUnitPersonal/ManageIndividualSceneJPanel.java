@@ -7,12 +7,15 @@ package userinterface.voluntaryUnitPersonal;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.IncidentOperatingUnit;
 import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -24,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.GoogleMAP.OrganizationLocationJPanel;
 
 /**
  *
@@ -39,16 +43,18 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     EcoSystem system;
     Organization organization;
     Network network;
-    private LocationPoint locationPoint;
+    UserAccount account;
+    LocationPoint locationPoint;
     private String imagePath;
 
-    public ManageIndividualSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network) {
+    public ManageIndividualSceneJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem system, Organization organization, Network network, UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = system;
         this.organization = organization;
         this.network = network;
+        this.account = account;
         populateSceneTable();
     }
 
@@ -59,15 +65,15 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
 
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
 
-            if (wr instanceof ReportingAdminSceneRequest) {
+            if (wr instanceof VolunteerSceneRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = wr;
-                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
-                row[2] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
-                row[3] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
-                row[4] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
-                row[5] = ((ReportingAdminSceneRequest) wr).getEstimatedLoss();
-                row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
+                row[1] = ((VolunteerSceneRequest) wr).getSceneName();
+                row[2] = ((VolunteerSceneRequest) wr).getSceneZipcode();
+                row[3] = ((VolunteerSceneRequest) wr).getSceneLocationPoint();
+                row[4] = ((VolunteerSceneRequest) wr).getNoOfVictims();
+                row[5] = ((VolunteerSceneRequest) wr).getEstimatedLoss();
+                row[6] = ((VolunteerSceneRequest) wr).getStatus();
                 //row[2] = org.getPosition();
                 model.addRow(row);
             }
@@ -153,6 +159,11 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 204, -1, -1));
 
         jButton2.setText("Set Location");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 375, -1, -1));
 
         sceneName.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +199,6 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         jLabel7.setText("Add Picture");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
 
-        createAddPic.setIcon(new javax.swing.ImageIcon("/Users/shivibhatt/Documents/AED/GIT/Bhatt_Shivi_001027605/JavaApplication_Assignment1/Icons/icons8-add-image-16.png")); // NOI18N
         createAddPic.setText("Upload Picture");
         createAddPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +230,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+        VolunteerSceneRequest sceneReq = new VolunteerSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
         sceneReq.setSceneZipcode(sceneZipCode.getText());
         sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
@@ -228,6 +238,7 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         sceneReq.setSceneLocationPoint(locationPoint);
         sceneReq.setStatus("Requested");
         sceneReq.setImagePath(imagePath);
+        sceneReq.setSender(account);
         System.out.println(imagePath + " IMAGE PATH ");
         sceneReq.setSceneId("S" + organization.getWorkQueue().getWorkRequestList().size() + 1);
         //displayImage(sceneReq);
@@ -235,11 +246,17 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
 
         //for (Network net : business.getNetworkList()) {
         for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-            for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+            //System.out.println("1>>>>> ");
+            if(e instanceof IncidentOperatingUnit) {
+                e.getWorkQueue().getWorkRequestList().add(sceneReq);
+            }
+            /*for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                System.out.println("2>>>>> ");
                 if (o instanceof IncidentManagementOrganization) {
+                    System.out.println("3>>>>> ");
                     o.getWorkQueue().getWorkRequestList().add(sceneReq);
                 }
-            }
+            }*/
         }
         populateSceneTable();
         //  displayImage(sceneReq);
@@ -258,6 +275,18 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_createAddPicActionPerformed
+    
+    public void populateLongituteLatitude(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+        sceneLocation.setText(locationPoint.getLatitude() + ", " + locationPoint.getLongitude());
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public ImageIcon ResizeImage(String ImagePath) {
         ImageIcon MyImage = new ImageIcon(ImagePath);

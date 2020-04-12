@@ -5,6 +5,7 @@
  */
 package Business.Organization;
 
+import Business.Role.HospitalAdmin;
 import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,7 +35,9 @@ public class VolunteerHospitalOrganization extends Organization{
     
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new HospitalAdmin());
+        return roles;
     }
      
        @Override
