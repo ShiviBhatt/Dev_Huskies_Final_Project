@@ -59,26 +59,27 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
         
         
         for(Network network:system.getNetworkList()) {
-            boolean isVisited = false;
+            //boolean isVisited = false;
+            workReqList.clear();
             for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()) {
                 
                 for(Organization organization:enterprise.getOrganizationDirectory().getOrganizationList()) {
                     
                     for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
-                        isVisited = true;
+                        //isVisited = true;
                         if (wr instanceof ReportingAdminSceneRequest) {
                             workReqList.add((ReportingAdminSceneRequest)wr);
                         }
-                        workReqMap.put(network.getName(), workReqList.size());
-                        workReqList.clear();
-                    }                    
+                    }  
+                    
                 }
             }
             
-            if(isVisited == false) {
-                workReqMap.put(network.getName(), 0);
-            }
-            
+            //if(isVisited == false) {
+               // workReqMap.put(network.getName(), 0);
+            //}
+            workReqMap.put(network.getName(), workReqList.size());
+                    
         }
       
         barChart = ChartFactory.createPieChart(

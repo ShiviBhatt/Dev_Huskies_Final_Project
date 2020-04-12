@@ -59,6 +59,11 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText("<value>");
 
         manageReqBtn.setText("Manage Requests");
+        manageReqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageReqBtnActionPerformed(evt);
+            }
+        });
 
         manageSceneBtn.setText("Manage Scenes");
         manageSceneBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +118,13 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageSceneBtnActionPerformed
+
+    private void manageReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageReqBtnActionPerformed
+        ReportingAdminManageRequestsJPanel muajp = new ReportingAdminManageRequestsJPanel(userProcessContainer, enterprise, system, organization, network,account);
+        userProcessContainer.add("ReportingAdminManageSceneJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageReqBtnActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

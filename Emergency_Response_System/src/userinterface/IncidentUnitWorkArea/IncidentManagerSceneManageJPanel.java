@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DisasterManagementWorkArea;
+package userinterface.IncidentUnitWorkArea;
 
+import userinterface.DisasterManagementWorkArea.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
+import Business.Role.ReportingAdmin;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javafx.scene.Scene;
@@ -24,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dhankuwarsisodiya
  */
-public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
+public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DisasterAdminSceneManageJPanel
@@ -36,15 +39,13 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     Network network;
     EcoSystem business;
 
-    public DisasterAdminSceneManageJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, Network network, EcoSystem business, Organization organization) {
+    public IncidentManagerSceneManageJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem business, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
         this.enterprise = enterprise;
-        this.network = network;
         this.business = business;
         this.organization = organization;
-        //populateTable();
+        populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
     }
@@ -74,7 +75,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Scene Id", "Scene Name ", "Scene Manager", "Sender (Reporting Manger)"
+                "Scene Id", "Scene Name ", "Sender", "Assigned Reporting Admin"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -91,7 +92,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setText("Site Manager");
+        jLabel2.setText("Reporting Admin");
 
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -116,22 +117,27 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(siteNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(sceneManagerCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addGap(58, 58, 58)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(siteNameComboBox, 0, 102, Short.MAX_VALUE)
+                                            .addComponent(sceneManagerCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton1)))
+                        .addGap(0, 374, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(386, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,11 +169,10 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+        VolunteerSceneRequest scene = (VolunteerSceneRequest) siteNameComboBox.getSelectedItem();
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
         scene.setSceneManager(employee);
-        
-        
+        scene.setStatus("Assigned Reporting Admin");
         for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
             System.out.println("1[][][][][]");
             for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
@@ -179,8 +184,6 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        
-        
         
         populateTable();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -201,13 +204,14 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblManageAssigned.getModel();
         model.setRowCount(0);
 
-        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() != null) {
+        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (wr instanceof VolunteerSceneRequest) {
                 Object[] row = new Object[4];
-                row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
-                row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
-                row[2] = ((ReportingAdminSceneRequest) wr).getSceneManager();
-                row[3] = ((ReportingAdminSceneRequest) wr).getSender();
+                row[0] = ((VolunteerSceneRequest) wr).getSceneId();
+                row[1] = ((VolunteerSceneRequest) wr).getSceneName();
+                row[2] = ((VolunteerSceneRequest) wr).getSender().getEmployee().getName();
+                row[3] = ((VolunteerSceneRequest) wr).getSceneManager() == null ? "" : ((VolunteerSceneRequest) wr).getSceneManager().getName();
+                //row[3] = ((ReportingAdminSceneRequest) wr).getSender();
                 model.addRow(row);
             }
         }
@@ -216,9 +220,9 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
     private void populateSiteNameCombo() {
         siteNameComboBox.removeAllItems();
-        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-            if(wr instanceof ReportingAdminSceneRequest) {
-                siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr));
+        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+            if(wr instanceof VolunteerSceneRequest) {//&& ((ReportingAdminSceneRequest) wr).getSceneManager() == null) {
+                siteNameComboBox.addItem(((VolunteerSceneRequest) wr));
             }
             
         }
@@ -226,10 +230,20 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
     private void populateSiteManagerCombo() {
         sceneManagerCombo.removeAllItems();
-        for (UserAccount u : organization.getUserAccountDirectory().getUserAccountList()) {
-            if (u.getRole().toString().equals(Role.RoleType.SceneManager.getValue())) {
-                sceneManagerCombo.addItem(u.getEmployee());
+        for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            System.out.println("1[][][][][]");
+            for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                System.out.println("2[][][][][] " + u.getUsername() + "==" + u.getRole() + "==" + Role.RoleType.ReportingAdmin) ;
+                if (u.getRole() instanceof ReportingAdmin) {
+                    System.out.println("3[][][][][]");
+                    sceneManagerCombo.addItem(u.getEmployee());
+                }
             }
         }
+        /*for (UserAccount u : enterprise.getUserAccountDirectory().getUserAccountList()) {
+            if (u.getRole().toString().equals(Role.RoleType.ReportingAdmin.getValue())) {
+                sceneManagerCombo.addItem(u.getEmployee());
+            }
+        }*/
     }
 }

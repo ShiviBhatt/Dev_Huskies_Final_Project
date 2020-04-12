@@ -21,6 +21,7 @@ import userinterface.IncidentUnitWorkArea.IncidentManagerManageOrganizationJPane
 import userinterface.ReportingAdminWorkArea.ReportingAdminManageSceneJPanel;
 import userinterface.UserRegistration.UserRegistrationJPanel;
 import userinterface.VoluntaryUnitWorkArea.VoluntaryOperatingUnitManageOrganizationsJPanel;
+import userinterface.voluntaryUnitPersonal.ManageIndividualSceneJPanel;
 
 /**
  *
@@ -136,6 +137,9 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
                 orgManagement.populateLongituteLatitude(locationPoint);
             }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ReportingAdminManageSceneJPanel){
                 ReportingAdminManageSceneJPanel reportingComponent = (ReportingAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                reportingComponent.populateLongituteLatitude(locationPoint);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ManageIndividualSceneJPanel){
+                ManageIndividualSceneJPanel reportingComponent = (ManageIndividualSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
             }
           
