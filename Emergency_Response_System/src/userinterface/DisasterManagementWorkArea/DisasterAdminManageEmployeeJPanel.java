@@ -9,6 +9,7 @@ import Business.Employee.Employee;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,12 +26,17 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     OrganizationDirectory organizationDirectory;
+    UserAccount account;
+    Organization organization;
 
-    public DisasterAdminManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
+    public DisasterAdminManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory,  UserAccount account, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
+        this.account = account;
+        this.organization = organization;
         populateOrganizationComboBox();
+        populateTable(organization);
         //populateEmployeeComboBox();
     }
 
@@ -44,8 +50,6 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        organizationJComboBox = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
         organizationEmployeeJComboBox = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,11 +65,12 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel1.setText("Oragnization Name ");
-
         organizationEmployeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        organizationEmployeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationEmployeeJComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Oragnization Name ");
 
@@ -111,10 +116,6 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
@@ -131,11 +132,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -170,18 +167,20 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void organizationEmployeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmployeeJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_organizationEmployeeJComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable employeeJTable;
     private javax.swing.JTextField employeeNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationEmployeeJComboBox;
-    private javax.swing.JComboBox organizationJComboBox;
     // End of variables declaration//GEN-END:variables
 
     private void populateOrganizationComboBox() {
@@ -194,12 +193,12 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void populateEmployeeComboBox() {
-        organizationEmployeeJComboBox.removeAllItems();
-        for (Organization organization : organizationDirectory.getOrganizationList()) {
-            organizationEmployeeJComboBox.addItem(organization);
-        }
-    }
+//    private void populateEmployeeComboBox() {
+//        organizationEmployeeJComboBox.removeAllItems();
+//        for (Organization organization : organizationDirectory.getOrganizationList()) {
+//            organizationEmployeeJComboBox.addItem(organization);
+//        }
+//    }
 
     private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();

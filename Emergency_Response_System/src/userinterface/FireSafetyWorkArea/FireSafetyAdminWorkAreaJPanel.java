@@ -49,11 +49,11 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[9];
-            row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
+            row[0] = ((EmergencyUnitRequest) wr).getSceneId();
             row[1] = wr.getSender();
-            row[2] = ((ReportingAdminSceneRequest) wr).getSceneName();
-            row[3] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
-            row[4] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
+            row[2] = ((EmergencyUnitRequest) wr).getSceneName();
+            row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
+            row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
             row[5] = wr.getMessage();
             row[6] = wr.getStatus();
             row[7] = "";
@@ -173,7 +173,7 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
             int selectedRow = workRequestTable.getSelectedRow();
             String id = (String) workRequestTable.getValueAt(selectedRow, 0);
             for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                     wr.setStatus("Processed");
                     wr.setMessage(organization.getName() + " on their way to handle the situation");
                 }
@@ -195,7 +195,7 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
             String text = messageTextField.getText();
             if (!text.isEmpty()) {
                 for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                    if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                         wr.setStatus("Completed");
                         wr.setMessage(text);
                     }

@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -50,11 +51,11 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         System.out.println("2. " + organization.getName());
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[9];
-            row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
+            row[0] = ((EmergencyUnitRequest) wr).getSceneId();
             row[1] = wr.getSender();
-            row[2] = ((ReportingAdminSceneRequest) wr).getSceneName();
-            row[3] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
-            row[4] = ((ReportingAdminSceneRequest) wr).getSceneLocationPoint();
+            row[2] = ((EmergencyUnitRequest) wr).getSceneName();
+            row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
+            row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
             row[5] = wr.getMessage();
             row[6] = wr.getStatus();
             row[7] = "";
@@ -173,7 +174,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             String text = messageTextField.getText();
             if (!text.isEmpty()) {
                 for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                    if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                         wr.setStatus("Completed");
                         wr.setMessage(text);
                     }
@@ -194,7 +195,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                if ((((ReportingAdminSceneRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                     wr.setStatus("Processed");
                     wr.setMessage(organization.getName() + " on their way to handle the situation");
                 }

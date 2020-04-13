@@ -125,7 +125,7 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        DisasterAdminManageEmployeeJPanel disasterAdminManageEmployeeJPanel = new DisasterAdminManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        DisasterAdminManageEmployeeJPanel disasterAdminManageEmployeeJPanel = new DisasterAdminManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),account, organization);
         userProcessContainer.add("Disaster_SceneManager_Panel", disasterAdminManageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
