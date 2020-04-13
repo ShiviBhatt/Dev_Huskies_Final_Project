@@ -21,6 +21,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -74,6 +75,8 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
                 row[4] = ((VolunteerSceneRequest) wr).getNoOfVictims();
                 row[5] = ((VolunteerSceneRequest) wr).getEstimatedLoss();
                 row[6] = ((VolunteerSceneRequest) wr).getStatus();
+                row[7] = ((VolunteerSceneRequest) wr).getRequestDate();
+                row[8] = ((VolunteerSceneRequest) wr).getMessage();
                 //row[2] = org.getPosition();
                 model.addRow(row);
             }
@@ -120,17 +123,17 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
 
         tblScene.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status"
+                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status", "Created Date", "Additional Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -166,6 +169,11 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 375, -1, -1));
 
+        sceneName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                sceneNameFocusLost(evt);
+            }
+        });
         sceneName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sceneNameActionPerformed(evt);
@@ -230,36 +238,40 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        VolunteerSceneRequest sceneReq = new VolunteerSceneRequest();
-        sceneReq.setSceneName(sceneName.getText());
-        sceneReq.setSceneZipcode(sceneZipCode.getText());
-        sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
-        sceneReq.setEstimatedLoss(estimatedLoss.getText());
-        sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");
-        sceneReq.setImagePath(imagePath);
-        sceneReq.setSender(account);
-        System.out.println(imagePath + " IMAGE PATH ");
-        sceneReq.setSceneId("S" + organization.getWorkQueue().getWorkRequestList().size() + 1);
-        //displayImage(sceneReq);
-        organization.getWorkQueue().getWorkRequestList().add(sceneReq);
-
-        //for (Network net : business.getNetworkList()) {
-        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-            //System.out.println("1>>>>> ");
-            if(e instanceof IncidentOperatingUnit) {
-                e.getWorkQueue().getWorkRequestList().add(sceneReq);
-            }
-            /*for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
-                System.out.println("2>>>>> ");
-                if (o instanceof IncidentManagementOrganization) {
-                    System.out.println("3>>>>> ");
-                    o.getWorkQueue().getWorkRequestList().add(sceneReq);
+        
+        if("".equals(sceneName.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
+        }else if("".equals(sceneZipCode.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Zip Code is mandatory");
+        }else if("".equals(noOfVictims.getText())){
+            JOptionPane.showMessageDialog(null, "No of victims is mandatory");
+        }else if("".equals(estimatedLoss.getText())){
+            JOptionPane.showMessageDialog(null, "Estimated Loss is mandatory");
+        }else if("".equals(sceneLocation.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Location is mandatory");
+        }else if("".equals(imagePath) || null == imagePath){
+            JOptionPane.showMessageDialog(null, "Uploading an image is mandatory");
+        }else {
+            String msg = JOptionPane.showInputDialog("Additional Message");
+            VolunteerSceneRequest sceneReq = new VolunteerSceneRequest();
+            sceneReq.setSceneName(sceneName.getText());
+            sceneReq.setSceneZipcode(sceneZipCode.getText());
+            sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
+            sceneReq.setEstimatedLoss(estimatedLoss.getText());
+            sceneReq.setSceneLocationPoint(locationPoint);
+            sceneReq.setRequestDate(new Date());
+            sceneReq.setMessage(msg);
+            sceneReq.setStatus("Requested");
+            sceneReq.setImagePath(imagePath);
+            sceneReq.setSender(account);
+            organization.getWorkQueue().getWorkRequestList().add(sceneReq);
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if(e instanceof IncidentOperatingUnit) {
+                    e.getWorkQueue().getWorkRequestList().add(sceneReq);
                 }
-            }*/
+            }
+            populateSceneTable();
         }
-        populateSceneTable();
-        //  displayImage(sceneReq);
     }//GEN-LAST:event_createSceneBtnActionPerformed
 
     private void createAddPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAddPicActionPerformed
@@ -287,6 +299,10 @@ public class ManageIndividualSceneJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void sceneNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sceneNameFocusLost
+        //JOptionPane.showMessageDialog(null, "fsff");
+    }//GEN-LAST:event_sceneNameFocusLost
 
     public ImageIcon ResizeImage(String ImagePath) {
         ImageIcon MyImage = new ImageIcon(ImagePath);

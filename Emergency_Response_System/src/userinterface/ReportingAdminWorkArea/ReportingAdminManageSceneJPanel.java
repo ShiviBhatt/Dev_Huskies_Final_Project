@@ -15,6 +15,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
@@ -63,6 +64,8 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 row[4] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
                 row[5] = ((ReportingAdminSceneRequest) wr).getEstimatedLoss();
                 row[6] = ((ReportingAdminSceneRequest) wr).getStatus();
+                row[7] = ((ReportingAdminSceneRequest) wr).getRequestDate();
+                row[8] = ((ReportingAdminSceneRequest) wr).getMessage();
                 //row[2] = org.getPosition();
                 model.addRow(row);
             }
@@ -107,17 +110,17 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status"
+                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status", "Created Date", "Additional Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -233,29 +236,44 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
-        sceneReq.setSceneName(sceneName.getText());
-        sceneReq.setSceneZipcode(sceneZipCode.getText());
-        sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
-        sceneReq.setEstimatedLoss(estimatedLoss.getText());
-        sceneReq.setSceneLocationPoint(locationPoint);
-        sceneReq.setStatus("Requested");  
-        sceneReq.setSender(account);
-        sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
-        sceneReq.setMessage("Waiting for disaster head to approve request");
-       
-        account.getWorkQueue().getWorkRequestList().add(sceneReq);
         
-        //for (Network net : business.getNetworkList()) {
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
-                    if (o instanceof DisasterOrganization) {
-                         o.getWorkQueue().getWorkRequestList().add(sceneReq);
+        if("".equals(sceneName.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
+        }else if("".equals(sceneZipCode.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Zip Code is mandatory");
+        }else if("".equals(noOfVictims.getText())){
+            JOptionPane.showMessageDialog(null, "No of victims is mandatory");
+        }else if("".equals(estimatedLoss.getText())){
+            JOptionPane.showMessageDialog(null, "Estimated Loss is mandatory");
+        }else if("".equals(sceneLocation.getText())){
+            JOptionPane.showMessageDialog(null, "Scene Location is mandatory");
+        }else {
+            String msg = JOptionPane.showInputDialog("Additional Message");
+            ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+            sceneReq.setSceneName(sceneName.getText());
+            sceneReq.setSceneZipcode(sceneZipCode.getText());
+            sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
+            sceneReq.setEstimatedLoss(estimatedLoss.getText());
+            sceneReq.setSceneLocationPoint(locationPoint);
+            sceneReq.setStatus("Requested");  
+            sceneReq.setSender(account);
+            //sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
+            //sceneReq.setMessage("Waiting for disaster head to approve request");
+            sceneReq.setMessage(msg);
+
+            account.getWorkQueue().getWorkRequestList().add(sceneReq);
+
+            //for (Network net : business.getNetworkList()) {
+                for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                        if (o instanceof DisasterOrganization) {
+                             o.getWorkQueue().getWorkRequestList().add(sceneReq);
+                        }
                     }
                 }
-            }
-            populateSceneTable();
-        //}
+                populateSceneTable();
+            //}
+        }
     }//GEN-LAST:event_createSceneBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

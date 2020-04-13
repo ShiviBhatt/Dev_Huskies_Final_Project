@@ -24,7 +24,14 @@ public class ReportingAdminSceneRequest extends WorkRequest {
     private String imagePath;
     private String requirements;
     private boolean considerInGraph = true;
-
+    int min = 100;
+    int max = 999;
+    
+    public ReportingAdminSceneRequest() {
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        sceneId = "SCENE"+randomNum;
+    }
+    
     public boolean isConsiderInGraph() {
         return considerInGraph;
     }
@@ -107,7 +114,7 @@ public class ReportingAdminSceneRequest extends WorkRequest {
 
     @Override
     public String toString() {
-        return sceneName;
+        return sceneId;
     }
 
 }

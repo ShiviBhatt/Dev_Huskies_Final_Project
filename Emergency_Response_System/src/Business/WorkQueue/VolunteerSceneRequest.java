@@ -21,7 +21,14 @@ public class VolunteerSceneRequest extends WorkRequest{
     private LocationPoint sceneLocationPoint;
     private Employee sceneManager;
     private String imagePath;
-
+    int min = 100;
+    int max = 999;
+    
+    public VolunteerSceneRequest() {
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        sceneId = "SCENE"+randomNum;
+    }
+    
     public String getSceneName() {
         return sceneName;
     }
@@ -89,7 +96,7 @@ public class VolunteerSceneRequest extends WorkRequest{
     
     @Override
     public String toString() {
-        return sceneName ;
+        return sceneId ;
     }
     
 }

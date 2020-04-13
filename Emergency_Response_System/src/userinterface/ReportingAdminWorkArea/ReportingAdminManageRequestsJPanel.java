@@ -68,16 +68,10 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                 row[4] = ((VolunteerSceneRequest) wr).getNoOfVictims();
                 row[5] = ((VolunteerSceneRequest) wr).getEstimatedLoss();
                 row[6] = ((VolunteerSceneRequest) wr).getStatus();
-                //row[2] = org.getPosition();
+                row[7] = ((VolunteerSceneRequest) wr).getRequestDate();
+                row[8] = ((VolunteerSceneRequest) wr).getMessage();
                 model.addRow(row);
             }
-            
-            
-            /*Object[] row = new Object[2];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
-            
-            model.addRow(row);*/
         }
     }
     
@@ -108,24 +102,23 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         createSceneBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         sceneLocation = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status"
+                "Scene #", "Scene Name", "Zip Code", "Location", "# of Victims", "Estimated Loss", "Status", "Created Date", "Additional Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -141,6 +134,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Scene Name");
 
+        sceneName.setEditable(false);
         sceneName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sceneNameActionPerformed(evt);
@@ -149,7 +143,13 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Zip Code");
 
+        sceneZipCode.setEditable(false);
+
+        noOfVictims.setEditable(false);
+
         jLabel4.setText("# of victims");
+
+        estimatedLoss.setEditable(false);
 
         jLabel5.setText("Estimated Loss");
 
@@ -162,12 +162,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Location Point");
 
-        jButton2.setText("Set Location");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        sceneLocation.setEditable(false);
 
         jLabel3.setText("Scene Image");
 
@@ -178,7 +173,8 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("Picture will display here");
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel7.setPreferredSize(new java.awt.Dimension(460, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -208,18 +204,15 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel3))
                                 .addGap(53, 53, 53)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(estimatedLoss, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(estimatedLoss, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                                             .addComponent(noOfVictims))
                                         .addGap(393, 393, 393))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(117, 117, 117)
-                                        .addComponent(jButton2)))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -253,8 +246,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -263,7 +255,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createSceneBtn)
                     .addComponent(jButton1))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -273,7 +265,10 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
         
+        String msg = JOptionPane.showInputDialog("Additional Message");
+        
         selectedWorkReq.setStatus("Forwarded to Disaster Team");
+        selectedWorkReq.setMessage(msg);
         
         ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
         sceneReq.setSceneName(sceneName.getText());
@@ -283,7 +278,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         sceneReq.setSceneLocationPoint(selectedWorkReq.getSceneLocationPoint());
         sceneReq.setStatus("Requested");  
         sceneReq.setSender(account);
-        sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
+        //sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
         sceneReq.setMessage("Waiting for disaster head to approve request");
        
         account.getWorkQueue().getWorkRequestList().add(sceneReq);
@@ -299,14 +294,6 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
             populateSceneTable();
         //}
     }//GEN-LAST:event_createSceneBtnActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
-        userProcessContainer.add("OrganizationLocationJPanel", muajp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
     VolunteerSceneRequest selectedWorkReq;
     private void sceneTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sceneTableMouseClicked
         //int selectedReq = sceneTable.rowAtPoint(evt.getPoint());
@@ -341,7 +328,9 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String msg = JOptionPane.showInputDialog("Additional Message");
         selectedWorkReq.setStatus("Rejected");
+        selectedWorkReq.setMessage(msg);
         populateSceneTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -365,7 +354,6 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

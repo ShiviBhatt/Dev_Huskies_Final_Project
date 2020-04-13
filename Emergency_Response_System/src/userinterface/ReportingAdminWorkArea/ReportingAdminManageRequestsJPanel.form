@@ -44,21 +44,17 @@
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="estimatedLoss" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="estimatedLoss" alignment="0" pref="188" max="32767" attributes="0"/>
                                           <Component id="noOfVictims" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="sceneLocation" min="-2" pref="188" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" min="-2" pref="361" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Component id="sceneLocation" min="-2" pref="188" max="-2" attributes="0"/>
+                                      <Component id="jLabel7" min="-2" pref="361" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -106,7 +102,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="sceneLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -118,7 +113,7 @@
                   <Component id="createSceneBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="247" max="32767" attributes="0"/>
+              <EmptySpace pref="250" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,7 +129,7 @@
         <Component class="javax.swing.JTable" name="sceneTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
+              <Table columnCount="9" rowCount="4">
                 <Column editable="false" title="Scene #" type="java.lang.Object"/>
                 <Column editable="false" title="Scene Name" type="java.lang.Object"/>
                 <Column editable="false" title="Zip Code" type="java.lang.Object"/>
@@ -142,10 +137,22 @@
                 <Column editable="false" title="# of Victims" type="java.lang.Object"/>
                 <Column editable="false" title="Estimated Loss" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
+                <Column editable="false" title="Created Date" type="java.lang.Object"/>
+                <Column editable="false" title="Additional Message" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -199,6 +206,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sceneName">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sceneNameActionPerformed"/>
       </Events>
@@ -209,8 +219,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sceneZipCode">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="noOfVictims">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -218,6 +234,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="estimatedLoss">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -238,14 +257,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sceneLocation">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Set Location"/>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -262,7 +276,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel7"/>
+        <Property name="text" type="java.lang.String" value="Picture will display here"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[460, 280]"/>
         </Property>
