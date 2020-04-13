@@ -30,7 +30,13 @@ public class EmergencyUnitRequest extends WorkRequest{
     private Employee sceneManager;
     private String imagePath;
     //private boolean considerInGraph = true;
-
+    int min = 100;
+    int max = 999;
+    
+    public EmergencyUnitRequest() {
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        sceneId = "ER"+randomNum;
+    }
     public String getSceneId() {
         return sceneId;
     }
@@ -146,7 +152,7 @@ public class EmergencyUnitRequest extends WorkRequest{
 
     @Override
     public String toString() {
-        return sceneName;
+        return sceneId;
     }
 
     

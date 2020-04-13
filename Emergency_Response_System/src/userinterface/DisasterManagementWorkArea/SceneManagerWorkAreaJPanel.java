@@ -53,18 +53,33 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void populateStatusTable() {
         DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
         model.setRowCount(0);
-        /*for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {
-            Object[] row = new Object[7];
-            row[0] = organization.getName();
-            row[1] = ((ReportingAdminSceneRequest) wr).getStatus();
-            row[2] = organization.getName();
-            row[3] = wr.getRequestDate();
-            row[4] = ((ReportingAdminSceneRequest) wr).getSender();
-            row[5] = ((ReportingAdminSceneRequest) wr).getMessage();
-            row[6] = ((ReportingAdminSceneRequest) wr).getSceneId();
-            model.addRow(row);
-        }*/
-        for (Network network : business.getNetworkList()) {
+        for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
+            if(wr instanceof EmergencyUnitRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                
+                row[0] = ((EmergencyUnitRequest) wr);
+                row[1] = ((EmergencyUnitRequest) wr).getStatus();
+                row[2] = ((EmergencyUnitRequest) wr).getRecieverOrganization().getName();
+                row[3] = ((EmergencyUnitRequest) wr).getRequestDate();
+                row[4] = ((EmergencyUnitRequest) wr).getSender().getEmployee().getName();
+                row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                row[6] = ((EmergencyUnitRequest) wr).getSceneId();
+                row[6] = ((EmergencyUnitRequest) wr).getRecieverNetwork().getName();
+               
+               
+                /*
+                row[0] = ((EmergencyUnitRequest) wr).getStatus();
+                row[1] = ((EmergencyUnitRequest) wr).getStatus();
+                row[2] = organization.getName();
+                row[3] = wr.getRequestDate();
+                row[4] = ((EmergencyUnitRequest) wr).getSender();
+                row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                row[6] = ((EmergencyUnitRequest) wr).getSceneId();*/
+                model.addRow(row); 
+                
+            }            
+        }
+        /*commented by mayank for (Network network : business.getNetworkList()) {
             for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if ((!(o instanceof DisasterOrganization)) && (!(o instanceof IncidentManagementOrganization))) {
@@ -84,7 +99,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             }
-        }
+        }*/
     }
 
     private void populateSceneTable() {
@@ -93,13 +108,15 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {
             if(wr instanceof ReportingAdminSceneRequest) {
-                Object[] row = new Object[5];
+                Object[] row = new Object[model.getColumnCount()];
                 row[0] = ((ReportingAdminSceneRequest) wr);
                 row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
                 row[2] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
                 row[3] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
                 row[4] = ((ReportingAdminSceneRequest) wr).getSender();
-
+                row[5] = ((ReportingAdminSceneRequest) wr).getStatus();
+                row[6] = ((ReportingAdminSceneRequest) wr).getRequestDate();
+                row[7] = ((ReportingAdminSceneRequest) wr).getMessage();
                 model.addRow(row);
             }
         }
@@ -161,17 +178,17 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Scene Name", "Victims", "ZipCode", "Sender"
+                "Scene Id", "Scene Name", "Victims", "ZipCode", "Sender", "Status", "Created Date", "Additional Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -189,17 +206,17 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         statusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Organization", "Status", "Reciever", "Request Date", "Sender", "Message", "Scene Id"
+                "Emergency Request Id", "Status", "Reciever Organization", "Request Date", "Sender", "Message", "Scene Id", "Reciever Network"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -228,7 +245,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

@@ -24,6 +24,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -522,6 +523,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 //        
 //        organization.getWorkQueue().getWorkRequestList().add(emergencyRequest);
 //        recieverOrganization.getWorkQueue().getWorkRequestList().add(emergencyRequest);
+                        String msg = JOptionPane.showInputDialog("Additional Message");
                         EmergencyUnitRequest sceneReq = new EmergencyUnitRequest();
                         
                         sceneReq.setSceneName(((ReportingAdminSceneRequest) workRequest).getSceneName());
@@ -530,14 +532,20 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                         sceneReq.setEstimatedLoss(((ReportingAdminSceneRequest) workRequest).getEstimatedLoss());
                         sceneReq.setSceneLocationPoint(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint());
                         sceneReq.setStatus("Requested");
-                        sceneReq.setSender(workRequest.getSender());
+                        //sceneReq.setSender(workRequest.getSender());
+                        sceneReq.setSender(account);
+                        sceneReq.setRequestDate(new Date());
                         sceneReq.setSceneId(((ReportingAdminSceneRequest) workRequest).getSceneId());
                         if(requirements != null){
                             sceneReq.setRequirements(requirements);
                         }
                         sceneReq.setSceneManager(((ReportingAdminSceneRequest) workRequest).getSceneManager());
-                        sceneReq.setMessage(org.getName() + " Requested");
+                        //sceneReq.setMessage(org.getName() + " Requested");
+                        sceneReq.setMessage(msg);
                         sceneReq.setSenderNetwork(senderNetwork);
+                        sceneReq.setSenderOrganization(organization);
+                        sceneReq.setRecieverOrganization(org);
+                        sceneReq.setSenderNetwork(network);
                         //sceneReq.setConsiderInGraph(false);
                         org.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
