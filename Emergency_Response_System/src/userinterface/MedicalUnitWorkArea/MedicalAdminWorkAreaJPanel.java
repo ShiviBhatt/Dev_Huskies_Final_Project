@@ -10,7 +10,12 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.EmergencyUnitRequest;
+import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,8 +26,21 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form MedicalAdminWorkAreaJPanel
      */
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    EcoSystem system;
+    Organization organization;
+    Network network;
+    UserAccount account;
     public MedicalAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.system = system;
+        this.organization = organization;
+        this.network = network;
+        this.account = account;
+        populateTable();
     }
 
     /**
@@ -35,79 +53,169 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        workRequestTable = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        messageTextField = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Medical Department Admin Work Area");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Requested Manager", "Requested Organization", "Request Type", "Status", "Count"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Reciever", "Requested Date", "Requirements"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(workRequestTable);
 
-        jButton1.setText("View");
+        jButton3.setText("Process Scene");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Assign");
+        jLabel3.setText("Set Message");
+
+        jButton4.setText("Update Scene Situation");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel1)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGap(131, 131, 131)
+                .addComponent(jLabel1)
+                .addContainerGap(313, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton4)
+                                .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton3)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                    .addGap(26, 26, 26)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jButton3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jButton4)
+                    .addGap(35, 35, 35)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int count = workRequestTable.getSelectedRowCount();
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+            for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                    wr.setStatus("Approved");
+                    wr.setMessage(organization.getName() + " Has approved the requirements");
+                }
+            }
+            populateTable();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
+        model.setRowCount(0);
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[10];
+            row[0] = ((EmergencyUnitRequest) wr).getSceneId();
+            row[1] = wr.getSender();
+            row[2] = ((EmergencyUnitRequest) wr).getSceneName();
+            row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
+            row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
+            
+            
+            row[5] = wr.getMessage();
+            row[6] = wr.getStatus();
+            row[7] = "";
+            row[8] = wr.getRequestDate();
+            row[9] = ((EmergencyUnitRequest) wr).getRequirements();
+            model.addRow(row);
+        }
+    }
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        int count = workRequestTable.getSelectedRowCount();
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+
+            String text = messageTextField.getText();
+            if (!text.isEmpty()) {
+                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                        wr.setStatus("Completed");
+                        wr.setMessage(text);
+                    }
+                }
+                populateTable();
+            } else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField messageTextField;
+    private javax.swing.JTable workRequestTable;
     // End of variables declaration//GEN-END:variables
 }

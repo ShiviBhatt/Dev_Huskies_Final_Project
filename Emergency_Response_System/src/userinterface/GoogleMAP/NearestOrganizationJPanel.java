@@ -13,6 +13,10 @@ import Business.Organization.FireSafetyOrganization;
 import Business.Organization.MedicalOrganization;
 import Business.Organization.Organization;
 import Business.Organization.PoliceOrganization;
+import Business.Organization.VolunteerCompanyOrganization;
+import Business.Organization.VolunteerHospitalOrganization;
+import Business.Organization.VolunteerNGOOrganization;
+import Business.Organization.VolunteerPersonalOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
@@ -20,6 +24,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -85,9 +90,12 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         nearestOrgTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         networkJComboBox = new javax.swing.JComboBox();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         policeOrg.setText("Police Organization");
         policeOrg.addActionListener(new java.awt.event.ActionListener() {
@@ -142,19 +150,40 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Place Request");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Select Network");
 
         jButton3.setText("Place Req");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Hospital Organization");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("NGO Organization");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Personal Organization");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("CompanyOrganization");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -166,30 +195,34 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(policeOrg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fireOrg)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(208, 208, 208)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(policeOrg)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fireOrg)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(medicineOrg)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton6)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(385, 385, 385)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -208,10 +241,13 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     .addComponent(policeOrg)
                     .addComponent(fireOrg)
                     .addComponent(medicineOrg)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -326,8 +362,159 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        int count = nearestOrgTable.getSelectedRowCount();
+        int selectedRow = nearestOrgTable.getSelectedRow();
+        int orgId = (int) nearestOrgTable.getValueAt(selectedRow, 0);
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select a row!");
+        } else {
+            for (Network n : business.getNetworkList()) {
+                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                        if (org.getOrganizationID() == orgId) {
+                            for (WorkRequest wr : org.getWorkQueue().getWorkRequestList()) {
+                                if (((EmergencyUnitRequest) wr).getSceneId().equalsIgnoreCase(((EmergencyUnitRequest) workRequest).getSceneId()) && !wr.getStatus().equalsIgnoreCase("Completed")) {
+                                    JOptionPane.showMessageDialog(null, "Request to this organization is already set!");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+       
+            if (orgType.equalsIgnoreCase("Medicine")) {
+                String requirements = JOptionPane.showInputDialog(userProcessContainer, "Enter your medical requirements (Pharmaceuticals/ Vaccine)");
+                createWorkRequest(orgId, requirements);
+            } else {
+                createWorkRequest(orgId, null);
+            }
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        orgType = "NGO";
+        ArrayList<Organization> orgList = new ArrayList<Organization>();
+        DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
+        model.setRowCount(0);
+        Object[] row = new Object[3];
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                if (org instanceof VolunteerNGOOrganization) {
+                    recieverOrganization = org;
+                    LocationPoint point = new LocationPoint();
+                    point.setLatitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude());
+                    point.setLongitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude());
+                    point.setName("p");
+                    //if (org.getOrganizationDistanceFromScene(point) < 1) {
+                    orgList.add(org);
+                    row[0] = org.getOrganizationID();
+                    row[1] = org.getName();
+                    row[2] = org.getOrganizationDistanceFromScene(point);
+                    model.addRow(row);
+                    //}
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        EmergencyUnitRequest emergencyRequest = new EmergencyUnitRequest();
+        // TODO add your handling code here:
+        orgType = "Hospital";
+        ArrayList<Organization> orgList = new ArrayList<Organization>();
+        DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
+        model.setRowCount(0);
+        Object[] row = new Object[3];
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                if (org instanceof VolunteerHospitalOrganization) {
+                    recieverOrganization = org;
+                    LocationPoint point = new LocationPoint();
+                    point.setLatitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude());
+                    point.setLongitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude());
+                    point.setName("p");
+                    //if (org.getOrganizationDistanceFromScene(point) < 1) {
+                    orgList.add(org);
+                    row[0] = org.getOrganizationID();
+                    row[1] = org.getName();
+                    row[2] = org.getOrganizationDistanceFromScene(point);
+                    model.addRow(row);
+                    //}
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        orgType = "NGO";
+        ArrayList<Organization> orgList = new ArrayList<Organization>();
+        DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
+        model.setRowCount(0);
+        Object[] row = new Object[3];
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                if (org instanceof VolunteerPersonalOrganization) {
+                    recieverOrganization = org;
+                    LocationPoint point = new LocationPoint();
+                    point.setLatitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude());
+                    point.setLongitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude());
+                    point.setName("p");
+                    //if (org.getOrganizationDistanceFromScene(point) < 1) {
+                    orgList.add(org);
+                    row[0] = org.getOrganizationID();
+                    row[1] = org.getName();
+                    row[2] = org.getOrganizationDistanceFromScene(point);
+                    model.addRow(row);
+                    //}
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        orgType = "NGO";
+        ArrayList<Organization> orgList = new ArrayList<Organization>();
+        DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
+        model.setRowCount(0);
+        Object[] row = new Object[3];
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                if (org instanceof VolunteerCompanyOrganization) {
+                    recieverOrganization = org;
+                    LocationPoint point = new LocationPoint();
+                    point.setLatitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude());
+                    point.setLongitude(((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude());
+                    point.setName("p");
+                    //if (org.getOrganizationDistanceFromScene(point) < 1) {
+                    orgList.add(org);
+                    row[0] = org.getOrganizationID();
+                    row[1] = org.getName();
+                    row[2] = org.getOrganizationDistanceFromScene(point);
+                    model.addRow(row);
+                    //}
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+    
+    public void createWorkRequest(int orgId,String requirements){
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (org.getOrganizationID() == orgId) {
+                        System.out.println(org);
+                        //EmergencyUnitRequest sceneReq = new EmergencyUnitRequest();
 //        emergencyRequest.setStatus("Requested");
 //        emergencyRequest.setRecieverOrganization(recieverOrganization);
 //        emergencyRequest.setSenderOrganization(organization);
@@ -335,21 +522,8 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 //        
 //        organization.getWorkQueue().getWorkRequestList().add(emergencyRequest);
 //        recieverOrganization.getWorkQueue().getWorkRequestList().add(emergencyRequest);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        int count = nearestOrgTable.getSelectedRowCount();
-        int selectedRow = nearestOrgTable.getSelectedRow();
-        int orgId = (int) nearestOrgTable.getValueAt(selectedRow, 0);
-        if (count != 1) {
-
-        } else {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    if (org.getOrganizationID() == orgId) {
-                        System.out.println(org);
-                        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+                        EmergencyUnitRequest sceneReq = new EmergencyUnitRequest();
+                        
                         sceneReq.setSceneName(((ReportingAdminSceneRequest) workRequest).getSceneName());
                         sceneReq.setSceneZipcode(((ReportingAdminSceneRequest) workRequest).getSceneZipcode());
                         sceneReq.setNoOfVictims(((ReportingAdminSceneRequest) workRequest).getNoOfVictims());
@@ -358,21 +532,27 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                         sceneReq.setStatus("Requested");
                         sceneReq.setSender(workRequest.getSender());
                         sceneReq.setSceneId(((ReportingAdminSceneRequest) workRequest).getSceneId());
+                        if(requirements != null){
+                            sceneReq.setRequirements(requirements);
+                        }
+                        sceneReq.setSceneManager(((ReportingAdminSceneRequest) workRequest).getSceneManager());
                         sceneReq.setMessage(org.getName() + " Requested");
-
+                        sceneReq.setSenderNetwork(senderNetwork);
+                        //sceneReq.setConsiderInGraph(false);
                         org.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
                 }
             }
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fireOrg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton medicineOrg;

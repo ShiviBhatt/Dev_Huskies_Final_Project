@@ -44,7 +44,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         this.network = network;
         this.business = business;
         this.organization = organization;
-        //populateTable();
+        populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
     }
@@ -183,6 +183,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         
         
         populateTable();
+        populateSiteNameCombo();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -217,7 +218,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     private void populateSiteNameCombo() {
         siteNameComboBox.removeAllItems();
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-            if(wr instanceof ReportingAdminSceneRequest) {
+            if(wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() ==  null) {
                 siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr));
             }
             

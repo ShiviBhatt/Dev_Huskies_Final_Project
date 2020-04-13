@@ -8,7 +8,10 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.DisasterOrganization;
+import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
+import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.BorderLayout;
@@ -54,7 +57,7 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
     
     public void populateBarGraph() {
         
-        ArrayList<ReportingAdminSceneRequest> workReqList = new ArrayList<>();
+        ArrayList<EmergencyUnitRequest> workReqList = new ArrayList<>();
         Map<String, Integer> workReqMap = new HashMap<>();
         
         
@@ -67,8 +70,8 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
                     
                     for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
                         //isVisited = true;
-                        if (wr instanceof ReportingAdminSceneRequest) {
-                            workReqList.add((ReportingAdminSceneRequest)wr);
+                        if (wr instanceof EmergencyUnitRequest) {
+                            workReqList.add((EmergencyUnitRequest)wr);
                         }
                     }  
                     

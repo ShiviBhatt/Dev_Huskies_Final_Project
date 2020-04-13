@@ -7,12 +7,13 @@ package Business.WorkQueue;
 
 import Business.Employee.Employee;
 import Business.Location.LocationPoint;
+
 /**
  *
  * @author Mayank
  */
-public class ReportingAdminSceneRequest extends WorkRequest{
-    
+public class ReportingAdminSceneRequest extends WorkRequest {
+
     private String sceneName;
     private String sceneId;
     private int noOfVictims;
@@ -21,6 +22,24 @@ public class ReportingAdminSceneRequest extends WorkRequest{
     private LocationPoint sceneLocationPoint;
     private Employee sceneManager;
     private String imagePath;
+    private String requirements;
+    private boolean considerInGraph = true;
+
+    public boolean isConsiderInGraph() {
+        return considerInGraph;
+    }
+
+    public void setConsiderInGraph(boolean considerInGraph) {
+        this.considerInGraph = considerInGraph;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
 
     public String getSceneName() {
         return sceneName;
@@ -86,10 +105,9 @@ public class ReportingAdminSceneRequest extends WorkRequest{
         this.imagePath = imagePath;
     }
 
-    
     @Override
     public String toString() {
-        return sceneName ;
+        return sceneName;
     }
-    
+
 }

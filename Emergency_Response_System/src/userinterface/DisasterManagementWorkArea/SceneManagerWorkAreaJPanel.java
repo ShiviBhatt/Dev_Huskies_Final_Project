@@ -12,6 +12,7 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -68,15 +69,15 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if ((!(o instanceof DisasterOrganization)) && (!(o instanceof IncidentManagementOrganization))) {
                         for (WorkRequest wr : o.getWorkQueue().getWorkRequestList()) {
-                            if(wr instanceof ReportingAdminSceneRequest) {
+                            if(((EmergencyUnitRequest) wr).getSceneManager() != null && ((EmergencyUnitRequest) wr).getSceneManager().equals(account.getEmployee())){
                                 Object[] row = new Object[7];
                                 row[0] = o.getName();
-                                row[1] = ((ReportingAdminSceneRequest) wr).getStatus();
+                                row[1] = ((EmergencyUnitRequest) wr).getStatus();
                                 row[2] = o.getName();
                                 row[3] = wr.getRequestDate();
-                                row[4] = ((ReportingAdminSceneRequest) wr).getSender();
-                                row[5] = ((ReportingAdminSceneRequest) wr).getMessage();
-                                row[6] = ((ReportingAdminSceneRequest) wr).getSceneId();
+                                row[4] = ((EmergencyUnitRequest) wr).getSender();
+                                row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                                row[6] = ((EmergencyUnitRequest) wr).getSceneId();
                                 model.addRow(row);
                             }
                         }
@@ -108,6 +109,23 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 if (o instanceof DisasterOrganization) {
                     for (WorkRequest wr : o.getWorkQueue().getWorkRequestList()) {
                         if (wr instanceof ReportingAdminSceneRequest ){//&& ((ReportingAdminSceneRequest) wr).getSceneManager().equals(account.getEmployee())) {
+=======
+//        for(WorkRequest wr: account.getWorkQueue().getWorkRequestList()){
+//            Object[] row = new Object[5];
+//                            row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
+//                            row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
+//                            row[2] = ((ReportingAdminSceneRequest) wr).getNoOfVictims();
+//                            row[3] = ((ReportingAdminSceneRequest) wr).getSceneZipcode();
+//                            row[4] = ((ReportingAdminSceneRequest) wr).getSender();
+//
+//                            model.addRow(row);
+//        }
+//        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+//            for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+//                
+//                if (o instanceof DisasterOrganization) {
+                    for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                        if (wr instanceof ReportingAdminSceneRequest &&((ReportingAdminSceneRequest) wr).getSceneManager() != null && ((ReportingAdminSceneRequest) wr).getSceneManager().equals(account.getEmployee())) {
                             Object[] row = new Object[5];
                             row[0] = ((ReportingAdminSceneRequest) wr).getSceneId();
                             row[1] = ((ReportingAdminSceneRequest) wr).getSceneName();
