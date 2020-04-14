@@ -308,7 +308,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
             contact = uContact.getText() + "@tmomail.net";
         }
-        
+        registrationRequest.setContactCarrierName(contact);
         sendEmailMessage(uEmail.getText());
         sendTextMessage(contact);
         for (Network network1 : system.getNetworkList()) {

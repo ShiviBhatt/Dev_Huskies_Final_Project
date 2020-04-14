@@ -7,19 +7,27 @@ package userinterface.DisasterManagementWorkArea;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.VoluntaryOperatingUnit;
 import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.Validation;
+import Business.WorkQueue.BroadcastAlertRequest;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
+import Business.WorkQueue.UserRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import userinterface.GoogleMAP.NearestOrganizationJPanel;
+import userinterface.UserRegistration.UserRegistrationJPanel;
 
 /**
  *
@@ -36,7 +44,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     Network network;
     EcoSystem business;
     Organization organization;
-
+    ReportingAdminSceneRequest selectedWorkReq;
+    
     public SceneManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -45,38 +54,33 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.organization = organization;
-
+        selectedWorkReq = null;
         populateSceneTable();
         populateStatusTable();
     }
 
     private void populateStatusTable() {
+        
+        /*int selectedRow = sceneTable.getSelectedRow();
+        ReportingAdminSceneRequest ss = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);*/
+        
         DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
-            if(wr instanceof EmergencyUnitRequest) {
-                Object[] row = new Object[model.getColumnCount()];
+            if(wr instanceof EmergencyUnitRequest && null != selectedWorkReq) {//selectedWorkReq.getSceneId().equals(((EmergencyUnitRequest) wr).getSceneId())) {
                 
-                row[0] = ((EmergencyUnitRequest) wr);
-                row[1] = ((EmergencyUnitRequest) wr).getStatus();
-                row[2] = ((EmergencyUnitRequest) wr).getRecieverOrganization().getName();
-                row[3] = ((EmergencyUnitRequest) wr).getRequestDate();
-                row[4] = ((EmergencyUnitRequest) wr).getSender().getEmployee().getName();
-                row[5] = ((EmergencyUnitRequest) wr).getMessage();
-                row[6] = ((EmergencyUnitRequest) wr).getSceneId();
-                row[6] = ((EmergencyUnitRequest) wr).getRecieverNetwork().getName();
-               
-               
-                /*
-                row[0] = ((EmergencyUnitRequest) wr).getStatus();
-                row[1] = ((EmergencyUnitRequest) wr).getStatus();
-                row[2] = organization.getName();
-                row[3] = wr.getRequestDate();
-                row[4] = ((EmergencyUnitRequest) wr).getSender();
-                row[5] = ((EmergencyUnitRequest) wr).getMessage();
-                row[6] = ((EmergencyUnitRequest) wr).getSceneId();*/
-                model.addRow(row); 
-                
+                if(selectedWorkReq.getSceneId().equals(((EmergencyUnitRequest) wr).getSceneId())) {
+                    Object[] row = new Object[model.getColumnCount()];                
+                    row[0] = ((EmergencyUnitRequest) wr);
+                    row[1] = ((EmergencyUnitRequest) wr).getStatus();
+                    row[2] = ((EmergencyUnitRequest) wr).getRecieverOrganization().getName();
+                    row[3] = ((EmergencyUnitRequest) wr).getRequestDate();
+                    row[4] = ((EmergencyUnitRequest) wr).getSender().getEmployee().getName();
+                    row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                    row[6] = ((EmergencyUnitRequest) wr).getSceneId();
+                    row[7] = ((EmergencyUnitRequest) wr).getRecieverNetwork().getName();
+                    model.addRow(row);
+                }
             }            
         }
         /*commented by mayank for (Network network : business.getNetworkList()) {
@@ -175,6 +179,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         statusTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,6 +199,11 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        sceneTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sceneTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(sceneTable);
@@ -239,38 +250,59 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText("Mark Resolved");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Broadcast Alerts");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nearestOrgSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(nearestOrgSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4)))
+                        .addGap(0, 392, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nearestOrgSearch)
-                    .addComponent(jButton1))
-                .addGap(112, 112, 112)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(67, 67, 67)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,10 +342,99 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         populateStatusTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int selectedRow = sceneTable.getSelectedRow();        
+        ReportingAdminSceneRequest selectedScene = null;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a Scene", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else {
+            boolean isReqCompleted = true;
+            for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
+                if(wr instanceof EmergencyUnitRequest && null != selectedWorkReq) {
+                    if(selectedWorkReq.getSceneId().equals(((EmergencyUnitRequest) wr).getSceneId())) {
+                        if(!((EmergencyUnitRequest)wr).getStatus().equals("Completed")) {
+                            isReqCompleted = false;
+                            break;
+                        }
+                    }
+                }            
+            }
+            
+            if(isReqCompleted) {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                ReportingAdminSceneRequest sScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
+                sScene.setStatus("Resolved");
+                sScene.setMessage(msg);
+            }else {
+                JOptionPane.showMessageDialog(null, "There are pending emergency requests for this scene. Please wait for them to be completed before marking resolved.");
+            }
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void sceneTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sceneTableMouseClicked
+        int selectedReq = sceneTable.getSelectedRow();
+        selectedWorkReq = (ReportingAdminSceneRequest)sceneTable.getValueAt(selectedReq, 0);
+        populateStatusTable();
+    }//GEN-LAST:event_sceneTableMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //String text = "one two three four five six seven eight nine ten ";
+        String emailIds = "";
+        String contacts = "";
+        JTextArea textArea = new JTextArea();
+        textArea.setColumns(30);
+        textArea.setRows(5);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setSize(textArea.getPreferredSize().width, 1);
+        int result = JOptionPane.showConfirmDialog(null, new JScrollPane(textArea), "Enter Alert to be broadcasted!", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (result == JOptionPane.OK_OPTION) {
+            BroadcastAlertRequest alertRequest = new BroadcastAlertRequest();
+            alertRequest.setAlertMessage(textArea.getText());
+            alertRequest.setSender(account);
+            alertRequest.setRequestDate(new Date());
+            alertRequest.setInNetwork(network);
+            
+            for(Network n : business.getNetworkList()) {
+                for (Enterprise e : n.getEnterpriseDirectory().getEnterpriseList()) {
+                    System.out.println("1===--->> " + e.getName());
+                    for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                        o.getWorkQueue().getWorkRequestList().add(alertRequest);
+                    }
+                    if(e instanceof VoluntaryOperatingUnit) {
+                        System.out.println("2===--->> " + e.getName());
+                        for(WorkRequest wr : e.getWorkQueue().getWorkRequestList()) {
+                            System.out.println("3===--->> " + e.getName());
+                            if(wr instanceof UserRegistrationRequest) {
+                                System.out.println("4===--->> " + e.getName());
+                                ((UserRegistrationRequest) wr).setContactCarrierName("8574247014@txt.att.net");
+                                emailIds += ((UserRegistrationRequest) wr).getUserEmailId() + ",";
+                                contacts += ((UserRegistrationRequest) wr).getContactCarrierName() + ",";
+                            }
+                        }
+                    }
+                }
+            }
+            
+            String broadcastMsg = new Date() + "; Broadcasted by: " + account.getEmployee().getName() + "(Scene Manager)\n";
+            broadcastMsg += "Alert Message: " + textArea.getText();
+            
+            Validation.sendEmailMessage(emailIds.substring(0, emailIds.length()-1), "Alert Message", broadcastMsg);
+            Validation.sendTextMessage(contacts.substring(0, contacts.length()-1), "Alert Message", broadcastMsg);
+            JOptionPane.showMessageDialog(null, "Alert has been broadcasted successfully");
+        } else {
+            System.out.println("Canceled");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nearestOrgSearch;

@@ -50,17 +50,20 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         System.out.println("2. " + organization.getName());
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-            Object[] row = new Object[9];
-            row[0] = ((EmergencyUnitRequest) wr).getSceneId();
-            row[1] = wr.getSender();
-            row[2] = ((EmergencyUnitRequest) wr).getSceneName();
-            row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
-            row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
-            row[5] = wr.getMessage();
-            row[6] = wr.getStatus();
-            row[7] = "";
-            row[8] = wr.getRequestDate();
-            model.addRow(row);
+            if(wr instanceof EmergencyUnitRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = ((EmergencyUnitRequest) wr);
+                row[1] = ((EmergencyUnitRequest) wr).getSender().getEmployee().getName();
+                row[2] = ((EmergencyUnitRequest) wr).getSceneName();
+                row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
+                row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
+                row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                row[6] = ((EmergencyUnitRequest) wr).getStatus();
+                row[7] = ((EmergencyUnitRequest) wr).getSenderOrganization().getName();
+                row[8] = ((EmergencyUnitRequest) wr).getSenderNetwork().getName();
+                row[9] = ((EmergencyUnitRequest) wr).getRequestDate();
+                model.addRow(row);
+            }
         }
     }
     
@@ -83,17 +86,17 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Reciever", "Requested Date"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -128,20 +131,25 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(221, 221, 221)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton3)))
+                        .addGap(0, 583, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,10 +157,10 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,6 +176,19 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+            
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            String text = messageTextField.getText();
+            
+            if (!text.isEmpty()) {
+                emerReq.setStatus("Completed");
+                emerReq.setStatus(text);
+                populateTable();
+            }else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            /*
             int selectedRow = workRequestTable.getSelectedRow();
             String id = (String) workRequestTable.getValueAt(selectedRow, 0);
 
@@ -182,24 +203,29 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 populateTable();
             } else{
                 JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+            }*/
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int count = workRequestTable.getSelectedRowCount();
-        int selectedRow = workRequestTable.getSelectedRow();
-        String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+        //int selectedRow = workRequestTable.getSelectedRow();
+        //String id = (String) workRequestTable.getValueAt(selectedRow, 0);
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            String msg = JOptionPane.showInputDialog("Additional Message");
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            emerReq.setStatus("Processed");
+            emerReq.setStatus(msg);
+            /*for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
                 if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                     wr.setStatus("Processed");
                     wr.setMessage(organization.getName() + " on their way to handle the situation");
                 }
-            }
+            }*/
             populateTable();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
