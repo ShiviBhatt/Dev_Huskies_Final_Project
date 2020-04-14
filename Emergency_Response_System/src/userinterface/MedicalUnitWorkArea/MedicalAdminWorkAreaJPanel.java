@@ -65,17 +65,17 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Reciever", "Requested Date", "Requirements"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Requested Date", "Sender Network", "Requirements"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -105,37 +105,41 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jLabel1)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton3)))
+                .addContainerGap(572, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(26, 26, 26)
+                    .addGap(44, 44, 44)
+                    .addComponent(jLabel3)
+                    .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton4)
-                                .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jButton3)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
-                    .addGap(26, 26, 26)))
+                        .addComponent(jButton4)
+                        .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(649, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addGap(174, 174, 174)
+                .addComponent(jButton3)
+                .addContainerGap(260, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(35, 35, 35)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,14 +155,17 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+            String msg = JOptionPane.showInputDialog("Additional Message");
             int selectedRow = workRequestTable.getSelectedRow();
-            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
-            for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            emerReq.setStatus("Approved");
+            emerReq.setStatus(msg);
+            /*for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
                 if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
                     wr.setStatus("Approved");
                     wr.setMessage(organization.getName() + " Has approved the requirements");
                 }
-            }
+            }*/
             populateTable();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -167,20 +174,21 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-            Object[] row = new Object[10];
-            row[0] = ((EmergencyUnitRequest) wr).getSceneId();
-            row[1] = wr.getSender();
-            row[2] = ((EmergencyUnitRequest) wr).getSceneName();
-            row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
-            row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
-            
-            
-            row[5] = wr.getMessage();
-            row[6] = wr.getStatus();
-            row[7] = "";
-            row[8] = wr.getRequestDate();
-            row[9] = ((EmergencyUnitRequest) wr).getRequirements();
-            model.addRow(row);
+            if(wr instanceof EmergencyUnitRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = ((EmergencyUnitRequest) wr);
+                row[1] = ((EmergencyUnitRequest) wr).getSender().getEmployee().getName();
+                row[2] = ((EmergencyUnitRequest) wr).getSceneName();
+                row[3] = ((EmergencyUnitRequest) wr).getNoOfVictims();
+                row[4] = ((EmergencyUnitRequest) wr).getSceneLocationPoint();
+                row[5] = ((EmergencyUnitRequest) wr).getMessage();
+                row[6] = ((EmergencyUnitRequest) wr).getStatus();
+                row[7] = ((EmergencyUnitRequest) wr).getSenderOrganization().getName();
+                row[8] = ((EmergencyUnitRequest) wr).getSenderNetwork().getName();
+                row[9] = ((EmergencyUnitRequest) wr).getRequestDate();
+                row[10] = ((EmergencyUnitRequest) wr).getRequirements();
+                model.addRow(row);
+            }
         }
     }
     
@@ -191,9 +199,18 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             int selectedRow = workRequestTable.getSelectedRow();
-            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
-
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
             String text = messageTextField.getText();
+            
+            if (!text.isEmpty()) {
+                emerReq.setStatus("Completed");
+                emerReq.setStatus(text);
+                populateTable();
+            }else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+
+            /*String text = messageTextField.getText();
             if (!text.isEmpty()) {
                 for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
                     if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
@@ -204,7 +221,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 populateTable();
             } else{
                 JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+            }*/
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

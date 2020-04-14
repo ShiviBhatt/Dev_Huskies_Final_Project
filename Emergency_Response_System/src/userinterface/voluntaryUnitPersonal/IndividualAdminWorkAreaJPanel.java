@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.FireSafetyWorkArea;
+package userinterface.voluntaryUnitPersonal;
 
+import userinterface.VoluntaryUnitNGO.*;
+import userinterface.PoliceWorkArea.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -13,6 +15,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -21,32 +24,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dhankuwarsisodiya
  */
-public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
-
-    JPanel userProcessContainer;
-    Enterprise enterprise;
-    EcoSystem system;
-    Organization organization;
-    Network network;
-    UserAccount account;
+public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form FireSafetyAdminWorkAreaJPanel
+     * Creates new form PoliceAdminWorkAreaJPanel
      */
-    public FireSafetyAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private Organization organization;
+    private Enterprise enterprise;
+    private Network network;
+    private EcoSystem business;
+
+    public IndividualAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.system = system;
         this.organization = organization;
         this.network = network;
+        this.business = business;
         this.account = account;
         populateTable();
     }
 
-    private void populateTable() {
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
         model.setRowCount(0);
+        System.out.println("2. " + organization.getName());
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             if(wr instanceof EmergencyUnitRequest) {
                 Object[] row = new Object[model.getColumnCount()];
@@ -62,10 +66,9 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                 row[9] = ((EmergencyUnitRequest) wr).getRequestDate();
                 model.addRow(row);
             }
-            
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,16 +78,13 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         workRequestTable = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         messageTextField = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel1.setText("Fire Safety Management Admin Work Area");
+        jButton3 = new javax.swing.JButton();
 
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,21 +105,24 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(workRequestTable);
+        jScrollPane1.setViewportView(workRequestTable);
+
+        jButton2.setText("End Scene Work Request");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setText("Individual Admin Work Area");
+
+        jLabel2.setText("Set Message");
 
         jButton3.setText("Process Scene");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Set Message");
-
-        jButton4.setText("Update Scene Situation");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
             }
         });
 
@@ -130,51 +133,87 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(221, 221, 221)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton3)))
+                        .addGap(0, 557, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jButton4)))
-                .addContainerGap(488, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(jLabel3)
-                    .addGap(18, 18, 18)
-                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(655, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane2)))
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(169, 169, 169)
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(48, 48, 48)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(60, 60, 60)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        int count = workRequestTable.getSelectedRowCount();
+        if (count != 1) {
+            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            String text = messageTextField.getText();
+            
+            if (!text.isEmpty()) {
+                emerReq.setStatus("Completed");
+                emerReq.setStatus(text);
+                populateTable();
+            }else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            /*
+            int selectedRow = workRequestTable.getSelectedRow();
+            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
+
+            String text = messageTextField.getText();
+            if (!text.isEmpty()) {
+                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
+                        wr.setStatus("Completed");
+                        wr.setMessage(text);
+                    }
+                }
+                populateTable();
+            } else{
+                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
+            }*/
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int count = workRequestTable.getSelectedRowCount();
+        //int selectedRow = workRequestTable.getSelectedRow();
+        //String id = (String) workRequestTable.getValueAt(selectedRow, 0);
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -193,46 +232,13 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        
-        int count = workRequestTable.getSelectedRowCount();
-        if (count != 1) {
-            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            int selectedRow = workRequestTable.getSelectedRow();
-            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
-            String text = messageTextField.getText();
-            
-            if (!text.isEmpty()) {
-                emerReq.setStatus("Completed");
-                emerReq.setStatus(text);
-                populateTable();
-            }else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            /*String text = messageTextField.getText();
-            if (!text.isEmpty()) {
-                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
-                        wr.setStatus("Completed");
-                        wr.setMessage(text);
-                    }
-                }
-                populateTable();
-            } else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }*/
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField messageTextField;
     private javax.swing.JTable workRequestTable;
     // End of variables declaration//GEN-END:variables

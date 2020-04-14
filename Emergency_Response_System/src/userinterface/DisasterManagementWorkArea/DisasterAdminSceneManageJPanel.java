@@ -165,6 +165,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        UserAccount empUserAccount = null;
+        boolean isResolved = true;
         String msg = JOptionPane.showInputDialog("Additional Message");
         ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
@@ -177,15 +179,32 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
                 if (u.getEmployee().getId() == (employee.getId())) {
                     //System.out.println("3[][][][][]");
                     //sceneManagerCombo.addItem(u.getEmployee());
-                    u.getWorkQueue().getWorkRequestList().add(scene);
+                    //u.getWorkQueue().getWorkRequestList().add(scene);
+                    empUserAccount = u;
+                    break;
                 }
             }
         }
         
+        for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {            
+            if(wr instanceof ReportingAdminSceneRequest) {
+                if(!((ReportingAdminSceneRequest) wr).getStatus().equals("Resolved")) {
+                    isResolved = false;
+                    break;
+                }
+            }            
+        }
+        
+        if(isResolved) {
+            empUserAccount.getWorkQueue().getWorkRequestList().add(scene);
+            populateTable();
+            populateSiteNameCombo();
+        }else {
+            JOptionPane.showMessageDialog(null, "This manager is already assigned to an active scene. Please select a different manager.");
+        }
         
         
-        populateTable();
-        populateSiteNameCombo();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

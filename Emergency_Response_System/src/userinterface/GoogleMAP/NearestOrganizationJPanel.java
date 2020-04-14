@@ -372,7 +372,18 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select a row!");
         } else {
-            for (Network n : business.getNetworkList()) {
+            
+            for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) { 
+                if(wr instanceof EmergencyUnitRequest) {
+                    if(((EmergencyUnitRequest)wr).getRecieverOrganization().getOrganizationID() ==  orgId && !((EmergencyUnitRequest)wr).getStatus().equals("Completed")) {
+                        JOptionPane.showMessageDialog(null, "Request to this organization is already sent!");
+                        return;
+                    }
+                }
+            }
+            
+            
+            /*for (Network n : business.getNetworkList()) {
                 for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
                         if (org.getOrganizationID() == orgId) {
@@ -386,7 +397,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     }
 
                 }
-            }
+            }*/
        
             if (orgType.equalsIgnoreCase("Medicine")) {
                 String requirements = JOptionPane.showInputDialog(userProcessContainer, "Enter your medical requirements (Pharmaceuticals/ Vaccine)");
@@ -545,9 +556,10 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                         sceneReq.setSenderNetwork(senderNetwork);
                         sceneReq.setSenderOrganization(organization);
                         sceneReq.setRecieverOrganization(org);
-                        sceneReq.setSenderNetwork(network);
+                        sceneReq.setRecieverNetwork(network);
                         //sceneReq.setConsiderInGraph(false);
                         org.getWorkQueue().getWorkRequestList().add(sceneReq);
+                        account.getWorkQueue().getWorkRequestList().add(sceneReq);
                     }
                 }
             }
