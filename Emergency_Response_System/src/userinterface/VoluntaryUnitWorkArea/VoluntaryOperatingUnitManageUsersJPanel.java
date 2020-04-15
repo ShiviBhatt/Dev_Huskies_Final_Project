@@ -254,25 +254,26 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
     }//GEN-LAST:event_backjButton1ActionPerformed
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-       String userName = createUsername.getText();
+        String userName = createUsername.getText();
         String password = createPassword.getText();
-        if (!((userName.equals("") || (password.equals(""))))) {
-            if (ecosystem.checkIfUserIsUnique(userName)) {
-                Organization organization = (Organization) selectOrganization.getSelectedItem();
-                Employee employee = (Employee) selectEmployee.getSelectedItem();
-                Role role = (Role) selectRole.getSelectedItem();
-
-                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-
-                populateData();
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+        
+        if("".equals(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }else if(!ecosystem.checkIfUserIsUnique(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter unique username");
+        }else if("".equals(password)) {
+            JOptionPane.showMessageDialog(null, "Please enter password");
+        }else{
+            Organization organization = (Organization) selectOrganization.getSelectedItem();
+            Employee employee = (Employee) selectEmployee.getSelectedItem();
+            Role role = (Role) selectRole.getSelectedItem();
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+            populateData();
+            JOptionPane.showMessageDialog(null, "User created successfully");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
-        public void populateVoluntaryOrganizationComboBox() {
+    
+    public void populateVoluntaryOrganizationComboBox() {
         selectOrganization.removeAllItems();
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
             selectOrganization.addItem(organization);

@@ -220,15 +220,17 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        if(!orgNameTextField.getText().isEmpty()){
+        
+        if("".equals(orgNameTextField.getText())) {
+            JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+        }else if("".equals(orgLocation.getText())) {
+            JOptionPane.showMessageDialog(null, "Please set a location"); 
+        }else {
             Organization organization = directory.createOrganization(type,orgNameTextField.getText(), locationPoint);
-            
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             orgNameTextField.setText("");
-        } else{
-           JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+            populateTable();
         }
-        populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

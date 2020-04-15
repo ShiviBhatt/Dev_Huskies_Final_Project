@@ -70,13 +70,13 @@ public class EcoSystem extends Organization{
         for (Network network : ecoSys.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                    if (ua.getUsername().equals(userName)) {
+                    if (ua.getUsername().equalsIgnoreCase(userName)) {
                         return false;
                     }
                 }
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                     for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (ua.getUsername().equals(userName)) {
+                        if (ua.getUsername().equalsIgnoreCase(userName)) {
                             return false;
                         }
                     }

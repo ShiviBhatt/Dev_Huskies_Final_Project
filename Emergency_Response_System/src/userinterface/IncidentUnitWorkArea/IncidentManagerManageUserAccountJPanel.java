@@ -4,6 +4,7 @@
  */
 package userinterface.IncidentUnitWorkArea;
 
+import Business.EcoSystem;
 import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -11,6 +12,7 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,12 +27,13 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
      */
     private JPanel container;
     private Enterprise enterprise;
-
-    public IncidentManagerManageUserAccountJPanel(JPanel container, Enterprise enterprise) {
+    EcoSystem system;
+    
+    public IncidentManagerManageUserAccountJPanel(JPanel container, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.enterprise = enterprise;
         this.container = container;
-
+        this.system = system;
         popOrganizationComboBox();
        // employeeJComboBox.removeAllItems();
         popData();
@@ -247,13 +250,23 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
         String userName = nameJTextField.getText();
         String password = passwordJTextField.getText();
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
         
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        if("".equals(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }else if(!system.checkIfUserIsUnique(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter unique username");
+        }else if("".equals(password)) {
+            JOptionPane.showMessageDialog(null, "Please enter password");
+        }else{
+            Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+            Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+            Role role = (Role) roleJComboBox.getSelectedItem();        
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);        
+            popData();
+            JOptionPane.showMessageDialog(null, "User is created successfully");
+        }
         
-        popData();
+        
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed

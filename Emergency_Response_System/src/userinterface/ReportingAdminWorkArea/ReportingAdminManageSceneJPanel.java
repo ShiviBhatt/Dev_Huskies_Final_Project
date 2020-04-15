@@ -152,6 +152,8 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Location Point");
 
+        sceneLocation.setEditable(false);
+
         jButton2.setText("Set Location");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

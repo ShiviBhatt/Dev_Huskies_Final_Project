@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -204,8 +205,15 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
         
-        organization.getEmployeeDirectory().createEmployee(name);
-        populateTable(organization);
+        if("".equals(name)) {
+            JOptionPane.showMessageDialog(null, "Please enter name");
+        }else {
+            organization.getEmployeeDirectory().createEmployee(name);
+            populateTable(organization);
+            JOptionPane.showMessageDialog(null, "Employee created successfully");
+        }
+        
+        
         
     }//GEN-LAST:event_addJButtonActionPerformed
 

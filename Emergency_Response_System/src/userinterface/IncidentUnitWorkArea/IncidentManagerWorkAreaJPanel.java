@@ -134,7 +134,7 @@ public class IncidentManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        IncidentManagerManageUserAccountJPanel muajp = new IncidentManagerManageUserAccountJPanel(userProcessContainer, enterprise);
+        IncidentManagerManageUserAccountJPanel muajp = new IncidentManagerManageUserAccountJPanel(userProcessContainer, enterprise, system);
         userProcessContainer.add("IncidentManagerManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

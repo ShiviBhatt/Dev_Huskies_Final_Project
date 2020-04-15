@@ -97,6 +97,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         policeOrg.setText("Police Organization");
         policeOrg.addActionListener(new java.awt.event.ActionListener() {
@@ -188,6 +189,13 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton7.setText("View On Map");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,6 +233,8 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(385, 385, 385)
                 .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -247,7 +257,9 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton7))
                 .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -520,6 +532,10 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        DistanceMap.openMap();
+    }//GEN-LAST:event_jButton7ActionPerformed
     
     public void createWorkRequest(int orgId,String requirements){
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -573,6 +589,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton medicineOrg;
