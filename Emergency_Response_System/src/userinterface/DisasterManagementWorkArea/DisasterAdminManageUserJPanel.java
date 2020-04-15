@@ -29,10 +29,13 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
      */
     JPanel container;
     Enterprise enterprise;
-    public DisasterAdminManageUserJPanel(JPanel container, Enterprise enterprise) {
+    EcoSystem system;
+    
+    public DisasterAdminManageUserJPanel(JPanel container, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.container = container;
         this.enterprise = enterprise;
+        this.system = system;
         populateOrganizationComboBox();
         populateTable();
     }
@@ -199,6 +202,23 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String userName = username.getText();
         String password = passwordText.getText();
+        if("".equals(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }else if(!system.checkIfUserIsUnique(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter unique username");
+        }else if("".equals(password)) {
+            JOptionPane.showMessageDialog(null, "Please enter password");
+        }else {
+            Organization organization = (Organization) organizationComboBox1.getSelectedItem();
+            Employee employee = (Employee) employeeComboBox2.getSelectedItem();
+            Role.RoleType role = (Role.RoleType) roleComboBox3.getSelectedItem();
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new SceneManager());
+            populateTable();
+            JOptionPane.showMessageDialog(null, "User is created successfully");
+        }
+        
+        
+        /*
         if (!((userName.equals("") || (password.equals(""))))) {
             //if (EcoSystem.checkIfUserIsUnique(userName)) {
                 Organization organization = (Organization) organizationComboBox1.getSelectedItem();
@@ -214,6 +234,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+        */
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void organizationComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationComboBox1ActionPerformed

@@ -175,6 +175,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setText("Set Location");
 
+        setLongituteLatitude.setEditable(false);
         setLongituteLatitude.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
 
         locationBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -275,10 +276,18 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
     }//GEN-LAST:event_locationBtnActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-
+        
         Organization.Type type = (Organization.Type) OrganizationTypeComboBox.getSelectedItem();
-        directory.createOrganization(type, organizationName.getText(), location);
-        populateTable();
+        
+        if("".equals(organizationName.getText())) {
+            JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+        }else if("".equals(setLongituteLatitude.getText())) {
+            JOptionPane.showMessageDialog(null, "Please set a location"); 
+        }else {
+            directory.createOrganization(type, organizationName.getText(), location);
+            populateTable();
+            JOptionPane.showMessageDialog(null, "Organization created successfully"); 
+        }
 
     }//GEN-LAST:event_addJButtonActionPerformed
 

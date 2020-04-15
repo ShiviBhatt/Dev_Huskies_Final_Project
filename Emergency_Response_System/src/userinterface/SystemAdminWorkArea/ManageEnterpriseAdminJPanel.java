@@ -255,23 +255,23 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         } else{
             Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
-        if (system.checkIfUserIsUnique(username)) {
-            UserAccount account = null;
-            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.EmergencyOperatingUnit) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyUnitAdmin());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.IncidentOperatingUnit) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new IncidentUnitManager());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+            if (system.checkIfUserIsUnique(username)) {
+                UserAccount account = null;
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.EmergencyOperatingUnit) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyUnitAdmin());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.IncidentOperatingUnit) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new IncidentUnitManager());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+                }
+                usernameJTextField.setText("");
+                passwordJPasswordField.setText("");
+                nameJTextField.setText("");
+                JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                populateTable();
+            }else {
+                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            usernameJTextField.setText("");
-            passwordJPasswordField.setText("");
-            nameJTextField.setText("");
-            JOptionPane.showMessageDialog(null, "Account created sucessfully");
-            populateTable();
-        }else {
-            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 

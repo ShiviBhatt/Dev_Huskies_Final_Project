@@ -133,7 +133,7 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        DisasterAdminManageUserJPanel disasterAdminManageUserJPanel = new DisasterAdminManageUserJPanel(userProcessContainer, enterprise);
+        DisasterAdminManageUserJPanel disasterAdminManageUserJPanel = new DisasterAdminManageUserJPanel(userProcessContainer, enterprise, business);
         userProcessContainer.add("Disaster_SceneManager_Panel", disasterAdminManageUserJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -8,6 +8,7 @@ import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -199,9 +200,14 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
+        if("".equals(name)) {
+            JOptionPane.showMessageDialog(null, "Please enter employee name");
+        }else {
+            organization.getEmployeeDirectory().createEmployee(name);
+            JOptionPane.showMessageDialog(null, "Employee Successfully Created");
+            populateTable(organization);
+        }
         
-        organization.getEmployeeDirectory().createEmployee(name);
-        populateTable(organization);
         
     }//GEN-LAST:event_addJButtonActionPerformed
 

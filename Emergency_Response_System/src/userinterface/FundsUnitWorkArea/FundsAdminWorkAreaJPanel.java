@@ -123,11 +123,11 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        IncidentManagerManageUserAccountJPanel muajp = new IncidentManagerManageUserAccountJPanel(userProcessContainer, enterprise);
+        /*IncidentManagerManageUserAccountJPanel muajp = new IncidentManagerManageUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("IncidentManagerManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        layout.next(userProcessContainer);*/
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed

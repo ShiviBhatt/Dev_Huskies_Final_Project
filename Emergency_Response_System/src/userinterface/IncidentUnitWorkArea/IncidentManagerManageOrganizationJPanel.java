@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
@@ -146,6 +147,8 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
 
         jLabel3.setText("Location Point");
 
+        orgLocation.setEditable(false);
+
         jButton1.setText("Set Location");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,8 +214,17 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        enterprise.getOrganizationDirectory().createOrganization(type, orgName.getText());
-        populateTable();
+        
+        if("".equals(orgName.getText())) {
+            JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+        }else if("".equals(orgLocation.getText())) {
+            JOptionPane.showMessageDialog(null, "Please set a location"); 
+        }else {
+            enterprise.getOrganizationDirectory().createOrganization(type, orgName.getText());
+            populateTable();
+            JOptionPane.showMessageDialog(null, "Organization is created successfully");
+        }
+        
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

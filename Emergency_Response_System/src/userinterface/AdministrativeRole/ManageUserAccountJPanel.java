@@ -10,6 +10,7 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -247,9 +248,16 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
         
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        if("".equals(userName)) {
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }else if("".equals(password)) {
+            JOptionPane.showMessageDialog(null, "Please enter password");
+        }else {
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+            popData();
+        }
         
-        popData();
+        
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
