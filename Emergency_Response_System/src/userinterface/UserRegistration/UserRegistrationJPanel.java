@@ -17,6 +17,7 @@ import Business.Organization.VolunteerPersonalOrganization;
 import Business.WorkQueue.UserRegistrationRequest;
 import Business.WorkQueue.WorkQueue;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -24,9 +25,16 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
+import Business.Utils.Validation;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.Duration;
+import javafx.animation.PauseTransition;
+import javax.swing.Timer;
 
 /**
  *
@@ -37,6 +45,8 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private LocationPoint locationPoint;
+    private Validation validation;
+    private ActionListener eventListener;
     /**
      * Creates new form UserRegistrationJPanel
      */
@@ -46,6 +56,14 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         this.system = system;
         populateNetworkComboBox();
         populateCarrierComboBox();
+        validation = new Validation();
+        usernameExistsMessage.setVisible(false);
+        emailValidateMessage.setVisible(false);
+        contactFormatMessage.setVisible(false);
+        emailSuccessLabel.setVisible(false);
+        contactSuccessLabel.setVisible(false);
+        userNameSuccessLabel.setVisible(false);
+        
     }
     
     public void populateNetworkComboBox() {
@@ -98,20 +116,68 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<>();
+        contactCarrier = new javax.swing.JComboBox<String>();
+        usernameExistsMessage = new javax.swing.JLabel();
+        emailValidateMessage = new javax.swing.JLabel();
+        contactFormatMessage = new javax.swing.JLabel();
+        emailSuccessLabel = new javax.swing.JLabel();
+        userNameSuccessLabel = new javax.swing.JLabel();
+        contactSuccessLabel = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(0, 0));
+        setRequestFocusEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("User Registration");
 
         jLabel2.setText("Name");
 
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
+        userName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                userNameKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameKeyPressed(evt);
+            }
+        });
+
         jLabel3.setText("Username");
+
+        uName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uNameKeyTyped(evt);
+            }
+        });
+
+        uPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uPassKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Password");
 
         jLabel5.setText("Email Id");
 
+        uEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uEmailKeyTyped(evt);
+            }
+        });
+
         jLabel6.setText("State");
+
+        uCity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uCityKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("City");
 
@@ -119,9 +185,32 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Contact");
 
-        jLabel10.setText("Location Point");
+        uContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uContactKeyTyped(evt);
+            }
+        });
+
+        jLabel10.setText("Location");
 
         uLocation.setEditable(false);
+        uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                uLocationInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        uLocation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                uLocationPropertyChange(evt);
+            }
+        });
+        uLocation.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uLocationKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Set Location");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +219,20 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             }
         });
 
+        stateCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                stateComboItemStateChanged(evt);
+            }
+        });
         stateCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stateComboActionPerformed(evt);
+            }
+        });
+
+        orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                orgComboKeyTyped(evt);
             }
         });
 
@@ -145,7 +245,27 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Contact");
 
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                contactCarrierKeyTyped(evt);
+            }
+        });
+
+        usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
+        usernameExistsMessage.setText("Username already exists");
+
+        emailValidateMessage.setForeground(new java.awt.Color(255, 0, 0));
+        emailValidateMessage.setText("Email format incorrect");
+
+        contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
+        contactFormatMessage.setText("Contact No format Incorrect");
+
+        emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+
+        userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+
+        contactSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,107 +274,131 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(315, 315, 315)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(357, 357, 357)
+                                .addComponent(btnRegister)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(emailSuccessLabel)
+                                    .addGap(4, 4, 4)
+                                    .addComponent(emailValidateMessage))
+                                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(userNameSuccessLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(usernameExistsMessage))
+                                .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(contactSuccessLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(contactFormatMessage)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(uCity, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                                    .addComponent(stateCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(orgCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                                .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel2)))
-                                .addGap(147, 147, 147)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(uName)
-                                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11))
-                                .addGap(162, 162, 162)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(uContact)
-                                    .addComponent(contactCarrier, 0, 253, Short.MAX_VALUE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(342, 342, 342)
-                        .addComponent(btnRegister)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                                .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addGap(102, 102, 102)))))
+                .addGap(188, 188, 188))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)))
+                            .addComponent(userNameSuccessLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailSuccessLabel)
+                            .addComponent(jLabel5)
+                            .addComponent(uEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addGap(84, 84, 84)
+                        .addComponent(usernameExistsMessage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(emailValidateMessage)
+                        .addGap(52, 52, 52)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(51, 51, 51)
-                .addComponent(btnRegister)
-                .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(contactSuccessLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(contactFormatMessage)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnRegister))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -286,43 +430,209 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         Network network = (Network) stateCombo.getSelectedItem();
         Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
         
-        UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
-        registrationRequest.setName(uName.getText());
-        registrationRequest.setUserName(userName.getText());
-        registrationRequest.setUserPassword(uPass.getText());
-        registrationRequest.setUserEmailId(uEmail.getText());
-        registrationRequest.setNetwork(network);
-        registrationRequest.setUserCity(uCity.getText());
-        registrationRequest.setOrgType(type);
-        registrationRequest.setStatus("Requested");
-        registrationRequest.setUserContact(uContact.getText());
-        registrationRequest.setUserLocationPoint(locationPoint);
-        String contact = "";
-        
-        if (contactCarrier.getSelectedItem().equals("ATT")) {
-            contact = uContact.getText() + "@txt.att.net";
-        } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
-            contact = uContact.getText() + "@vmobl.com";
-        } else if (contactCarrier.getSelectedItem().equals("Sprint")) {
-            contact = uContact.getText() + "@messaging.sprintpcs.com";
-        } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
-            contact = uContact.getText() + "@tmomail.net";
+        if(network == null ){
+            stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
+            stateCombo.setForeground(Color.red);
+            
+        }if(uName.getText().isEmpty() ){
+            uName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uName.setForeground(Color.red);
+            
+        }if(userName.getText().isEmpty() ){
+            userName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            userName.setForeground(Color.red);
+            
+        }if(uPass.getText().isEmpty() ){
+            uPass.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uPass.setForeground(Color.red);
+            
+        }if(uEmail.getText().isEmpty() ){
+            uEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uEmail.setForeground(Color.red);
+            
+        }if(uCity.getText().isEmpty() ){
+            uCity.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uCity.setForeground(Color.red);
+           
+        }if(type == null ){
+            orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
+            orgCombo.setForeground(Color.red);
+           
+        }if(uContact.getText().isEmpty() ){
+            uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uContact.setForeground(Color.red);
+    
+        }if(locationPoint == null){
+            uLocation.setBorder(BorderFactory.createLineBorder(Color.RED));
+            uLocation.setForeground(Color.red);
+            
         }
-        registrationRequest.setContactCarrierName(contact);
-        sendEmailMessage(uEmail.getText());
-        sendTextMessage(contact);
-        for (Network network1 : system.getNetworkList()) {
-            for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
-                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
-                    if (enterprise.getWorkQueue() == null) {
-                        enterprise.setWorkQueue(new WorkQueue());
+        if(userName.getText().isEmpty() 
+                || uPass.getText().isEmpty() 
+                || uEmail.getText().isEmpty() 
+                || uCity.getText().isEmpty() 
+                || type == null 
+                || uContact.getText().isEmpty() 
+                || locationPoint == null
+                ){
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } else{
+            UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
+            registrationRequest.setName(uName.getText());
+            registrationRequest.setUserName(userName.getText());
+            registrationRequest.setUserPassword(uPass.getText());
+            registrationRequest.setUserEmailId(uEmail.getText());
+            registrationRequest.setNetwork(network);
+            registrationRequest.setUserCity(uCity.getText());
+            registrationRequest.setOrgType(type);
+            registrationRequest.setStatus("Requested");
+            registrationRequest.setUserContact(uContact.getText());
+            registrationRequest.setUserLocationPoint(locationPoint);
+            String contact = "";
+        
+            if (contactCarrier.getSelectedItem().equals("ATT")) {
+                contact = uContact.getText() + "@txt.att.net";
+            } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
+                contact = uContact.getText() + "@vmobl.com";
+            } else if (contactCarrier.getSelectedItem().equals("Sprint")) {
+                contact = uContact.getText() + "@messaging.sprintpcs.com";
+            } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
+                contact = uContact.getText() + "@tmomail.net";
+            }
+            registrationRequest.setContactCarrierName(contact);
+            sendEmailMessage(uEmail.getText());
+            sendTextMessage(contact);
+            for (Network network1 : system.getNetworkList()) {
+                for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {
+                        if (enterprise.getWorkQueue() == null) {
+                            enterprise.setWorkQueue(new WorkQueue());
+                        }
+                        enterprise.getWorkQueue().getWorkRequestList().add(registrationRequest);
                     }
-                    enterprise.getWorkQueue().getWorkRequestList().add(registrationRequest);
                 }
             }
-
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_userNameActionPerformed
+
+    private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_userNameKeyPressed
+
+    private void userNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyTyped
+        // TODO add your handling code here:
+        userName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        userName.setForeground(Color.BLACK);
+    }//GEN-LAST:event_userNameKeyTyped
+
+    private void uNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyTyped
+        // TODO add your handling code here:
+        uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uName.setForeground(Color.BLACK);
+        if(!system.checkIfUserIsUnique(uName.getText())){
+            usernameExistsMessage.setVisible(true);
+        } else{
+            usernameExistsMessage.setVisible(false);
+            userNameSuccessLabel.setVisible(true);
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    userNameSuccessLabel.setVisible(false);
+                }
+            };
+            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_uNameKeyTyped
+
+    private void uPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uPassKeyTyped
+        // TODO add your handling code here:
+        uPass.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uPass.setForeground(Color.BLACK);
+    }//GEN-LAST:event_uPassKeyTyped
+
+    private void uEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uEmailKeyTyped
+        // TODO add your handling code here:
+        uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uEmail.setForeground(Color.BLACK);
+        if(!validation.emailValidator(uEmail.getText())){
+            emailValidateMessage.setVisible(true);
+        } else{
+            emailValidateMessage.setVisible(false);
+            emailSuccessLabel.setVisible(true);
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    emailSuccessLabel.setVisible(false);
+                }
+            };
+            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_uEmailKeyTyped
+
+    private void stateComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stateComboItemStateChanged
+        // TODO add your handling code here:
+        stateCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        stateCombo.setForeground(Color.BLACK);
+    }//GEN-LAST:event_stateComboItemStateChanged
+
+    private void uCityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uCityKeyTyped
+        // TODO add your handling code here:
+        uCity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uCity.setForeground(Color.BLACK);
+    }//GEN-LAST:event_uCityKeyTyped
+
+    private void orgComboKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_orgComboKeyTyped
+        // TODO add your handling code here:
+        orgCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        orgCombo.setForeground(Color.BLACK);
+    }//GEN-LAST:event_orgComboKeyTyped
+
+    private void contactCarrierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactCarrierKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactCarrierKeyTyped
+
+    private void uLocationInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_uLocationInputMethodTextChanged
+        // TODO add your handling code here:
+        uLocation.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uLocation.setForeground(Color.BLACK);
+    }//GEN-LAST:event_uLocationInputMethodTextChanged
+
+    private void uContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyTyped
+        // TODO add your handling code here:  
+        if(!validation.phoneNumberValidator(uContact.getText())){
+                contactFormatMessage.setVisible(true);
+            } else{
+                contactFormatMessage.setVisible(false);
+                contactSuccessLabel.setVisible(true);
+                int delay = 2500; //milliseconds
+                ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    contactSuccessLabel.setVisible(false);
+                }
+                };
+                javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
+                tick.setRepeats(false);
+                tick.start();
+            }
+    }//GEN-LAST:event_uContactKeyTyped
+
+    private void uLocationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uLocationKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uLocationKeyTyped
+
+    private void uLocationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_uLocationPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uLocationPropertyChange
 
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
@@ -431,6 +741,10 @@ mex.printStackTrace();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> contactCarrier;
+    private javax.swing.JLabel contactFormatMessage;
+    private javax.swing.JLabel contactSuccessLabel;
+    private javax.swing.JLabel emailSuccessLabel;
+    private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -452,5 +766,7 @@ mex.printStackTrace();
     private javax.swing.JTextField uName;
     private javax.swing.JTextField uPass;
     private javax.swing.JTextField userName;
+    private javax.swing.JLabel userNameSuccessLabel;
+    private javax.swing.JLabel usernameExistsMessage;
     // End of variables declaration//GEN-END:variables
 }

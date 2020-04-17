@@ -29,7 +29,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
+        System.out.println("here");
+        this.userProcessContainer=userProcessContainer;        
         this.ecosystem=ecosystem;
         manageNetwork();
         populateTree();
