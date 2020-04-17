@@ -26,17 +26,20 @@ public class DistanceMap {
     private static final int MAX_ZOOM = 21;
     //private static final String setMarkerScript = "var locations = [\n  ['Bondi Beach', -33.890542, 151.274856, 4],\n  ['Coogee Beach', -33.923036, 151.259052, 5],\n  ['Cronulla Beach', -34.028249, 151.157507, 3],\n  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],\n  ['Maroubra Beach', -33.950198, 151.259302, 1]\n];\n\nvar marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\ttitle: locations[i][0]\n  });\n}";
     
-    private static final String a = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\ttitle: locations[i][0]\n  });\n}";
-    private static final String b = "var locations = [\n";
-    private static final String c = "];\n";
-    private static final String d = "['Bondi Beach', -33.890542, 151.274856, 4],\n['Coogee Beach', -33.923036, 151.259052, 5]";
-    private static final String setMarkerScript = b + d + c + a;
+    
     /**
      * In map.html file default zoom value is set to 4.
      */
     private static int zoomValue = 4;
 
-    public static void openMap() {
+    public static void openMap(String coordinates) {
+        
+        String a = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\ttitle: locations[i][0]\n  });\n}";
+      String b = "var locations = [\n";
+      String c = "];\n";
+       String d = "['Bondi Beach', -33.890542, 151.274856, 4],\n['Coogee Beach', -33.923036, 151.259052, 5]\n";
+       String setMarkerScript = b + coordinates + c + a;
+        
         EngineOptions options =
                 EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1FV3AVC573VVDZLJMH4GM0F2LEEC89Z3D9HIMNGKQZEH4PIJYFW22I0A9NMRRK").build();
         Engine engine = Engine.newInstance(options);
@@ -64,7 +67,7 @@ public class DistanceMap {
             });
             /*browser.mainFrame().ifPresent(frame ->
                             frame.executeJavaScript(setMarkerScript));*/
-            JButton setMarkerButton = new JButton("Set Marker");
+            JButton setMarkerButton = new JButton("Show Markers");
             setMarkerButton.addActionListener(e ->
                     browser.mainFrame().ifPresent(frame ->
                             frame.executeJavaScript(setMarkerScript)));
@@ -93,7 +96,7 @@ public class DistanceMap {
             frame.setSize(800, 500);
             frame.setVisible(true);
 
-            //browser.navigation().loadUrl("C:\\Users\\Mayank\\Desktop\\Final Proj\\Dev_Huskies_Final_Project\\Emergency_Response_System\\map.html");
+            browser.navigation().loadUrl("C:\\Users\\Mayank\\Desktop\\Final Proj\\Dev_Huskies_Final_Project\\Emergency_Response_System\\map.html");
         });
     }
 }

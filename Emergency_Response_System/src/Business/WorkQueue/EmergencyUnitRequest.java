@@ -29,13 +29,14 @@ public class EmergencyUnitRequest extends WorkRequest{
     private LocationPoint sceneLocationPoint;
     private Employee sceneManager;
     private String imagePath;
+    private String emergencyReqId;
     //private boolean considerInGraph = true;
     int min = 100;
     int max = 999;
     
     public EmergencyUnitRequest() {
         int randomNum = (int)(Math.random() * (max - min + 1) + min);
-        sceneId = "ER"+randomNum;
+        emergencyReqId = "ER"+randomNum;
     }
     public String getSceneId() {
         return sceneId;
@@ -150,9 +151,17 @@ public class EmergencyUnitRequest extends WorkRequest{
         this.imagePath = imagePath;
     }
 
+    public String getEmergencyReqId() {
+        return emergencyReqId;
+    }
+
+    public void setEmergencyReqId(String emergencyReqId) {
+        this.emergencyReqId = emergencyReqId;
+    }
+
     @Override
     public String toString() {
-        return sceneId;
+        return emergencyReqId;
     }
 
     

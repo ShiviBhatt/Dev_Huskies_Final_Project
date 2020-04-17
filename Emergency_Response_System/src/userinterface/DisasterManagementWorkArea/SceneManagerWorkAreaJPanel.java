@@ -181,6 +181,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        processBtn = new javax.swing.JButton();
+        cancelReqBtn = new javax.swing.JButton();
 
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -264,6 +266,20 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        processBtn.setText("Process");
+        processBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processBtnActionPerformed(evt);
+            }
+        });
+
+        cancelReqBtn.setText("Cancel Request");
+        cancelReqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelReqBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,7 +291,10 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelReqBtn))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(nearestOrgSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,8 +302,10 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)))
-                        .addGap(0, 392, Short.MAX_VALUE)))
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(processBtn)))
+                        .addGap(0, 297, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -297,11 +318,14 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(nearestOrgSearch)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(processBtn))
                 .addGap(67, 67, 67)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(cancelReqBtn))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -325,10 +349,14 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             }*/
-            NearestOrganizationJPanel ramop = new NearestOrganizationJPanel(userProcessContainer, account, organization, selectedScene, enterprise, network, business);
-            userProcessContainer.add("Nearest_Distance_Panel", ramop);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            /*if(selectedScene.getStatus().equals("Resolved")) {
+                JOptionPane.showMessageDialog(null, "Scene is already Resolved");
+            }else {*/
+                NearestOrganizationJPanel ramop = new NearestOrganizationJPanel(userProcessContainer, account, organization, selectedScene, enterprise, network, business);
+                userProcessContainer.add("Nearest_Distance_Panel", ramop);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            //}
         }
     }//GEN-LAST:event_nearestOrgSearchActionPerformed
 
@@ -352,7 +380,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
                 if(wr instanceof EmergencyUnitRequest && null != selectedWorkReq) {
                     if(selectedWorkReq.getSceneId().equals(((EmergencyUnitRequest) wr).getSceneId())) {
-                        if(!((EmergencyUnitRequest)wr).getStatus().equals("Completed")) {
+                        if(!((EmergencyUnitRequest)wr).getStatus().equals("Completed") && !((EmergencyUnitRequest)wr).getStatus().equals("Cancelled") && !((EmergencyUnitRequest)wr).getStatus().equals("Rejected")) {
                             isReqCompleted = false;
                             break;
                         }
@@ -361,10 +389,15 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
             
             if(isReqCompleted) {
-                String msg = JOptionPane.showInputDialog("Additional Message");
                 ReportingAdminSceneRequest sScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
-                sScene.setStatus("Resolved");
-                sScene.setMessage(msg);
+                if(sScene.getStatus().equals("Resolved")) {
+                    JOptionPane.showMessageDialog(null, "Scene is already Resolved");
+                }else {
+                    String msg = JOptionPane.showInputDialog("Additional Message");                    
+                    sScene.setStatus("Resolved");
+                    sScene.setMessage(msg);
+                }
+                
             }else {
                 JOptionPane.showMessageDialog(null, "There are pending emergency requests for this scene. Please wait for them to be completed before marking resolved.");
             }
@@ -409,7 +442,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                             System.out.println("3===--->> " + e.getName());
                             if(wr instanceof UserRegistrationRequest) {
                                 System.out.println("4===--->> " + e.getName());
-                                ((UserRegistrationRequest) wr).setContactCarrierName("8574247014@txt.att.net");
+                                //((UserRegistrationRequest) wr).setContactCarrierName("8574247014@txt.att.net");
                                 emailIds += ((UserRegistrationRequest) wr).getUserEmailId() + ",";
                                 contacts += ((UserRegistrationRequest) wr).getContactCarrierName() + ",";
                             }
@@ -429,8 +462,50 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
+        int selectedRow = sceneTable.getSelectedRow();        
+        ReportingAdminSceneRequest selectedScene = null;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the scene", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            selectedScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
+            if(selectedScene.getStatus().equals("Processing")) {
+                JOptionPane.showMessageDialog(null, "Scene is already in Processing state");
+            }else if(selectedScene.getStatus().equals("Resolved")) {
+                JOptionPane.showMessageDialog(null, "Scene is already Resolved");
+            }else {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                selectedScene.setStatus("Processing");
+                selectedScene.setMessage(msg);
+                populateSceneTable();
+            }
+            
+        }
+    }//GEN-LAST:event_processBtnActionPerformed
+
+    private void cancelReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelReqBtnActionPerformed
+        int selectedRow = statusTable.getSelectedRow();        
+        EmergencyUnitRequest selectedReq = null;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a request", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            selectedReq = (EmergencyUnitRequest) statusTable.getValueAt(selectedRow, 0);
+            if(selectedReq.getStatus().equals("Processing") || selectedReq.getStatus().equals("Completed")) {
+                JOptionPane.showMessageDialog(null, "This request canot be cancelled");
+            }else if(selectedReq.getStatus().equals("Cancelled")) {
+                JOptionPane.showMessageDialog(null, "This request is already cancelled");
+            } else {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                selectedReq.setStatus("Cancelled");
+                selectedReq.setMessage(msg);
+                populateStatusTable();
+            }            
+        }
+    }//GEN-LAST:event_cancelReqBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelReqBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -438,6 +513,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nearestOrgSearch;
+    private javax.swing.JButton processBtn;
     private javax.swing.JTable sceneTable;
     private javax.swing.JTable statusTable;
     // End of variables declaration//GEN-END:variables
