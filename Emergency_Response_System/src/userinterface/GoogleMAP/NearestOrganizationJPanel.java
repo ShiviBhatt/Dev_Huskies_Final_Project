@@ -296,6 +296,9 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         }
 
         Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Fire Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
         for (Organization oo : orgList) {
             row[0] = oo.getOrganizationID();
             row[1] = oo.getName();
@@ -323,14 +326,26 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
+        }
+        
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Police Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
         }
     }//GEN-LAST:event_policeOrgActionPerformed
 
@@ -358,14 +373,25 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
+        }
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Medical Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
         }
     }//GEN-LAST:event_medicineOrgActionPerformed
 
@@ -378,22 +404,21 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        int count = nearestOrgTable.getSelectedRowCount();
+        //int count = nearestOrgTable.getSelectedRowCount();
         int selectedRow = nearestOrgTable.getSelectedRow();
-        int orgId = (int) nearestOrgTable.getValueAt(selectedRow, 0);
-        if (count != 1) {
+        
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select a row!");
         } else {
-            
+            int orgId = (int) nearestOrgTable.getValueAt(selectedRow, 0);
             for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) { 
                 if(wr instanceof EmergencyUnitRequest) {
-                    if(((EmergencyUnitRequest)wr).getRecieverOrganization().getOrganizationID() ==  orgId && !((EmergencyUnitRequest)wr).getStatus().equals("Completed")) {
+                    if(((EmergencyUnitRequest)wr).getRecieverOrganization().getOrganizationID() ==  orgId && !((EmergencyUnitRequest)wr).getStatus().equals("Completed") && !((EmergencyUnitRequest)wr).getStatus().equals("Cancelled") && !((EmergencyUnitRequest)wr).getStatus().equals("Rejected")) {
                         JOptionPane.showMessageDialog(null, "Request to this organization is already sent!");
                         return;
                     }
                 }
             }
-            
             
             /*for (Network n : business.getNetworkList()) {
                 for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -438,14 +463,25 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
+        }
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No NGO Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -466,14 +502,25 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
+        }
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Hospital Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -494,14 +541,25 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
+        }
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Personal Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -522,19 +580,43 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     point.setName("p");
                     //if (org.getOrganizationDistanceFromScene(point) < 1) {
                     orgList.add(org);
-                    row[0] = org.getOrganizationID();
+                    org.setNearestLocationPoint(org.getOrganizationDistanceFromScene(point));
+                    /*row[0] = org.getOrganizationID();
                     row[1] = org.getName();
                     row[2] = org.getOrganizationDistanceFromScene(point);
-                    model.addRow(row);
+                    model.addRow(row);*/
                     //}
                 }
             }
 
         }
+        Collections.sort(orgList, (o1, o2) -> Double.compare(o1.getNearestLocationPoint(), o2.getNearestLocationPoint()));
+        if(orgList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Company Organization found for this network. Please choose the same from other network to place cross network request.");
+        }
+        for (Organization oo : orgList) {
+            row[0] = oo.getOrganizationID();
+            row[1] = oo.getName();
+            row[2] = oo.getNearestLocationPoint();
+            model.addRow(row);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        DistanceMap.openMap();
+        String coordinates = "";
+        coordinates += "['" + ((ReportingAdminSceneRequest) workRequest).getSceneName() + " - Scene'," + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude() + ", " + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude() + "],\n";
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+                if (org instanceof FireSafetyOrganization) {
+                    coordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                }
+            }
+        }
+        System.out.println("===---->>> 1coordinates are " + coordinates.substring(0, coordinates.length()-1));
+        System.out.println("===---->>> 2coordinates are " + coordinates.substring(0, coordinates.length()-2));
+        System.out.println("===---->>> 3coordinates are " + coordinates.substring(0, coordinates.length()-3));
+        System.out.println("===---->>> 4coordinates are " + coordinates.substring(0, coordinates.length()-4));
+        DistanceMap.openMap(coordinates.substring(0, coordinates.length()-2));
     }//GEN-LAST:event_jButton7ActionPerformed
     
     public void createWorkRequest(int orgId,String requirements){

@@ -36,7 +36,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     Network network;
     EcoSystem business;
-
+    ReportingAdminSceneRequest selectedSite;
+            
     public DisasterAdminSceneManageJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, Network network, EcoSystem business, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -45,6 +46,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         this.network = network;
         this.business = business;
         this.organization = organization;
+        selectedSite = null;
         populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
@@ -91,6 +93,11 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         jLabel1.setText("Site Name");
 
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        siteNameComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siteNameComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Site Manager");
 
@@ -168,7 +175,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         UserAccount empUserAccount = null;
         boolean isResolved = true;
         String msg = JOptionPane.showInputDialog("Additional Message");
-        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+        //ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+        ReportingAdminSceneRequest scene = selectedSite;
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
         scene.setSceneManager(employee);
         scene.setStatus("Scene Manager Assigned");
@@ -207,6 +215,11 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void siteNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteNameComboBoxActionPerformed
+        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+        selectedSite = scene;
+    }//GEN-LAST:event_siteNameComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -242,7 +255,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         siteNameComboBox.removeAllItems();
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             if(wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() ==  null) {
-                siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr));
+                siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr).getSceneName());
+                selectedSite = (ReportingAdminSceneRequest) wr;
             }
             
         }
