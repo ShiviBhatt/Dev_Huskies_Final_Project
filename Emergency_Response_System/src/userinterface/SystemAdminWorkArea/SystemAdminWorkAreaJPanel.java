@@ -79,11 +79,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageNetwork(){
-        manageNetworkPanel.setBackground(new Color(56,90,174));
-        manageEnterprise.setBackground(new Color(31,50,97));
-        manageEnterpriseAdmin.setBackground(new Color(31,50,97));
-        viewGraphScene.setBackground(new Color(31,50,97));
-        noOfSceneGraph.setBackground(new Color(31,50,97));
+        manageNetworkPanel.setBackground(new Color(236,113,107));
+        manageEnterprise.setBackground(new Color(215,81,81));
+        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
+        viewGraphScene.setBackground(new Color(215,81,81));
+        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageNetworkJPanel manageNetworkPanel = new userinterface.SystemAdminWorkArea.ManageNetworkJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageNetworkJPanel",manageNetworkPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -91,11 +91,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      }
     
     private void manageEnterprise(){
-        manageEnterprise.setBackground(new Color(56,90,174));
-        manageNetworkPanel.setBackground(new Color(31,50,97));
-        manageEnterpriseAdmin.setBackground(new Color(31,50,97));
-        viewGraphScene.setBackground(new Color(31,50,97));
-        noOfSceneGraph.setBackground(new Color(31,50,97));
+        manageEnterprise.setBackground(new Color(236,113,107));
+        manageNetworkPanel.setBackground(new Color(215,81,81));
+        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
+        viewGraphScene.setBackground(new Color(215,81,81));
+        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel manageEnterprise = new userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageEnterpriseJPanel",manageEnterprise);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -105,11 +105,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     private void manageEnterpriseAdmin(){
         
-        manageEnterpriseAdmin.setBackground(new Color(56,90,174));
-        manageEnterprise.setBackground(new Color(31,50,97));
-        manageNetworkPanel.setBackground(new Color(31,50,97));
-        viewGraphScene.setBackground(new Color(31,50,97));
-        noOfSceneGraph.setBackground(new Color(31,50,97));
+        manageEnterpriseAdmin.setBackground(new Color(236,113,107));
+        manageEnterprise.setBackground(new Color(215,81,81));
+        manageNetworkPanel.setBackground(new Color(215,81,81));
+        viewGraphScene.setBackground(new Color(215,81,81));
+        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel manageEnterpriseAdmin = new userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",manageEnterpriseAdmin);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -118,22 +118,22 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     private void sceneDetails(){
         
-        viewGraphScene.setBackground(new Color(56,90,174));
-        manageEnterpriseAdmin.setBackground(new Color(31,50,97));
-        manageEnterprise.setBackground(new Color(31,50,97));
-        manageNetworkPanel.setBackground(new Color(31,50,97));
-        noOfSceneGraph.setBackground(new Color(31,50,97));
+        viewGraphScene.setBackground(new Color(236,113,107));
+        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
+        manageEnterprise.setBackground(new Color(215,81,81));
+        manageNetworkPanel.setBackground(new Color(215,81,81));
+        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.SceneDetailsGraph sceneDetailsGraph = new userinterface.SystemAdminWorkArea.SceneDetailsGraph(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("SceneDetailsGraph",sceneDetailsGraph);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
     private void noOfSceneGraph(){
-        noOfSceneGraph.setBackground(new Color(56,90,174));
-        viewGraphScene.setBackground(new Color(31,50,97));
-        manageEnterpriseAdmin.setBackground(new Color(31,50,97));
-        manageEnterprise.setBackground(new Color(31,50,97));
-        manageNetworkPanel.setBackground(new Color(31,50,97));
+        noOfSceneGraph.setBackground(new Color(236,113,107));
+        viewGraphScene.setBackground(new Color(215,81,81));
+        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
+        manageEnterprise.setBackground(new Color(215,81,81));
+        manageNetworkPanel.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.NoOfScenesGraph noOfScenesGraph = new userinterface.SystemAdminWorkArea.NoOfScenesGraph(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("NoOfScenesGraph",noOfScenesGraph);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -170,16 +170,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         viewGraphScene = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         viewGraphSceneDetails = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(215, 81, 81));
+        setPreferredSize(new java.awt.Dimension(1200, 802));
         setLayout(new java.awt.BorderLayout());
 
-        systemAdminPanel.setBackground(new java.awt.Color(240, 178, 62));
+        systemAdminPanel.setBackground(new java.awt.Color(215, 81, 81));
+        systemAdminPanel.setPreferredSize(new java.awt.Dimension(1220, 750));
 
-        jPanel3.setBackground(new java.awt.Color(31, 50, 97));
+        jPanel3.setBackground(new java.awt.Color(215, 81, 81));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkPanel.setBackground(new java.awt.Color(31, 50, 97));
+        manageNetworkPanel.setBackground(new java.awt.Color(215, 81, 81));
         manageNetworkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageNetworkPanelMousePressed(evt);
@@ -187,10 +192,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
 
-        manageNetwork.setForeground(new java.awt.Color(240, 178, 62));
-        manageNetwork.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageNetwork.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         manageNetwork.setText("Manage Network");
         manageNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -206,8 +210,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(manageNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         manageNetworkPanelLayout.setVerticalGroup(
             manageNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +225,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
 
-        manageEnterprise.setBackground(new java.awt.Color(31, 50, 97));
+        manageEnterprise.setBackground(new java.awt.Color(215, 81, 81));
         manageEnterprise.setPreferredSize(new java.awt.Dimension(264, 48));
         manageEnterprise.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -230,10 +234,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cooking.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/group.png"))); // NOI18N
 
-        manageEnterpriseLabel.setForeground(new java.awt.Color(240, 178, 62));
-        manageEnterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageEnterpriseLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageEnterpriseLabel.setText("Manage Enterprise");
         manageEnterpriseLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -264,7 +267,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 280, 50));
 
-        manageEnterpriseAdmin.setBackground(new java.awt.Color(31, 50, 97));
+        manageEnterpriseAdmin.setBackground(new java.awt.Color(215, 81, 81));
         manageEnterpriseAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageEnterpriseAdminMousePressed(evt);
@@ -272,10 +275,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delivery (3).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/administrator.png"))); // NOI18N
 
-        manageEnterpriseAdminLabel.setForeground(new java.awt.Color(240, 178, 62));
-        manageEnterpriseAdminLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageEnterpriseAdminLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         manageEnterpriseAdminLabel.setText("Manage Enterprise Admin");
         manageEnterpriseAdminLabel.setPreferredSize(new java.awt.Dimension(115, 16));
 
@@ -295,14 +297,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(manageEnterpriseAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(manageEnterpriseAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manageEnterpriseAdminLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(manageEnterpriseAdminLayout.createSequentialGroup()
+                        .addComponent(manageEnterpriseAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel3.add(manageEnterpriseAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 280, 50));
+        jPanel3.add(manageEnterpriseAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 88, 280, 40));
 
-        noOfSceneGraph.setBackground(new java.awt.Color(31, 50, 97));
+        noOfSceneGraph.setBackground(new java.awt.Color(215, 81, 81));
         noOfSceneGraph.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 noOfSceneGraphMousePressed(evt);
@@ -310,10 +314,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
 
-        noOfGraphSceneLabel.setForeground(new java.awt.Color(240, 178, 62));
-        noOfGraphSceneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noOfGraphSceneLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         noOfGraphSceneLabel.setText("No Of Graph Scene");
         noOfGraphSceneLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -329,31 +332,32 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         noOfSceneGraphLayout.setVerticalGroup(
             noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(noOfSceneGraphLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(noOfSceneGraphLayout.createSequentialGroup()
+                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3.add(noOfSceneGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 280, 40));
+        jPanel3.add(noOfSceneGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 40));
 
-        lblSelectedNode1.setForeground(new java.awt.Color(240, 178, 62));
-        lblSelectedNode1.setText("<View_selected_node>");
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 190, -1));
+        lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
 
-        jLabel7.setForeground(new java.awt.Color(240, 178, 62));
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 100, 30));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
 
-        jTree1.setBackground(new java.awt.Color(31, 50, 97));
-        jTree1.setForeground(new java.awt.Color(240, 178, 62));
+        jTree1.setBackground(new java.awt.Color(215, 81, 81));
+        jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTree1.setForeground(new java.awt.Color(0, 0, 0));
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
                 jTree1ValueChanged(evt);
@@ -361,9 +365,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTree1);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 120, -1));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 120, 270));
 
-        viewGraphScene.setBackground(new java.awt.Color(31, 50, 97));
+        viewGraphScene.setBackground(new java.awt.Color(215, 81, 81));
         viewGraphScene.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 viewGraphSceneMousePressed(evt);
@@ -371,16 +375,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
 
-        viewGraphSceneDetails.setForeground(new java.awt.Color(240, 178, 62));
-        viewGraphSceneDetails.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewGraphSceneDetails.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         viewGraphSceneDetails.setText("View Graph Scene Details");
         viewGraphSceneDetails.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 viewGraphSceneDetailsMousePressed(evt);
             }
         });
+
+        jSeparator1.setForeground(new java.awt.Color(51, 51, 0));
 
         javax.swing.GroupLayout viewGraphSceneLayout = new javax.swing.GroupLayout(viewGraphScene);
         viewGraphScene.setLayout(viewGraphSceneLayout);
@@ -390,21 +395,24 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         viewGraphSceneLayout.setVerticalGroup(
             viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewGraphSceneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 40));
+        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 60));
 
+        rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(940, 808));
         rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
 
@@ -414,13 +422,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(systemAdminPanelLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         systemAdminPanelLayout.setVerticalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
         );
 
         add(systemAdminPanel, java.awt.BorderLayout.CENTER);
@@ -486,6 +494,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JPanel manageEnterprise;
