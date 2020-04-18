@@ -526,7 +526,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        orgType = "NGO";
+        orgType = "Personal";
         ArrayList<Organization> orgList = new ArrayList<Organization>();
         DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
         model.setRowCount(0);
@@ -565,7 +565,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        orgType = "NGO";
+        orgType = "Company";
         ArrayList<Organization> orgList = new ArrayList<Organization>();
         DefaultTableModel model = (DefaultTableModel) nearestOrgTable.getModel();
         model.setRowCount(0);
@@ -607,9 +607,22 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         coordinates += "['" + ((ReportingAdminSceneRequest) workRequest).getSceneName() + " - Scene'," + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude() + ", " + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude() + "],\n";
         for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
-                if (org instanceof FireSafetyOrganization) {
+                System.out.println(org.getName()+" "+orgType);
+                if (org instanceof FireSafetyOrganization && orgType.equalsIgnoreCase("Fire")) {
                     coordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
-                }
+                } else if (org instanceof PoliceOrganization && orgType.equalsIgnoreCase("Police")) {
+                    coordinates += "['" + org.getName() + " - Police'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                } else if (org instanceof MedicalOrganization && orgType.equalsIgnoreCase("Medicine")) {
+                    coordinates += "['" + org.getName() + " - Medicine'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                } else if (org instanceof VolunteerNGOOrganization && orgType.equalsIgnoreCase("NGO")) {
+                    coordinates += "['" + org.getName() + " - NGO'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                } else if (org instanceof VolunteerHospitalOrganization && orgType.equalsIgnoreCase("Hospital")) {
+                    coordinates += "['" + org.getName() + " - Hospital'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                } else if (org instanceof VolunteerCompanyOrganization && orgType.equalsIgnoreCase("Company")) {
+                    coordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                } else if (org instanceof VolunteerPersonalOrganization && orgType.equalsIgnoreCase("Personal")) {
+                    coordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                }  
             }
         }
         System.out.println("===---->>> 1coordinates are " + coordinates.substring(0, coordinates.length()-1));

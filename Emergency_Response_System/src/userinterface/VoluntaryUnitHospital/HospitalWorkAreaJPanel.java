@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usertinterface.VoluntaryUnitHospital;
+package userinterface.VoluntaryUnitHospital;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.VoluntaryUnitHospital.ManageHospitalSceneJPanel;
 
 /**
  *
@@ -109,7 +110,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneActionPerformed
         // TODO add your handling code here
-        ManageHospitalSceneJPanel manageScene = new ManageHospitalSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
+        ManageHospitalSceneJPanel manageScene = new ManageHospitalSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
         userProcessContainer.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

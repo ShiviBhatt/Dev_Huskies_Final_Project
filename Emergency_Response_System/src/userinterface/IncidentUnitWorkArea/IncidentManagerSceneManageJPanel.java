@@ -207,7 +207,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = ((VolunteerSceneRequest) wr);
                 row[1] = ((VolunteerSceneRequest) wr).getSceneName();
-                row[2] = ((VolunteerSceneRequest) wr).getSender().getEmployee().getName();
+                row[2] = ((VolunteerSceneRequest) wr).getSender().getEmployee().getName() == null ? "" : ((VolunteerSceneRequest) wr).getSender().getEmployee().getName();
                 row[3] = ((VolunteerSceneRequest) wr).getSceneManager() == null ? "" : ((VolunteerSceneRequest) wr).getSceneManager().getName();
                 row[4] = ((VolunteerSceneRequest) wr).getSceneZipcode();
                 row[5] = ((VolunteerSceneRequest) wr).getNoOfVictims();
