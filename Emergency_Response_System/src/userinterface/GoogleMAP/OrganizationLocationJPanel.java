@@ -20,10 +20,11 @@ import userinterface.EmergencyUnitWorkArea.EmergencyManageOrganizationJPanel;
 import userinterface.IncidentUnitWorkArea.IncidentManagerManageOrganizationJPanel;
 import userinterface.ReportingAdminWorkArea.ReportingAdminManageSceneJPanel;
 import userinterface.UserRegistration.UserRegistrationJPanel;
-import userinterface.VoluntaryUnitCompanySupervisor.ManageSceneJPanel;
-import userinterface.VoluntaryUnitHospital.ManageHospitalSceneJPanel;
+import userinterface.VoluntaryUnitCompanySupervisor.CompanyAdminManageSceneJPanel;
+import userinterface.VoluntaryUnitHospital.HospitalAdminManageSceneJPanel;
+import userinterface.VoluntaryUnitNGO.NGOAdminManageSceneJPanel;
 import userinterface.VoluntaryUnitWorkArea.VoluntaryOperatingUnitManageOrganizationsJPanel;
-import userinterface.voluntaryUnitPersonal.ManageIndividualSceneJPanel;
+import userinterface.voluntaryUnitPersonal.IndividualAdminManageSceneJPanel;
 
 /**
  *
@@ -140,14 +141,17 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ReportingAdminManageSceneJPanel){
                 ReportingAdminManageSceneJPanel reportingComponent = (ReportingAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
-            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ManageIndividualSceneJPanel){
-                ManageIndividualSceneJPanel reportingComponent = (ManageIndividualSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof IndividualAdminManageSceneJPanel){
+                IndividualAdminManageSceneJPanel reportingComponent = (IndividualAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
-            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ManageHospitalSceneJPanel){
-                ManageHospitalSceneJPanel reportingComponent = (ManageHospitalSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof HospitalAdminManageSceneJPanel){
+                HospitalAdminManageSceneJPanel reportingComponent = (HospitalAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
-            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof ManageSceneJPanel){
-                ManageSceneJPanel reportingComponent = (ManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof NGOAdminManageSceneJPanel){
+                NGOAdminManageSceneJPanel reportingComponent = (NGOAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                reportingComponent.populateLongituteLatitude(locationPoint);
+            }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof CompanyAdminManageSceneJPanel){
+                CompanyAdminManageSceneJPanel reportingComponent = (CompanyAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
             }
           

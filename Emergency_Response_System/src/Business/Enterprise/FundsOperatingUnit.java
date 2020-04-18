@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FundsOperatingUnit extends Enterprise{
 
     public FundsOperatingUnit(String name) {
-        super(name, Enterprise.EnterpriseType.FundsOperatingUnit);
+        super(name, null);
     }
 
     @Override

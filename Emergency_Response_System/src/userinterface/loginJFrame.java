@@ -12,6 +12,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import javafx.animation.Animation;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -46,6 +48,7 @@ public class loginJFrame extends javax.swing.JFrame {
         this.system = system;
         this.frame = this;
         this.mainJFrame = mainJFrame;
+        getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
     }
 
     /**
@@ -72,12 +75,12 @@ public class loginJFrame extends javax.swing.JFrame {
         cancelBtn = new javax.swing.JButton();
 
         skin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        skin.setIcon(new javax.swing.ImageIcon("/Users/dhankuwarsisodiya/Downloads/Food App/design4.png")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         yellow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,7 +93,7 @@ public class loginJFrame extends javax.swing.JFrame {
 
         lightBlue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lightBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/design3.png"))); // NOI18N
-        jPanel1.add(lightBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, 310));
+        jPanel1.add(lightBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, 300));
 
         loginHeading.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         loginHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

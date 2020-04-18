@@ -57,7 +57,7 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
     
     public void populateBarGraph() {
         
-        ArrayList<EmergencyUnitRequest> workReqList = new ArrayList<>();
+        ArrayList<ReportingAdminSceneRequest> workReqList = new ArrayList<>();
         Map<String, Integer> workReqMap = new HashMap<>();
         
         
@@ -70,8 +70,9 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
                     
                     for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
                         //isVisited = true;
-                        if (wr instanceof EmergencyUnitRequest) {
-                            workReqList.add((EmergencyUnitRequest)wr);
+                        if (wr instanceof ReportingAdminSceneRequest) {
+                            System.out.println("1*****>> " + ((ReportingAdminSceneRequest)wr).getSceneName() + ((ReportingAdminSceneRequest)wr).getSceneId());
+                            workReqList.add((ReportingAdminSceneRequest)wr);
                         }
                     }  
                     
@@ -123,6 +124,8 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(940, 808));
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -142,28 +145,30 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-                        .addGap(269, 269, 269)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(268, 268, 268)
+                                .addComponent(jButton1)))
+                        .addGap(0, 310, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel6)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
                 .addGap(76, 76, 76))
         );
     }// </editor-fold>//GEN-END:initComponents

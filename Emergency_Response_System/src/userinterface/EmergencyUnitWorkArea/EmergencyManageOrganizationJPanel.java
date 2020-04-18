@@ -4,14 +4,12 @@
  */
 package userinterface.EmergencyUnitWorkArea;
 
-import userinterface.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import Business.Organization.PoliceOrganization;
-import Business.Position;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -221,9 +219,13 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             orgNameTextField.setText("");
             populateTable();
+            resetFields();
         }
     }//GEN-LAST:event_addJButtonActionPerformed
-
+    public void resetFields() {
+        orgNameTextField.setText("");
+        orgLocation.setText("");
+    }
     private void orgNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orgNameTextFieldFocusLost
 
     }//GEN-LAST:event_orgNameTextFieldFocusLost

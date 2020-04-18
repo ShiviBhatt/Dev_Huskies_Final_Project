@@ -79,9 +79,6 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestTable = new javax.swing.JTable();
         processReqBtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        messageTextField = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
         acceptBtn = new javax.swing.JButton();
         rejectBtn = new javax.swing.JButton();
         completeReqBtn = new javax.swing.JButton();
@@ -117,15 +114,6 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Set Message");
-
-        jButton4.setText("Update Scene Situation");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         acceptBtn.setText("Accept Request");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,9 +145,6 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(178, 178, 178)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(acceptBtn)
                         .addGap(18, 18, 18)
@@ -170,12 +155,6 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(completeReqBtn)))
                 .addContainerGap(389, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(jLabel3)
-                    .addGap(18, 18, 18)
-                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(655, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jScrollPane2)
@@ -192,18 +171,12 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(acceptBtn)
                     .addComponent(rejectBtn)
                     .addComponent(completeReqBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
+                .addContainerGap(226, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(60, 60, 60)))
+                    .addContainerGap(279, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,39 +206,6 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
             }            
         }
     }//GEN-LAST:event_processReqBtnActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        
-        int count = workRequestTable.getSelectedRowCount();
-        if (count != 1) {
-            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            int selectedRow = workRequestTable.getSelectedRow();
-            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
-            String text = messageTextField.getText();
-            
-            if (!text.isEmpty()) {
-                emerReq.setStatus("Completed");
-                emerReq.setMessage(text);
-                populateTable();
-            }else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            /*String text = messageTextField.getText();
-            if (!text.isEmpty()) {
-                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
-                        wr.setStatus("Completed");
-                        wr.setMessage(text);
-                    }
-                }
-                populateTable();
-            } else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }*/
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
         int count = workRequestTable.getSelectedRowCount();
@@ -350,11 +290,8 @@ public class FireSafetyAdminWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptBtn;
     private javax.swing.JButton completeReqBtn;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField messageTextField;
     private javax.swing.JButton processReqBtn;
     private javax.swing.JButton rejectBtn;
     private javax.swing.JTable workRequestTable;

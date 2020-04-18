@@ -4,7 +4,6 @@
  */
 package userinterface.EmergencyUnitWorkArea;
 
-import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -195,13 +194,16 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
             populateTable(organization);
             nameJTextField.setText("");
             JOptionPane.showMessageDialog(null, "Employee created sucessfully!"); 
+            resetFields();
         } else{
             JOptionPane.showMessageDialog(null, "Enter employee name!"); 
         }
         
         
     }//GEN-LAST:event_addJButtonActionPerformed
-
+    public void resetFields() {
+        nameJTextField.setText("");
+    }
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null){

@@ -9,8 +9,6 @@ import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Position;
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 
 /**
  *

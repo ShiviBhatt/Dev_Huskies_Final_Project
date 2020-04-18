@@ -260,25 +260,28 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
         
-        String msg = JOptionPane.showInputDialog("Additional Message");
+        int selectedRow = sceneTable.getSelectedRow();        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a Scene", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if(selectedWorkReq.getStatus().equals("Requested")){
+            String msg = JOptionPane.showInputDialog("Additional Message");
         
-        selectedWorkReq.setStatus("Forwarded to Disaster Team");
-        selectedWorkReq.setMessage(msg);
-        
-        ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
-        sceneReq.setSceneName(sceneName.getText());
-        sceneReq.setSceneZipcode(sceneZipCode.getText());
-        sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
-        sceneReq.setEstimatedLoss(estimatedLoss.getText());
-        sceneReq.setSceneLocationPoint(selectedWorkReq.getSceneLocationPoint());
-        sceneReq.setStatus("Requested");  
-        sceneReq.setSender(account);
-        //sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
-        sceneReq.setMessage("Waiting for disaster head to approve request");
-       
-        account.getWorkQueue().getWorkRequestList().add(sceneReq);
-        
-        //for (Network net : business.getNetworkList()) {
+            selectedWorkReq.setStatus("Forwarded to Disaster Team");
+            selectedWorkReq.setMessage(msg);
+
+            ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
+            sceneReq.setSceneName(sceneName.getText());
+            sceneReq.setSceneZipcode(sceneZipCode.getText());
+            sceneReq.setNoOfVictims(Integer.parseInt(noOfVictims.getText()));
+            sceneReq.setEstimatedLoss(estimatedLoss.getText());
+            sceneReq.setSceneLocationPoint(selectedWorkReq.getSceneLocationPoint());
+            sceneReq.setStatus("Requested");  
+            sceneReq.setSender(account);
+            //sceneReq.setSceneId("S"+(organization.getWorkQueue().getWorkRequestList().size()+1));
+            sceneReq.setMessage("Waiting for disaster head to approve request");
+
+            account.getWorkQueue().getWorkRequestList().add(sceneReq);
+
             for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                     if (o instanceof DisasterOrganization) {
@@ -286,8 +289,17 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                     }
                 }
             }
+            JOptionPane.showMessageDialog(null, "Request is Accepted successfully");
             populateSceneTable();
-        //}
+        }else if(selectedWorkReq.getStatus().equals("Rejected")) {
+            JOptionPane.showMessageDialog(null, "Request is already Rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if(selectedWorkReq.getStatus().equals("Cancelled")) {
+            JOptionPane.showMessageDialog(null, "Request has been cancelled by the user", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "Request is already Accepted", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_createSceneBtnActionPerformed
     VolunteerSceneRequest selectedWorkReq;
     private void sceneTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sceneTableMouseClicked
@@ -323,10 +335,24 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String msg = JOptionPane.showInputDialog("Additional Message");
-        selectedWorkReq.setStatus("Rejected");
-        selectedWorkReq.setMessage(msg);
-        populateSceneTable();
+        
+        int selectedRow = sceneTable.getSelectedRow();        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a Scene", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if(selectedWorkReq.getStatus().equals("Requested")){
+            String msg = JOptionPane.showInputDialog("Additional Message");
+            selectedWorkReq.setStatus("Rejected");
+            selectedWorkReq.setMessage(msg);
+            populateSceneTable();
+            JOptionPane.showMessageDialog(null, "Request is Rejected successfully");
+        }else if(selectedWorkReq.getStatus().equals("Accepted")){
+            JOptionPane.showMessageDialog(null, "Request is already Accepted");
+        }else if(selectedWorkReq.getStatus().equals("Cancelled")) {
+            JOptionPane.showMessageDialog(null, "Request has been cancelled by the user", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "Request is already Rejected");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /*public ImageIcon ResizeImage(String ImagePath) {

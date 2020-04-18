@@ -61,6 +61,7 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
                     for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()){
             
                         if (wr instanceof ReportingAdminSceneRequest) {
+                            System.out.println("2*****>> " + ((ReportingAdminSceneRequest)wr).getSceneName() + ((ReportingAdminSceneRequest)wr).getSceneId());
                             workReqList.add((ReportingAdminSceneRequest)wr);
                         }
                     }                    

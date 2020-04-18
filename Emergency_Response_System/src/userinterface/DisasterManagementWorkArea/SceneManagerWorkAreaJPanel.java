@@ -494,10 +494,13 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "This request canot be cancelled");
             }else if(selectedReq.getStatus().equals("Cancelled")) {
                 JOptionPane.showMessageDialog(null, "This request is already cancelled");
+            }else if(selectedReq.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "This request has already been rejected");
             } else {
                 String msg = JOptionPane.showInputDialog("Additional Message");
                 selectedReq.setStatus("Cancelled");
                 selectedReq.setMessage(msg);
+                JOptionPane.showMessageDialog(null, "This request has been cancelled");
                 populateStatusTable();
             }            
         }

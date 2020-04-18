@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.voluntaryUnitPersonal;
+package userinterface.VoluntaryUnitCompanySupervisor;
 
+import userinterface.VoluntaryUnitHospital.*;
+import userinterface.VoluntaryUnitNGO.*;
+import userinterface.voluntaryUnitPersonal.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -32,10 +35,10 @@ import javax.swing.JTextField;
  *
  * @author shivibhatt
  */
-public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class CompanyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form IndividualAdminWorkAreaJPanel
+     * Creates new form CompanyAdminWorkAreaJPanel
      */
     JPanel userProcessContainer;
     Enterprise enterprise;
@@ -43,7 +46,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
     Organization organization;
     EcoSystem system;
     UserAccount account;
-    public IndividualAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+    public CompanyAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
@@ -181,7 +184,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageRequestActionPerformed
         //IndividualWorkRequestJPanel manageIndividualWorkRequest = new IndividualWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
-        IndividualAdminWorkRequestJPanel manageIndividualWorkRequest = new IndividualAdminWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
+        CompanyAdminWorkRequestJPanel manageIndividualWorkRequest = new CompanyAdminWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
         userProcessContainer.add("IndividualAdminWorkAreaJPanel", manageIndividualWorkRequest);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -189,7 +192,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneActionPerformed
         // TODO add your handling code here
-        IndividualAdminManageSceneJPanel manageScene = new IndividualAdminManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
+        CompanyAdminManageSceneJPanel manageScene = new CompanyAdminManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
         userProcessContainer.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

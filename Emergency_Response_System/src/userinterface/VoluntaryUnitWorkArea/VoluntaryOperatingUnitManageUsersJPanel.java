@@ -269,6 +269,8 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
             Role role = (Role) selectRole.getSelectedItem();
             organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
             populateData();
+            createUsername.setText("");
+            createPassword.setText("");
             JOptionPane.showMessageDialog(null, "User created successfully");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
