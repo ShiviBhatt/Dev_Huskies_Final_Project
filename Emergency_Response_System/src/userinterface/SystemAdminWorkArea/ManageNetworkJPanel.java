@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Network.Network;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -57,12 +58,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         networkJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        submitJButton = new javax.swing.JButton();
         nameJTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 808));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        networkJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        networkJTable.setForeground(new java.awt.Color(25, 56, 82));
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -89,62 +96,52 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        networkJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(networkJTable);
         if (networkJTable.getColumnModel().getColumnCount() > 0) {
             networkJTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        jLabel1.setText("Name");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 567, 91));
 
-        submitJButton.setText("Submit");
-        submitJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitJButtonActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setText("Please Enter State Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 265, 25));
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        nameJTextField.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 296, -1));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MANAGE NETWORK");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 586, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(submitJButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(325, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel6)
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitJButton))
-                .addContainerGap(494, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide_network.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 15, 147, -1));
+
+        btnSubmit.setBackground(new java.awt.Color(25, 56, 82));
+        btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
+        btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(25, 56, 82)));
+        btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSubmitMousePressed(evt);
+            }
+        });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 153, 32));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/opacitycitybig.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 670, 500));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-
+    private void submitButton() {
         String name = nameJTextField.getText().trim();
         if(!name.isEmpty()){
             if(system.isUnique(name)){
@@ -159,16 +156,23 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter city name");
         }
         
-
+        
         populateNetworkTable();
-    }//GEN-LAST:event_submitJButtonActionPerformed
+    }
+
+    private void btnSubmitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMousePressed
+        // TODO add your handling code here:
+        submitButton();
+    }//GEN-LAST:event_btnSubmitMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnSubmit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable networkJTable;
-    private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }

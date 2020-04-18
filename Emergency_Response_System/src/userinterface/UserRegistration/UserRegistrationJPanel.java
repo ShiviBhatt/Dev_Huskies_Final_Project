@@ -116,7 +116,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<String>();
+        contactCarrier = new javax.swing.JComboBox<>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
         contactFormatMessage = new javax.swing.JLabel();
@@ -124,7 +124,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         userNameSuccessLabel = new javax.swing.JLabel();
         contactSuccessLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(0, 0));
         setRequestFocusEnabled(false);
 
@@ -245,7 +245,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Contact");
 
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
