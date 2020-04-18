@@ -7,7 +7,6 @@ package userinterface.IncidentUnitWorkArea;
 import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
 import Business.Organization.IncidentManagementOrganization;
-import userinterface.AdministrativeRole.*;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -222,11 +221,15 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         }else {
             enterprise.getOrganizationDirectory().createOrganization(type, orgName.getText());
             populateTable();
+            resetFields();
             JOptionPane.showMessageDialog(null, "Organization is created successfully");
         }
         
     }//GEN-LAST:event_addJButtonActionPerformed
-
+    public void resetFields() {
+        orgName.setText("");
+        orgLocation.setText("");
+    }
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         userProcessContainer.remove(this);

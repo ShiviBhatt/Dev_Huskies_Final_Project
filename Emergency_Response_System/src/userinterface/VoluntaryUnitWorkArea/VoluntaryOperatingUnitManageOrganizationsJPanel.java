@@ -286,6 +286,8 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         }else {
             directory.createOrganization(type, organizationName.getText(), location);
             populateTable();
+            organizationName.setText("");
+            setLongituteLatitude.setText("");
             JOptionPane.showMessageDialog(null, "Organization created successfully"); 
         }
 

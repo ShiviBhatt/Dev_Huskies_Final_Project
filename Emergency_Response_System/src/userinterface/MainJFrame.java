@@ -140,8 +140,9 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, 1200, 750));
 
         loginJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        loginJPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         loginJPanel.setForeground(new java.awt.Color(255, 255, 255));
-        loginJPanel.setPreferredSize(new java.awt.Dimension(1200, 802));
+        loginJPanel.setPreferredSize(new java.awt.Dimension(1200, 811));
 
         loginButton.setBackground(new java.awt.Color(0, 0, 0));
         loginButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -188,7 +189,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(31, Short.MAX_VALUE))
+                        .addContainerGap(25, Short.MAX_VALUE))
                     .addGroup(loginJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,7 +218,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

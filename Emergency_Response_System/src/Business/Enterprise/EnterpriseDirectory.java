@@ -41,10 +41,10 @@ public class EnterpriseDirectory {
         if (type == Enterprise.EnterpriseType.EmergencyOperatingUnit) {
             enterprise = new EmergencyOperatingUnit(name);
             enterpriseList.add(enterprise);
-        }else if (type == Enterprise.EnterpriseType.FundsOperatingUnit) {
+        }/*else if (type == Enterprise.EnterpriseType.FundsOperatingUnit) {
             enterprise = new FundsOperatingUnit(name);
             enterpriseList.add(enterprise);
-        }else if (type == Enterprise.EnterpriseType.IncidentOperatingUnit) {
+        }*/else if (type == Enterprise.EnterpriseType.IncidentOperatingUnit) {
             enterprise = new IncidentOperatingUnit(name);
             enterpriseList.add(enterprise);
         }else if (type == Enterprise.EnterpriseType.VoluntaryOperatingUnit) {

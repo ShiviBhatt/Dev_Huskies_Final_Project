@@ -5,6 +5,7 @@
  */
 package userinterface.PoliceWorkArea;
 
+import userinterface.FireSafetyWorkArea.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -13,7 +14,6 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -24,31 +24,30 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PoliceAdminWorkAreaJPanel
-     */
-    private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private Network network;
-    private EcoSystem business;
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    EcoSystem system;
+    Organization organization;
+    Network network;
+    UserAccount account;
 
+    /**
+     * Creates new form FireSafetyAdminWorkAreaJPanel
+     */
     public PoliceAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.system = system;
         this.organization = organization;
         this.network = network;
-        this.business = business;
         this.account = account;
         populateTable();
     }
 
-    public void populateTable() {
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
         model.setRowCount(0);
-        System.out.println("2. " + organization.getName());
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             if(wr instanceof EmergencyUnitRequest) {
                 Object[] row = new Object[model.getColumnCount()];
@@ -64,9 +63,10 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 row[9] = ((EmergencyUnitRequest) wr).getRequestDate();
                 model.addRow(row);
             }
+            
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,13 +76,16 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestTable = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        messageTextField = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        workRequestTable = new javax.swing.JTable();
+        processReqBtn = new javax.swing.JButton();
+        acceptBtn = new javax.swing.JButton();
+        rejectBtn = new javax.swing.JButton();
+        completeReqBtn = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setText("Police Admin Work Area");
 
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,24 +106,33 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestTable);
+        jScrollPane2.setViewportView(workRequestTable);
 
-        jButton2.setText("End Scene Work Request");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        processReqBtn.setText("Process Request");
+        processReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                processReqBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel1.setText("Police Admin Work Area");
-
-        jLabel2.setText("Set Message");
-
-        jButton3.setText("Process Scene");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        acceptBtn.setText("Accept Request");
+        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                acceptBtnActionPerformed(evt);
+            }
+        });
+
+        rejectBtn.setText("Reject Request");
+        rejectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rejectBtnActionPerformed(evt);
+            }
+        });
+
+        completeReqBtn.setText("Complete Request");
+        completeReqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completeReqBtnActionPerformed(evt);
             }
         });
 
@@ -131,113 +143,158 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(221, 221, 221)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2)
-                                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton3)))
-                        .addGap(0, 583, Short.MAX_VALUE))
+                        .addGap(178, 178, 178)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addComponent(acceptBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(rejectBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(processReqBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(completeReqBtn)))
+                .addContainerGap(389, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addGap(168, 168, 168)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(38, 38, 38))
+                    .addComponent(processReqBtn)
+                    .addComponent(acceptBtn)
+                    .addComponent(rejectBtn)
+                    .addComponent(completeReqBtn))
+                .addContainerGap(226, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(48, 48, 48)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(279, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        int count = workRequestTable.getSelectedRowCount();
-        if (count != 1) {
-            JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            
-            int selectedRow = workRequestTable.getSelectedRow();
-            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
-            String text = messageTextField.getText();
-            
-            if (!text.isEmpty()) {
-                emerReq.setStatus("Completed");
-                emerReq.setStatus(text);
-                populateTable();
-            }else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            /*
-            int selectedRow = workRequestTable.getSelectedRow();
-            String id = (String) workRequestTable.getValueAt(selectedRow, 0);
-
-            String text = messageTextField.getText();
-            if (!text.isEmpty()) {
-                for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                    if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
-                        wr.setStatus("Completed");
-                        wr.setMessage(text);
-                    }
-                }
-                populateTable();
-            } else{
-                JOptionPane.showMessageDialog(null, "Enter text message", "Warning", JOptionPane.WARNING_MESSAGE);
-            }*/
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void processReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processReqBtnActionPerformed
         // TODO add your handling code here:
         int count = workRequestTable.getSelectedRowCount();
-        //int selectedRow = workRequestTable.getSelectedRow();
-        //String id = (String) workRequestTable.getValueAt(selectedRow, 0);
         if (count != 1) {
             JOptionPane.showMessageDialog(null, "Select one row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            String msg = JOptionPane.showInputDialog("Additional Message");
             int selectedRow = workRequestTable.getSelectedRow();
             EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
-            emerReq.setStatus("Processed");
-            emerReq.setStatus(msg);
-            /*for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
-                if ((((EmergencyUnitRequest) wr).getSceneId()).equalsIgnoreCase(id)) {
-                    wr.setStatus("Processed");
-                    wr.setMessage(organization.getName() + " on their way to handle the situation");
-                }
-            }*/
-            populateTable();
+            if(emerReq.getStatus().equals("Cancelled")) {
+                JOptionPane.showMessageDialog(null, "Request is already cancelled by sender");
+            }else if(emerReq.getStatus().equals("Processing")){
+                JOptionPane.showMessageDialog(null, "Request is already Processing");
+            }else if(emerReq.getStatus().equals("Rejected")){
+                JOptionPane.showMessageDialog(null, "Request is already Rejected");
+            }else if(emerReq.getStatus().equals("Completed")){
+                JOptionPane.showMessageDialog(null, "Request is already Completed");
+            }else if(emerReq.getStatus().equals("Requested")) {
+                JOptionPane.showMessageDialog(null, "Request is not yet Accepted");
+            }else {
+                String msg = JOptionPane.showInputDialog("Additional Message");                
+                emerReq.setStatus("Processing");
+                emerReq.setMessage(msg);
+                populateTable();
+            }            
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_processReqBtnActionPerformed
+
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+        int count = workRequestTable.getSelectedRowCount();
+        if(count != 1) {
+            JOptionPane.showMessageDialog(null, "Select a request");
+        }else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            if(emerReq.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already Accepted");
+            }else if(emerReq.getStatus().equals("Accepted")) {
+                JOptionPane.showMessageDialog(null, "Request is already Accepted");
+            }else if(emerReq.getStatus().equals("Processing")) {
+                JOptionPane.showMessageDialog(null, "Request is already Processing");
+            }else if(emerReq.getStatus().equals("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already Completed");
+            }else if(emerReq.getStatus().equals("Cancelled")) {
+                JOptionPane.showMessageDialog(null, "Request is already cancelled by sender");
+            }else {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                emerReq.setStatus("Accepted");
+                emerReq.setMessage(msg);
+                populateTable();
+            }
+            //emerReq.setStatus("Accepted");
+        }
+    }//GEN-LAST:event_acceptBtnActionPerformed
+
+    private void rejectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtnActionPerformed
+        int count = workRequestTable.getSelectedRowCount();
+        if(count != 1) {
+            JOptionPane.showMessageDialog(null, "Select a request");
+        }else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            if(emerReq.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already Rejected");
+            }else if(emerReq.getStatus().equals("Accepted")) {
+                JOptionPane.showMessageDialog(null, "Request is already Accepted");
+            }else if(emerReq.getStatus().equals("Processing")) {
+                JOptionPane.showMessageDialog(null, "Request is already Accepted and Processing");
+            }else if(emerReq.getStatus().equals("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already Completed");
+            }else if(emerReq.getStatus().equals("Cancelled")) {
+                JOptionPane.showMessageDialog(null, "Request is already cancelled by sender");
+            }else {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                emerReq.setStatus("Rejected");
+                emerReq.setMessage(msg);
+                populateTable();
+            }
+        }
+    }//GEN-LAST:event_rejectBtnActionPerformed
+
+    private void completeReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeReqBtnActionPerformed
+        int count = workRequestTable.getSelectedRowCount();
+        if(count != 1) {
+            JOptionPane.showMessageDialog(null, "Select a request");
+        }else {
+            int selectedRow = workRequestTable.getSelectedRow();
+            EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
+            if(emerReq.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Request is already Rejected");
+            }else if(emerReq.getStatus().equals("Accepted")) {
+                JOptionPane.showMessageDialog(null, "Request should be in processing state before marking complete");
+            }else if(emerReq.getStatus().equals("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request is already Completed");
+            }else if(emerReq.getStatus().equals("Cancelled")) {
+                JOptionPane.showMessageDialog(null, "Request is already cancelled by sender");
+            }else if(emerReq.getStatus().equals("Requested")) {
+                JOptionPane.showMessageDialog(null, "Request is not yet Accepted");
+            }else {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                emerReq.setStatus("Completed");
+                emerReq.setMessage(msg);
+                populateTable();
+            }
+        }
+    }//GEN-LAST:event_completeReqBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton acceptBtn;
+    private javax.swing.JButton completeReqBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField messageTextField;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton processReqBtn;
+    private javax.swing.JButton rejectBtn;
     private javax.swing.JTable workRequestTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -274,10 +274,17 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                     }
                 }
                 populateSceneTable();
+                resetFields();
             //}
         }
     }//GEN-LAST:event_createSceneBtnActionPerformed
-
+    public void resetFields() {
+        sceneName.setText("");
+        sceneZipCode.setText("");
+        noOfVictims.setText("");
+        estimatedLoss.setText("");
+        sceneLocation.setText("");
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);

@@ -442,7 +442,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
             } else {
                 createWorkRequest(orgId, null);
             }
-
+            JOptionPane.showMessageDialog(null, "The request has been sent to the selected organization");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.MedicalUnitWorkArea;
+package userinterface.VoluntaryUnitNGO;
 
+import userinterface.voluntaryUnitPersonal.*;
 import userinterface.FireSafetyWorkArea.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dhankuwarsisodiya
  */
-public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class NGOAdminWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Enterprise enterprise;
@@ -34,7 +35,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FireSafetyAdminWorkAreaJPanel
      */
-    public MedicalAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+    public NGOAdminWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -61,7 +62,6 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 row[7] = ((EmergencyUnitRequest) wr).getSenderOrganization().getName();
                 row[8] = ((EmergencyUnitRequest) wr).getSenderNetwork().getName();
                 row[9] = ((EmergencyUnitRequest) wr).getRequestDate();
-                row[10] = ((EmergencyUnitRequest) wr).getRequirements();
                 model.addRow(row);
             }
             
@@ -86,21 +86,21 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         completeReqBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel1.setText("Medical Admin Work Area");
+        jLabel1.setText("Fire Safety Management Admin Work Area");
 
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date", "Requirements"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

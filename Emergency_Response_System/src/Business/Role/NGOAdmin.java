@@ -11,7 +11,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.VoluntaryUnitNGO.NGOAdminWorkAreaJPanel1;
+import userinterface.VoluntaryUnitNGO.NGOAdminWorkAreaJPanel;
 
 /**
  *
@@ -21,7 +21,7 @@ public class NGOAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        return new NGOAdminWorkAreaJPanel1(userProcessContainer, account, organization, enterprise, network, business); //To change body of generated methods, choose Tools | Templates.
+        return new NGOAdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override

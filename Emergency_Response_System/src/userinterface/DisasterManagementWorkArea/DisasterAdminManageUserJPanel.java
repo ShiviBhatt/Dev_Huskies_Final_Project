@@ -219,7 +219,10 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         }
         */
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public void resetFields() {
+        username.setText("");
+        passwordText.setText("");
+    }
     private void organizationComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationComboBox1ActionPerformed
         // TODO add your handling code here:
          Organization organization = (Organization) organizationComboBox1.getSelectedItem();

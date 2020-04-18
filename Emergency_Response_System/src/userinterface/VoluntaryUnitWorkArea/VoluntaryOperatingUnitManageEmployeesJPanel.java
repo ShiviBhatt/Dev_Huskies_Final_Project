@@ -253,6 +253,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
             organization.getEmployeeDirectory().createEmployee(name);
             JOptionPane.showMessageDialog(null,"Employee Added Successfully");
             populateTable(organization);
+            employeeName.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }

@@ -11,8 +11,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.voluntaryUnitPersonal.IndividualWorkAreaJPanel;
-import userinterface.voluntaryUnitPersonal.IndividualWorkRequestJPanel;
+import userinterface.voluntaryUnitPersonal.IndividualAdminWorkAreaJPanel;
 
 
 
@@ -24,7 +23,7 @@ public class PersonalAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,Network network, EcoSystem business) {
-        return new IndividualWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
+        return new IndividualAdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, network, business);
     }
     
     @Override

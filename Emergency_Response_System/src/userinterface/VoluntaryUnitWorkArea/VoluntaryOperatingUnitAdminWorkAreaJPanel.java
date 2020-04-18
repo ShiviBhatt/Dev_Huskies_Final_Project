@@ -5,7 +5,6 @@ package userinterface.VoluntaryUnitWorkArea;
 import Business.EcoSystem;
 import userinterface.EmergencyUnitWorkArea.*;
 import userinterface.IncidentUnitWorkArea.*;
-import userinterface.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;

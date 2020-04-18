@@ -5,7 +5,6 @@
 package userinterface.IncidentUnitWorkArea;
 
 import Business.EcoSystem;
-import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -262,13 +261,17 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
             Employee employee = (Employee) employeeJComboBox.getSelectedItem();
             Role role = (Role) roleJComboBox.getSelectedItem();        
             organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);        
+            resetFields();
             popData();
             JOptionPane.showMessageDialog(null, "User is created successfully");
         }
         
         
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
+    public void resetFields() {
+        nameJTextField.setText("");
+        passwordJTextField.setText("");
+    }
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);

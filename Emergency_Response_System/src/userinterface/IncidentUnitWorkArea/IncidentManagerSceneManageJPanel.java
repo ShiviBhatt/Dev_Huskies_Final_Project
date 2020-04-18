@@ -181,7 +181,8 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                     u.getWorkQueue().getWorkRequestList().add(scene);
                 }
             }
-        }        
+        }  
+        JOptionPane.showInputDialog("Reporting admin is assigned successfully");
         populateTable();
         populateSiteNameCombo();
     }//GEN-LAST:event_jButton2ActionPerformed

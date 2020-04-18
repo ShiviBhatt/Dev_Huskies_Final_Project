@@ -78,7 +78,7 @@ public class Validation {
                 || (c == evt.VK_DELETE))) {
 
             JOptionPane.showMessageDialog(null, "Enter Alphabets only");
-            field.setText("");
+            field.setText(field.getText().substring(0, field.getText().length()-1));
         }
     }
 
@@ -89,7 +89,8 @@ public class Validation {
                 || (c == evt.VK_DELETE))) {
 
             JOptionPane.showMessageDialog(null, "Enter Integers only");
-            field.setText("");
+            //field.setText("");
+            field.setText(field.getText().substring(0, field.getText().length()-1));
         }
     }
     

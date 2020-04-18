@@ -4,7 +4,6 @@
  */
 package userinterface.IncidentUnitWorkArea;
 
-import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -63,6 +62,7 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,13 +210,16 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
         }else {
             organization.getEmployeeDirectory().createEmployee(name);
             populateTable(organization);
+            resetFields();
             JOptionPane.showMessageDialog(null, "Employee created successfully");
         }
         
         
         
     }//GEN-LAST:event_addJButtonActionPerformed
-
+    public void resetFields() {
+        nameJTextField.setText("");
+    }
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         userProcessContainer.remove(this);

@@ -152,13 +152,20 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         UserAccount empUserAccount = null;
         boolean isResolved = true;
-        String msg = JOptionPane.showInputDialog("Additional Message");
+        
         //ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+        
+        String sceneName = (String) siteNameComboBox.getSelectedItem();        
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            if(wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() ==  null) {
+                if(sceneName.equals(((ReportingAdminSceneRequest) wr).getSceneName()))
+                selectedSite = (ReportingAdminSceneRequest) wr;
+            }            
+        }
         ReportingAdminSceneRequest scene = selectedSite;
+        
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
-        scene.setSceneManager(employee);
-        scene.setStatus("Scene Manager Assigned");
-        scene.setMessage(msg);
+        
         
         for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
             for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
@@ -182,7 +189,12 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         }
         
         if(isResolved) {
+            String msg = JOptionPane.showInputDialog("Additional Message");
+            scene.setSceneManager(employee);
+            scene.setStatus("Scene Manager Assigned");
+            scene.setMessage(msg);
             empUserAccount.getWorkQueue().getWorkRequestList().add(scene);
+            JOptionPane.showMessageDialog(null, "Manager is assigned successfully");
             populateTable();
             populateSiteNameCombo();
         }else {
@@ -194,8 +206,14 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void siteNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteNameComboBoxActionPerformed
-//        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
-//        selectedSite = scene;
+        /*String sceneName = (String) siteNameComboBox.getSelectedItem();
+        
+        for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
+            if(wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() ==  null) {
+                if(sceneName.equals(((ReportingAdminSceneRequest) wr).getSceneName()))
+                selectedSite = (ReportingAdminSceneRequest) wr;
+            }            
+        }*/
     }//GEN-LAST:event_siteNameComboBoxActionPerformed
 
 
@@ -233,9 +251,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
             if(wr instanceof ReportingAdminSceneRequest && ((ReportingAdminSceneRequest) wr).getSceneManager() ==  null) {
                 siteNameComboBox.addItem(((ReportingAdminSceneRequest) wr).getSceneName());
-                selectedSite = (ReportingAdminSceneRequest) wr;
-            }
-            
+            }            
         }
     }
 

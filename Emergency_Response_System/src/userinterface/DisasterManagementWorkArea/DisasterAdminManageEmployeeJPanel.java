@@ -147,7 +147,9 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public void resetFields() {
+        employeeNameTextField.setText("");
+    }
     private void organizationEmployeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmployeeJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_organizationEmployeeJComboBoxActionPerformed
