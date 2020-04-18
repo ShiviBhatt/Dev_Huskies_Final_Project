@@ -37,6 +37,7 @@ public class CompanyWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.system = system;
+        userProcessContainer.setVisible(true);
     }
 
     /**
@@ -101,7 +102,7 @@ public class CompanyWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSceneActionPerformed
-       ManageSceneJPanel manageScene = new ManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network);
+       ManageSceneJPanel manageScene = new ManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
         userProcessContainer.add("ManageSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

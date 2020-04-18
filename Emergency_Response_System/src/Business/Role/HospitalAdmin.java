@@ -11,7 +11,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import usertinterface.VoluntaryUnitHospital.HospitalWorkAreaJPanel;
+import userinterface.VoluntaryUnitHospital.HospitalWorkAreaJPanel;
 
 /**
  *

@@ -194,8 +194,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void siteNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteNameComboBoxActionPerformed
-        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
-        selectedSite = scene;
+//        ReportingAdminSceneRequest scene = (ReportingAdminSceneRequest) siteNameComboBox.getSelectedItem();
+//        selectedSite = scene;
     }//GEN-LAST:event_siteNameComboBoxActionPerformed
 
 

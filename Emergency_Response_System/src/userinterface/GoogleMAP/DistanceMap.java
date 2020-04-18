@@ -15,6 +15,17 @@ import com.teamdev.jxbrowser.view.swing.BrowserView;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -95,8 +106,10 @@ public class DistanceMap {
             frame.add(view, BorderLayout.CENTER);
             frame.setSize(800, 500);
             frame.setVisible(true);
-
-            browser.navigation().loadUrl("C:\\Users\\Mayank\\Desktop\\Final Proj\\Dev_Huskies_Final_Project\\Emergency_Response_System\\map.html");
+            
+            String rootPath = System.getProperty("user.dir");
+            browser.navigation().loadUrl("file://"+rootPath+"/map.html");
+            
         });
     }
 }
