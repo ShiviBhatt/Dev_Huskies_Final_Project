@@ -106,6 +106,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,6 +229,9 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(25, 56, 82));
         jLabel8.setText("MANAGE REQUEST");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 8, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/collaboration.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
@@ -359,6 +363,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;
