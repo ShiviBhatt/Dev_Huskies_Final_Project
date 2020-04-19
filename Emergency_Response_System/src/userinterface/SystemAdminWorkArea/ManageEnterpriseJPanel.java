@@ -128,7 +128,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 198, 136, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 198, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -136,7 +136,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 293, -1, -1));
 
         nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 288, 136, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 288, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -146,7 +146,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         enterpriseTypeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 243, 136, -1));
+        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 243, 210, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));
@@ -168,7 +168,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnSubmitMousePressed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 344, 123, 30));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 123, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/opaqueblurimage.png"))); // NOI18N

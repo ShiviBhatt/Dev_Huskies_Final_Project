@@ -98,28 +98,45 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(940, 802));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        policeOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        policeOrg.setForeground(new java.awt.Color(25, 56, 82));
         policeOrg.setText("Police Organization");
         policeOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 policeOrgActionPerformed(evt);
             }
         });
+        add(policeOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 316, 200, -1));
 
+        fireOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        fireOrg.setForeground(new java.awt.Color(25, 56, 82));
         fireOrg.setText("Fire Organization");
         fireOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fireOrgActionPerformed(evt);
             }
         });
+        add(fireOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 281, 210, -1));
 
+        medicineOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        medicineOrg.setForeground(new java.awt.Color(25, 56, 82));
         medicineOrg.setText("Medicine Organization");
         medicineOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicineOrgActionPerformed(evt);
             }
         });
+        add(medicineOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 316, -1, -1));
 
+        nearestOrgTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        nearestOrgTable.setForeground(new java.awt.Color(25, 56, 82));
         nearestOrgTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -136,132 +153,103 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        nearestOrgTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(nearestOrgTable);
 
-        jButton1.setText("Back");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 137, 657, 104));
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
+        jButton1.setText("<Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
             }
         });
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 80, 133, -1));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Select Network");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 85, -1, -1));
 
-        jButton3.setText("Place Req");
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(25, 56, 82));
+        jButton3.setText("Place Request");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 404, -1, -1));
 
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Hospital Organization");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 281, -1, -1));
 
+        jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(25, 56, 82));
         jButton4.setText("NGO Organization");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 357, 210, -1));
 
+        jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(25, 56, 82));
         jButton5.setText("Personal Organization");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 316, -1, -1));
 
+        jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(25, 56, 82));
         jButton6.setText("CompanyOrganization");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 281, -1, -1));
 
+        jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(25, 56, 82));
         jButton7.setText("View On Map");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 404, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(policeOrg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fireOrg)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(medicineOrg)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(385, 385, 385)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(policeOrg)
-                    .addComponent(fireOrg)
-                    .addComponent(medicineOrg)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7))
-                .addContainerGap(246, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel2.setText("FIND NEAREST ORGANIZATION");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 26, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/NearestOrganizationMap512x.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void fireOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireOrgActionPerformed
@@ -686,6 +674,8 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton medicineOrg;
     private javax.swing.JTable nearestOrgTable;

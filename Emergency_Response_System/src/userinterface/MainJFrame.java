@@ -10,9 +10,23 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.CompanySupervisor;
+import Business.Role.DisasterHead;
+import Business.Role.EmergencyUnitAdmin;
+import Business.Role.FireSafetyHead;
+import Business.Role.HospitalAdmin;
+import Business.Role.IncidentUnitManager;
+import Business.Role.MedicalAgencyHead;
+import Business.Role.NGOAdmin;
+import Business.Role.PersonalAdmin;
+import Business.Role.PoliceHead;
+import Business.Role.ReportingAdmin;
 import Business.Role.Role;
 import Business.Role.Role.RoleType;
 import static Business.Role.Role.RoleType.CompanySupervisor;
+import static Business.Role.Role.RoleType.DisasterHead;
+import static Business.Role.Role.RoleType.PoliceHead;
+import Business.Role.SceneManager;
+import Business.Role.VoluntaryUnitAdmin;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -43,26 +57,55 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJPanel.setVisible(true);
         container.setVisible(false);
         leftPanel.setVisible(false);
-//        this.userAccount = userAccount;
-//        changePanel(userAccount);
+
     }
-    
-       private void changePanel1() {
-           
+
+    private void changePanel1() {
+
         if (userAccount != null && userAccount.getRole() != null) {
             String greetings = "Hi";
-            if (userAccount.getRole() instanceof CompanySupervisor){
-                    greetings =  greetings + " " + userAccount.getUsername();
-                    container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount,inOrganization,inEnterprise,networkEmergency, system));
-                    
-//            }else if(userAccount instanceof Restaurant){
-//                    greetings =  greetings + " " + ((Restaurant)userAccount).getName();
-//                    container.add("workArea", userAccount.getRole().createWorkArea(container, (Restaurant)userAccount, system));
-//            }else if(userAccount instanceof DeliveryMan){
-//                    greetings =  greetings + " " + ((DeliveryMan)userAccount).getName();
-//                    container.add("workArea", userAccount.getRole().createWorkArea(container, (DeliveryMan)userAccount, system));
-           }else{
-                 container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount,inOrganization,inEnterprise, networkEmergency,system));
+            if (userAccount.getRole() instanceof CompanySupervisor) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
+            } else if (userAccount.getRole() instanceof DisasterHead) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
+            } else if (userAccount.getRole() instanceof EmergencyUnitAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
+            } else if (userAccount.getRole() instanceof FireSafetyHead) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
+            } else if (userAccount.getRole() instanceof HospitalAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
+            }else if (userAccount.getRole() instanceof IncidentUnitManager) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof MedicalAgencyHead) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof NGOAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof PersonalAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof PoliceHead) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof ReportingAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof SceneManager) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else if (userAccount.getRole() instanceof VoluntaryUnitAdmin) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system)); 
+            }else {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, networkEmergency, system));
             }
             greetingUserLabel.setText(greetings + " !!!");
             CardLayout layout = (CardLayout) container.getLayout();
@@ -70,29 +113,6 @@ public class MainJFrame extends javax.swing.JFrame {
         }
 
     }
-
-
-//    private void changePanel(UserAccount userAccount) {
-//        if (userAccount != null) {
-//            String greetings = "Hi";
-//            if (userAccount instanceof CompanySupervisor){
-//                    greetings =  greetings + " " + ((CompanySupervisor)userAccount).getName();
-//                    container.add("workArea", userAccount.getRole().createWorkArea(container, (Customer)userAccount, system));
-//            }else if(userAccount instanceof Restaurant){
-//                    greetings =  greetings + " " + ((Restaurant)userAccount).getName();
-//                    container.add("workArea", userAccount.getRole().createWorkArea(container, (Restaurant)userAccount, system));
-//            }else if(userAccount instanceof DeliveryMan){
-//                    greetings =  greetings + " " + ((DeliveryMan)userAccount).getName();
-//                    container.add("workArea", userAccount.getRole().createWorkArea(container, (DeliveryMan)userAccount, system));
-//            }else{
-//                 container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount,inOrganization,inEnterprise, networkEmergency,system));
-//            }
-//            greetingUserLabel.setText(greetings + " !!!");
-//            CardLayout layout = (CardLayout) container.getLayout();
-//            layout.next(container);
-//        }
-//
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,6 +143,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 802));
+        setPreferredSize(new java.awt.Dimension(1200, 802));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftPanel.setBackground(new java.awt.Color(244, 242, 227));
@@ -344,41 +365,40 @@ public class MainJFrame extends javax.swing.JFrame {
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
 
-        userAccount=system.getUserAccountDirectory().authenticateUser(userName, password);
-         inEnterprise=null;
-         inOrganization=null;
-         networkEmergency = null;
-        
-        if(userAccount == null){
-              for(Network network:system.getNetworkList()){
+        userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        inEnterprise = null;
+        inOrganization = null;
+        networkEmergency = null;
+
+        if (userAccount == null) {
+            for (Network network : system.getNetworkList()) {
                 //Step 2.a: check against each enterprise
                 System.out.println("Network name --->> " + network.getName());
-                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     System.out.println("Enterprise name --->> " + enterprise.getName());
-                    userAccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
                     networkEmergency = network;
-                    if(userAccount==null){
+                    if (userAccount == null) {
                         //Step 3:check against each organization for each enterprise
-                        for(Organization organization:enterprise.getOrganizationDirectory().getOrganizationList()){
-                            userAccount=organization.getUserAccountDirectory().authenticateUser(userName, password);
-                            if(userAccount!=null){
-                                inEnterprise=enterprise;
-                                inOrganization=organization;
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
                                 networkEmergency = network;
                                 break;
                             }
                         }
 
-                    }
-                    else{
-                        inEnterprise=enterprise;
+                    } else {
+                        inEnterprise = enterprise;
                         break;
                     }
-                    if(inOrganization!=null){
+                    if (inOrganization != null) {
                         break;
                     }
                 }
-                if(inEnterprise!=null){
+                if (inEnterprise != null) {
                     break;
                 }
                 /*if (networkEmergency != null) {//changed
@@ -386,10 +406,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 }*/
             }
         }
-        if(userAccount==null){
+        if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
-        }else{
+        } else {
             loginJPanel.setVisible(false);
             container.setVisible(true);
             leftPanel.setVisible(true);
@@ -397,7 +417,7 @@ public class MainJFrame extends javax.swing.JFrame {
             passwordField.setText("");
             changePanel1();
         }
-       
+
     }//GEN-LAST:event_loginButtonMousePressed
 
     private void cancelButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMousePressed
@@ -413,14 +433,14 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.next(container);
     }//GEN-LAST:event_btnRegisterMousePressed
 
-    private void logout() {    
+    private void logout() {
         container.removeAll();
         dB4OUtil.storeSystem(system);
-       loginJPanel.setVisible(true);
-       container.setVisible(false);
-       leftPanel.setVisible(false);
+        loginJPanel.setVisible(true);
+        container.setVisible(false);
+        leftPanel.setVisible(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -446,9 +466,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-     
+
         //</editor-fold>
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

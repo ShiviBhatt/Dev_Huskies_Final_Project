@@ -85,13 +85,20 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         addJButton = new javax.swing.JButton();
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         orgName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         orgLocation = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        organizationJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        organizationJTable.setForeground(new java.awt.Color(25, 56, 82));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -118,96 +125,71 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
                 return canEdit [columnIndex];
             }
         });
+        organizationJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(organizationJTable);
         if (organizationJTable.getColumnModel().getColumnCount() > 0) {
             organizationJTable.getColumnModel().getColumn(0).setResizable(false);
             organizationJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 122, 550, 92));
+
+        addJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(25, 56, 82));
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 361, -1, -1));
 
+        organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 243, 180, -1));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Organization Type ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 248, -1, -1));
 
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Organization Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 282, -1, -1));
+        add(orgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 276, 180, -1));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Location Point");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 321, -1, -1));
 
         orgLocation.setEditable(false);
+        orgLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        orgLocation.setForeground(new java.awt.Color(25, 56, 82));
+        add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 316, 180, -1));
 
-        jButton1.setText("Set Location");
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
+        jButton1.setLabel("Click to Set Location");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 314, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(66, 196, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orgName, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(orgLocation))
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addGap(130, 130, 130))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addJButton)
-                .addGap(210, 210, 210))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(orgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(orgLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addJButton)
-                    .addComponent(backJButton))
-                .addContainerGap())
-        );
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel4.setText("MANAGE INCIDENT UNIT ORGANIZATION");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 32, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/OrganizationIncident600xOpaque.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department128x.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -230,13 +212,6 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         orgName.setText("");
         orgLocation.setText("");
     }
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
         userProcessContainer.add("OrganizationLocationJPanel", muajp);
@@ -246,11 +221,13 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField orgLocation;
     private javax.swing.JTextField orgName;

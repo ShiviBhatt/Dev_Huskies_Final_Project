@@ -103,7 +103,6 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblScene = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         sceneLocation = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -123,8 +122,10 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         imageJPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblScene.setForeground(new java.awt.Color(25, 56, 82));
         tblScene.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -148,25 +149,24 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1043, 146));
 
-        btnBack.setText("<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MANAGE SCENE");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 6, 849, -1));
 
         sceneLocation.setEditable(false);
+        sceneLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneLocation.setForeground(new java.awt.Color(25, 56, 82));
         add(sceneLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 375, 188, -1));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Scene Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 204, -1, -1));
 
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +175,8 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 375, -1, -1));
 
+        sceneName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneName.setForeground(new java.awt.Color(25, 56, 82));
         sceneName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 sceneNameFocusLost(evt);
@@ -187,10 +189,17 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(sceneName, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 199, 188, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Zip Code");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 248, -1, -1));
+
+        sceneZipCode.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneZipCode.setForeground(new java.awt.Color(25, 56, 82));
         add(sceneZipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 243, 188, -1));
 
+        noOfVictims.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        noOfVictims.setForeground(new java.awt.Color(25, 56, 82));
         noOfVictims.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noOfVictimsKeyPressed(evt);
@@ -198,9 +207,13 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(noOfVictims, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 287, 188, -1));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("# of victims");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 292, -1, -1));
 
+        estimatedLoss.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        estimatedLoss.setForeground(new java.awt.Color(25, 56, 82));
         estimatedLoss.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 estimatedLossKeyPressed(evt);
@@ -208,9 +221,13 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(estimatedLoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 331, 188, -1));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 336, -1, -1));
 
+        createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
         createSceneBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,12 +236,18 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("Location Point");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 380, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("Add Picture");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
 
+        createAddPic.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        createAddPic.setForeground(new java.awt.Color(25, 56, 82));
         createAddPic.setText("Upload Picture");
         createAddPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,13 +256,16 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(createAddPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, 40));
 
+        fileNameLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fileNameLabel.setText("<Value>");
         add(fileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 430, -1));
 
-        imageJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        imageJPanel.setBackground(new java.awt.Color(204, 204, 204));
         imageJPanel.setLayout(new java.awt.BorderLayout());
         add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 460, 280));
 
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Cancel Scene");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,16 +274,6 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        IndividualAdminWorkAreaJPanel hospitalworkArea = (IndividualAdminWorkAreaJPanel) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
         // TODO add your handling code here:
@@ -396,7 +412,6 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton createAddPic;
     private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;

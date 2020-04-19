@@ -9,7 +9,9 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
+import userinterface.EmergencyUnitWorkArea.EmergencyManageOrganizationJPanel;
 
 /**
  *
@@ -32,9 +34,25 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.network = network;
         this.account = account;
-        valueLabel.setText(enterprise.getName());
+        manageRequest();
+        //valueLabel.setText(enterprise.getName());
     }
-    
+    private void manageScene(){
+        manageRequestPanel.setBackground(new Color(236,113,107));
+        manageScenePanel.setBackground(new Color(215,81,81));
+        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network,account);
+        rightSystemAdminPanel.add("ReportingAdminManageSceneJPanel", muajp);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    }
+     private void manageRequest(){
+        manageRequestPanel.setBackground(new Color(236,113,107));
+        manageScenePanel.setBackground(new Color(215,81,81));
+        ReportingAdminManageRequestsJPanel muajp = new ReportingAdminManageRequestsJPanel(userProcessContainer, enterprise, system, organization, network,account);
+        rightSystemAdminPanel.add("ReportingAdminManageSceneJPanel", muajp);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -43,95 +61,180 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
-        manageReqBtn = new javax.swing.JButton();
-        manageSceneBtn = new javax.swing.JButton();
+        systemAdminPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        manageRequestPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        manageRequest = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        manageScenePanel = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        manageSceneLabel = new javax.swing.JLabel();
+        rightSystemAdminPanel = new javax.swing.JPanel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("My Work Area -Adminstrative Role");
+        setBackground(new java.awt.Color(215, 81, 81));
+        setPreferredSize(new java.awt.Dimension(1200, 802));
+        setLayout(new java.awt.BorderLayout());
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
+        systemAdminPanel.setBackground(new java.awt.Color(215, 81, 81));
 
-        valueLabel.setText("<value>");
+        jPanel3.setBackground(new java.awt.Color(215, 81, 81));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageReqBtn.setText("Manage Requests");
-        manageReqBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageReqBtnActionPerformed(evt);
+        manageRequestPanel.setBackground(new java.awt.Color(215, 81, 81));
+        manageRequestPanel.setToolTipText("");
+        manageRequestPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageRequestPanelMousePressed(evt);
             }
         });
 
-        manageSceneBtn.setText("Manage Scenes");
-        manageSceneBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageSceneBtnActionPerformed(evt);
+        jLabel2.setBackground(new java.awt.Color(215, 81, 81));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department.png"))); // NOI18N
+        jLabel2.setToolTipText("");
+
+        manageRequest.setBackground(new java.awt.Color(215, 81, 81));
+        manageRequest.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        manageRequest.setText("Manage Request");
+        manageRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageRequestMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(manageReqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manageSceneBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(91, 91, 91))
+        javax.swing.GroupLayout manageRequestPanelLayout = new javax.swing.GroupLayout(manageRequestPanel);
+        manageRequestPanel.setLayout(manageRequestPanelLayout);
+        manageRequestPanelLayout.setHorizontalGroup(
+            manageRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageRequestPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(manageRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(valueLabel)))
-                .addGap(51, 51, 51)
-                .addComponent(manageReqBtn)
-                .addGap(18, 18, 18)
-                .addComponent(manageSceneBtn)
-                .addContainerGap(141, Short.MAX_VALUE))
+        manageRequestPanelLayout.setVerticalGroup(
+            manageRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageRequestPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(manageRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(manageRequestPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(manageRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
+
+        jPanel3.add(manageRequestPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 280, 40));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, -1));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel3.setText("REPORTING ADMIN SYSTEM");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 210, 20));
+
+        manageScenePanel.setBackground(new java.awt.Color(215, 81, 81));
+        manageScenePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageScenePanelMousePressed(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(215, 81, 81));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/manager24x.png"))); // NOI18N
+
+        manageSceneLabel.setBackground(new java.awt.Color(215, 81, 81));
+        manageSceneLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageSceneLabel.setText("Manage Scene");
+        manageSceneLabel.setPreferredSize(new java.awt.Dimension(115, 16));
+
+        javax.swing.GroupLayout manageScenePanelLayout = new javax.swing.GroupLayout(manageScenePanel);
+        manageScenePanel.setLayout(manageScenePanelLayout);
+        manageScenePanelLayout.setHorizontalGroup(
+            manageScenePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageScenePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(manageSceneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        manageScenePanelLayout.setVerticalGroup(
+            manageScenePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageScenePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(manageSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(manageScenePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 280, 40));
+
+        rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(940, 802));
+        rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout systemAdminPanelLayout = new javax.swing.GroupLayout(systemAdminPanel);
+        systemAdminPanel.setLayout(systemAdminPanelLayout);
+        systemAdminPanelLayout.setHorizontalGroup(
+            systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(systemAdminPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        systemAdminPanelLayout.setVerticalGroup(
+            systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, systemAdminPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        add(systemAdminPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void manageSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSceneBtnActionPerformed
-        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network,account);
-        userProcessContainer.add("ReportingAdminManageSceneJPanel", muajp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_manageSceneBtnActionPerformed
+    private void manageRequestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRequestMousePressed
+       manageRequest();
+    }//GEN-LAST:event_manageRequestMousePressed
 
-    private void manageReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageReqBtnActionPerformed
-        ReportingAdminManageRequestsJPanel muajp = new ReportingAdminManageRequestsJPanel(userProcessContainer, enterprise, system, organization, network,account);
-        userProcessContainer.add("ReportingAdminManageSceneJPanel", muajp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_manageReqBtnActionPerformed
+    private void manageRequestPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRequestPanelMousePressed
+        // TODO add your handling code here:
+      manageRequest();
+    }//GEN-LAST:event_manageRequestPanelMousePressed
+
+    private void manageScenePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageScenePanelMousePressed
+        // TODO add your handling code here:
+       manageScene();
+    }//GEN-LAST:event_manageScenePanelMousePressed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton manageReqBtn;
-    private javax.swing.JButton manageSceneBtn;
-    private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel manageRequest;
+    private javax.swing.JPanel manageRequestPanel;
+    private javax.swing.JLabel manageSceneLabel;
+    private javax.swing.JPanel manageScenePanel;
+    private javax.swing.JPanel rightSystemAdminPanel;
+    private javax.swing.JPanel systemAdminPanel;
     // End of variables declaration//GEN-END:variables
     
 }

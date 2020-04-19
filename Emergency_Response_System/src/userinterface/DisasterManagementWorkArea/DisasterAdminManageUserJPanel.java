@@ -62,7 +62,16 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         username = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         passwordText = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(940, 802));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        userJTable.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        userJTable.setForeground(new java.awt.Color(25, 56, 82));
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -82,103 +91,97 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        userJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(userJTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 550, 120));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Organization");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 122, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Employee");
+        jLabel2.setPreferredSize(new java.awt.Dimension(81, 16));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 92, -1));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Role");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 60, 20));
 
+        Username.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        Username.setForeground(new java.awt.Color(25, 56, 82));
         Username.setText("Username");
+        add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Password");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 70, 20));
 
+        organizationComboBox1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        organizationComboBox1.setForeground(new java.awt.Color(25, 56, 82));
         organizationComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationComboBox1ActionPerformed(evt);
             }
         });
+        add(organizationComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 189, -1));
 
+        employeeComboBox2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        employeeComboBox2.setForeground(new java.awt.Color(25, 56, 82));
         employeeComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        employeeComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeComboBox2ActionPerformed(evt);
+            }
+        });
+        add(employeeComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 189, -1));
 
+        roleComboBox3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        roleComboBox3.setForeground(new java.awt.Color(25, 56, 82));
         roleComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(roleComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 189, -1));
 
+        username.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        username.setForeground(new java.awt.Color(25, 56, 82));
+        add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 189, -1));
+
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Add User");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 469, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(Username))
-                                    .addGap(149, 149, 149)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(roleComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(employeeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(organizationComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(organizationComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(employeeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(roleComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Username)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
+        passwordText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        passwordText.setForeground(new java.awt.Color(25, 56, 82));
+        passwordText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextActionPerformed(evt);
+            }
+        });
+        add(passwordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 189, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/loginUser128x.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 140));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("MANAGE DISASTER UNIT USERS");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 540, -1));
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/userImageOpaque.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 380, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -232,6 +235,14 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_organizationComboBox1ActionPerformed
 
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextActionPerformed
+
+    private void employeeComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeComboBox2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Username;
@@ -240,7 +251,10 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationComboBox1;
     private javax.swing.JTextField passwordText;

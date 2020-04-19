@@ -56,16 +56,31 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         employeeNameTextField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(940, 802));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        organizationEmployeeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        organizationEmployeeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationEmployeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmployeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationEmployeeJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationEmployeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 306, 233, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Oragnization Name ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 311, -1, -1));
 
+        employeeJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        employeeJTable.setForeground(new java.awt.Color(25, 56, 82));
         employeeJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -85,54 +100,40 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        employeeJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(employeeJTable);
 
-        jLabel3.setText("Name");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 480, 180));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel3.setText("Name");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 339, -1, -1));
+
+        employeeNameTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        employeeNameTextField.setForeground(new java.awt.Color(25, 56, 82));
+        add(employeeNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 339, 233, -1));
+
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Add Employee");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 376, 158, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(organizationEmployeeJComboBox, 0, 113, Short.MAX_VALUE)
-                                .addComponent(employeeNameTextField)))))
-                .addContainerGap(317, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(organizationEmployeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(employeeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee128x.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel4.setText("MANAGE DISASTER UNIT EMPLOYEE");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/manageEmployee700px.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -159,8 +160,11 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JTable employeeJTable;
     private javax.swing.JTextField employeeNameTextField;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationEmployeeJComboBox;
     // End of variables declaration//GEN-END:variables

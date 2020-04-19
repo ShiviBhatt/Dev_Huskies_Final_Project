@@ -53,114 +53,55 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         systemAdminPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        manageEmployeePanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        manageEmployee = new javax.swing.JLabel();
         manageUser = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         manageUserLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         manageScene = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         manageSceneLabel = new javax.swing.JLabel();
-        lblSelectedNode1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        manageEmployeePanel = new javax.swing.JPanel();
+        manageEmployee = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
+        setPreferredSize(new java.awt.Dimension(1200, 802));
         setLayout(new java.awt.BorderLayout());
 
-        systemAdminPanel.setBackground(new java.awt.Color(240, 178, 62));
+        systemAdminPanel.setBackground(new java.awt.Color(215, 81, 81));
 
-        jPanel3.setBackground(new java.awt.Color(31, 50, 97));
+        jPanel3.setBackground(new java.awt.Color(215, 81, 81));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageEmployeePanel.setBackground(new java.awt.Color(31, 50, 97));
-        manageEmployeePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageEmployeePanelMousePressed(evt);
-            }
-        });
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
-
-        manageEmployee.setForeground(new java.awt.Color(240, 178, 62));
-        manageEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manageEmployee.setText("Manage Employee");
-        manageEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageEmployeeMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout manageEmployeePanelLayout = new javax.swing.GroupLayout(manageEmployeePanel);
-        manageEmployeePanel.setLayout(manageEmployeePanelLayout);
-        manageEmployeePanelLayout.setHorizontalGroup(
-            manageEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        manageEmployeePanelLayout.setVerticalGroup(
-            manageEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(manageEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manageEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel3.add(manageEmployeePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
-
-        manageUser.setBackground(new java.awt.Color(31, 50, 97));
+        manageUser.setBackground(new java.awt.Color(215, 81, 81));
         manageUser.setPreferredSize(new java.awt.Dimension(264, 48));
         manageUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageUserMousePressed(evt);
             }
         });
+        manageUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cooking.png"))); // NOI18N
-
-        manageUserLabel.setForeground(new java.awt.Color(240, 178, 62));
-        manageUserLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageUserLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         manageUserLabel.setText("Manage User");
         manageUserLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageUserLabelMousePressed(evt);
             }
         });
+        manageUser.add(manageUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 30));
 
-        javax.swing.GroupLayout manageUserLayout = new javax.swing.GroupLayout(manageUser);
-        manageUser.setLayout(manageUserLayout);
-        manageUserLayout.setHorizontalGroup(
-            manageUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageUserLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageUserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        manageUserLayout.setVerticalGroup(
-            manageUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageUserLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(manageUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(manageUserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/loginUser24x.png"))); // NOI18N
+        manageUser.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 33, 30));
 
-        jPanel3.add(manageUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 280, 50));
+        jPanel3.add(manageUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 280, 30));
 
-        manageScene.setBackground(new java.awt.Color(31, 50, 97));
+        manageScene.setBackground(new java.awt.Color(215, 81, 81));
+        manageScene.setPreferredSize(new java.awt.Dimension(280, 48));
         manageScene.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageSceneMousePressed(evt);
@@ -168,10 +109,9 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delivery (3).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime24x.png"))); // NOI18N
 
-        manageSceneLabel.setForeground(new java.awt.Color(240, 178, 62));
-        manageSceneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageSceneLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         manageSceneLabel.setText("Manage Scene Assignment");
         manageSceneLabel.setPreferredSize(new java.awt.Dimension(115, 16));
 
@@ -180,43 +120,76 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageSceneLayout.setHorizontalGroup(
             manageSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageSceneLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(manageSceneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         manageSceneLayout.setVerticalGroup(
             manageSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageSceneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(manageSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, 0)
+                .addGroup(manageSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(manageSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
-        jPanel3.add(manageScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 280, 50));
+        jPanel3.add(manageScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 260, 40));
 
-        lblSelectedNode1.setForeground(new java.awt.Color(240, 178, 62));
-        lblSelectedNode1.setText("<View_selected_node>");
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 190, -1));
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 280, -1));
 
-        jLabel7.setForeground(new java.awt.Color(240, 178, 62));
-        jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 100, 30));
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("DISASTER UNIT SYSTEM");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jTree1.setBackground(new java.awt.Color(31, 50, 97));
-        jTree1.setForeground(new java.awt.Color(240, 178, 62));
-        jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
-            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTree1ValueChanged(evt);
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 190, 20));
+
+        manageEmployeePanel.setBackground(new java.awt.Color(215, 81, 81));
+        manageEmployeePanel.setPreferredSize(new java.awt.Dimension(280, 48));
+        manageEmployeePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageEmployeePanelMousePressed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTree1);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 120, -1));
+        manageEmployee.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        manageEmployee.setText("Manage Employee");
+        manageEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageEmployeeMousePressed(evt);
+            }
+        });
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employeesmallicon24x.png"))); // NOI18N
+
+        javax.swing.GroupLayout manageEmployeePanelLayout = new javax.swing.GroupLayout(manageEmployeePanel);
+        manageEmployeePanel.setLayout(manageEmployeePanelLayout);
+        manageEmployeePanelLayout.setHorizontalGroup(
+            manageEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageEmployeePanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(manageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        manageEmployeePanelLayout.setVerticalGroup(
+            manageEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(manageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel3.add(manageEmployeePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 40));
+
+        rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(940, 808));
         rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
 
@@ -225,14 +198,15 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
         systemAdminPanelLayout.setHorizontalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(systemAdminPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         systemAdminPanelLayout.setVerticalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
         );
 
         add(systemAdminPanel, java.awt.BorderLayout.CENTER);
@@ -259,19 +233,11 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageSceneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSceneMousePressed
         manageSceneAssignment();
     }//GEN-LAST:event_manageSceneMousePressed
-
-    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-        // TODO add your handling code here:
-        //        DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
-        //        if(selectedNode!=null){
-            //            lblSelectedNode1.setText(selectedNode.toString());
-            //        }
-    }//GEN-LAST:event_jTree1ValueChanged
     
     public void manageEmployee(){
-        manageEmployeePanel.setBackground(new Color(56,90,174));
-        manageUser.setBackground(new Color(31,50,97));
-        manageScene.setBackground(new Color(31,50,97));
+        manageEmployeePanel.setBackground(new Color(236,113,107));
+        manageUser.setBackground(new Color(215,81,81));
+        manageScene.setBackground(new Color(215,81,81));
         DisasterAdminManageEmployeeJPanel disasterAdminManageEmployeeJPanel = new DisasterAdminManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),account, organization);
         rightSystemAdminPanel.add("disasterAdminManageEmployeeJPanel",disasterAdminManageEmployeeJPanel);
         
@@ -280,9 +246,9 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     public void manageUser(){
-        manageEmployeePanel.setBackground(new Color(31,50,97));
-        manageUser.setBackground(new Color(56,90,174));
-        manageScene.setBackground(new Color(31,50,97));
+        manageUser.setBackground(new Color(236,113,107));
+        manageEmployeePanel.setBackground(new Color(215,81,81));
+        manageScene.setBackground(new Color(215,81,81));
         DisasterAdminManageUserJPanel disasterAdminManageUserJPanel = new DisasterAdminManageUserJPanel(userProcessContainer, enterprise, business);
         rightSystemAdminPanel.add("disasterAdminManageUserJPanel",disasterAdminManageUserJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -290,9 +256,9 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     public void manageSceneAssignment(){
-        manageEmployeePanel.setBackground(new Color(31,50,97));
-        manageUser.setBackground(new Color(31,50,97));
-        manageScene.setBackground(new Color(56,90,174));
+         manageScene.setBackground(new Color(236,113,107));
+        manageEmployeePanel.setBackground(new Color(215,81,81));
+        manageUser.setBackground(new Color(215,81,81));
         DisasterAdminSceneManageJPanel disasterAdminSceneManageJPanel = new DisasterAdminSceneManageJPanel(rightSystemAdminPanel, account, enterprise, network, business, organization);
         rightSystemAdminPanel.add("disasterAdminSceneManageJPanel",disasterAdminSceneManageJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -301,14 +267,13 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSelectedNode1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel manageEmployee;
     private javax.swing.JPanel manageEmployeePanel;
     private javax.swing.JPanel manageScene;

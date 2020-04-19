@@ -170,7 +170,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         viewGraphScene = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         viewGraphSceneDetails = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -373,9 +373,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 viewGraphSceneMousePressed(evt);
             }
         });
+        viewGraphScene.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
+        viewGraphScene.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
 
         viewGraphSceneDetails.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         viewGraphSceneDetails.setText("View Graph Scene Details");
@@ -384,33 +386,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 viewGraphSceneDetailsMousePressed(evt);
             }
         });
+        viewGraphScene.add(viewGraphSceneDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 231, 31));
 
-        jSeparator1.setForeground(new java.awt.Color(51, 51, 0));
+        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 40));
 
-        javax.swing.GroupLayout viewGraphSceneLayout = new javax.swing.GroupLayout(viewGraphScene);
-        viewGraphScene.setLayout(viewGraphSceneLayout);
-        viewGraphSceneLayout.setHorizontalGroup(
-            viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewGraphSceneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
-            .addComponent(jSeparator1)
-        );
-        viewGraphSceneLayout.setVerticalGroup(
-            viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewGraphSceneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewGraphSceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(viewGraphSceneDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 60));
+        jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(940, 808));
@@ -494,7 +476,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JPanel manageEnterprise;
