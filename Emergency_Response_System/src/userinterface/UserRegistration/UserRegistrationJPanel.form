@@ -248,6 +248,7 @@
     <Component class="javax.swing.JTextField" name="uName">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uNameKeyTyped"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uNameKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uPass">
@@ -402,7 +403,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Contact No format Incorrect"/>
+        <Property name="text" type="java.lang.String" value="Contact No format Incorrect (Make sure you inclue country code, excluding &apos;+&apos;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="emailSuccessLabel">

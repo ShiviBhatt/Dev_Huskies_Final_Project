@@ -33,6 +33,7 @@ import Business.Utils.Validation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
+import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
 import javax.swing.Timer;
 
@@ -41,12 +42,16 @@ import javax.swing.Timer;
  * @author Mayank
  */
 public class UserRegistrationJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
     private EcoSystem system;
     private LocationPoint locationPoint;
     private Validation validation;
     private ActionListener eventListener;
+    private boolean emailValid;
+    private boolean contactValid;
+    private boolean userUnique;
+
     /**
      * Creates new form UserRegistrationJPanel
      */
@@ -63,16 +68,16 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         emailSuccessLabel.setVisible(false);
         contactSuccessLabel.setVisible(false);
         userNameSuccessLabel.setVisible(false);
-        
+
     }
-    
+
     public void populateNetworkComboBox() {
         stateCombo.removeAllItems();
         for (Network network : system.getNetworkList()) {
             stateCombo.addItem(network);
         }
     }
-    
+
     public void populateCarrierComboBox() {
         contactCarrier.removeAllItems();
         contactCarrier.addItem("ATT");
@@ -80,11 +85,14 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         contactCarrier.addItem("TMobile");
         contactCarrier.addItem("Verizon");
     }
-    
+
     public void populateLongituteLatitude(LocationPoint locationPoint) {
+        uLocation.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uLocation.setForeground(Color.BLACK);
         this.locationPoint = locationPoint;
         uLocation.setText(locationPoint.getLatitude() + "," + locationPoint.getLongitude());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +124,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<>();
+        contactCarrier = new javax.swing.JComboBox<String>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
         contactFormatMessage = new javax.swing.JLabel();
@@ -152,6 +160,9 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         uName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uNameKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uNameKeyReleased(evt);
             }
         });
 
@@ -245,7 +256,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Contact");
 
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
@@ -259,7 +270,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         emailValidateMessage.setText("Email format incorrect");
 
         contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
-        contactFormatMessage.setText("Contact No format Incorrect");
+        contactFormatMessage.setText("Contact No format Incorrect (Make sure you inclue country code, excluding '+')");
 
         emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
 
@@ -454,54 +465,61 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         Network network = (Network) stateCombo.getSelectedItem();
         Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
-        
-        if(network == null ){
+
+        if (network == null) {
             stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
             stateCombo.setForeground(Color.red);
-            
-        }if(uName.getText().isEmpty() ){
+
+        }
+        if (uName.getText().isEmpty()) {
             uName.setBorder(BorderFactory.createLineBorder(Color.RED));
             uName.setForeground(Color.red);
-            
-        }if(userName.getText().isEmpty() ){
+
+        }
+        if (userName.getText().isEmpty()) {
             userName.setBorder(BorderFactory.createLineBorder(Color.RED));
             userName.setForeground(Color.red);
-            
-        }if(uPass.getText().isEmpty() ){
+
+        }
+        if (uPass.getText().isEmpty()) {
             uPass.setBorder(BorderFactory.createLineBorder(Color.RED));
             uPass.setForeground(Color.red);
-            
-        }if(uEmail.getText().isEmpty() ){
+
+        }
+        if (uEmail.getText().isEmpty()) {
             uEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
             uEmail.setForeground(Color.red);
-            
-        }if(uCity.getText().isEmpty() ){
+
+        }
+        if (uCity.getText().isEmpty()) {
             uCity.setBorder(BorderFactory.createLineBorder(Color.RED));
             uCity.setForeground(Color.red);
-           
-        }if(type == null ){
+
+        }
+        if (type == null) {
             orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
             orgCombo.setForeground(Color.red);
-           
-        }if(uContact.getText().isEmpty() ){
+
+        }
+        if (uContact.getText().isEmpty()) {
             uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
             uContact.setForeground(Color.red);
-    
-        }if(locationPoint == null){
+
+        }
+        if (locationPoint == null) {
             uLocation.setBorder(BorderFactory.createLineBorder(Color.RED));
             uLocation.setForeground(Color.red);
-            
+
         }
-        if(userName.getText().isEmpty() 
-                || uPass.getText().isEmpty() 
-                || uEmail.getText().isEmpty() 
-                || uCity.getText().isEmpty() 
-                || type == null 
-                || uContact.getText().isEmpty() 
-                || locationPoint == null
-                ){
+        if (userName.getText().isEmpty()
+                || uPass.getText().isEmpty()
+                || uEmail.getText().isEmpty()
+                || uCity.getText().isEmpty()
+                || type == null
+                || uContact.getText().isEmpty()
+                || locationPoint == null) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-        } else{
+        } else if (emailValid && contactValid && userUnique) {
             UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
             registrationRequest.setName(uName.getText());
             registrationRequest.setUserName(userName.getText());
@@ -514,7 +532,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setUserContact(uContact.getText());
             registrationRequest.setUserLocationPoint(locationPoint);
             String contact = "";
-        
+
             if (contactCarrier.getSelectedItem().equals("ATT")) {
                 contact = uContact.getText() + "@txt.att.net";
             } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
@@ -537,17 +555,27 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                     }
                 }
             }
+            JOptionPane.showMessageDialog(null, "You have been registered succesfully!");
+            uName.setText("");
+            userName.setText("");
+            uPass.setText("");
+            uEmail.setText("");
+            uCity.setText("");
+            uContact.setText("");
+            uLocation.setText("");
+        } else if (!emailValid || !contactValid || !userUnique) {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_userNameActionPerformed
 
     private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_userNameKeyPressed
 
     private void userNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyTyped
@@ -558,23 +586,26 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyTyped
         // TODO add your handling code here:
-        uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uName.setForeground(Color.BLACK);
-        if(!system.checkIfUserIsUnique(uName.getText())){
-            usernameExistsMessage.setVisible(true);
-        } else{
-            usernameExistsMessage.setVisible(false);
-            userNameSuccessLabel.setVisible(true);
-            int delay = 2500; //milliseconds
-            ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    userNameSuccessLabel.setVisible(false);
-                }
-            };
-            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
-            tick.setRepeats(false);
-            tick.start();
-        }
+
+//        if (!system.checkIfUserIsUnique(uName.getText())) {
+//            usernameExistsMessage.setVisible(true);
+//            userUnique = false;
+//        } else {
+//            uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//            uName.setForeground(Color.BLACK);
+//            usernameExistsMessage.setVisible(false);
+//            userNameSuccessLabel.setVisible(true);
+//            userUnique = true;
+//            int delay = 2500; //milliseconds
+//            ActionListener taskPerformer = new ActionListener() {
+//                public void actionPerformed(ActionEvent evt) {
+//                    userNameSuccessLabel.setVisible(false);
+//                }
+//            };
+//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+//            tick.setRepeats(false);
+//            tick.start();
+//        }
     }//GEN-LAST:event_uNameKeyTyped
 
     private void uPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uPassKeyTyped
@@ -585,20 +616,22 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uEmailKeyTyped
         // TODO add your handling code here:
-        uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uEmail.setForeground(Color.BLACK);
-        if(!validation.emailValidator(uEmail.getText())){
+        if (!validation.emailValidator(uEmail.getText())) {
             emailValidateMessage.setVisible(true);
-        } else{
+            emailValid = false;
+        } else {
+            uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            uEmail.setForeground(Color.BLACK);
             emailValidateMessage.setVisible(false);
             emailSuccessLabel.setVisible(true);
+            emailValid = true;
             int delay = 2500; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     emailSuccessLabel.setVisible(false);
                 }
             };
-            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
             tick.setRepeats(false);
             tick.start();
         }
@@ -618,6 +651,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void orgComboKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_orgComboKeyTyped
         // TODO add your handling code here:
+
         orgCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         orgCombo.setForeground(Color.BLACK);
     }//GEN-LAST:event_orgComboKeyTyped
@@ -634,21 +668,26 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyTyped
         // TODO add your handling code here:  
-        if(!validation.phoneNumberValidator(uContact.getText())){
-                contactFormatMessage.setVisible(true);
-            } else{
-                contactFormatMessage.setVisible(false);
-                contactSuccessLabel.setVisible(true);
-                int delay = 2500; //milliseconds
-                ActionListener taskPerformer = new ActionListener() {
+
+        if (!contactValidity(uContact.getText())) {
+            contactFormatMessage.setVisible(true);
+            contactValid = false;
+        } else {
+            uContact.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            uContact.setForeground(Color.BLACK);
+            contactFormatMessage.setVisible(false);
+            contactSuccessLabel.setVisible(true);
+            contactValid = true;
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     contactSuccessLabel.setVisible(false);
                 }
-                };
-                javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
-                tick.setRepeats(false);
-                tick.start();
-            }
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
     }//GEN-LAST:event_uContactKeyTyped
 
     private void uLocationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uLocationKeyTyped
@@ -658,6 +697,30 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private void uLocationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_uLocationPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_uLocationPropertyChange
+
+    private void uNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyReleased
+        // TODO add your handling code here:
+        if (!system.checkIfUserIsUnique(uName.getText())) {
+            usernameExistsMessage.setVisible(true);
+            userNameSuccessLabel.setVisible(false);
+            userUnique = false;
+        } else {
+            uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            uName.setForeground(Color.BLACK);
+            usernameExistsMessage.setVisible(false);
+            userNameSuccessLabel.setVisible(true);
+            userUnique = true;
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    userNameSuccessLabel.setVisible(false);
+                }
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_uNameKeyReleased
 
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
@@ -705,11 +768,11 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             transport.close();
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
-mex.printStackTrace();
+            mex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Invalid email id");
         }
     }
-    
+
     public static void sendTextMessage(String contact) {
         // Recipient's email ID needs to be mentioned.
         String to = contact;
@@ -762,7 +825,14 @@ mex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Invalid email id");
         }
     }
-    
+
+    public Boolean contactValidity(String custContact) {
+        if (!Pattern.compile("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$").matcher(custContact).matches()) {
+            //JOptionPane.showMessageDialog(null,"Please enter a valid US Customer Contact");
+            return false;
+        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> contactCarrier;
