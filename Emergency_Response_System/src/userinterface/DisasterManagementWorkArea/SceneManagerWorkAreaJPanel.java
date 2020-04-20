@@ -13,6 +13,7 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.Utils.Validation;
 import Business.WorkQueue.BroadcastAlertRequest;
 import Business.WorkQueue.EmergencyUnitRequest;
@@ -63,7 +64,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         /*int selectedRow = sceneTable.getSelectedRow();
         ReportingAdminSceneRequest ss = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);*/
-        
+        statusTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
@@ -107,6 +108,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     private void populateSceneTable() {
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         model.setRowCount(0);
         
@@ -223,6 +225,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1250, 101));
 
+        nearestOrgSearch.setBackground(new java.awt.Color(255, 255, 255));
         nearestOrgSearch.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         nearestOrgSearch.setForeground(new java.awt.Color(25, 56, 82));
         nearestOrgSearch.setText("Search for nearest Organization");
@@ -258,6 +261,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1260, 129));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Refresh");
@@ -268,6 +272,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Refresh");
@@ -278,6 +283,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(25, 56, 82));
         jButton3.setText("Mark Resolved");
@@ -288,6 +294,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(25, 56, 82));
         jButton4.setText("Broadcast Alerts");
@@ -298,6 +305,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
 
+        processBtn.setBackground(new java.awt.Color(255, 255, 255));
         processBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processBtn.setForeground(new java.awt.Color(25, 56, 82));
         processBtn.setText("Process");
@@ -308,6 +316,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, -1, -1));
 
+        cancelReqBtn.setBackground(new java.awt.Color(255, 255, 255));
         cancelReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         cancelReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         cancelReqBtn.setText("Cancel Request");

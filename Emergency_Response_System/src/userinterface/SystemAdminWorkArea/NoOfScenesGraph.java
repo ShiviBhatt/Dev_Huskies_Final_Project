@@ -134,6 +134,7 @@ public class NoOfScenesGraph extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.BorderLayout());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 860, 600));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Download Graph");

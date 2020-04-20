@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -46,6 +47,7 @@ public class IndividualAdminWorkRequestJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
+        workRequestTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
@@ -121,6 +123,7 @@ public class IndividualAdminWorkRequestJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 153, 1020, 124));
 
+        processReqBtn.setBackground(new java.awt.Color(255, 255, 255));
         processReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         processReqBtn.setText("Process Request");
@@ -131,6 +134,7 @@ public class IndividualAdminWorkRequestJPanel extends javax.swing.JPanel {
         });
         add(processReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 295, -1, -1));
 
+        acceptBtn.setBackground(new java.awt.Color(255, 255, 255));
         acceptBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         acceptBtn.setForeground(new java.awt.Color(25, 56, 82));
         acceptBtn.setText("Accept Request");
@@ -141,6 +145,7 @@ public class IndividualAdminWorkRequestJPanel extends javax.swing.JPanel {
         });
         add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 295, -1, -1));
 
+        rejectBtn.setBackground(new java.awt.Color(255, 255, 255));
         rejectBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         rejectBtn.setForeground(new java.awt.Color(25, 56, 82));
         rejectBtn.setText("Reject Request");
@@ -151,6 +156,7 @@ public class IndividualAdminWorkRequestJPanel extends javax.swing.JPanel {
         });
         add(rejectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 295, -1, -1));
 
+        completeReqBtn.setBackground(new java.awt.Color(255, 255, 255));
         completeReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         completeReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         completeReqBtn.setText("Complete Request");

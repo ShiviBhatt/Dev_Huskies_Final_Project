@@ -14,6 +14,7 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.Utils.Validation;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
@@ -62,6 +63,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
     }
 
     private void populateSceneTable() {
+        tblScene.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblScene.getModel();
 
         model.setRowCount(0);
@@ -168,6 +170,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel1.setText("Scene Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 204, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");
@@ -229,6 +232,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 336, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
         createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
@@ -249,6 +253,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel7.setText("Add Picture");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
 
+        createAddPic.setBackground(new java.awt.Color(255, 255, 255));
         createAddPic.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         createAddPic.setForeground(new java.awt.Color(25, 56, 82));
         createAddPic.setText("Upload Picture");
@@ -268,6 +273,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         imageJPanel.setLayout(new java.awt.BorderLayout());
         add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 460, 280));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Cancel Scene");

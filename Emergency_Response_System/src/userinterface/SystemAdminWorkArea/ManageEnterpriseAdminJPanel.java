@@ -12,6 +12,7 @@ import Business.Role.EmergencyUnitAdmin;
 import Business.Role.IncidentUnitManager;
 import Business.Role.VoluntaryUnitAdmin;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -41,6 +42,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
+        enterpriseJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 
         model.setRowCount(0);
@@ -133,6 +135,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
 
+        networkJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -157,6 +160,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel3.setText("Enterprise");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 216, -1, 20));
 
+        enterpriseJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseJComboBox.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         enterpriseJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -190,7 +194,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/administratorBig.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 12, 161, 129));
 
-        btnSubmit.setBackground(new java.awt.Color(25, 56, 82));
+        btnSubmit.setBackground(new java.awt.Color(255, 255, 255));
         btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
         btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

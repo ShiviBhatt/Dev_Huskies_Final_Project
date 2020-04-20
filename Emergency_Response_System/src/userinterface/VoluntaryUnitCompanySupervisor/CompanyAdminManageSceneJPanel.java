@@ -15,11 +15,13 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.Utils.Validation;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
@@ -30,7 +32,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
 
 /**
@@ -60,11 +64,20 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         this.network = network;
         this.account = account;
         populateSceneTable();
+        buttonColor();
+    }
+
+    private void buttonColor() {
+        createSceneBtn.setBackground(new Color(255,255,255));
+        jButton1.setBackground(new Color(255,255,255));
+        jButton2.setBackground(new Color(255,255,255));
+        createAddPic.setBackground(new Color(255,255,255));
     }
 
     private void populateSceneTable() {
+        tblScene.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblScene.getModel();
-
+       
         model.setRowCount(0);
 
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
@@ -146,7 +159,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         tblScene.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(tblScene);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 880, 146));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1010, 146));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -162,6 +175,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel1.setText("Scene Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 204, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");
@@ -221,6 +235,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 336, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
         createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
@@ -261,6 +276,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         imageJPanel.setLayout(new java.awt.BorderLayout());
         add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 460, 280));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Cancel Scene");

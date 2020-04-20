@@ -7,6 +7,7 @@ package userinterface.EmergencyUnitWorkArea;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,6 +51,7 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable(Organization organization){
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
@@ -121,6 +123,7 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 165, 480, 116));
 
+        addJButton.setBackground(new java.awt.Color(255, 255, 255));
         addJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         addJButton.setForeground(new java.awt.Color(25, 56, 82));
         addJButton.setText("Create Employee");
@@ -131,6 +134,7 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
         });
         add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 371, -1, -1));
 
+        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -160,6 +164,7 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
         });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 340, 146, -1));
 
+        organizationEmpJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationEmpJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationEmpJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

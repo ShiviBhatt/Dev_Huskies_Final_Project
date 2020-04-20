@@ -10,6 +10,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -55,6 +56,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
     }
 
     private void populateTable(Organization organization) {
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
         model.setRowCount(0);
@@ -105,6 +107,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         jLabel1.setText("Organization");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 133, -1, -1));
 
+        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +117,8 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         });
         add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 128, 168, -1));
 
+        organizationJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        organizationJTable.setForeground(new java.awt.Color(25, 56, 82));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -156,6 +161,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         jLabel3.setText("Organization");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, 27));
 
+        organizationEmpJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationEmpJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationEmpJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 381, 163, -1));
@@ -174,6 +180,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         });
         add(employeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 429, 163, -1));
 
+        addJButton.setBackground(new java.awt.Color(255, 255, 255));
         addJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         addJButton.setForeground(new java.awt.Color(25, 56, 82));
         addJButton.setText("Create Employee");

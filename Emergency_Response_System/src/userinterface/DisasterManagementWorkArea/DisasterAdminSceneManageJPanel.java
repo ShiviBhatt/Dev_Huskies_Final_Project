@@ -13,9 +13,11 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javafx.scene.Scene;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,6 +52,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
+        jButton2.setBackground(new Color(255,255,255));
     }
 
     /**
@@ -73,7 +76,8 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(940, 802));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setForeground(new java.awt.Color(0, 102, 255));
@@ -106,6 +110,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         jLabel1.setText("Site Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 380, -1, -1));
 
+        siteNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -121,6 +126,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         jLabel2.setText("Site Manager");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 419, -1, -1));
 
+        sceneManagerCombo.setBackground(new java.awt.Color(255, 255, 255));
         sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -231,6 +237,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        tblManageAssigned.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblManageAssigned.getModel();
         model.setRowCount(0);
 

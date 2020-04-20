@@ -12,6 +12,7 @@ import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -49,6 +50,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }
     
     private void populateSceneTable(){
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         
         model.setRowCount(0);
@@ -181,6 +183,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 426, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
         createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
@@ -201,6 +204,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         sceneLocation.setForeground(new java.awt.Color(25, 56, 82));
         add(sceneLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 466, 188, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");

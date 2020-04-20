@@ -12,6 +12,7 @@ import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -53,6 +54,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
     }
     
     private void populateSceneTable(){
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         
         model.setRowCount(0);
@@ -187,6 +189,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 340, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
         createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Approve");
@@ -212,6 +215,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         jLabel3.setText("Scene Image");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 421, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Reject");

@@ -10,7 +10,9 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +39,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         this.organization = organization;
         populateOrganizationComboBox();
         populateTable(organization);
+        jButton2.setBackground(new Color(255,255,255));
         //populateEmployeeComboBox();
     }
 
@@ -65,6 +68,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        organizationEmployeeJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationEmployeeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationEmployeeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationEmployeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -188,6 +192,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
 //    }
 
     private void populateTable(Organization organization) {
+        employeeJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
         model.setRowCount(0);
 

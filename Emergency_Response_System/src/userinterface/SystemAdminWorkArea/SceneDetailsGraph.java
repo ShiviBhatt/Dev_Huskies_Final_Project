@@ -138,6 +138,7 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
         jLabel1.setToolTipText("");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 11, 498, -1));
 
+        btnDownloadGraph.setBackground(new java.awt.Color(255, 255, 255));
         btnDownloadGraph.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnDownloadGraph.setForeground(new java.awt.Color(25, 56, 82));
         btnDownloadGraph.setText("Download Graph");

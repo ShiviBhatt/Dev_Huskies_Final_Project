@@ -13,7 +13,9 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SceneManager;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +40,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         this.system = system;
         populateOrganizationComboBox();
         populateTable();
+        jButton2.setBackground(new Color(255,255,255));
     }
 
     /**
@@ -275,6 +278,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
+        userJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
         model.setRowCount(0);

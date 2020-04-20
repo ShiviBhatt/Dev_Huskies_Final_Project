@@ -15,6 +15,7 @@ import Business.Organization.Organization;
 import Business.Role.ReportingAdmin;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -105,6 +106,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel1.setText("Site Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 365, -1, 20));
 
+        siteNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -115,11 +117,13 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel2.setText("Reporting Admin");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, 20));
 
+        sceneManagerCombo.setBackground(new java.awt.Color(255, 255, 255));
         sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 102, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Assign");
@@ -176,6 +180,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        tblManageAssigned.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblManageAssigned.getModel();
         model.setRowCount(0);
 

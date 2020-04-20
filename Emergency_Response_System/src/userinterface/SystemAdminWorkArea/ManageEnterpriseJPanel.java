@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -35,6 +36,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
+        enterpriseJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 
         model.setRowCount(0);
@@ -121,6 +123,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 202, -1, -1));
 
+        networkJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -145,6 +148,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel3.setText("Enterprise Type");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 247, -1, -1));
 
+        enterpriseTypeJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseTypeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         enterpriseTypeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -159,7 +163,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/group Enterprise.png"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 145, 164));
 
-        btnSubmit.setBackground(new java.awt.Color(25, 56, 82));
+        btnSubmit.setBackground(new java.awt.Color(255, 255, 255));
         btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
         btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

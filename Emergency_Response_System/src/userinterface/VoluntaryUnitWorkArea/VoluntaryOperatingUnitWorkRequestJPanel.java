@@ -17,6 +17,7 @@ import Business.Role.NGOAdmin;
 import Business.Role.PersonalAdmin;
 import static Business.Role.Role.RoleType.NGOAdmin;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.UserRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -51,6 +52,7 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
     }
     
     public void populateTable() {
+        workRequestJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
 
         model.setRowCount(0);
@@ -129,6 +131,7 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 854, 170));
 
+        assignJButton.setBackground(new java.awt.Color(255, 255, 255));
         assignJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         assignJButton.setForeground(new java.awt.Color(25, 56, 82));
         assignJButton.setText("Assign to me");
@@ -139,6 +142,7 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
         });
         add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 387, -1, -1));
 
+        processJButton.setBackground(new java.awt.Color(255, 255, 255));
         processJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processJButton.setForeground(new java.awt.Color(25, 56, 82));
         processJButton.setText("Process");

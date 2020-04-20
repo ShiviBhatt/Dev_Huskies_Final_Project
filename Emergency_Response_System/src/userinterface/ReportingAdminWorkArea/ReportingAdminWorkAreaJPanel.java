@@ -38,8 +38,9 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
         //valueLabel.setText(enterprise.getName());
     }
     private void manageScene(){
-        manageRequestPanel.setBackground(new Color(236,113,107));
-        manageScenePanel.setBackground(new Color(215,81,81));
+        manageScenePanel.setBackground(new Color(236,113,107));
+        manageRequestPanel.setBackground(new Color(215,81,81));
+        
         ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(rightSystemAdminPanel, enterprise, system, organization, network,account);
         rightSystemAdminPanel.add("ReportingAdminManageSceneJPanel", muajp);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();

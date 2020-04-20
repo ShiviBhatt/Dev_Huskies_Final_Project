@@ -6,6 +6,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Network.Network;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.HeadlessException;
@@ -36,6 +37,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     }
 
     private void populateNetworkTable() {
+        networkJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
         model.setRowCount(0);
@@ -123,7 +125,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide_network.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 147, -1));
 
-        btnSubmit.setBackground(new java.awt.Color(25, 56, 82));
+        btnSubmit.setBackground(new java.awt.Color(255, 255, 255));
         btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
         btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

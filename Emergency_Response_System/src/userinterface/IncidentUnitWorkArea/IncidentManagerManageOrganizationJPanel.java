@@ -10,6 +10,7 @@ import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,6 +48,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
     }
 
     private void populateTable(){
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
@@ -136,6 +138,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 122, 550, 92));
 
+        addJButton.setBackground(new java.awt.Color(255, 255, 255));
         addJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         addJButton.setForeground(new java.awt.Color(25, 56, 82));
         addJButton.setText("Add Organization");
@@ -146,6 +149,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         });
         add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 361, -1, -1));
 
+        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -172,6 +176,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         orgLocation.setForeground(new java.awt.Color(25, 56, 82));
         add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 316, 180, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setLabel("Click to Set Location");

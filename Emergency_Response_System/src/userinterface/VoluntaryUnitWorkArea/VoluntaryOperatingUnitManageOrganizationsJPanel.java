@@ -16,6 +16,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Organization.VolunteerCompanyOrganization;
 import Business.Organization.VolunteerNGOOrganization;
 import Business.Organization.VolunteerPersonalOrganization;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -62,6 +63,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
     }
 
     public void populateTable() {
+        tblVoluntaryOrg.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblVoluntaryOrg.getModel();
         model.setRowCount(0);
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
@@ -182,6 +184,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         jLabel1.setText("Organization Type ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
 
+        OrganizationTypeComboBox.setBackground(new java.awt.Color(255, 255, 255));
         OrganizationTypeComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         OrganizationTypeComboBox.setForeground(new java.awt.Color(25, 56, 82));
         add(OrganizationTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 171, -1));
@@ -205,6 +208,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         setLongituteLatitude.setForeground(new java.awt.Color(25, 56, 82));
         add(setLongituteLatitude, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, 171, -1));
 
+        locationBtn.setBackground(new java.awt.Color(255, 255, 255));
         locationBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         locationBtn.setForeground(new java.awt.Color(25, 56, 82));
         locationBtn.setText("Set Location");
@@ -215,6 +219,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         });
         add(locationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, -1, -1));
 
+        addJButton.setBackground(new java.awt.Color(255, 255, 255));
         addJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         addJButton.setForeground(new java.awt.Color(25, 56, 82));
         addJButton.setText("Add Organization");

@@ -18,6 +18,7 @@ import Business.Organization.VolunteerHospitalOrganization;
 import Business.Organization.VolunteerNGOOrganization;
 import Business.Organization.VolunteerPersonalOrganization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -63,6 +64,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         populateNetwork();
         this.orgType = "";
         //model = (DefaultTableModel) nearestOrgTable.getModel();
+        nearestOrgTable.getTableHeader().setDefaultRenderer(new HeaderColors());
     }
 
     private void populateNetwork() {
@@ -106,6 +108,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        policeOrg.setBackground(new java.awt.Color(255, 255, 255));
         policeOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         policeOrg.setForeground(new java.awt.Color(25, 56, 82));
         policeOrg.setText("Police Organization");
@@ -116,6 +119,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(policeOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 200, -1));
 
+        fireOrg.setBackground(new java.awt.Color(255, 255, 255));
         fireOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         fireOrg.setForeground(new java.awt.Color(25, 56, 82));
         fireOrg.setText("Fire Organization");
@@ -126,6 +130,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(fireOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 210, -1));
 
+        medicineOrg.setBackground(new java.awt.Color(255, 255, 255));
         medicineOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         medicineOrg.setForeground(new java.awt.Color(25, 56, 82));
         medicineOrg.setText("Medicine Organization");
@@ -159,6 +164,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 657, 104));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("<Back");
@@ -169,6 +175,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        networkJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -184,6 +191,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setText("Select Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(25, 56, 82));
         jButton3.setText("Place Request");
@@ -194,6 +202,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Hospital Organization");
@@ -204,6 +213,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(25, 56, 82));
         jButton4.setText("NGO Organization");
@@ -214,6 +224,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 210, -1));
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(25, 56, 82));
         jButton5.setText("Personal Organization");
@@ -224,6 +235,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(25, 56, 82));
         jButton6.setText("CompanyOrganization");
@@ -234,6 +246,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
 
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(25, 56, 82));
         jButton7.setText("View On Map");
@@ -249,6 +262,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         jLabel2.setText("FIND NEAREST ORGANIZATION");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/NearestOrganizationMap512x.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
