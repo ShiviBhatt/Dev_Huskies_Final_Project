@@ -166,7 +166,7 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel.add(btnLogoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 70, 60));
 
         greetingUserLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        leftPanel.add(greetingUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 500, 60));
+        leftPanel.add(greetingUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 690, 60));
 
         btnBackLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
         btnBackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -455,6 +455,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
      // TODO add your handling code here:
         UserRegistrationJPanel panel = new UserRegistrationJPanel(container, system);
+        greetingUserLabel.setText( "WELCOME NEW VOLUNTEER ORGANIZATION REGISTRATION!!!");
         //emoRR panel = new demoRR(container, system);
         //container.add("UserRegistrationJPanel", panel);
             loginJPanel.setVisible(false);
@@ -469,6 +470,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
             layout.next(container);
+            
     }//GEN-LAST:event_btnRegisterMousePressed
 
     private void btnBackLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackLabelMousePressed
