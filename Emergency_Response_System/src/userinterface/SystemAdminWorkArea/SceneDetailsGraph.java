@@ -110,7 +110,6 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnDownloadGraph = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -120,15 +119,18 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 725, 498));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 860, 600));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Download Graph");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 20, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -137,17 +139,6 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
         jLabel1.setText("SCENE DETAILS GRAPH");
         jLabel1.setToolTipText("");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 11, 498, -1));
-
-        btnDownloadGraph.setBackground(new java.awt.Color(255, 255, 255));
-        btnDownloadGraph.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnDownloadGraph.setForeground(new java.awt.Color(25, 56, 82));
-        btnDownloadGraph.setText("Download Graph");
-        btnDownloadGraph.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnDownloadGraphMousePressed(evt);
-            }
-        });
-        add(btnDownloadGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 67, 135, 26));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/arrow.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 140, -1));
@@ -165,22 +156,8 @@ public class SceneDetailsGraph extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnDownloadGraphMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDownloadGraphMousePressed
-        // TODO add your handling code here:
-           try {
-            int width = 640;    /* Width of the image */
-            int height = 480;   /* Height of the image */
-            File BarChart = new File( "BarChart.jpeg" );
-            ChartUtilities.saveChartAsJPEG( BarChart , barChart , width , height );
-            JOptionPane.showMessageDialog(null, "A JPEG image file named BarChart.jpeg is downloaded in your current directory.");
-        } catch (IOException ex) {
-            Logger.getLogger(SceneDetailsGraph.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnDownloadGraphMousePressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnDownloadGraph;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

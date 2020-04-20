@@ -62,6 +62,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void populateNetworkComboBox(){
         networkJComboBox.removeAllItems();
+        enterpriseJComboBox.removeAllItems();
         
         for (Network network : system.getNetworkList()){
             networkJComboBox.addItem(network);
@@ -226,7 +227,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnSubmitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMousePressed
         // TODO add your handling code here:
-            Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
         
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());

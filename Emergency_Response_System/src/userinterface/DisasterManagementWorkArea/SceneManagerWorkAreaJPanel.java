@@ -259,7 +259,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         statusTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(statusTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1260, 129));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1250, 129));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -281,7 +281,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -453,7 +453,6 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                             System.out.println("3===--->> " + e.getName());
                             if(wr instanceof UserRegistrationRequest) {
                                 System.out.println("4===--->> " + e.getName());
-                                //((UserRegistrationRequest) wr).setContactCarrierName("8574247014@txt.att.net");
                                 emailIds += ((UserRegistrationRequest) wr).getUserEmailId() + ",";
                                 contacts += ((UserRegistrationRequest) wr).getContactCarrierName() + ",";
                             }
@@ -465,8 +464,13 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             String broadcastMsg = new Date() + "; Broadcasted by: " + account.getEmployee().getName() + "(Scene Manager)\n";
             broadcastMsg += "Alert Message: " + textArea.getText();
             
-            Validation.sendEmailMessage(emailIds.substring(0, emailIds.length()-1), "Alert Message", broadcastMsg);
-            Validation.sendTextMessage(contacts.substring(0, contacts.length()-1), "Alert Message", broadcastMsg);
+            if(!("".equals(emailIds))) {
+                Validation.sendEmailMessage(emailIds.substring(0, emailIds.length()-1), "Alert Message", broadcastMsg);
+            }
+            if(!("".equals(contacts))) {
+                Validation.sendTextMessage(contacts.substring(0, contacts.length()-1), "Alert Message", broadcastMsg);
+            }
+            
             JOptionPane.showMessageDialog(null, "Alert has been broadcasted successfully");
         } else {
             System.out.println("Canceled");

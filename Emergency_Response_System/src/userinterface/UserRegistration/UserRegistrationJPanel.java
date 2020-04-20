@@ -68,6 +68,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         emailSuccessLabel.setVisible(false);
         contactSuccessLabel.setVisible(false);
         userNameSuccessLabel.setVisible(false);
+        populateOrgTypes();
 
     }
 
@@ -84,6 +85,13 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         contactCarrier.addItem("Sprint");
         contactCarrier.addItem("TMobile");
         contactCarrier.addItem("Verizon");
+    }
+    
+    public void populateOrgTypes() {
+        orgCombo.addItem(Organization.Type.Company);
+        orgCombo.addItem(Organization.Type.NGO);
+        orgCombo.addItem(Organization.Type.Personal);
+        orgCombo.addItem(Organization.Type.Hospital);
     }
 
     public void populateLongituteLatitude(LocationPoint locationPoint) {
@@ -143,13 +151,13 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("User Registration");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
+        jLabel1.setText("Volunteer Organizaton Registration");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
         userName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         userName.setForeground(new java.awt.Color(25, 56, 82));
@@ -159,31 +167,31 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             }
         });
         userName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                userNameKeyTyped(evt);
-            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 userNameKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                userNameKeyTyped(evt);
+            }
         });
-        add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 250, 35));
+        add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 35));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Username");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
         uName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uName.setForeground(new java.awt.Color(25, 56, 82));
         uName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                uNameKeyTyped(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 uNameKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                uNameKeyTyped(evt);
+            }
         });
-        add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 250, 32));
+        add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 250, 35));
 
         uPass.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uPass.setForeground(new java.awt.Color(25, 56, 82));
@@ -192,17 +200,17 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uPassKeyTyped(evt);
             }
         });
-        add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 253, 32));
+        add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 253, 35));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 206, 62, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 62, 20));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Email Id");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
 
         uEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uEmail.setForeground(new java.awt.Color(25, 56, 82));
@@ -211,12 +219,12 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uEmailKeyTyped(evt);
             }
         });
-        add(uEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 253, 33));
+        add(uEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 35));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("State");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 286, -1, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, 20));
 
         uCity.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uCity.setForeground(new java.awt.Color(25, 56, 82));
@@ -225,22 +233,22 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uCityKeyTyped(evt);
             }
         });
-        add(uCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 253, 39));
+        add(uCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 250, 35));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("City");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(25, 56, 82));
         jLabel8.setText("Organization");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, 20));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(25, 56, 82));
         jLabel9.setText("Contact");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, 30));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, 30));
 
         uContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uContact.setForeground(new java.awt.Color(25, 56, 82));
@@ -249,21 +257,21 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uContactKeyTyped(evt);
             }
         });
-        add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 253, 35));
+        add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 250, 35));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(25, 56, 82));
         jLabel10.setText("Location");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 79, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 610, 50, 30));
 
         uLocation.setEditable(false);
         uLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uLocation.setForeground(new java.awt.Color(25, 56, 82));
         uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 uLocationInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         uLocation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -276,7 +284,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uLocationKeyTyped(evt);
             }
         });
-        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 253, -1));
+        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, 250, 35));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
@@ -286,7 +294,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, -1, 30));
 
         stateCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -298,16 +306,15 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 stateComboActionPerformed(evt);
             }
         });
-        add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 253, -1));
+        add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
 
-        orgCombo.setBackground(new java.awt.Color(255, 255, 255));
         orgCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 orgComboKeyTyped(evt);
             }
         });
-        add(orgCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 253, -1));
+        add(orgCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 250, 35));
 
         btnRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnRegister.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -318,50 +325,54 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, -1, -1));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(25, 56, 82));
         jLabel11.setText("Carrier");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, -1, 20));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, -1, 20));
 
-        contactCarrier.setBackground(new java.awt.Color(255, 255, 255));
         contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
         contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactCarrierActionPerformed(evt);
+            }
+        });
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
             }
         });
-        add(contactCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 253, -1));
+        add(contactCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 250, 35));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
-        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
+        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, -1, -1));
 
         emailValidateMessage.setForeground(new java.awt.Color(255, 0, 0));
         emailValidateMessage.setText("Email format incorrect");
-        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, -1, -1));
+        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
 
         contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
         contactFormatMessage.setText("Contact No format Incorrect (Make sure you inclue country code, excluding '+')");
-        add(contactFormatMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, -1, -1));
+        add(contactFormatMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, -1, -1));
 
         emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
+        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
 
         userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, -1, -1));
+        add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
         contactSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(contactSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 473, -1, 30));
+        add(contactSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 560, -1, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add-user.png"))); // NOI18N
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/RegisterOPAQUE.png"))); // NOI18N
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -372,7 +383,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void stateComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboActionPerformed
-        Network n = (Network) stateCombo.getSelectedItem();
+        /*Network n = (Network) stateCombo.getSelectedItem();
         for (Enterprise e : n.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                 if (o instanceof VolunteerCompanyOrganization) {
@@ -386,6 +397,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 }
             }
         }
+        */
     }//GEN-LAST:event_stateComboActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -447,8 +459,8 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } else if (emailValid && contactValid && userUnique) {
             UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
-            registrationRequest.setName(uName.getText());
-            registrationRequest.setUserName(userName.getText());
+            registrationRequest.setName(userName.getText());
+            registrationRequest.setUserName(uName.getText());
             registrationRequest.setUserPassword(uPass.getText());
             registrationRequest.setUserEmailId(uEmail.getText());
             registrationRequest.setNetwork(network);
@@ -648,6 +660,10 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_uNameKeyReleased
 
+    private void contactCarrierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactCarrierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactCarrierActionPerformed
+
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
         String to = emailId;
@@ -686,7 +702,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
 // Set Subject: header field
             message.setSubject("Volunteer Registration");
-            message.setText("Thank you for successfully registering. We will keep you posted in case of emergencies");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
 // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
@@ -739,7 +755,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
             // Set Subject: header field
             message.setSubject("Volunteer Registration");
-            message.setText("Thank you for successfully registering. We will keep you posted in case of emergencies");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
             // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);

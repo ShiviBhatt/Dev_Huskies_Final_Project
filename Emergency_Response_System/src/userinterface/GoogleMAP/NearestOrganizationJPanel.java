@@ -139,7 +139,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 medicineOrgActionPerformed(evt);
             }
         });
-        add(medicineOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+        add(medicineOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 210, -1));
 
         nearestOrgTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         nearestOrgTable.setForeground(new java.awt.Color(25, 56, 82));
@@ -175,7 +175,6 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        networkJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -211,7 +210,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -255,7 +254,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));

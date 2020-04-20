@@ -255,7 +255,7 @@ public class CompanyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 170, 10));
 
         jScrollPane2.setMinimumSize(new java.awt.Dimension(240, 270));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(240, 270));
@@ -270,12 +270,12 @@ public class CompanyAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         alertPanelLayout.setVerticalGroup(
             alertPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(alertPanel);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 240, 270));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 260, 430));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("ALERTS");

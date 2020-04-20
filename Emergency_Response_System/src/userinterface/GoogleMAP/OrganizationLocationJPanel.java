@@ -80,6 +80,7 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(244, 242, 227));
         jPanel1.setForeground(new java.awt.Color(25, 56, 82));
 
+        setLocationBtn.setBackground(new java.awt.Color(255, 255, 255));
         setLocationBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         setLocationBtn.setForeground(new java.awt.Color(25, 56, 82));
         setLocationBtn.setText("Set Location");
@@ -98,9 +99,9 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(309, 309, 309)
+                .addGap(404, 404, 404)
                 .addComponent(setLocationBtn)
-                .addContainerGap(577, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -158,7 +158,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
                 sceneNameActionPerformed(evt);
             }
         });
-        add(sceneName, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 206, 188, -1));
+        add(sceneName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 188, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -168,7 +168,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         sceneZipCode.setEditable(false);
         sceneZipCode.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneZipCode.setForeground(new java.awt.Color(25, 56, 82));
-        add(sceneZipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 249, 188, -1));
+        add(sceneZipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 250, 190, -1));
 
         noOfVictims.setEditable(false);
         noOfVictims.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -326,13 +326,13 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         int selectedRow = sceneTable.getSelectedRow();        
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a Scene", "Warning", JOptionPane.WARNING_MESSAGE);
-        }else if(selectedWorkReq.getStatus().equals("Requested")){
+        }else if(selectedWorkReq.getStatus().equals("Assigned Reporting Admin")){
             String msg = JOptionPane.showInputDialog("Additional Message");
             selectedWorkReq.setStatus("Rejected");
             selectedWorkReq.setMessage(msg);
             populateSceneTable();
             JOptionPane.showMessageDialog(null, "Request is Rejected successfully");
-        }else if(selectedWorkReq.getStatus().equals("Accepted")){
+        }else if(selectedWorkReq.getStatus().equals("Forwarded to Disaster Team")){
             JOptionPane.showMessageDialog(null, "Request is already Accepted");
         }else if(selectedWorkReq.getStatus().equals("Cancelled")) {
             JOptionPane.showMessageDialog(null, "Request has been cancelled by the user", "Warning", JOptionPane.WARNING_MESSAGE);
