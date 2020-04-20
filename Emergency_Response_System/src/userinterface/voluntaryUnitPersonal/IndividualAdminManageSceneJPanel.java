@@ -129,7 +129,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblScene.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblScene.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tblScene.setForeground(new java.awt.Color(25, 56, 82));
         tblScene.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

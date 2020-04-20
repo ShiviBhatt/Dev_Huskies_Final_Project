@@ -79,6 +79,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setForeground(new java.awt.Color(0, 102, 255));
 
+        tblManageAssigned.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tblManageAssigned.setForeground(new java.awt.Color(25, 56, 82));
         tblManageAssigned.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

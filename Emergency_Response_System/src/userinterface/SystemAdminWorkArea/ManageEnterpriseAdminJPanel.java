@@ -107,6 +107,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        enterpriseJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
