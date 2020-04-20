@@ -49,8 +49,8 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="rightSystemAdminPanel" pref="840" max="32767" attributes="0"/>
-              <Component id="jPanel3" pref="840" max="32767" attributes="0"/>
+              <Component id="rightSystemAdminPanel" max="32767" attributes="0"/>
+              <Component id="jPanel3" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

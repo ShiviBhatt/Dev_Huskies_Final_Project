@@ -43,8 +43,8 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         manageEmployee.setBackground(new Color(215,81,81));
         manageUserAccount.setBackground(new Color(215,81,81));
         manageRequestPanel.setBackground(new Color(215,81,81));
-        VoluntaryOperatingUnitManageOrganizationsJPanel vOUMOJP = new VoluntaryOperatingUnitManageOrganizationsJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise, network, system);
-        rightSystemAdminPanel.add("manageOrganizationJPanel", vOUMOJP);
+        VoluntaryOperatingUnitManageOrganizationsJPanel vOUMOJP = new VoluntaryOperatingUnitManageOrganizationsJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory(),enterprise, network, system);
+        rightSystemAdminPanel.add("VoluntaryOperatingUnitManageOrganizationsJPanel", vOUMOJP);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
@@ -53,7 +53,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         manageOrganizationPanel.setBackground(new Color(215,81,81));
         manageUserAccount.setBackground(new Color(215,81,81));
         manageRequestPanel.setBackground(new Color(215,81,81));
-       VoluntaryOperatingUnitManageEmployeesJPanel vOUMEJP = new VoluntaryOperatingUnitManageEmployeesJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+       VoluntaryOperatingUnitManageEmployeesJPanel vOUMEJP = new VoluntaryOperatingUnitManageEmployeesJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory());
         rightSystemAdminPanel.add("VoluntaryOperatingUnitManageEmployeesJPanel", vOUMEJP);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -63,7 +63,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         manageOrganizationPanel.setBackground(new Color(215,81,81));
         manageEmployee.setBackground(new Color(215,81,81));
         manageRequestPanel.setBackground(new Color(215,81,81));
-        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(userProcessContainer, enterprise, system, organization);
+        VoluntaryOperatingUnitManageUsersJPanel vOUMUJP = new VoluntaryOperatingUnitManageUsersJPanel(rightSystemAdminPanel, enterprise, system, organization);
         rightSystemAdminPanel.add("VoluntaryOperatingUnitManageUsersJPanel", vOUMUJP);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -73,7 +73,7 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         manageUserAccount.setBackground(new Color(215,81,81));
         manageOrganizationPanel.setBackground(new Color(215,81,81));
         manageEmployee.setBackground(new Color(215,81,81));
-        VoluntaryOperatingUnitWorkRequestJPanel vOUWRJP = new VoluntaryOperatingUnitWorkRequestJPanel(userProcessContainer, account, enterprise, network, system);
+        VoluntaryOperatingUnitWorkRequestJPanel vOUWRJP = new VoluntaryOperatingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, network, system);
         rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -110,10 +110,12 @@ public class VoluntaryOperatingUnitAdminWorkAreaJPanel extends javax.swing.JPane
         setLayout(new java.awt.BorderLayout());
 
         systemAdminPanel.setBackground(new java.awt.Color(215, 81, 81));
+        systemAdminPanel.setMinimumSize(new java.awt.Dimension(1338, 840));
+        systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
         jPanel3.setBackground(new java.awt.Color(215, 81, 81));
-        jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
-        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
+        jPanel3.setMinimumSize(new java.awt.Dimension(280, 840));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 840));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageOrganizationPanel.setBackground(new java.awt.Color(215, 81, 81));

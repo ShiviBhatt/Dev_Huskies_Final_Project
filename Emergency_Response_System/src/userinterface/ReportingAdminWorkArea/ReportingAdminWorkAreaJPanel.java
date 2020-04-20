@@ -40,7 +40,7 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageScene(){
         manageRequestPanel.setBackground(new Color(236,113,107));
         manageScenePanel.setBackground(new Color(215,81,81));
-        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(userProcessContainer, enterprise, system, organization, network,account);
+        ReportingAdminManageSceneJPanel muajp = new ReportingAdminManageSceneJPanel(rightSystemAdminPanel, enterprise, system, organization, network,account);
         rightSystemAdminPanel.add("ReportingAdminManageSceneJPanel", muajp);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -48,7 +48,7 @@ public class ReportingAdminWorkAreaJPanel extends javax.swing.JPanel {
      private void manageRequest(){
         manageRequestPanel.setBackground(new Color(236,113,107));
         manageScenePanel.setBackground(new Color(215,81,81));
-        ReportingAdminManageRequestsJPanel muajp = new ReportingAdminManageRequestsJPanel(userProcessContainer, enterprise, system, organization, network,account);
+        ReportingAdminManageRequestsJPanel muajp = new ReportingAdminManageRequestsJPanel(rightSystemAdminPanel, enterprise, system, organization, network,account);
         rightSystemAdminPanel.add("ReportingAdminManageSceneJPanel", muajp);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

@@ -11,6 +11,7 @@ import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.Organization.VolunteerHospitalOrganization;
 import Business.Organization.Organization;
+import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import Business.Organization.VolunteerCompanyOrganization;
 import Business.Organization.VolunteerNGOOrganization;
@@ -109,6 +110,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
     public void populateLongituteLatitude(LocationPoint locationPoint) {
         this.location = locationPoint;
         setLongituteLatitude.setText(location.getLatitude() + "," + location.getLongitude());
+       
     }
 
     /**
@@ -232,33 +234,59 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
 
     private void locationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationBtnActionPerformed
         // TODO add your handling code here:
-        OrganizationLocationJPanel oLJP = new OrganizationLocationJPanel(userProcessContainer);
-        userProcessContainer.add("Organization_Postion_Panel", oLJP);
+//        OrganizationLocationJPanel oLJP = new OrganizationLocationJPanel(userProcessContainer);
+//        userProcessContainer.add("OrganizationLocationJPanel", oLJP);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        
+        
+        
     }//GEN-LAST:event_locationBtnActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
         
-        Organization.Type type = (Organization.Type) OrganizationTypeComboBox.getSelectedItem();
+//        Organization.Type type = (Organization.Type) OrganizationTypeComboBox.getSelectedItem();
+//        
+//        if("".equals(organizationName.getText())) {
+//            JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+//        }else if("".equals(setLongituteLatitude.getText())) {
+//            JOptionPane.showMessageDialog(null, "Please set a location"); 
+//        }else {
+//             Organization organization = directory.createOrganization(type,organizationName.getText(), location);
+//            //directory.createOrganization(type, organizationName.getText(), location);
+//            System.out.println("ORG VOLUNTARY" + organizationName.getText());
+//            System.out.println("LOCATION VOLUNTARY" + location);
+//            populateTable();
+//            organizationName.setText("");
+//            setLongituteLatitude.setText("");
+//            JOptionPane.showMessageDialog(null, "Organization created successfully"); 
+//        }
+
+
+        Type type = (Type) OrganizationTypeComboBox.getSelectedItem();
         
         if("".equals(organizationName.getText())) {
             JOptionPane.showMessageDialog(null, "Enter organization name!"); 
         }else if("".equals(setLongituteLatitude.getText())) {
             JOptionPane.showMessageDialog(null, "Please set a location"); 
         }else {
-             Organization organization = directory.createOrganization(type,organizationName.getText(), location);
-            //directory.createOrganization(type, organizationName.getText(), location);
-            System.out.println("ORG VOLUNTARY" + organizationName.getText());
-            System.out.println("LOCATION VOLUNTARY" + location);
-            populateTable();
+            Organization organization = directory.createOrganization(type,organizationName.getText(), location);
+            JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             organizationName.setText("");
-            setLongituteLatitude.setText("");
-            JOptionPane.showMessageDialog(null, "Organization created successfully"); 
+            populateTable();
+            resetFields();
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
-
+private void resetFields(){
+    organizationName.setText("");
+        setLongituteLatitude.setText("");
+    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox OrganizationTypeComboBox;

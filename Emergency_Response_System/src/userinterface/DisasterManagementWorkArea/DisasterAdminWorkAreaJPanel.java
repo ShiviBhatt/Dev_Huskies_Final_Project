@@ -239,9 +239,8 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployeePanel.setBackground(new Color(236,113,107));
         manageUser.setBackground(new Color(215,81,81));
         manageScene.setBackground(new Color(215,81,81));
-        DisasterAdminManageEmployeeJPanel disasterAdminManageEmployeeJPanel = new DisasterAdminManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),account, organization);
+        DisasterAdminManageEmployeeJPanel disasterAdminManageEmployeeJPanel = new DisasterAdminManageEmployeeJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory(),account, organization);
         rightSystemAdminPanel.add("disasterAdminManageEmployeeJPanel",disasterAdminManageEmployeeJPanel);
-        
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
@@ -250,7 +249,7 @@ public class DisasterAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageUser.setBackground(new Color(236,113,107));
         manageEmployeePanel.setBackground(new Color(215,81,81));
         manageScene.setBackground(new Color(215,81,81));
-        DisasterAdminManageUserJPanel disasterAdminManageUserJPanel = new DisasterAdminManageUserJPanel(userProcessContainer, enterprise, business);
+        DisasterAdminManageUserJPanel disasterAdminManageUserJPanel = new DisasterAdminManageUserJPanel(rightSystemAdminPanel, enterprise, business);
         rightSystemAdminPanel.add("disasterAdminManageUserJPanel",disasterAdminManageUserJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

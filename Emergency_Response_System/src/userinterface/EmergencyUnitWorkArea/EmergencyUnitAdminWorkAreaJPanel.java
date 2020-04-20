@@ -61,8 +61,8 @@ public class EmergencyUnitAdminWorkAreaJPanel extends javax.swing.JPanel {
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
         jPanel3.setBackground(new java.awt.Color(215, 81, 81));
-        jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
-        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
+        jPanel3.setMinimumSize(new java.awt.Dimension(280, 840));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 840));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageOrganizationPanel.setBackground(new java.awt.Color(215, 81, 81));

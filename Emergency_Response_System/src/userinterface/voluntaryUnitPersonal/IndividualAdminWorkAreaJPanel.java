@@ -99,7 +99,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
           private void manageScene(){
         manageScenePanel.setBackground(new Color(236,113,107));
         manageRequestPanel.setBackground(new Color(215,81,81));
-        IndividualAdminManageSceneJPanel manageScene = new IndividualAdminManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
+        IndividualAdminManageSceneJPanel manageScene = new IndividualAdminManageSceneJPanel( rightSystemAdminPanel,  enterprise,  system,  organization,  network, account);
         rightSystemAdminPanel.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -108,7 +108,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageRequest(){
         manageRequestPanel.setBackground(new Color(236,113,107));
         manageScenePanel.setBackground(new Color(215,81,81));
-        IndividualAdminWorkRequestJPanel manageIndividualWorkRequest = new IndividualAdminWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
+        IndividualAdminWorkRequestJPanel manageIndividualWorkRequest = new IndividualAdminWorkRequestJPanel( rightSystemAdminPanel,  account,  organization,  enterprise,  network,  system);
         rightSystemAdminPanel.add("IndividualAdminWorkAreaJPanel", manageIndividualWorkRequest);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

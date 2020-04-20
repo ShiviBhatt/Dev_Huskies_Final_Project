@@ -36,7 +36,7 @@ public class IncidentManagerWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployee.setBackground(new Color(215,81,81));
         manageUserAccount.setBackground(new Color(215,81,81));
         manageScenePanel.setBackground(new Color(215,81,81));
-        IncidentManagerManageOrganizationJPanel manageOrganizationJPanel = new IncidentManagerManageOrganizationJPanel(userProcessContainer, enterprise);
+        IncidentManagerManageOrganizationJPanel manageOrganizationJPanel = new IncidentManagerManageOrganizationJPanel(rightSystemAdminPanel, enterprise);
         rightSystemAdminPanel.add("IncidentManagerManageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
