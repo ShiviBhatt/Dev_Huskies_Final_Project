@@ -100,7 +100,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         private void manageScene(){
         manageScenePanel.setBackground(new Color(236,113,107));
         manageRequestPanel.setBackground(new Color(215,81,81));
-        NGOAdminManageSceneJPanel manageScene = new NGOAdminManageSceneJPanel( userProcessContainer,  enterprise,  system,  organization,  network, account);
+        NGOAdminManageSceneJPanel manageScene = new NGOAdminManageSceneJPanel( rightSystemAdminPanel,  enterprise,  system,  organization,  network, account);
         rightSystemAdminPanel.add("ManageHospitalSceneJPanel", manageScene);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -109,7 +109,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageRequest(){
         manageRequestPanel.setBackground(new Color(236,113,107));
         manageScenePanel.setBackground(new Color(215,81,81));
-       NGOAdminWorkRequestJPanel manageIndividualWorkRequest = new NGOAdminWorkRequestJPanel( userProcessContainer,  account,  organization,  enterprise,  network,  system);
+       NGOAdminWorkRequestJPanel manageIndividualWorkRequest = new NGOAdminWorkRequestJPanel( rightSystemAdminPanel,  account,  organization,  enterprise,  network,  system);
         rightSystemAdminPanel.add("IndividualAdminWorkAreaJPanel", manageIndividualWorkRequest);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

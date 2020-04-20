@@ -136,6 +136,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel2.setText("Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 293, -1, -1));
 
+        nameJTextField.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 288, 200, -1));
 
