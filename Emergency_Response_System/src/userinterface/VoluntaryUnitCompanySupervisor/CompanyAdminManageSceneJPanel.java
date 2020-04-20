@@ -84,11 +84,6 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
 
-            /*Object[] row = new Object[2];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
-            
-            model.addRow(row);*/
         }
     }
 
