@@ -104,6 +104,8 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         createUserJButton.setForeground(new java.awt.Color(25, 56, 82));

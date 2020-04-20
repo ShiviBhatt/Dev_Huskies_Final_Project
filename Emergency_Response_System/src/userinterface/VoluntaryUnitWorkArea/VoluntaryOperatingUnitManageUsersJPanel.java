@@ -68,6 +68,8 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -181,7 +183,7 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/userImageOpaque.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 400, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 400, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRoleActionPerformed

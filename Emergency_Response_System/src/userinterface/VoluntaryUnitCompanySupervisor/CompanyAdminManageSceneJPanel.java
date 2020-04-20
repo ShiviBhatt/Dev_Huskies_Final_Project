@@ -121,8 +121,10 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         fileNameLabel = new javax.swing.JLabel();
         imageJPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblScene.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -262,7 +264,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
 
         imageJPanel.setBackground(new java.awt.Color(204, 204, 204));
         imageJPanel.setLayout(new java.awt.BorderLayout());
-        add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 460, 280));
+        add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 460, 280));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
@@ -273,6 +275,9 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime128x.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
@@ -426,6 +431,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;

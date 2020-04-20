@@ -67,7 +67,8 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(940, 802));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         userJTable.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N

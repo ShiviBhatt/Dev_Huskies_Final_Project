@@ -89,6 +89,8 @@ public class HospitalAdminWorkRequestJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -106,7 +108,7 @@ public class HospitalAdminWorkRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Org", "Sender Network", "Requested Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -120,7 +122,7 @@ public class HospitalAdminWorkRequestJPanel extends javax.swing.JPanel {
         workRequestTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(workRequestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 890, 172));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 1030, 172));
 
         processReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processReqBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -153,6 +155,7 @@ public class HospitalAdminWorkRequestJPanel extends javax.swing.JPanel {
         add(rejectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 325, -1, -1));
 
         completeReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        completeReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         completeReqBtn.setText("Complete Request");
         completeReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +168,7 @@ public class HospitalAdminWorkRequestJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/MedicalWorkAreaOpaque.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processReqBtnActionPerformed

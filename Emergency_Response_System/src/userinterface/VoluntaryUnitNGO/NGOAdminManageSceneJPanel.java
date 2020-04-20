@@ -121,8 +121,11 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         fileNameLabel = new javax.swing.JLabel();
         imageJPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblScene.setForeground(new java.awt.Color(25, 56, 82));
@@ -147,7 +150,7 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblScene);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1043, 146));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1010, 146));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -273,6 +276,9 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ngo.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
@@ -426,6 +432,7 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;

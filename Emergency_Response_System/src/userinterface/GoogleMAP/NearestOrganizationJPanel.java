@@ -102,7 +102,8 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(940, 802));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         policeOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -113,7 +114,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 policeOrgActionPerformed(evt);
             }
         });
-        add(policeOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 316, 200, -1));
+        add(policeOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 200, -1));
 
         fireOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         fireOrg.setForeground(new java.awt.Color(25, 56, 82));
@@ -123,7 +124,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 fireOrgActionPerformed(evt);
             }
         });
-        add(fireOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 281, 210, -1));
+        add(fireOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 210, -1));
 
         medicineOrg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         medicineOrg.setForeground(new java.awt.Color(25, 56, 82));
@@ -133,7 +134,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 medicineOrgActionPerformed(evt);
             }
         });
-        add(medicineOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 316, -1, -1));
+        add(medicineOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
         nearestOrgTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         nearestOrgTable.setForeground(new java.awt.Color(25, 56, 82));
@@ -156,7 +157,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
         nearestOrgTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(nearestOrgTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 137, 657, 104));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 657, 104));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
@@ -176,12 +177,12 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 80, 133, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 133, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Select Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 85, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(25, 56, 82));
@@ -191,7 +192,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 404, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
@@ -201,7 +202,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 281, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
 
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(25, 56, 82));
@@ -211,7 +212,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 357, 210, -1));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 210, -1));
 
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(25, 56, 82));
@@ -221,7 +222,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 316, -1, -1));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
 
         jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(25, 56, 82));
@@ -231,7 +232,7 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 281, -1, -1));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
 
         jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(25, 56, 82));
@@ -241,15 +242,15 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 404, -1, -1));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("FIND NEAREST ORGANIZATION");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 26, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/NearestOrganizationMap512x.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void fireOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireOrgActionPerformed

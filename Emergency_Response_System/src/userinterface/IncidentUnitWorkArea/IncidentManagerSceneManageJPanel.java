@@ -72,6 +72,8 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setForeground(new java.awt.Color(0, 102, 255));
@@ -96,7 +98,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         tblManageAssigned.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(tblManageAssigned);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 860, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 990, 220));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -133,8 +135,8 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel3.setText("MANAGE  INCIDENT SCENE");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 13, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/IncidentSceneOpaque.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 500, 520));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/IncidentOPAQUESCENE.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1010, 450));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime128x.png"))); // NOI18N
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));

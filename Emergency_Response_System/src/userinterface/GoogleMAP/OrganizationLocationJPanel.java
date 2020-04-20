@@ -71,7 +71,8 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         mapCanvas = new javax.swing.JPanel();
 
-        setPreferredSize(new java.awt.Dimension(940, 802));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new java.awt.BorderLayout());
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -99,15 +100,15 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(309, 309, 309)
                 .addComponent(setLocationBtn)
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(setLocationBtn)
-                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(setLocationBtn))
                 .addGap(14, 14, 14))
         );
 
@@ -166,8 +167,11 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof CompanyAdminManageSceneJPanel){
                 CompanyAdminManageSceneJPanel reportingComponent = (CompanyAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
+            }else{
+                System.out.println("ELSE LOCATION " + componentArray.length);
+                System.out.println("ELSE CONTAINER " + userProcessContainer.toString());
             }
-          
+         
 
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.previous(userProcessContainer);

@@ -88,13 +88,15 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1338, 840));
+        setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MEDICAL ADMIN WORK AREA");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 18, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         workRequestTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         workRequestTable.setForeground(new java.awt.Color(25, 56, 82));
@@ -106,7 +108,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date", "Requirements"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Org", "Sender Network", "Requested Date", "Requirements"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -120,7 +122,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         workRequestTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(workRequestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 870, 180));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 1220, 180));
 
         processReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processReqBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -166,7 +168,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/MedicalWorkAreaOpaque.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processReqBtnActionPerformed

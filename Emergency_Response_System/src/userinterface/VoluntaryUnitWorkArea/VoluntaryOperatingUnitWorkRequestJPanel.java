@@ -92,6 +92,8 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N

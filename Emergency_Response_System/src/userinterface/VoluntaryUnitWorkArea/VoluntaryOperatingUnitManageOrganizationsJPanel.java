@@ -135,7 +135,8 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(940, 802));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblVoluntaryOrg.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -226,7 +227,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/OrganizationIncident600xOpaque.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void locationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationBtnActionPerformed
@@ -246,7 +247,10 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         }else if("".equals(setLongituteLatitude.getText())) {
             JOptionPane.showMessageDialog(null, "Please set a location"); 
         }else {
-            directory.createOrganization(type, organizationName.getText(), location);
+             Organization organization = directory.createOrganization(type,organizationName.getText(), location);
+            //directory.createOrganization(type, organizationName.getText(), location);
+            System.out.println("ORG VOLUNTARY" + organizationName.getText());
+            System.out.println("LOCATION VOLUNTARY" + location);
             populateTable();
             organizationName.setText("");
             setLongituteLatitude.setText("");

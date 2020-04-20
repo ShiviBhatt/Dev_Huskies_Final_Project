@@ -87,12 +87,14 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1338, 840));
+        setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("POLICE ADMIN WORK AREA");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 34, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, -1));
 
         workRequestTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         workRequestTable.setForeground(new java.awt.Color(25, 56, 82));
@@ -118,7 +120,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
         workRequestTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(workRequestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 857, 179));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1250, 170));
 
         processReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         processReqBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -128,7 +130,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 processReqBtnActionPerformed(evt);
             }
         });
-        add(processReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, -1, -1));
+        add(processReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         acceptBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         acceptBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -138,7 +140,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 acceptBtnActionPerformed(evt);
             }
         });
-        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
 
         rejectBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         rejectBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -148,7 +150,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 rejectBtnActionPerformed(evt);
             }
         });
-        add(rejectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, -1));
+        add(rejectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
 
         completeReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         completeReqBtn.setForeground(new java.awt.Color(25, 56, 82));
@@ -158,13 +160,13 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
                 completeReqBtnActionPerformed(evt);
             }
         });
-        add(completeReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
+        add(completeReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/policeman.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PoliceWorkRequestOpaque.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/OPAQUEPOLICE.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processReqBtnActionPerformed
