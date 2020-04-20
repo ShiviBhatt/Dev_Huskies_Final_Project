@@ -205,6 +205,8 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
             organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new SceneManager());
             populateTable();
             JOptionPane.showMessageDialog(null, "User is created successfully");
+            username.setText("");
+            passwordText.setText("");
         }
         
         

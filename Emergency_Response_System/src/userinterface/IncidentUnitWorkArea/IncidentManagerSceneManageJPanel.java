@@ -148,9 +148,13 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String msg = JOptionPane.showInputDialog("Additional Message");
         VolunteerSceneRequest scene = (VolunteerSceneRequest) siteNameComboBox.getSelectedItem();
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
+        if(scene == null || employee == null){
+            JOptionPane.showMessageDialog(null,"Select a scene and a reporting manager");
+        } else{
+            String msg = JOptionPane.showInputDialog("Additional Message");
+        
         scene.setSceneManager(employee);
         scene.setMessage(msg);
         scene.setStatus("Assigned Reporting Admin");
@@ -161,9 +165,12 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                 }
             }
         }  
+
         JOptionPane.showMessageDialog(null, "Reporting admin is assigned successfully");
         populateTable();
         populateSiteNameCombo();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

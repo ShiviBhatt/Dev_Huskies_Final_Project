@@ -210,7 +210,7 @@ public class PoliceAdminWorkAreaJPanel extends javax.swing.JPanel {
             int selectedRow = workRequestTable.getSelectedRow();
             EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
             if(emerReq.getStatus().equals("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Request is already Accepted");
+                JOptionPane.showMessageDialog(null, "Request is already Rejected");
             }else if(emerReq.getStatus().equals("Accepted")) {
                 JOptionPane.showMessageDialog(null, "Request is already Accepted");
             }else if(emerReq.getStatus().equals("Processing")) {

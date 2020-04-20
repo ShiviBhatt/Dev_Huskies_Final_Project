@@ -149,6 +149,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
             organization.getEmployeeDirectory().createEmployee(name);
             populateTable(organization);
             JOptionPane.showMessageDialog(null, "Employee created successfully");
+            employeeNameTextField.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }

@@ -336,6 +336,8 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request is already Accepted");
         }else if(selectedWorkReq.getStatus().equals("Cancelled")) {
             JOptionPane.showMessageDialog(null, "Request has been cancelled by the user", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if(selectedWorkReq.getStatus().equals("Forwarded to Disaster Team")) {
+            JOptionPane.showMessageDialog(null, "Request has already been accepted and processed", "Warning", JOptionPane.WARNING_MESSAGE);
         }else {
             JOptionPane.showMessageDialog(null, "Request is already Rejected");
         }

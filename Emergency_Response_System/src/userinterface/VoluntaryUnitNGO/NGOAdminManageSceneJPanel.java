@@ -294,7 +294,7 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        
+        int zipCode, victimCount, loss;
         if("".equals(sceneName.getText())){
             JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
         }else if("".equals(sceneZipCode.getText())){
@@ -310,6 +310,10 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
         }else if("".equals(imagePath) || null == imagePath){
             JOptionPane.showMessageDialog(null, "Uploading an image is mandatory");
         }else {
+            try {
+                zipCode = Integer.parseInt(sceneZipCode.getText());
+                victimCount = Integer.parseInt(noOfVictims.getText());
+                loss = Integer.parseInt(estimatedLoss.getText());
             String msg = JOptionPane.showInputDialog("Additional Message");
             VolunteerSceneRequest sceneReq = new VolunteerSceneRequest();
             sceneReq.setSceneName(sceneName.getText());
@@ -331,6 +335,9 @@ public class NGOAdminManageSceneJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Scene Created Successfully");
             populateSceneTable();
             resetFields();
+            }catch(NumberFormatException exception){
+                JOptionPane.showMessageDialog(null, "ZipCode, no of victimes and estimated loss need to be in integer!");
+            }
         }
     }//GEN-LAST:event_createSceneBtnActionPerformed
     

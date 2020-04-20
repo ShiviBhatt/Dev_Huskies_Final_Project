@@ -33,8 +33,10 @@ import Business.Utils.Validation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -51,7 +53,6 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private boolean emailValid;
     private boolean contactValid;
     private boolean userUnique;
-
     /**
      * Creates new form UserRegistrationJPanel
      */
@@ -64,9 +65,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         validation = new Validation();
         usernameExistsMessage.setVisible(false);
         emailValidateMessage.setVisible(false);
-        contactFormatMessage.setVisible(false);
         emailSuccessLabel.setVisible(false);
-        contactSuccessLabel.setVisible(false);
         userNameSuccessLabel.setVisible(false);
         populateOrgTypes();
 
@@ -132,13 +131,11 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<>();
+        contactCarrier = new javax.swing.JComboBox<String>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
-        contactFormatMessage = new javax.swing.JLabel();
         emailSuccessLabel = new javax.swing.JLabel();
         userNameSuccessLabel = new javax.swing.JLabel();
-        contactSuccessLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -252,9 +249,20 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         uContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uContact.setForeground(new java.awt.Color(25, 56, 82));
+        uContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uContactActionPerformed(evt);
+            }
+        });
         uContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uContactKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                uContactKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uContactKeyReleased(evt);
             }
         });
         add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 250, 35));
@@ -284,7 +292,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uLocationKeyTyped(evt);
             }
         });
-        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, 250, 35));
+        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 253, 40));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
@@ -334,12 +342,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        contactCarrier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactCarrierActionPerformed(evt);
-            }
-        });
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
@@ -355,18 +358,11 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         emailValidateMessage.setText("Email format incorrect");
         add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
 
-        contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
-        contactFormatMessage.setText("Contact No format Incorrect (Make sure you inclue country code, excluding '+')");
-        add(contactFormatMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, -1, -1));
-
         emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
         add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
 
         userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
         add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
-
-        contactSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(contactSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 560, -1, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add-user.png"))); // NOI18N
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -457,7 +453,10 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 || uContact.getText().isEmpty()
                 || locationPoint == null) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-        } else if (emailValid && contactValid && userUnique) {
+        } else if(!contactValidity(uContact.getText())){
+            JOptionPane.showMessageDialog(null, "Phone format incorrect");
+        } 
+        else if (emailValid && userUnique) {
             UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
             registrationRequest.setName(userName.getText());
             registrationRequest.setUserName(uName.getText());
@@ -508,12 +507,10 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_userNameActionPerformed
 
     private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_userNameKeyPressed
 
     private void userNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyTyped
@@ -524,26 +521,6 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyTyped
         // TODO add your handling code here:
-
-//        if (!system.checkIfUserIsUnique(uName.getText())) {
-//            usernameExistsMessage.setVisible(true);
-//            userUnique = false;
-//        } else {
-//            uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//            uName.setForeground(Color.BLACK);
-//            usernameExistsMessage.setVisible(false);
-//            userNameSuccessLabel.setVisible(true);
-//            userUnique = true;
-//            int delay = 2500; //milliseconds
-//            ActionListener taskPerformer = new ActionListener() {
-//                public void actionPerformed(ActionEvent evt) {
-//                    userNameSuccessLabel.setVisible(false);
-//                }
-//            };
-//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-//            tick.setRepeats(false);
-//            tick.start();
-//        }
     }//GEN-LAST:event_uNameKeyTyped
 
     private void uPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uPassKeyTyped
@@ -589,7 +566,6 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void orgComboKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_orgComboKeyTyped
         // TODO add your handling code here:
-
         orgCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         orgCombo.setForeground(Color.BLACK);
     }//GEN-LAST:event_orgComboKeyTyped
@@ -605,27 +581,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_uLocationInputMethodTextChanged
 
     private void uContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyTyped
-        // TODO add your handling code here:  
-
-        if (!contactValidity(uContact.getText())) {
-            contactFormatMessage.setVisible(true);
-            contactValid = false;
-        } else {
-            uContact.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            uContact.setForeground(Color.BLACK);
-            contactFormatMessage.setVisible(false);
-            contactSuccessLabel.setVisible(true);
-            contactValid = true;
-            int delay = 2500; //milliseconds
-            ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    contactSuccessLabel.setVisible(false);
-                }
-            };
-            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-            tick.setRepeats(false);
-            tick.start();
-        }
+        // TODO add your handling code here:          
     }//GEN-LAST:event_uContactKeyTyped
 
     private void uLocationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uLocationKeyTyped
@@ -660,9 +616,46 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_uNameKeyReleased
 
+
     private void contactCarrierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactCarrierActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contactCarrierActionPerformed
+
+    private void uContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyPressed
+        // TODO add your handling code here:         
+    }//GEN-LAST:event_uContactKeyPressed
+
+    private void uContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyReleased
+        // TODO add your handling code here:
+//        if(uContact.getText().trim().length() != 11){
+//          contactFormatMessage.setVisible(true);
+//          contactValid = false;  
+//        }
+//        else if (!contactValidity(uContact.getText())) {
+//            contactFormatMessage.setVisible(true);
+//            contactValid = false;
+//        } else {
+//            uContact.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//            uContact.setForeground(Color.BLACK);
+//            contactFormatMessage.setVisible(false);
+//            contactSuccessLabel.setVisible(true);
+//            contactValid = true;
+//            int delay = 2500; //milliseconds
+//            ActionListener taskPerformer = new ActionListener() {
+//                public void actionPerformed(ActionEvent evt) {
+//                    contactSuccessLabel.setVisible(false);
+//                }
+//            };
+//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+//            tick.setRepeats(false);
+//            tick.start();
+//        }
+    }//GEN-LAST:event_uContactKeyReleased
+
+    private void uContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uContactActionPerformed
+
 
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
@@ -769,17 +762,18 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     }
 
     public Boolean contactValidity(String custContact) {
-        if (!Pattern.compile("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$").matcher(custContact).matches()) {
-            //JOptionPane.showMessageDialog(null,"Please enter a valid US Customer Contact");
-            return false;
+        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(custContact);
+        if(matcher.matches()){
+            return true;
         }
-        return true;
+        return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> contactCarrier;
-    private javax.swing.JLabel contactFormatMessage;
-    private javax.swing.JLabel contactSuccessLabel;
     private javax.swing.JLabel emailSuccessLabel;
     private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JButton jButton1;

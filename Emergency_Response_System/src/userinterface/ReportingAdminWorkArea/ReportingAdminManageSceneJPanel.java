@@ -233,6 +233,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
+        int zipCode, victimCount, loss;
         
         if("".equals(sceneName.getText())){
             JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
@@ -245,7 +246,11 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         }else if("".equals(sceneLocation.getText())){
             JOptionPane.showMessageDialog(null, "Scene Location is mandatory");
         }else {
-            String msg = JOptionPane.showInputDialog("Additional Message");
+        try {
+                zipCode = Integer.parseInt(sceneZipCode.getText());
+                victimCount = Integer.parseInt(noOfVictims.getText());
+                loss = Integer.parseInt(estimatedLoss.getText());
+                String msg = JOptionPane.showInputDialog("Additional Message");
             ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
             sceneReq.setSceneName(sceneName.getText());
             sceneReq.setSceneZipcode(sceneZipCode.getText());
@@ -271,6 +276,9 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 populateSceneTable();
                 resetFields();
             //}
+            }catch(NumberFormatException exception){
+                JOptionPane.showMessageDialog(null, "ZipCode, no of victimes and estimated loss need to be in integer!");
+            }
         }
     }//GEN-LAST:event_createSceneBtnActionPerformed
     public void resetFields() {
