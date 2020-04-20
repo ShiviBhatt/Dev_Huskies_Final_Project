@@ -250,7 +250,7 @@ public class ReportingAdminManageRequestsJPanel extends javax.swing.JPanel {
         int selectedRow = sceneTable.getSelectedRow();        
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a Scene", "Warning", JOptionPane.WARNING_MESSAGE);
-        }else if(selectedWorkReq.getStatus().equals("Requested")){
+        }else if(selectedWorkReq.getStatus().equals("Assigned Reporting Admin")){
             String msg = JOptionPane.showInputDialog("Additional Message");
         
             selectedWorkReq.setStatus("Forwarded to Disaster Team");

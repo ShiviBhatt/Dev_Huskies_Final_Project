@@ -126,6 +126,7 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         btnLogoutLabel = new javax.swing.JLabel();
         greetingUserLabel = new javax.swing.JLabel();
+        btnBackLabel = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
         loginJPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -164,6 +165,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
         greetingUserLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         leftPanel.add(greetingUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 500, 60));
+
+        btnBackLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        btnBackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnBackLabelMousePressed(evt);
+            }
+        });
+        leftPanel.add(btnBackLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 60, 60));
 
         getContentPane().add(leftPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -415,6 +424,8 @@ public class MainJFrame extends javax.swing.JFrame {
             loginJPanel.setVisible(false);
             container.setVisible(true);
             leftPanel.setVisible(true);
+            btnLogoutLabel.setVisible(true);
+            btnBackLabel.setVisible(false);
             userNameJTextField.setText("");
             passwordField.setText("");
             changePanel1();
@@ -429,11 +440,39 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
         // TODO add your handling code here:
+//        System.out.println("CLICKED");
+//        if(container.equals(null)){
+//            System.out.println("container is null");
+//        }else{
+//            System.out.println("CLICKED2");
+//        RegisterUserJPanel panel = new RegisterUserJPanel(container, system);
+//        container.add("RegisterUserJPanel", panel);
+//        CardLayout layout = (CardLayout) container.getLayout();
+//        layout.next(container);
+//        }
+
+     // TODO add your handling code here:
         UserRegistrationJPanel panel = new UserRegistrationJPanel(container, system);
-        container.add("UserRegistrationJPanel", panel);
+        //emoRR panel = new demoRR(container, system);
+        //container.add("UserRegistrationJPanel", panel);
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            btnLogoutLabel.setVisible(false);
+            btnBackLabel.setVisible(true);
+            userNameJTextField.setText("");
+            passwordField.setText("");
+        //cc();
+        //SystemAdminRole r = new SystemAdminRole();
+        container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
-        layout.next(container);
+            layout.next(container);
     }//GEN-LAST:event_btnRegisterMousePressed
+
+    private void btnBackLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackLabelMousePressed
+        // TODO add your handling code here:
+      logout();
+    }//GEN-LAST:event_btnBackLabelMousePressed
 
     private void logout() {
         container.removeAll();
@@ -479,6 +518,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBackLabel;
     private javax.swing.JLabel btnLogoutLabel;
     private javax.swing.JLabel btnRegister;
     private javax.swing.JLabel cancelButton;

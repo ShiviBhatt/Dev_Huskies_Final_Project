@@ -124,23 +124,35 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<String>();
+        contactCarrier = new javax.swing.JComboBox<>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
         contactFormatMessage = new javax.swing.JLabel();
         emailSuccessLabel = new javax.swing.JLabel();
         userNameSuccessLabel = new javax.swing.JLabel();
         contactSuccessLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1338, 900));
+        setPreferredSize(new java.awt.Dimension(1338, 900));
         setRequestFocusEnabled(false);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("User Registration");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
+        userName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        userName.setForeground(new java.awt.Color(25, 56, 82));
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
@@ -154,9 +166,15 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 userNameKeyPressed(evt);
             }
         });
+        add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 250, 35));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Username");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, -1));
 
+        uName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uName.setForeground(new java.awt.Color(25, 56, 82));
         uName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uNameKeyTyped(evt);
@@ -165,46 +183,82 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uNameKeyReleased(evt);
             }
         });
+        add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 250, 32));
 
+        uPass.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uPass.setForeground(new java.awt.Color(25, 56, 82));
         uPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uPassKeyTyped(evt);
             }
         });
+        add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 253, 32));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 206, 62, 20));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Email Id");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, 30));
 
+        uEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uEmail.setForeground(new java.awt.Color(25, 56, 82));
         uEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uEmailKeyTyped(evt);
             }
         });
+        add(uEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 253, 33));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("State");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 286, -1, 20));
 
+        uCity.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uCity.setForeground(new java.awt.Color(25, 56, 82));
         uCity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uCityKeyTyped(evt);
             }
         });
+        add(uCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 253, 39));
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("City");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(25, 56, 82));
         jLabel8.setText("Organization");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, 20));
 
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(25, 56, 82));
         jLabel9.setText("Contact");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, 30));
 
+        uContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uContact.setForeground(new java.awt.Color(25, 56, 82));
         uContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uContactKeyTyped(evt);
             }
         });
+        add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 253, 35));
 
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(25, 56, 82));
         jLabel10.setText("Location");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 79, 30));
 
         uLocation.setEditable(false);
+        uLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uLocation.setForeground(new java.awt.Color(25, 56, 82));
         uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 uLocationInputMethodTextChanged(evt);
@@ -222,13 +276,17 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uLocationKeyTyped(evt);
             }
         });
+        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 253, -1));
 
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Set Location");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, 30));
 
         stateCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -240,202 +298,70 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 stateComboActionPerformed(evt);
             }
         });
+        add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 253, -1));
 
+        orgCombo.setBackground(new java.awt.Color(255, 255, 255));
+        orgCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 orgComboKeyTyped(evt);
             }
         });
+        add(orgCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 253, -1));
 
+        btnRegister.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegister.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(25, 56, 82));
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, -1, -1));
 
-        jLabel11.setText("Contact");
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel11.setText("Carrier");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, -1, 20));
 
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setBackground(new java.awt.Color(255, 255, 255));
+        contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
             }
         });
+        add(contactCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 253, -1));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
+        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
 
         emailValidateMessage.setForeground(new java.awt.Color(255, 0, 0));
         emailValidateMessage.setText("Email format incorrect");
+        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, -1, -1));
 
         contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
         contactFormatMessage.setText("Contact No format Incorrect (Make sure you inclue country code, excluding '+')");
+        add(contactFormatMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, -1, -1));
 
         emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
 
         userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, -1, -1));
 
         contactSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        add(contactSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 473, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(315, 315, 315)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel2)
-                .addGap(63, 63, 63)
-                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel3)
-                .addGap(37, 37, 37)
-                .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(userNameSuccessLabel)
-                .addGap(6, 6, 6)
-                .addComponent(usernameExistsMessage))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel5)
-                .addGap(49, 49, 49)
-                .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(emailSuccessLabel)
-                .addGap(4, 4, 4)
-                .addComponent(emailValidateMessage))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel6)
-                .addGap(68, 68, 68)
-                .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel7)
-                .addGap(74, 74, 74)
-                .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel11)
-                .addGap(50, 50, 50)
-                .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel9)
-                .addGap(50, 50, 50)
-                .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(contactSuccessLabel)
-                .addGap(6, 6, 6)
-                .addComponent(contactFormatMessage))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jButton1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(357, 357, 357)
-                .addComponent(btnRegister))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel2))
-                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(userNameSuccessLabel))
-                    .addComponent(usernameExistsMessage))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel4))
-                    .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailSuccessLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(emailValidateMessage)))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel6))
-                    .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel7))
-                    .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel8))
-                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel11))
-                    .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel9))
-                    .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactSuccessLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(contactFormatMessage)))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addGap(51, 51, 51)
-                .addComponent(btnRegister))
-        );
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add-user.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/RegisterOPAQUE.png"))); // NOI18N
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -844,6 +770,8 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

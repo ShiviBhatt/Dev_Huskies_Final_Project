@@ -136,6 +136,8 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         alertPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -256,23 +258,35 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 10));
 
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(240, 270));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(240, 270));
+
         alertPanel.setBackground(new java.awt.Color(215, 81, 81));
-        alertPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ALERTS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 1, 14))); // NOI18N
+        alertPanel.setMinimumSize(new java.awt.Dimension(280, 321));
+        alertPanel.setPreferredSize(new java.awt.Dimension(280, 321));
 
         javax.swing.GroupLayout alertPanelLayout = new javax.swing.GroupLayout(alertPanel);
         alertPanel.setLayout(alertPanelLayout);
         alertPanelLayout.setHorizontalGroup(
             alertPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
         alertPanelLayout.setVerticalGroup(
             alertPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(alertPanel);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 240, 420));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 240, 170));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setText("ALERTS");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 70, -1));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setMinimumSize(new java.awt.Dimension(1058, 840));
@@ -292,7 +306,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         systemAdminPanelLayout.setVerticalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -322,6 +336,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel alertPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -329,6 +344,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel manageRequestLabel;
     private javax.swing.JPanel manageRequestPanel;
     private javax.swing.JLabel manageSceneLabel;
