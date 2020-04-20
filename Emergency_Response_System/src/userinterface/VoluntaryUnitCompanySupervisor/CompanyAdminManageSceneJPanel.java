@@ -15,11 +15,13 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.Utils.Validation;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
@@ -30,7 +32,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import userinterface.GoogleMAP.OrganizationLocationJPanel;
 
 /**
@@ -60,11 +64,20 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         this.network = network;
         this.account = account;
         populateSceneTable();
+        buttonColor();
+    }
+
+    private void buttonColor() {
+        createSceneBtn.setBackground(new Color(255,255,255));
+        jButton1.setBackground(new Color(255,255,255));
+        jButton2.setBackground(new Color(255,255,255));
+        createAddPic.setBackground(new Color(255,255,255));
     }
 
     private void populateSceneTable() {
+        tblScene.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblScene.getModel();
-
+       
         model.setRowCount(0);
 
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
@@ -84,11 +97,6 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
 
-            /*Object[] row = new Object[2];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
-            
-            model.addRow(row);*/
         }
     }
 
@@ -103,7 +111,6 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblScene = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         sceneLocation = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -122,9 +129,14 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         fileNameLabel = new javax.swing.JLabel();
         imageJPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblScene.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tblScene.setForeground(new java.awt.Color(25, 56, 82));
         tblScene.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -144,19 +156,13 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblScene.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(tblScene);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1043, 146));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1010, 146));
 
-        btnBack.setText("<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MANAGE SCENE");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 6, 849, -1));
@@ -164,9 +170,14 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         sceneLocation.setEditable(false);
         add(sceneLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 375, 188, -1));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Scene Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 204, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +186,8 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 375, -1, -1));
 
+        sceneName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneName.setForeground(new java.awt.Color(25, 56, 82));
         sceneName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 sceneNameFocusLost(evt);
@@ -187,10 +200,17 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(sceneName, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 199, 188, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Zip Code");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 248, -1, -1));
+
+        sceneZipCode.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneZipCode.setForeground(new java.awt.Color(25, 56, 82));
         add(sceneZipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 243, 188, -1));
 
+        noOfVictims.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        noOfVictims.setForeground(new java.awt.Color(25, 56, 82));
         noOfVictims.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noOfVictimsKeyPressed(evt);
@@ -198,6 +218,8 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(noOfVictims, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 287, 188, -1));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("# of victims");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 292, -1, -1));
 
@@ -208,38 +230,55 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         });
         add(estimatedLoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 331, 188, -1));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Estimated Loss");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 336, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
+        createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
         createSceneBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createSceneBtnActionPerformed(evt);
             }
         });
-        add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
+        add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("Location Point");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 380, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("Add Picture");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
 
+        createAddPic.setBackground(new java.awt.Color(255, 255, 255));
+        createAddPic.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        createAddPic.setForeground(new java.awt.Color(25, 56, 82));
         createAddPic.setText("Upload Picture");
         createAddPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createAddPicActionPerformed(evt);
             }
         });
-        add(createAddPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, 40));
+        add(createAddPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, 30));
 
+        fileNameLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        fileNameLabel.setForeground(new java.awt.Color(25, 56, 82));
         fileNameLabel.setText("<Value>");
-        add(fileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 430, -1));
+        add(fileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 330, -1));
 
-        imageJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        imageJPanel.setBackground(new java.awt.Color(204, 204, 204));
         imageJPanel.setLayout(new java.awt.BorderLayout());
-        add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 460, 280));
+        add(imageJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 460, 280));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Cancel Scene");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,24 +286,17 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        IndividualAdminWorkAreaJPanel hospitalworkArea = (IndividualAdminWorkAreaJPanel) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime128x.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
-        
+        int zipCode, victimCount, loss;
         if("".equals(sceneName.getText())){
             JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
         }else if("".equals(sceneZipCode.getText())){
@@ -280,6 +312,10 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
         }else if("".equals(imagePath) || null == imagePath){
             JOptionPane.showMessageDialog(null, "Uploading an image is mandatory");
         }else {
+             try {
+                zipCode = Integer.parseInt(sceneZipCode.getText());
+                victimCount = Integer.parseInt(noOfVictims.getText());
+                loss = Integer.parseInt(estimatedLoss.getText());
             String msg = JOptionPane.showInputDialog("Additional Message");
             VolunteerSceneRequest sceneReq = new VolunteerSceneRequest();
             sceneReq.setSceneName(sceneName.getText());
@@ -301,6 +337,9 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Scene Created Successfully");
             populateSceneTable();
             resetFields();
+        }catch(NumberFormatException exception){
+                JOptionPane.showMessageDialog(null, "ZipCode, no of victimes and estimated loss need to be in integer!");
+            }
         }
     }//GEN-LAST:event_createSceneBtnActionPerformed
     
@@ -396,7 +435,6 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton createAddPic;
     private javax.swing.JButton createSceneBtn;
     private javax.swing.JTextField estimatedLoss;
@@ -411,6 +449,7 @@ public class CompanyAdminManageSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;

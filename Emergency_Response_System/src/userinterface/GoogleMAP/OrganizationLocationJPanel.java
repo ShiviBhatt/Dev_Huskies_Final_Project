@@ -68,13 +68,21 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         setLocationBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         mapCanvas = new javax.swing.JPanel();
 
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new java.awt.BorderLayout());
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        jPanel1.setBackground(new java.awt.Color(244, 242, 227));
+        jPanel1.setForeground(new java.awt.Color(25, 56, 82));
+
+        setLocationBtn.setBackground(new java.awt.Color(255, 255, 255));
         setLocationBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        setLocationBtn.setForeground(new java.awt.Color(25, 56, 82));
         setLocationBtn.setText("Set Location");
         setLocationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,25 +90,32 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/location 32x.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(358, 358, 358)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(404, 404, 404)
                 .addComponent(setLocationBtn)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(setLocationBtn)
-                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(setLocationBtn))
+                .addGap(14, 14, 14))
         );
 
         jSplitPane1.setTopComponent(jPanel1);
 
+        mapCanvas.setBackground(new java.awt.Color(255, 255, 255));
         mapCanvas.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(mapCanvas);
 
@@ -153,8 +168,11 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
             }else if(userProcessContainer.getComponent(componentArray.length - 1) instanceof CompanyAdminManageSceneJPanel){
                 CompanyAdminManageSceneJPanel reportingComponent = (CompanyAdminManageSceneJPanel) userProcessContainer.getComponent(componentArray.length - 1);
                 reportingComponent.populateLongituteLatitude(locationPoint);
+            }else{
+                System.out.println("ELSE LOCATION " + componentArray.length);
+                System.out.println("ELSE CONTAINER " + userProcessContainer.toString());
             }
-          
+         
 
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.previous(userProcessContainer);
@@ -165,6 +183,7 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel mapCanvas;

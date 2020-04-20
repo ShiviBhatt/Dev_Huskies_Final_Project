@@ -33,7 +33,10 @@ import Business.Utils.Validation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -41,12 +44,15 @@ import javax.swing.Timer;
  * @author Mayank
  */
 public class UserRegistrationJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
     private EcoSystem system;
     private LocationPoint locationPoint;
     private Validation validation;
     private ActionListener eventListener;
+    private boolean emailValid;
+    private boolean contactValid;
+    private boolean userUnique;
     /**
      * Creates new form UserRegistrationJPanel
      */
@@ -59,20 +65,19 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         validation = new Validation();
         usernameExistsMessage.setVisible(false);
         emailValidateMessage.setVisible(false);
-        contactFormatMessage.setVisible(false);
         emailSuccessLabel.setVisible(false);
-        contactSuccessLabel.setVisible(false);
         userNameSuccessLabel.setVisible(false);
-        
+        populateOrgTypes();
+
     }
-    
+
     public void populateNetworkComboBox() {
         stateCombo.removeAllItems();
         for (Network network : system.getNetworkList()) {
             stateCombo.addItem(network);
         }
     }
-    
+
     public void populateCarrierComboBox() {
         contactCarrier.removeAllItems();
         contactCarrier.addItem("ATT");
@@ -81,10 +86,20 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         contactCarrier.addItem("Verizon");
     }
     
+    public void populateOrgTypes() {
+        orgCombo.addItem(Organization.Type.Company);
+        orgCombo.addItem(Organization.Type.NGO);
+        orgCombo.addItem(Organization.Type.Personal);
+        orgCombo.addItem(Organization.Type.Hospital);
+    }
+
     public void populateLongituteLatitude(LocationPoint locationPoint) {
+        uLocation.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        uLocation.setForeground(Color.BLACK);
         this.locationPoint = locationPoint;
         uLocation.setText(locationPoint.getLatitude() + "," + locationPoint.getLongitude());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,84 +131,150 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<>();
+        contactCarrier = new javax.swing.JComboBox<String>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
-        contactFormatMessage = new javax.swing.JLabel();
         emailSuccessLabel = new javax.swing.JLabel();
         userNameSuccessLabel = new javax.swing.JLabel();
-        contactSuccessLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1338, 900));
+        setPreferredSize(new java.awt.Dimension(1338, 900));
         setRequestFocusEnabled(false);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setText("User Registration");
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Volunteer Organizaton Registration");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
+        userName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        userName.setForeground(new java.awt.Color(25, 56, 82));
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
             }
         });
         userName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                userNameKeyTyped(evt);
-            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 userNameKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                userNameKeyTyped(evt);
+            }
         });
+        add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 35));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Username");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
+        uName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uName.setForeground(new java.awt.Color(25, 56, 82));
         uName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uNameKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uNameKeyTyped(evt);
             }
         });
+        add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 250, 35));
 
+        uPass.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uPass.setForeground(new java.awt.Color(25, 56, 82));
         uPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uPassKeyTyped(evt);
             }
         });
+        add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 253, 35));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 62, 20));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Email Id");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
 
+        uEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uEmail.setForeground(new java.awt.Color(25, 56, 82));
         uEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uEmailKeyTyped(evt);
             }
         });
+        add(uEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 35));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("State");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, 20));
 
+        uCity.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uCity.setForeground(new java.awt.Color(25, 56, 82));
         uCity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uCityKeyTyped(evt);
             }
         });
+        add(uCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 250, 35));
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("City");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(25, 56, 82));
         jLabel8.setText("Organization");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, 20));
 
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(25, 56, 82));
         jLabel9.setText("Contact");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, 30));
 
+        uContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uContact.setForeground(new java.awt.Color(25, 56, 82));
+        uContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uContactActionPerformed(evt);
+            }
+        });
         uContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 uContactKeyTyped(evt);
             }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                uContactKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uContactKeyReleased(evt);
+            }
         });
+        add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 250, 35));
 
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(25, 56, 82));
         jLabel10.setText("Location");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 610, 50, 30));
 
         uLocation.setEditable(false);
+        uLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        uLocation.setForeground(new java.awt.Color(25, 56, 82));
         uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 uLocationInputMethodTextChanged(evt);
@@ -211,13 +292,17 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 uLocationKeyTyped(evt);
             }
         });
+        add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, 253, 40));
 
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Set Location");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, -1, 30));
 
         stateCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -229,177 +314,66 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 stateComboActionPerformed(evt);
             }
         });
+        add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
 
+        orgCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 orgComboKeyTyped(evt);
             }
         });
+        add(orgCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 250, 35));
 
+        btnRegister.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegister.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(25, 56, 82));
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
 
-        jLabel11.setText("Contact");
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel11.setText("Carrier");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, -1, 20));
 
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactCarrierActionPerformed(evt);
+            }
+        });
         contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contactCarrierKeyTyped(evt);
             }
         });
+        add(contactCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 250, 35));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
+        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, -1, -1));
 
         emailValidateMessage.setForeground(new java.awt.Color(255, 0, 0));
         emailValidateMessage.setText("Email format incorrect");
-
-        contactFormatMessage.setForeground(new java.awt.Color(255, 0, 0));
-        contactFormatMessage.setText("Contact No format Incorrect");
+        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
 
         emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
 
         userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
-        contactSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add-user.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(315, 315, 315)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(357, 357, 357)
-                                .addComponent(btnRegister)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(uEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(emailSuccessLabel)
-                                    .addGap(4, 4, 4)
-                                    .addComponent(emailValidateMessage))
-                                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(userNameSuccessLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(usernameExistsMessage))
-                                .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(contactSuccessLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(contactFormatMessage)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addGap(102, 102, 102)))))
-                .addGap(188, 188, 188))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(uName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)))
-                            .addComponent(userNameSuccessLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(uPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailSuccessLabel)
-                            .addComponent(jLabel5)
-                            .addComponent(uEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(12, 12, 12))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(usernameExistsMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(emailValidateMessage)
-                        .addGap(52, 52, 52)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(uCity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contactSuccessLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(contactFormatMessage)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnRegister))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(uContact, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(uLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/RegisterOPAQUE.png"))); // NOI18N
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -410,7 +384,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void stateComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboActionPerformed
-        Network n = (Network) stateCombo.getSelectedItem();
+        /*Network n = (Network) stateCombo.getSelectedItem();
         for (Enterprise e : n.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
                 if (o instanceof VolunteerCompanyOrganization) {
@@ -424,62 +398,73 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                 }
             }
         }
+        */
     }//GEN-LAST:event_stateComboActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         Network network = (Network) stateCombo.getSelectedItem();
         Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
-        
-        if(network == null ){
+
+        if (network == null) {
             stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
             stateCombo.setForeground(Color.red);
-            
-        }if(uName.getText().isEmpty() ){
+
+        }
+        if (uName.getText().isEmpty()) {
             uName.setBorder(BorderFactory.createLineBorder(Color.RED));
             uName.setForeground(Color.red);
-            
-        }if(userName.getText().isEmpty() ){
+
+        }
+        if (userName.getText().isEmpty()) {
             userName.setBorder(BorderFactory.createLineBorder(Color.RED));
             userName.setForeground(Color.red);
-            
-        }if(uPass.getText().isEmpty() ){
+
+        }
+        if (uPass.getText().isEmpty()) {
             uPass.setBorder(BorderFactory.createLineBorder(Color.RED));
             uPass.setForeground(Color.red);
-            
-        }if(uEmail.getText().isEmpty() ){
+
+        }
+        if (uEmail.getText().isEmpty()) {
             uEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
             uEmail.setForeground(Color.red);
-            
-        }if(uCity.getText().isEmpty() ){
+
+        }
+        if (uCity.getText().isEmpty()) {
             uCity.setBorder(BorderFactory.createLineBorder(Color.RED));
             uCity.setForeground(Color.red);
-           
-        }if(type == null ){
+
+        }
+        if (type == null) {
             orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
             orgCombo.setForeground(Color.red);
-           
-        }if(uContact.getText().isEmpty() ){
+
+        }
+        if (uContact.getText().isEmpty()) {
             uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
             uContact.setForeground(Color.red);
-    
-        }if(locationPoint == null){
+
+        }
+        if (locationPoint == null) {
             uLocation.setBorder(BorderFactory.createLineBorder(Color.RED));
             uLocation.setForeground(Color.red);
-            
+
         }
-        if(userName.getText().isEmpty() 
-                || uPass.getText().isEmpty() 
-                || uEmail.getText().isEmpty() 
-                || uCity.getText().isEmpty() 
-                || type == null 
-                || uContact.getText().isEmpty() 
-                || locationPoint == null
-                ){
+        if (userName.getText().isEmpty()
+                || uPass.getText().isEmpty()
+                || uEmail.getText().isEmpty()
+                || uCity.getText().isEmpty()
+                || type == null
+                || uContact.getText().isEmpty()
+                || locationPoint == null) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-        } else{
+        } else if(!contactValidity(uContact.getText())){
+            JOptionPane.showMessageDialog(null, "Phone format incorrect");
+        } 
+        else if (emailValid && userUnique) {
             UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
-            registrationRequest.setName(uName.getText());
-            registrationRequest.setUserName(userName.getText());
+            registrationRequest.setName(userName.getText());
+            registrationRequest.setUserName(uName.getText());
             registrationRequest.setUserPassword(uPass.getText());
             registrationRequest.setUserEmailId(uEmail.getText());
             registrationRequest.setNetwork(network);
@@ -489,7 +474,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setUserContact(uContact.getText());
             registrationRequest.setUserLocationPoint(locationPoint);
             String contact = "";
-        
+
             if (contactCarrier.getSelectedItem().equals("ATT")) {
                 contact = uContact.getText() + "@txt.att.net";
             } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
@@ -512,17 +497,25 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
                     }
                 }
             }
+            JOptionPane.showMessageDialog(null, "You have been registered succesfully!");
+            uName.setText("");
+            userName.setText("");
+            uPass.setText("");
+            uEmail.setText("");
+            uCity.setText("");
+            uContact.setText("");
+            uLocation.setText("");
+        } else if (!emailValid || !contactValid || !userUnique) {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_userNameActionPerformed
 
     private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
         // TODO add your handling code here:
-       
     }//GEN-LAST:event_userNameKeyPressed
 
     private void userNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyTyped
@@ -533,23 +526,6 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyTyped
         // TODO add your handling code here:
-        uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uName.setForeground(Color.BLACK);
-        if(!system.checkIfUserIsUnique(uName.getText())){
-            usernameExistsMessage.setVisible(true);
-        } else{
-            usernameExistsMessage.setVisible(false);
-            userNameSuccessLabel.setVisible(true);
-            int delay = 2500; //milliseconds
-            ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    userNameSuccessLabel.setVisible(false);
-                }
-            };
-            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
-            tick.setRepeats(false);
-            tick.start();
-        }
     }//GEN-LAST:event_uNameKeyTyped
 
     private void uPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uPassKeyTyped
@@ -560,20 +536,22 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
     private void uEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uEmailKeyTyped
         // TODO add your handling code here:
-        uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uEmail.setForeground(Color.BLACK);
-        if(!validation.emailValidator(uEmail.getText())){
+        if (!validation.emailValidator(uEmail.getText())) {
             emailValidateMessage.setVisible(true);
-        } else{
+            emailValid = false;
+        } else {
+            uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            uEmail.setForeground(Color.BLACK);
             emailValidateMessage.setVisible(false);
             emailSuccessLabel.setVisible(true);
+            emailValid = true;
             int delay = 2500; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     emailSuccessLabel.setVisible(false);
                 }
             };
-            javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
             tick.setRepeats(false);
             tick.start();
         }
@@ -608,22 +586,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_uLocationInputMethodTextChanged
 
     private void uContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyTyped
-        // TODO add your handling code here:  
-        if(!validation.phoneNumberValidator(uContact.getText())){
-                contactFormatMessage.setVisible(true);
-            } else{
-                contactFormatMessage.setVisible(false);
-                contactSuccessLabel.setVisible(true);
-                int delay = 2500; //milliseconds
-                ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    contactSuccessLabel.setVisible(false);
-                }
-                };
-                javax.swing.Timer tick=new javax.swing.Timer(delay,taskPerformer);
-                tick.setRepeats(false);
-                tick.start();
-            }
+        // TODO add your handling code here:          
     }//GEN-LAST:event_uContactKeyTyped
 
     private void uLocationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uLocationKeyTyped
@@ -633,6 +596,71 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
     private void uLocationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_uLocationPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_uLocationPropertyChange
+
+    private void uNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyReleased
+        // TODO add your handling code here:
+        if (!system.checkIfUserIsUnique(uName.getText())) {
+            usernameExistsMessage.setVisible(true);
+            userNameSuccessLabel.setVisible(false);
+            userUnique = false;
+        } else {
+            uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            uName.setForeground(Color.BLACK);
+            usernameExistsMessage.setVisible(false);
+            userNameSuccessLabel.setVisible(true);
+            userUnique = true;
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    userNameSuccessLabel.setVisible(false);
+                }
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_uNameKeyReleased
+
+
+    private void contactCarrierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactCarrierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactCarrierActionPerformed
+
+    private void uContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyPressed
+        // TODO add your handling code here:         
+    }//GEN-LAST:event_uContactKeyPressed
+
+    private void uContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyReleased
+        // TODO add your handling code here:
+//        if(uContact.getText().trim().length() != 11){
+//          contactFormatMessage.setVisible(true);
+//          contactValid = false;  
+//        }
+//        else if (!contactValidity(uContact.getText())) {
+//            contactFormatMessage.setVisible(true);
+//            contactValid = false;
+//        } else {
+//            uContact.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//            uContact.setForeground(Color.BLACK);
+//            contactFormatMessage.setVisible(false);
+//            contactSuccessLabel.setVisible(true);
+//            contactValid = true;
+//            int delay = 2500; //milliseconds
+//            ActionListener taskPerformer = new ActionListener() {
+//                public void actionPerformed(ActionEvent evt) {
+//                    contactSuccessLabel.setVisible(false);
+//                }
+//            };
+//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+//            tick.setRepeats(false);
+//            tick.start();
+//        }
+    }//GEN-LAST:event_uContactKeyReleased
+
+    private void uContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uContactActionPerformed
+
 
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
@@ -672,7 +700,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
 // Set Subject: header field
             message.setSubject("Volunteer Registration");
-            message.setText("Thank you for successfully registering. We will keep you posted in case of emergencies");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
 // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
@@ -680,11 +708,11 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             transport.close();
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
-mex.printStackTrace();
+            mex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Invalid email id");
         }
     }
-    
+
     public static void sendTextMessage(String contact) {
         // Recipient's email ID needs to be mentioned.
         String to = contact;
@@ -725,7 +753,7 @@ mex.printStackTrace();
 
             // Set Subject: header field
             message.setSubject("Volunteer Registration");
-            message.setText("Thank you for successfully registering. We will keep you posted in case of emergencies");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
             // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
@@ -737,18 +765,28 @@ mex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Invalid email id");
         }
     }
-    
+
+    public Boolean contactValidity(String custContact) {
+        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(custContact);
+        if(matcher.matches()){
+            return true;
+        }
+        return false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> contactCarrier;
-    private javax.swing.JLabel contactFormatMessage;
-    private javax.swing.JLabel contactSuccessLabel;
     private javax.swing.JLabel emailSuccessLabel;
     private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -24,4 +24,8 @@ public class ReportingAdmin extends Role{
         return new ReportingAdminWorkAreaJPanel(userProcessContainer, enterprise, business, organization, network,account); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public String toString(){
+        return (RoleType.ReportingAdmin.getValue());
+    }
 }

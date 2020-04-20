@@ -14,6 +14,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.EmergencyUnitRequest;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -49,6 +50,7 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
+        workRequestTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) workRequestTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
@@ -86,10 +88,20 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
         acceptBtn = new javax.swing.JButton();
         rejectBtn = new javax.swing.JButton();
         completeReqBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel1.setText("Fire Safety Management Admin Work Area");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setText("COMPANY WORK REQUESTS");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 6, -1, -1));
+
+        workRequestTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        workRequestTable.setForeground(new java.awt.Color(25, 56, 82));
         workRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -98,7 +110,7 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Organization", "Sender Network", "Requested Date"
+                "Scene Id", "Sender", "Scene Name", "Victims", "Location", "Message", "Status", "Sender Org", "Sender Network", "Requested Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -109,79 +121,60 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        workRequestTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(workRequestTable);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 990, 182));
+
+        processReqBtn.setBackground(new java.awt.Color(255, 255, 255));
+        processReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        processReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         processReqBtn.setText("Process Request");
         processReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processReqBtnActionPerformed(evt);
             }
         });
+        add(processReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
 
+        acceptBtn.setBackground(new java.awt.Color(255, 255, 255));
+        acceptBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        acceptBtn.setForeground(new java.awt.Color(25, 56, 82));
         acceptBtn.setText("Accept Request");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceptBtnActionPerformed(evt);
             }
         });
+        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
 
+        rejectBtn.setBackground(new java.awt.Color(255, 255, 255));
+        rejectBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        rejectBtn.setForeground(new java.awt.Color(25, 56, 82));
         rejectBtn.setText("Reject Request");
         rejectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rejectBtnActionPerformed(evt);
             }
         });
+        add(rejectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
 
+        completeReqBtn.setBackground(new java.awt.Color(255, 255, 255));
+        completeReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        completeReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         completeReqBtn.setText("Complete Request");
         completeReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 completeReqBtnActionPerformed(evt);
             }
         });
+        add(completeReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(acceptBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(rejectBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(processReqBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(completeReqBtn)))
-                .addContainerGap(389, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane2)
-                    .addContainerGap()))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(168, 168, 168)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(processReqBtn)
-                    .addComponent(acceptBtn)
-                    .addComponent(rejectBtn)
-                    .addComponent(completeReqBtn))
-                .addContainerGap(226, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(48, 48, 48)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(279, Short.MAX_VALUE)))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/manageEmployee700px.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 630, 570));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/collaboration.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processReqBtnActionPerformed
@@ -219,7 +212,7 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
             int selectedRow = workRequestTable.getSelectedRow();
             EmergencyUnitRequest emerReq = (EmergencyUnitRequest) workRequestTable.getValueAt(selectedRow, 0);
             if(emerReq.getStatus().equals("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Request is already Accepted");
+                JOptionPane.showMessageDialog(null, "Request is already Rejected");
             }else if(emerReq.getStatus().equals("Accepted")) {
                 JOptionPane.showMessageDialog(null, "Request is already Accepted");
             }else if(emerReq.getStatus().equals("Processing")) {
@@ -295,6 +288,8 @@ public class CompanyAdminWorkRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JButton acceptBtn;
     private javax.swing.JButton completeReqBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processReqBtn;
     private javax.swing.JButton rejectBtn;

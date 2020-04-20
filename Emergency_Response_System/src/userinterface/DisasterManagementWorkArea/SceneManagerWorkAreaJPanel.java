@@ -13,6 +13,7 @@ import Business.Organization.DisasterOrganization;
 import Business.Organization.IncidentManagementOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.Utils.Validation;
 import Business.WorkQueue.BroadcastAlertRequest;
 import Business.WorkQueue.EmergencyUnitRequest;
@@ -63,7 +64,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         /*int selectedRow = sceneTable.getSelectedRow();
         ReportingAdminSceneRequest ss = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);*/
-        
+        statusTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
         model.setRowCount(0);
         for (WorkRequest wr : account.getWorkQueue().getWorkRequestList()) {            
@@ -107,6 +108,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     private void populateSceneTable() {
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         model.setRowCount(0);
         
@@ -183,7 +185,17 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         processBtn = new javax.swing.JButton();
         cancelReqBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1338, 840));
+        setPreferredSize(new java.awt.Dimension(1338, 840));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sceneTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneTable.setForeground(new java.awt.Color(25, 56, 82));
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -203,6 +215,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        sceneTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         sceneTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 sceneTableMouseClicked(evt);
@@ -210,13 +223,20 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(sceneTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1250, 101));
+
+        nearestOrgSearch.setBackground(new java.awt.Color(255, 255, 255));
+        nearestOrgSearch.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        nearestOrgSearch.setForeground(new java.awt.Color(25, 56, 82));
         nearestOrgSearch.setText("Search for nearest Organization");
         nearestOrgSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nearestOrgSearchActionPerformed(evt);
             }
         });
+        add(nearestOrgSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
+        statusTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         statusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -225,7 +245,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Emergency Request Id", "Status", "Reciever Organization", "Request Date", "Sender", "Message", "Scene Id", "Reciever Network"
+                "Emergency Req#", "Status", "Reciever Org", "Request Date", "Sender", "Message", "Scene Id", "Reciever Network"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -236,98 +256,89 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        statusTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(statusTable);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1250, 129));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Refresh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(25, 56, 82));
         jButton3.setText("Mark Resolved");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(25, 56, 82));
         jButton4.setText("Broadcast Alerts");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
 
+        processBtn.setBackground(new java.awt.Color(255, 255, 255));
+        processBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        processBtn.setForeground(new java.awt.Color(25, 56, 82));
         processBtn.setText("Process");
         processBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processBtnActionPerformed(evt);
             }
         });
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, -1, -1));
 
+        cancelReqBtn.setBackground(new java.awt.Color(255, 255, 255));
+        cancelReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cancelReqBtn.setForeground(new java.awt.Color(25, 56, 82));
         cancelReqBtn.setText("Cancel Request");
         cancelReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelReqBtnActionPerformed(evt);
             }
         });
+        add(cancelReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 490, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(cancelReqBtn))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(nearestOrgSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)
-                                .addGap(18, 18, 18)
-                                .addComponent(processBtn)))
-                        .addGap(0, 297, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nearestOrgSearch)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(processBtn))
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(cancelReqBtn))
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("MANAGE SCENE WORK AREA");
+        jLabel1.setToolTipText("");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 730, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/manager128x.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/disasterNaturalOpaque.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nearestOrgSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nearestOrgSearchActionPerformed
@@ -442,7 +453,6 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                             System.out.println("3===--->> " + e.getName());
                             if(wr instanceof UserRegistrationRequest) {
                                 System.out.println("4===--->> " + e.getName());
-                                //((UserRegistrationRequest) wr).setContactCarrierName("8574247014@txt.att.net");
                                 emailIds += ((UserRegistrationRequest) wr).getUserEmailId() + ",";
                                 contacts += ((UserRegistrationRequest) wr).getContactCarrierName() + ",";
                             }
@@ -454,8 +464,13 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
             String broadcastMsg = new Date() + "; Broadcasted by: " + account.getEmployee().getName() + "(Scene Manager)\n";
             broadcastMsg += "Alert Message: " + textArea.getText();
             
-            Validation.sendEmailMessage(emailIds.substring(0, emailIds.length()-1), "Alert Message", broadcastMsg);
-            Validation.sendTextMessage(contacts.substring(0, contacts.length()-1), "Alert Message", broadcastMsg);
+            if(!("".equals(emailIds))) {
+                Validation.sendEmailMessage(emailIds.substring(0, emailIds.length()-1), "Alert Message", broadcastMsg);
+            }
+            if(!("".equals(contacts))) {
+                Validation.sendTextMessage(contacts.substring(0, contacts.length()-1), "Alert Message", broadcastMsg);
+            }
+            
             JOptionPane.showMessageDialog(null, "Alert has been broadcasted successfully");
         } else {
             System.out.println("Canceled");
@@ -513,6 +528,9 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nearestOrgSearch;

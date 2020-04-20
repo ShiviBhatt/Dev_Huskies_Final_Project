@@ -15,6 +15,7 @@ import Business.Organization.Organization;
 import Business.Role.ReportingAdmin;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.VolunteerSceneRequest;
 import Business.WorkQueue.WorkRequest;
@@ -66,17 +67,26 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         siteNameComboBox = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         sceneManagerCombo = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setForeground(new java.awt.Color(0, 102, 255));
 
+        tblManageAssigned.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tblManageAssigned.setForeground(new java.awt.Color(25, 56, 82));
         tblManageAssigned.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Scene Id", "Scene Name ", "Sender", "Assigned Reporting Admin", "Zip Code", "No of Victims", "Location", "Estimated Loss", "Status", "Creatd Date", "Additional Message"
+                "Scene Id", "Scene Name ", "Sender", "Assigned Reporting Admin", "Zip Code", "No of Victims", "Location", "Estimated Loss", "Status", "Creatd Date", " Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -87,91 +97,64 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblManageAssigned.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(tblManageAssigned);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 990, 220));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Site Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 365, -1, 20));
 
+        siteNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(siteNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 102, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Reporting Admin");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, 20));
 
+        sceneManagerCombo.setBackground(new java.awt.Color(255, 255, 255));
+        sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 102, -1));
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Assign");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1))
-                                        .addGap(58, 58, 58)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(siteNameComboBox, 0, 102, Short.MAX_VALUE)
-                                            .addComponent(sceneManagerCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton1)))
-                        .addGap(0, 652, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(siteNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(sceneManagerCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(170, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel3.setText("MANAGE  INCIDENT SCENE");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 13, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/IncidentOPAQUESCENE.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1010, 450));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime128x.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String msg = JOptionPane.showInputDialog("Additional Message");
         VolunteerSceneRequest scene = (VolunteerSceneRequest) siteNameComboBox.getSelectedItem();
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
+        if(scene == null || employee == null){
+            JOptionPane.showMessageDialog(null,"Select a scene and a reporting manager");
+        } else{
+            String msg = JOptionPane.showInputDialog("Additional Message");
+        
         scene.setSceneManager(employee);
         scene.setMessage(msg);
         scene.setStatus("Assigned Reporting Admin");
@@ -182,17 +165,22 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                 }
             }
         }  
-        JOptionPane.showInputDialog("Reporting admin is assigned successfully");
+
+        JOptionPane.showMessageDialog(null, "Reporting admin is assigned successfully");
         populateTable();
         populateSiteNameCombo();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox sceneManagerCombo;
     private javax.swing.JComboBox siteNameComboBox;
@@ -200,6 +188,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        tblManageAssigned.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblManageAssigned.getModel();
         model.setRowCount(0);
 

@@ -12,6 +12,7 @@ import Business.Network.Network;
 import Business.Organization.DisasterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.ReportingAdminSceneRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -49,6 +50,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }
     
     private void populateSceneTable(){
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) sceneTable.getModel();
         
         model.setRowCount(0);
@@ -107,7 +109,16 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         sceneLocation = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1058, 840));
+        setPreferredSize(new java.awt.Dimension(1058, 840));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sceneTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -127,110 +138,94 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        sceneTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(sceneTable);
 
-        jLabel1.setText("Scene Name");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1010, 146));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel1.setText("Scene Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 297, -1, -1));
+
+        sceneName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneName.setForeground(new java.awt.Color(25, 56, 82));
         sceneName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sceneNameActionPerformed(evt);
             }
         });
+        add(sceneName, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 292, 188, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Zip Code");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 340, -1, -1));
 
+        sceneZipCode.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneZipCode.setForeground(new java.awt.Color(25, 56, 82));
+        add(sceneZipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 335, 188, -1));
+
+        noOfVictims.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        noOfVictims.setForeground(new java.awt.Color(25, 56, 82));
+        add(noOfVictims, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 378, 188, -1));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setText("# of victims");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 383, -1, -1));
 
+        estimatedLoss.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        estimatedLoss.setForeground(new java.awt.Color(25, 56, 82));
+        add(estimatedLoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 421, 188, -1));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
         jLabel5.setText("Estimated Loss");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 426, -1, -1));
 
+        createSceneBtn.setBackground(new java.awt.Color(255, 255, 255));
+        createSceneBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        createSceneBtn.setForeground(new java.awt.Color(25, 56, 82));
         createSceneBtn.setText("Create Scene");
         createSceneBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createSceneBtnActionPerformed(evt);
             }
         });
+        add(createSceneBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 519, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setText("Location Point");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 471, -1, -1));
 
         sceneLocation.setEditable(false);
+        sceneLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        sceneLocation.setForeground(new java.awt.Color(25, 56, 82));
+        add(sceneLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 466, 188, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Set Location");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 464, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(314, 314, 314)
-                                .addComponent(createSceneBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(219, 219, 219)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addGap(66, 66, 66)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(sceneZipCode, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(sceneName, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6))
-                                        .addGap(53, 53, 53)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(noOfVictims, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(estimatedLoss, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                            .addComponent(sceneLocation))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sceneName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sceneZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(noOfVictims, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(estimatedLoss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(sceneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(39, 39, 39)
-                .addComponent(createSceneBtn)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel3.setText("MANAGE SCENE");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 21, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/emergencyServiceManager700x.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/crime128x.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sceneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sceneNameActionPerformed
@@ -238,6 +233,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sceneNameActionPerformed
 
     private void createSceneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSceneBtnActionPerformed
+        int zipCode, victimCount, loss;
         
         if("".equals(sceneName.getText())){
             JOptionPane.showMessageDialog(null, "Scene Name is mandatory");
@@ -250,7 +246,11 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         }else if("".equals(sceneLocation.getText())){
             JOptionPane.showMessageDialog(null, "Scene Location is mandatory");
         }else {
-            String msg = JOptionPane.showInputDialog("Additional Message");
+        try {
+                zipCode = Integer.parseInt(sceneZipCode.getText());
+                victimCount = Integer.parseInt(noOfVictims.getText());
+                loss = Integer.parseInt(estimatedLoss.getText());
+                String msg = JOptionPane.showInputDialog("Additional Message");
             ReportingAdminSceneRequest sceneReq = new ReportingAdminSceneRequest();
             sceneReq.setSceneName(sceneName.getText());
             sceneReq.setSceneZipcode(sceneZipCode.getText());
@@ -276,6 +276,9 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
                 populateSceneTable();
                 resetFields();
             //}
+            }catch(NumberFormatException exception){
+                JOptionPane.showMessageDialog(null, "ZipCode, no of victimes and estimated loss need to be in integer!");
+            }
         }
     }//GEN-LAST:event_createSceneBtnActionPerformed
     public void resetFields() {
@@ -300,9 +303,12 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noOfVictims;
     private javax.swing.JTextField sceneLocation;
