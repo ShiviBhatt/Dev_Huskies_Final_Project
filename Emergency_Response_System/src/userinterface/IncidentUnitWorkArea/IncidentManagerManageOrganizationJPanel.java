@@ -58,7 +58,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
             if (organization instanceof IncidentManagementOrganization) {
                 IncidentManagementOrganization org = (IncidentManagementOrganization) organization;
                 Object[] row = new Object[3];
-                row[0] = enterprise.getType().getValue();
+                row[0] = org.getType().getValue();
                 row[1] = org.getName();
                 row[2] = org.getLocationPoint();
                 model.addRow(row);
@@ -204,7 +204,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         }else if("".equals(orgLocation.getText())) {
             JOptionPane.showMessageDialog(null, "Please set a location"); 
         }else {
-            enterprise.getOrganizationDirectory().createOrganization(type, orgName.getText());
+            enterprise.getOrganizationDirectory().createOrganization(type, orgName.getText(), locationPoint);
             populateTable();
             resetFields();
             JOptionPane.showMessageDialog(null, "Organization is created successfully");
