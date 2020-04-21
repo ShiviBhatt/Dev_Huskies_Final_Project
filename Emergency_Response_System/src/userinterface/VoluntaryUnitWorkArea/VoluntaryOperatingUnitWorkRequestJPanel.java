@@ -179,10 +179,10 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
                 populateTable();
-
+                JOptionPane.showMessageDialog(null, "Request has successfully assigned");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a reuest to process.");
+            JOptionPane.showMessageDialog(null, "Choose a request to process.");
             return;
         }
     }//GEN-LAST:event_assignJButtonActionPerformed
@@ -222,6 +222,7 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
             }
 
             request.setStatus("Completed");
+            JOptionPane.showMessageDialog(null, "User account has been activated successfully");
             populateTable();
         } else {
             JOptionPane.showMessageDialog(null, "Please select a request message to process.");

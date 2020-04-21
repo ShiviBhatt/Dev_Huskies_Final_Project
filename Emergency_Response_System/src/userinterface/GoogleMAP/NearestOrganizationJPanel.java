@@ -624,7 +624,29 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
                     coordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof VolunteerPersonalOrganization && orgType.equalsIgnoreCase("Personal")) {
                     coordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
-                }  
+                } else {
+                    if (org instanceof FireSafetyOrganization) {
+                        coordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof PoliceOrganization) {
+                        coordinates += "['" + org.getName() + " - Police'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof MedicalOrganization) {
+                        coordinates += "['" + org.getName() + " - Medicine'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof VolunteerNGOOrganization) {
+                        coordinates += "['" + org.getName() + " - NGO'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof VolunteerHospitalOrganization) {
+                        coordinates += "['" + org.getName() + " - Hospital'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof VolunteerCompanyOrganization) {
+                        coordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                    if (org instanceof VolunteerPersonalOrganization) {
+                        coordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                    }
+                }
             }
         }
         System.out.println("===---->>> 1coordinates are " + coordinates.substring(0, coordinates.length()-1));
