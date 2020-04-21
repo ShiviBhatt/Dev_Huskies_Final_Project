@@ -25,5 +25,8 @@ public class IncidentManagementOrganization extends Organization{
         roles.add(new ReportingAdmin());
         return roles;
     }
-    
+       @Override
+    public Type getType() {
+        return Organization.Type.IncidentReportingAgency;
+    }  
 }
