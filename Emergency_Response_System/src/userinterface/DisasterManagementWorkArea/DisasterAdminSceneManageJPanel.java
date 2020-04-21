@@ -110,7 +110,6 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         jLabel1.setText("Site Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 380, -1, -1));
 
-        siteNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -119,18 +118,17 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
                 siteNameComboBoxActionPerformed(evt);
             }
         });
-        add(siteNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 376, 121, -1));
+        add(siteNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 376, 200, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Site Manager");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 419, -1, -1));
 
-        sceneManagerCombo.setBackground(new java.awt.Color(255, 255, 255));
         sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 415, 121, -1));
+        add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 415, 200, -1));
 
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
@@ -140,7 +138,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -172,41 +170,45 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         
         Employee employee = (Employee) sceneManagerCombo.getSelectedItem();
         
-        
-        for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                if (u.getEmployee().getId() == (employee.getId())) {
-                    //System.out.println("3[][][][][]");
-                    //sceneManagerCombo.addItem(u.getEmployee());
-                    //u.getWorkQueue().getWorkRequestList().add(scene);
-                    empUserAccount = u;
-                    break;
+        if("".equals(sceneName)) { 
+            JOptionPane.showMessageDialog(null, "Site Name is not available for assignment");
+        }else if(employee == null) {
+            JOptionPane.showMessageDialog(null, "Employee is not available for assignment");
+        }else {
+            for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                    if (u.getEmployee().getId() == (employee.getId())) {
+                        //System.out.println("3[][][][][]");
+                        //sceneManagerCombo.addItem(u.getEmployee());
+                        //u.getWorkQueue().getWorkRequestList().add(scene);
+                        empUserAccount = u;
+                        break;
+                    }
                 }
             }
+
+            for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {            
+                if(wr instanceof ReportingAdminSceneRequest) {
+                    if(!((ReportingAdminSceneRequest) wr).getStatus().equals("Resolved")) {
+                        isResolved = false;
+                        break;
+                    }
+                }            
+            }
+
+            if(isResolved) {
+                String msg = JOptionPane.showInputDialog("Additional Message");
+                scene.setSceneManager(employee);
+                scene.setStatus("Scene Manager Assigned");
+                scene.setMessage(msg);
+                empUserAccount.getWorkQueue().getWorkRequestList().add(scene);
+                JOptionPane.showMessageDialog(null, "Manager is assigned successfully");
+                populateTable();
+                populateSiteNameCombo();
+            }else {
+                JOptionPane.showMessageDialog(null, "This manager is already assigned to an active scene. Please select a different manager.");
+            }
         }
-        
-        for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {            
-            if(wr instanceof ReportingAdminSceneRequest) {
-                if(!((ReportingAdminSceneRequest) wr).getStatus().equals("Resolved")) {
-                    isResolved = false;
-                    break;
-                }
-            }            
-        }
-        
-        if(isResolved) {
-            String msg = JOptionPane.showInputDialog("Additional Message");
-            scene.setSceneManager(employee);
-            scene.setStatus("Scene Manager Assigned");
-            scene.setMessage(msg);
-            empUserAccount.getWorkQueue().getWorkRequestList().add(scene);
-            JOptionPane.showMessageDialog(null, "Manager is assigned successfully");
-            populateTable();
-            populateSiteNameCombo();
-        }else {
-            JOptionPane.showMessageDialog(null, "This manager is already assigned to an active scene. Please select a different manager.");
-        }
-        
         
         
     }//GEN-LAST:event_jButton2ActionPerformed

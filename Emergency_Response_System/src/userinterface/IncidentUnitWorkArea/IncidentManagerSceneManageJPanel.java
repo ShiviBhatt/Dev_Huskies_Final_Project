@@ -110,7 +110,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(siteNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 230, -1));
+        add(siteNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 190, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -120,7 +120,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 230, -1));
+        add(sceneManagerCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 190, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -131,7 +131,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 130, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
