@@ -159,6 +159,9 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Organization Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        orgName.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        orgName.setForeground(new java.awt.Color(25, 56, 82));
         add(orgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N

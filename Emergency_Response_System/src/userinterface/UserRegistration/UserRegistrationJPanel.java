@@ -270,16 +270,16 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(25, 56, 82));
         jLabel10.setText("Location");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 610, 50, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 610, 70, 30));
 
         uLocation.setEditable(false);
         uLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uLocation.setForeground(new java.awt.Color(25, 56, 82));
         uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 uLocationInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         uLocation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -294,6 +294,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         });
         add(uLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, 253, 40));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(25, 56, 82));
         jButton1.setText("Set Location");
@@ -304,6 +305,9 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, -1, 30));
 
+        stateCombo.setBackground(new java.awt.Color(255, 255, 255));
+        stateCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        stateCombo.setForeground(new java.awt.Color(25, 56, 82));
         stateCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 stateComboItemStateChanged(evt);
@@ -316,7 +320,9 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         });
         add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
 
+        orgCombo.setBackground(new java.awt.Color(255, 255, 255));
         orgCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        orgCombo.setForeground(new java.awt.Color(25, 56, 82));
         orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 orgComboKeyTyped(evt);
@@ -340,6 +346,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         jLabel11.setText("Carrier");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, -1, 20));
 
+        contactCarrier.setBackground(new java.awt.Color(255, 255, 255));
         contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
         contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
