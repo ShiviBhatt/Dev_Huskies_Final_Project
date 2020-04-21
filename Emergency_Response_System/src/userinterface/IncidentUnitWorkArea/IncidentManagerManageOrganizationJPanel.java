@@ -147,13 +147,13 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 361, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
         organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 243, 180, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 243, 270, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -164,7 +164,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Organization Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 282, -1, -1));
-        add(orgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 276, 180, -1));
+        add(orgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 276, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -174,7 +174,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         orgLocation.setEditable(false);
         orgLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgLocation.setForeground(new java.awt.Color(25, 56, 82));
-        add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 316, 180, -1));
+        add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 316, 260, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -185,7 +185,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 314, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));

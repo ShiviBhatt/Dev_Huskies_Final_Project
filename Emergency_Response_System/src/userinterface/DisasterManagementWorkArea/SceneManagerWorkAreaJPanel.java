@@ -188,6 +188,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1338, 840));
@@ -259,7 +261,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         statusTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane2.setViewportView(statusTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1250, 129));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 1250, 129));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -281,7 +283,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -292,7 +294,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 290, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -303,7 +305,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
 
         processBtn.setBackground(new java.awt.Color(255, 255, 255));
         processBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -314,7 +316,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 processBtnActionPerformed(evt);
             }
         });
-        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, -1, -1));
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
 
         cancelReqBtn.setBackground(new java.awt.Color(255, 255, 255));
         cancelReqBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -325,7 +327,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 cancelReqBtnActionPerformed(evt);
             }
         });
-        add(cancelReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 490, -1, -1));
+        add(cancelReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 560, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -339,6 +341,18 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/disasterNaturalOpaque.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("SCENE LIST");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 780, -1));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("EMERGENCY REQUEST LIST");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 380, 850, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nearestOrgSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nearestOrgSearchActionPerformed
@@ -531,6 +545,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nearestOrgSearch;
