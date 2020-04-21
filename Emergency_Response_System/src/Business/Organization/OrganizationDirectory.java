@@ -25,10 +25,6 @@ public class OrganizationDirectory {
         return organizationList;
     }
 
-    public Organization createOrganization(Type type, String name) {
-        return createOrganization(type, name, null);
-    }
-
     public Organization createOrganization(Type type, String name, LocationPoint locationPoint) {
         Organization organization = null;
         if (type.getValue().equals(Type.IncidentReportingAgency.getValue())) {
