@@ -123,7 +123,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 420, 170, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 420, 310, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -162,7 +162,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
             userJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 375, 179));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 500, 179));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -171,7 +171,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
 
         passwordJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         passwordJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 451, 170, -1));
+        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 451, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -182,7 +182,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         employeeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         employeeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 354, 170, -1));
+        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 354, 310, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(25, 56, 82));
@@ -198,7 +198,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 321, 170, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 321, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));
@@ -209,7 +209,7 @@ public class EmergencyManageUserAccountJPanel extends javax.swing.JPanel {
         roleJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         roleJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 387, 170, -1));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 387, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));
