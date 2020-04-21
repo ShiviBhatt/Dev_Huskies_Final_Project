@@ -48,6 +48,7 @@ public class VoluntaryOperatingUnitWorkRequestJPanel extends javax.swing.JPanel 
         this.network = network;
         this.business = business;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
+         workRequestJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
     }
     

@@ -34,6 +34,7 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.container = container;
         this.system = system;
+        userJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         popOrganizationComboBox();
        // employeeJComboBox.removeAllItems();
         popData();

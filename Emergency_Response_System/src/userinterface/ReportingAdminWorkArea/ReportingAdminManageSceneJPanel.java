@@ -46,6 +46,7 @@ public class ReportingAdminManageSceneJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.network = network;
         this.account = account;
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateSceneTable();
     }
     

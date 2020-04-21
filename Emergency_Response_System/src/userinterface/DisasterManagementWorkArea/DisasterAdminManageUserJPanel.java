@@ -38,6 +38,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         this.container = container;
         this.enterprise = enterprise;
         this.system = system;
+         userJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         populateTable();
         jButton2.setBackground(new Color(255,255,255));

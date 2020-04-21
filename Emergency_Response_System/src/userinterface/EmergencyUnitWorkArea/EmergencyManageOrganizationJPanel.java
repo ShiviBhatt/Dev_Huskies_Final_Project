@@ -38,6 +38,7 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.directory = directory;
         this.enterprise = enterprise;
+         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
         populateCombo();
     }

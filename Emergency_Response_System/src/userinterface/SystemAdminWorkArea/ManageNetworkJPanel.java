@@ -32,7 +32,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+networkJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateNetworkTable();
     }
 

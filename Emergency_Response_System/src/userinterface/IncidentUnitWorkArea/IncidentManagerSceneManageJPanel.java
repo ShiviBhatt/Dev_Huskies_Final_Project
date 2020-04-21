@@ -47,6 +47,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.business = business;
         this.organization = organization;
+        tblManageAssigned.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();
@@ -107,6 +108,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel1.setText("Site Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 365, -1, 20));
 
+        siteNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         siteNameComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         siteNameComboBox.setForeground(new java.awt.Color(25, 56, 82));
         siteNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -117,6 +119,7 @@ public class IncidentManagerSceneManageJPanel extends javax.swing.JPanel {
         jLabel2.setText("Reporting Admin");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, 20));
 
+        sceneManagerCombo.setBackground(new java.awt.Color(255, 255, 255));
         sceneManagerCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         sceneManagerCombo.setForeground(new java.awt.Color(25, 56, 82));
         sceneManagerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
