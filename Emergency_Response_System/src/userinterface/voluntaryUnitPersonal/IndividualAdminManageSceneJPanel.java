@@ -59,6 +59,7 @@ public class IndividualAdminManageSceneJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.network = network;
         this.account = account;
+         tblScene.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateSceneTable();
     }
 

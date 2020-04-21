@@ -43,6 +43,7 @@ public class MedicalAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.network = network;
         this.account = account;
+         workRequestTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
     }
 

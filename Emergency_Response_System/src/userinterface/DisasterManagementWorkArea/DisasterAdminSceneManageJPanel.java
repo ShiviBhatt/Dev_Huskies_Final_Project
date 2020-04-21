@@ -49,6 +49,7 @@ public class DisasterAdminSceneManageJPanel extends javax.swing.JPanel {
         this.business = business;
         this.organization = organization;
         selectedSite = null;
+         tblManageAssigned.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
         populateSiteNameCombo();
         populateSiteManagerCombo();

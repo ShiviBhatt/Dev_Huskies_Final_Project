@@ -30,7 +30,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+enterpriseJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
         populateComboBox();
     }

@@ -36,7 +36,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+ enterpriseJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
         populateNetworkComboBox();
     }
@@ -137,7 +137,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
 
-        networkJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         networkJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -162,7 +161,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel3.setText("Enterprise");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 216, -1, 20));
 
-        enterpriseJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseJComboBox.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         enterpriseJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -201,6 +199,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
         btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSubmit.setText("Submit");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnSubmit.setPreferredSize(new java.awt.Dimension(53, 19));
         btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

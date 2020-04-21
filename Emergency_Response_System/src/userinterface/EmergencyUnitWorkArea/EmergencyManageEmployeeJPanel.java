@@ -29,7 +29,7 @@ public class EmergencyManageEmployeeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
-        
+         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }

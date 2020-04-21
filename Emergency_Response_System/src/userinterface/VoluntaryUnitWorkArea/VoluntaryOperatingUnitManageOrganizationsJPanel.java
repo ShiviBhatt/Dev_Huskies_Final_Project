@@ -47,6 +47,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         this.enterprise = enterprise;
         this.network = network;
         this.system = system;
+        tblVoluntaryOrg.getTableHeader().setDefaultRenderer(new HeaderColors());
         volPopulate();
         //populateTable();
         populateOrganizationTypeComboBox();

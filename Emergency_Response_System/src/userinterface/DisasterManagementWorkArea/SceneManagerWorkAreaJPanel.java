@@ -56,6 +56,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.organization = organization;
         selectedWorkReq = null;
+        statusTable.getTableHeader().setDefaultRenderer(new HeaderColors());
+        sceneTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateSceneTable();
         populateStatusTable();
     }

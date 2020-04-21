@@ -34,6 +34,7 @@ public class VoluntaryOperatingUnitManageEmployeesJPanel extends javax.swing.JPa
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         populateOrganizationEmployeeComboBox();
     }

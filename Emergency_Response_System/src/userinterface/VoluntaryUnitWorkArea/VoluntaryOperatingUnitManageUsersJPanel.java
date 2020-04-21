@@ -38,6 +38,7 @@ public class VoluntaryOperatingUnitManageUsersJPanel extends javax.swing.JPanel 
         this.enterprise = enterprise;
         this.ecosystem = system;
         this.organization = organization;
+         tblUserDetails.getTableHeader().setDefaultRenderer(new HeaderColors());
          populateVoluntaryOrganizationComboBox();
          populateData();
     }

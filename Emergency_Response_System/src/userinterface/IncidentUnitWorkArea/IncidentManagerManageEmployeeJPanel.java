@@ -30,7 +30,7 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }

@@ -144,6 +144,7 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         });
         add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, -1, -1));
 
+        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -157,7 +158,6 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Organization Name");
-
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
         add(orgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 200, -1));
 
@@ -169,7 +169,6 @@ public class IncidentManagerManageOrganizationJPanel extends javax.swing.JPanel 
         orgLocation.setEditable(false);
         orgLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgLocation.setForeground(new java.awt.Color(25, 56, 82));
-
         add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 200, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
