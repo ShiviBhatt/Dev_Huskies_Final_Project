@@ -39,5 +39,8 @@ public class VolunteerNGOOrganization extends Organization {
         roles.add(new NGOAdmin());
         return roles;
     }
-    
+       @Override
+    public Type getType() {
+        return Organization.Type.NGO;
+    } 
 }

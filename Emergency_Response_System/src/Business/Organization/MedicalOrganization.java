@@ -22,6 +22,7 @@ public class MedicalOrganization extends Organization{
         super(name);
         this.name = name;
         medicenes = name;
+        //setType(Organization.Type.Medicines);
     }
 
     private String medicenes;
@@ -42,4 +43,8 @@ public class MedicalOrganization extends Organization{
         return roles;
 
     }
+     @Override
+    public Type getType() {
+        return Organization.Type.Medicines;
+    } 
 }

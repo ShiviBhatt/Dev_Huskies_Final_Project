@@ -126,6 +126,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         jLabel5.setText("Password");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 70, 20));
 
+        organizationComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         organizationComboBox1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationComboBox1.setForeground(new java.awt.Color(25, 56, 82));
         organizationComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -136,6 +137,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         });
         add(organizationComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 189, -1));
 
+        employeeComboBox2.setBackground(new java.awt.Color(255, 255, 255));
         employeeComboBox2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         employeeComboBox2.setForeground(new java.awt.Color(25, 56, 82));
         employeeComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -146,6 +148,7 @@ public class DisasterAdminManageUserJPanel extends javax.swing.JPanel {
         });
         add(employeeComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 189, -1));
 
+        roleComboBox3.setBackground(new java.awt.Color(255, 255, 255));
         roleComboBox3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         roleComboBox3.setForeground(new java.awt.Color(25, 56, 82));
         roleComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

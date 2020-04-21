@@ -37,5 +37,9 @@ public class VolunteerPersonalOrganization extends Organization {
         roles.add(new PersonalAdmin());
         return roles;
     }
+       @Override
+    public Type getType() {
+        return Organization.Type.Personal;
+    } 
     
 }

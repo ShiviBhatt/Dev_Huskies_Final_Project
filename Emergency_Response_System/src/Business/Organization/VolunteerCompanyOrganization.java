@@ -38,5 +38,8 @@ public class VolunteerCompanyOrganization extends Organization {
         roles.add(new CompanySupervisor());
         return roles;
     }
-    
+       @Override
+    public Type getType() {
+        return Organization.Type.Company;
+    } 
 }
