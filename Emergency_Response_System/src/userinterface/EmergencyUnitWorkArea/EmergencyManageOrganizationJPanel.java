@@ -66,9 +66,9 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
 //            if (organization instanceof PoliceOrganization) {
 //                PoliceOrganization org = (PoliceOrganization) organization;
                 Object[] row = new Object[3];
-                row[0] = organization.getOrganizationID();
-                row[1] = enterprise.getName();
-                row[2] = organization.getName();
+                row[0] = enterprise.getType().getValue();
+                row[1] = organization.getName();
+                row[2] = organization.getLocationPoint();
                 //row[2] = org.getPosition();
                 model.addRow(row);
             //}
@@ -112,7 +112,7 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Type", "Name"
+                "Organization Type", "Organization Name", "Organization Location"
             }
         ) {
             Class[] types = new Class [] {
@@ -146,7 +146,6 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
         });
         add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 415, -1, -1));
 
-        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -155,12 +154,12 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 291, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Organization Name");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 336, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
 
         orgNameTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         orgNameTextField.setForeground(new java.awt.Color(25, 56, 82));
@@ -169,15 +168,15 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
                 orgNameTextFieldFocusLost(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 331, 212, -1));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 331, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Location Point");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 374, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
 
         orgLocation.setEditable(false);
-        add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 374, 241, -1));
+        add(orgLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 374, 230, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N

@@ -374,14 +374,16 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             }*/
-            /*if(selectedScene.getStatus().equals("Resolved")) {
+            if(selectedScene.getStatus().equals("Resolved")) {
                 JOptionPane.showMessageDialog(null, "Scene is already Resolved");
-            }else {*/
+            }else if(selectedScene.getStatus().equals("Scene Manager Assigned")) {
+                JOptionPane.showMessageDialog(null, "Please process the scene before sending emergency requests to organizations");
+            }else {
                 NearestOrganizationJPanel ramop = new NearestOrganizationJPanel(userProcessContainer, account, organization, selectedScene, enterprise, network, business);
                 userProcessContainer.add("Nearest_Distance_Panel", ramop);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
-            //}
+            }
         }
     }//GEN-LAST:event_nearestOrgSearchActionPerformed
 
@@ -417,6 +419,8 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 ReportingAdminSceneRequest sScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
                 if(sScene.getStatus().equals("Resolved")) {
                     JOptionPane.showMessageDialog(null, "Scene is already Resolved");
+                }else if(selectedScene.getStatus().equals("Scene Manager Assigned")) {
+                    JOptionPane.showMessageDialog(null, "Please process the scene before marking resolved");
                 }else {
                     String msg = JOptionPane.showInputDialog("Additional Message");                    
                     sScene.setStatus("Resolved");

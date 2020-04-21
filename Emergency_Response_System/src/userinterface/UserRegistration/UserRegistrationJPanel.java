@@ -131,7 +131,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox();
         btnRegister = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<String>();
+        contactCarrier = new javax.swing.JComboBox<>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
         emailSuccessLabel = new javax.swing.JLabel();
@@ -148,7 +148,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Volunteer Organizaton Registration");
+        jLabel1.setText("Volunteer Organization Registration");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -276,10 +276,10 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         uLocation.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         uLocation.setForeground(new java.awt.Color(25, 56, 82));
         uLocation.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 uLocationInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         uLocation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -342,7 +342,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
 
         contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         contactCarrier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactCarrierActionPerformed(evt);
