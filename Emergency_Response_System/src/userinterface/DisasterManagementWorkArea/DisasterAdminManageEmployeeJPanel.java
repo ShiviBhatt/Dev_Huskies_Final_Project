@@ -119,6 +119,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
         employeeNameTextField.setForeground(new java.awt.Color(25, 56, 82));
         add(employeeNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 339, 233, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(25, 56, 82));
         jButton2.setText("Add Employee");

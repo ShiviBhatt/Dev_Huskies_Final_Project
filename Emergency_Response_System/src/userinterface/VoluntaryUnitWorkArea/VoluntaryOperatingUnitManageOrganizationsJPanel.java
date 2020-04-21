@@ -47,8 +47,8 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
         this.enterprise = enterprise;
         this.network = network;
         this.system = system;
-
-        populateTable();
+        volPopulate();
+        //populateTable();
         populateOrganizationTypeComboBox();
 
     }
@@ -62,52 +62,75 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
 
     }
 
-    public void populateTable() {
-        tblVoluntaryOrg.getTableHeader().setDefaultRenderer(new HeaderColors());
+    
+    public void volPopulate(){
+           tblVoluntaryOrg.getTableHeader().setDefaultRenderer(new HeaderColors());
         DefaultTableModel model = (DefaultTableModel) tblVoluntaryOrg.getModel();
+        
         model.setRowCount(0);
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (organization instanceof VolunteerHospitalOrganization) {
-                VolunteerHospitalOrganization orgHospital = (VolunteerHospitalOrganization) organization;
-               
-              
-                System.out.println("Organization 2  = " + enterprise.getOrganizationDirectory());
-                Object[] row = new Object[model.getColumnCount()];
-                enterprise.setType(Organization.Type.Hospital);
-                  System.out.println("Organization 2  = " + enterprise.getType().getValue());
-                row[0] = enterprise.getType().getValue();
-                row[1] = orgHospital.getHospital();
-                row[2] = orgHospital.getLocationPoint();
+        
+        for (Organization organization : directory.getOrganizationList()){
+        {
+             if(organization instanceof VolunteerPersonalOrganization || organization instanceof VolunteerCompanyOrganization 
+                     || organization instanceof VolunteerNGOOrganization || organization instanceof VolunteerHospitalOrganization){
+                Object[] row = new Object[3];
+                row[0] = organization.getType().getValue();
+                row[1] = organization.getName();
+                row[2] = organization.getLocationPoint();
+                //row[2] = org.getPosition();
                 model.addRow(row);
-            } else if (organization instanceof VolunteerPersonalOrganization) {
-                VolunteerPersonalOrganization orgPersonal = (VolunteerPersonalOrganization) organization;
-                Object[] row = new Object[model.getColumnCount()];
-                enterprise.setType(Organization.Type.Personal);
-                row[0] = enterprise.getType().getValue();
-                row[1] = orgPersonal.getVolunteerPersonal();
-                row[2] = orgPersonal.getLocationPoint();
-                model.addRow(row);
-            } else if (organization instanceof VolunteerNGOOrganization) {
-                VolunteerNGOOrganization orgNGO = (VolunteerNGOOrganization) organization;
-                Object[] row = new Object[model.getColumnCount()];
-                enterprise.setType(Organization.Type.NGO);
-                row[0] = enterprise.getType().getValue();
-                row[1] = orgNGO.getVolunteerNGO();
-                row[2] = orgNGO.getLocationPoint();
-                model.addRow(row);
-            } else if (organization instanceof VolunteerCompanyOrganization) {
-                VolunteerCompanyOrganization orgCompany = (VolunteerCompanyOrganization) organization;
-                Object[] row = new Object[model.getColumnCount()];
-                enterprise.setType(Organization.Type.Company);
-                row[0] = enterprise.getType().getValue();
-                row[1] = orgCompany.getVolunteerCompany();
-                row[2] = orgCompany.getLocationPoint();
-                model.addRow(row);
-            }
-
+             }
+            //}
         }
-
+            
+        }
     }
+//    public void populateTable() {
+//        tblVoluntaryOrg.getTableHeader().setDefaultRenderer(new HeaderColors());
+//        DefaultTableModel model = (DefaultTableModel) tblVoluntaryOrg.getModel();
+//        model.setRowCount(0);
+//        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+//            if (organization instanceof VolunteerHospitalOrganization) {
+//                VolunteerHospitalOrganization orgHospital = (VolunteerHospitalOrganization) organization;
+//               
+//              
+//                System.out.println("Organization 2  = " + enterprise.getOrganizationDirectory());
+//                Object[] row = new Object[model.getColumnCount()];
+////                enterprise.setType(Organization.Type.Hospital);
+////                  System.out.println("Organization 2  = " + enterprise.getType().getValue());
+//                row[0] = Organization.Type.Hospital;
+//                row[1] = orgHospital.getHospital();
+//                row[2] = orgHospital.getLocationPoint();
+//                model.addRow(row);
+//            } else if (organization instanceof VolunteerPersonalOrganization) {
+//                VolunteerPersonalOrganization orgPersonal = (VolunteerPersonalOrganization) organization;
+//                Object[] row = new Object[model.getColumnCount()];
+//                enterprise.setType(Organization.Type.Personal);
+//                row[0] = Organization.Type.Personal;
+//                row[1] = orgPersonal.getVolunteerPersonal();
+//                row[2] = orgPersonal.getLocationPoint();
+//                model.addRow(row);
+//            } else if (organization instanceof VolunteerNGOOrganization) {
+//                VolunteerNGOOrganization orgNGO = (VolunteerNGOOrganization) organization;
+//                Object[] row = new Object[model.getColumnCount()];
+//                enterprise.setType(Organization.Type.NGO);
+//                row[0] = enterprise.getType().getValue();
+//                row[1] = orgNGO.getVolunteerNGO();
+//                row[2] = orgNGO.getLocationPoint();
+//                model.addRow(row);
+//            } else if (organization instanceof VolunteerCompanyOrganization) {
+//                VolunteerCompanyOrganization orgCompany = (VolunteerCompanyOrganization) organization;
+//                Object[] row = new Object[model.getColumnCount()];
+//                enterprise.setType(Organization.Type.Company);
+//                row[0] = enterprise.getType().getValue();
+//                row[1] = orgCompany.getVolunteerCompany();
+//                row[2] = orgCompany.getLocationPoint();
+//                model.addRow(row);
+//            }
+//
+//        }
+//
+//    }
 
     public void populateLongituteLatitude(LocationPoint locationPoint) {
         this.location = locationPoint;
@@ -282,7 +305,7 @@ public class VoluntaryOperatingUnitManageOrganizationsJPanel extends javax.swing
             Organization organization = directory.createOrganization(type,organizationName.getText(), location);
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             organizationName.setText("");
-            populateTable();
+            volPopulate();
             resetFields();
         }
 

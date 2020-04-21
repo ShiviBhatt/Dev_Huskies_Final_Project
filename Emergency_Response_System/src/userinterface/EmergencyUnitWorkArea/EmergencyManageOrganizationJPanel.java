@@ -6,6 +6,9 @@ package userinterface.EmergencyUnitWorkArea;
 
 import Business.Enterprise.Enterprise;
 import Business.Location.LocationPoint;
+import Business.Organization.DisasterOrganization;
+import Business.Organization.FireSafetyOrganization;
+import Business.Organization.MedicalOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -63,15 +66,20 @@ public class EmergencyManageOrganizationJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (Organization organization : directory.getOrganizationList()){
-//            if (organization instanceof PoliceOrganization) {
-//                PoliceOrganization org = (PoliceOrganization) organization;
+        {
+            System.out.println(organization.getLocationPoint() + " EMERGENCY LOCATION");
+             if(organization instanceof DisasterOrganization || organization instanceof FireSafetyOrganization 
+                     || organization instanceof MedicalOrganization || organization instanceof PoliceOrganization){
                 Object[] row = new Object[3];
-                row[0] = enterprise.getType().getValue();
+                row[0] = organization.getType().getValue();
                 row[1] = organization.getName();
                 row[2] = organization.getLocationPoint();
                 //row[2] = org.getPosition();
                 model.addRow(row);
+             }
             //}
+        }
+            
         }
     }
     /**

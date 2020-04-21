@@ -22,6 +22,7 @@ public class PoliceOrganization extends Organization{
     public PoliceOrganization(String name) {
         super(name);
         police = name;
+        //setType(Organization.Type.PoliceHead);
     }
 
     public String getPolice() {
@@ -39,6 +40,9 @@ public class PoliceOrganization extends Organization{
         return roles;
     }
 
-
+    @Override
+    public Type getType() {
+        return Organization.Type.PoliceHead;
+    } 
     
 }

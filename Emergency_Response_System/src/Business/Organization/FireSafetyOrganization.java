@@ -20,6 +20,7 @@ public class FireSafetyOrganization extends Organization{
     public FireSafetyOrganization(String name) {
         super(name);
         fireSafety = name;
+        //setType(Organization.Type.FireSafety);
     }
 
     public String getFireSafety() {
@@ -36,5 +37,9 @@ public class FireSafetyOrganization extends Organization{
         roles.add(new FireSafetyHead());
         return roles;
     }
-    
+
+    @Override
+    public Type getType() {
+        return Organization.Type.FireSafety;
+    }  
 }

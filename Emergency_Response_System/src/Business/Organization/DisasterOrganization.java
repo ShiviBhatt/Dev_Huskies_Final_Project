@@ -21,6 +21,7 @@ public class DisasterOrganization extends Organization {
         super(name);
         this.name = name;
         disasterName = name;
+        //setType(Organization.Type.DisasterManagementTeam);
 
     }
 
@@ -40,5 +41,10 @@ public class DisasterOrganization extends Organization {
         roles.add(new DisasterHead());
         return roles; //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public Type getType() {
+        return Organization.Type.DisasterManagementTeam;
+    } 
 
 }

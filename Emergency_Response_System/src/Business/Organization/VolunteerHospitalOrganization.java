@@ -44,6 +44,10 @@ public class VolunteerHospitalOrganization extends Organization{
     public String toString() {
         return hospital;
     }
+       @Override
+    public Type getType() {
+        return Organization.Type.Hospital;
+    } 
     
     
 }
