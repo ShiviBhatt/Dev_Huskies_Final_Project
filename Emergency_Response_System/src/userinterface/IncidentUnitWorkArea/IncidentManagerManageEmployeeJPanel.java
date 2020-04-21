@@ -138,7 +138,7 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 401, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
 
         organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -149,7 +149,7 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 144, 193, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 144, 240, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -163,13 +163,13 @@ public class IncidentManagerManageEmployeeJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 364, 182, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 364, 270, -1));
 
         organizationEmpJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationEmpJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         organizationEmpJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 319, 182, -1));
+        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 319, 280, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));

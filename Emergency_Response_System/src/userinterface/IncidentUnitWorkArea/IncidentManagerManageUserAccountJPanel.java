@@ -118,11 +118,11 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
                 createUserJButtonActionPerformed(evt);
             }
         });
-        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 523, -1, -1));
+        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
 
         nameJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 437, 146, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 437, 280, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -161,7 +161,7 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
             userJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 105, 375, 179));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 105, 490, 179));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -170,7 +170,7 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
 
         passwordJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         passwordJTextField.setForeground(new java.awt.Color(25, 56, 82));
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 480, 146, -1));
+        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 480, 280, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
@@ -181,7 +181,7 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
         employeeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         employeeJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 347, 146, -1));
+        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 347, 290, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(25, 56, 82));
@@ -197,7 +197,7 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 302, 146, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 302, 290, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));
@@ -205,8 +205,10 @@ public class IncidentManagerManageUserAccountJPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 397, -1, -1));
 
         roleJComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        roleJComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        roleJComboBox.setForeground(new java.awt.Color(25, 56, 82));
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 392, 146, -1));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 392, 290, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));

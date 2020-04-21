@@ -94,7 +94,7 @@ public class DisasterAdminManageEmployeeJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Employee Id", "Eployee Name"
+                "Employee Id", "Employee Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
