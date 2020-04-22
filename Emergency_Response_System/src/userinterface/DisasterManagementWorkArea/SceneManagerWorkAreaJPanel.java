@@ -421,7 +421,7 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
                 ReportingAdminSceneRequest sScene = (ReportingAdminSceneRequest) sceneTable.getValueAt(selectedRow, 0);
                 if(sScene.getStatus().equals("Resolved")) {
                     JOptionPane.showMessageDialog(null, "Scene is already Resolved");
-                }else if(selectedScene.getStatus().equals("Scene Manager Assigned")) {
+                }else if(sScene.getStatus().equals("Scene Manager Assigned")) {
                     JOptionPane.showMessageDialog(null, "Please process the scene before marking resolved");
                 }else {
                     String msg = JOptionPane.showInputDialog("Additional Message");                    
