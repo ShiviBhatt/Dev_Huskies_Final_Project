@@ -134,10 +134,10 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        alertPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        alertPanel = new javax.swing.JPanel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -258,12 +258,18 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 10));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setText("ALERTS");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 70, -1));
+
         jScrollPane2.setMinimumSize(new java.awt.Dimension(240, 270));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(240, 270));
 
         alertPanel.setBackground(new java.awt.Color(215, 81, 81));
-        alertPanel.setMinimumSize(new java.awt.Dimension(280, 321));
-        alertPanel.setPreferredSize(new java.awt.Dimension(280, 321));
 
         javax.swing.GroupLayout alertPanelLayout = new javax.swing.GroupLayout(alertPanel);
         alertPanel.setLayout(alertPanelLayout);
@@ -273,20 +279,12 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         alertPanelLayout.setVerticalGroup(
             alertPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(alertPanel);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 260, 400));
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setText("ALERTS");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 70, -1));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 240, 320));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setMinimumSize(new java.awt.Dimension(1058, 840));

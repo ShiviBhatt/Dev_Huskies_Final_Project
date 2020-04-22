@@ -133,21 +133,23 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        alertPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        alertPanel = new javax.swing.JPanel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1338, 840));
         setPreferredSize(new java.awt.Dimension(1338, 840));
+        setLayout(new java.awt.BorderLayout());
 
         systemAdminPanel.setBackground(new java.awt.Color(215, 81, 81));
         systemAdminPanel.setMinimumSize(new java.awt.Dimension(1338, 840));
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
         jPanel3.setBackground(new java.awt.Color(215, 81, 81));
-        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
+        jPanel3.setMinimumSize(new java.awt.Dimension(280, 840));
+        jPanel3.setPreferredSize(new java.awt.Dimension(280, 840));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageScenePanel.setBackground(new java.awt.Color(215, 81, 81));
@@ -255,12 +257,18 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 10));
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setText("ALERTS");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 51, 51));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 70, -1));
+
         jScrollPane2.setMinimumSize(new java.awt.Dimension(240, 270));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(240, 270));
 
         alertPanel.setBackground(new java.awt.Color(215, 81, 81));
-        alertPanel.setMinimumSize(new java.awt.Dimension(280, 321));
-        alertPanel.setPreferredSize(new java.awt.Dimension(280, 321));
 
         javax.swing.GroupLayout alertPanelLayout = new javax.swing.GroupLayout(alertPanel);
         alertPanel.setLayout(alertPanelLayout);
@@ -270,23 +278,15 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         alertPanelLayout.setVerticalGroup(
             alertPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
         jScrollPane2.setViewportView(alertPanel);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 260, 450));
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setText("ALERTS");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 51, 51));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 70, 10));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 240, 320));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
-        rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(940, 808));
+        rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
         rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout systemAdminPanelLayout = new javax.swing.GroupLayout(systemAdminPanel);
@@ -296,28 +296,16 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(systemAdminPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         systemAdminPanelLayout.setVerticalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(systemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(systemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        add(systemAdminPanel, java.awt.BorderLayout.CENTER);
 
         getAccessibleContext().setAccessibleName("jjpanel");
     }// </editor-fold>//GEN-END:initComponents

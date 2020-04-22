@@ -606,48 +606,62 @@ public class NearestOrganizationJPanel extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String coordinates = "";
+        String allCoordinates = "";
+        boolean atleastOneSelected = false;
         coordinates += "['" + ((ReportingAdminSceneRequest) workRequest).getSceneName() + " - Scene'," + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude() + ", " + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude() + "],\n";
+        allCoordinates += "['" + ((ReportingAdminSceneRequest) workRequest).getSceneName() + " - Scene'," + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLatitude() + ", " + ((ReportingAdminSceneRequest) workRequest).getSceneLocationPoint().getLongitude() + "],\n";
         for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
                 System.out.println(org.getName()+" "+orgType);
                 if (org instanceof FireSafetyOrganization && orgType.equalsIgnoreCase("Fire")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof PoliceOrganization && orgType.equalsIgnoreCase("Police")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - Police'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof MedicalOrganization && orgType.equalsIgnoreCase("Medicine")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - Medicine'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof VolunteerNGOOrganization && orgType.equalsIgnoreCase("NGO")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - NGO'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof VolunteerHospitalOrganization && orgType.equalsIgnoreCase("Hospital")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - Hospital'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof VolunteerCompanyOrganization && orgType.equalsIgnoreCase("Company")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else if (org instanceof VolunteerPersonalOrganization && orgType.equalsIgnoreCase("Personal")) {
+                    atleastOneSelected = true;
                     coordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                 } else {
                     if (org instanceof FireSafetyOrganization) {
-                        coordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - FireSafety'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof PoliceOrganization) {
-                        coordinates += "['" + org.getName() + " - Police'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - Police'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof MedicalOrganization) {
-                        coordinates += "['" + org.getName() + " - Medicine'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - Medicine'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof VolunteerNGOOrganization) {
-                        coordinates += "['" + org.getName() + " - NGO'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - NGO'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof VolunteerHospitalOrganization) {
-                        coordinates += "['" + org.getName() + " - Hospital'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - Hospital'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof VolunteerCompanyOrganization) {
-                        coordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - Company'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                     if (org instanceof VolunteerPersonalOrganization) {
-                        coordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
+                        allCoordinates += "['" + org.getName() + " - Personal'," + org.getLocationPoint().getLatitude() + ", " + org.getLocationPoint().getLongitude() + "],\n";
                     }
                 }
             }
+        }
+        
+        if(!atleastOneSelected){
+            coordinates = allCoordinates;
         }
         System.out.println("===---->>> 1coordinates are " + coordinates.substring(0, coordinates.length()-1));
         System.out.println("===---->>> 2coordinates are " + coordinates.substring(0, coordinates.length()-2));

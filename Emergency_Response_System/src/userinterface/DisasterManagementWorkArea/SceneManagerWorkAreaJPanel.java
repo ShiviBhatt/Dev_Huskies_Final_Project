@@ -437,9 +437,12 @@ public class SceneManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void sceneTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sceneTableMouseClicked
+        
         int selectedReq = sceneTable.getSelectedRow();
+        if(selectedReq >= 0){
         selectedWorkReq = (ReportingAdminSceneRequest)sceneTable.getValueAt(selectedReq, 0);
         populateStatusTable();
+        }
     }//GEN-LAST:event_sceneTableMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
